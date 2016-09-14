@@ -11,33 +11,29 @@ Description: les dresseurs sont les etres capables d'attraper des creatures
 #include <string>
 #include "Creature.h"
 #include "ObjetMagique.h"
+
 #define MAX_NOMBRE_CREATURES 2
 
 class Dresseur
 {
 public:
-    //constructeurs
-    Dresseur();  //constructeur par défaut
+    Dresseur();
     Dresseur(const std::string& nom);
-
-
-    //destructeur
     ~Dresseur();
 
-    //accesseurs
-    std::string obtenirNom() const;
-    void modifierNom(const std::string& nom);
+    std::string getNom() const;
+    void setNom(const std::string& nom);
 
-    ObjetMagique obtenirObjetMagique() const;
-    void modifierObjetMagique(const ObjetMagique& objetMagique);
+    ObjetMagique getObjetMagique() const;
+    void setObjetMagique(const ObjetMagique& objetMagique);
 
     void utiliserObjetMagique(Creature* creature);
 
 
-    unsigned int obtenirNombreCreatures() const;
+    unsigned int getNombreCreatures() const;
 
-    Creature** obtenirCreatures() const;
-    void modifierCreature(Creature** creatures);
+    Creature** getCreatures() const;
+    void setCreature(Creature** creatures);
 
     bool ajouterCreature(const Creature& creature);
     bool retirerCreature(const std::string& nom);
@@ -45,7 +41,6 @@ public:
     void affichage() const;
 
 private:
-    //attributs
     std::string nom_;
     Creature** creatures_;
     unsigned int nombreCreatures_;
