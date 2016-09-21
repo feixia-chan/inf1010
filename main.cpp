@@ -152,7 +152,7 @@ int main()
     cout << "Pokachu et salimouche n'arrete pas de se chamailler, vous decidez d'abandonner Salimouche" << endl;
     polyland.infoDresseur("Sasha");
     //Vous en avez marre des chamailleries, vous décidez de relacher Salimouche
-    if (polyland.relacherCreature(&Vous, Salimouche)) {
+    if (polyland.relacherCreature(&Vous, Salimouche.getNom())) {
         cout << "Vous avez decidé de relacher Salimouche !" << endl;
     }
     else {

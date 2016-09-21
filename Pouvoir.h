@@ -23,14 +23,14 @@ public:
     ~Pouvoir();
 
     //Accesseurs
-    void getNom() const;
-    void getNombreDeDegat() const;
-    void getEnergieNecessaire() const;
+    string getNom() const;
+    int getNombreDeDegat() const;
+    int getEnergieNecessaire() const;
 
     //Modificateurs
-    string setNom(string nom);
-    int setNombreDeDegat(int nbDeDegat);
-    int setEnergieNecessaire(int energie);
+    void setNom(string nom);
+    void setNombreDeDegat(int nbDeDegat);
+    void setEnergieNecessaire(int energie);
 
     //méthode
 

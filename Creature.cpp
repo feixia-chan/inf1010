@@ -1,4 +1,5 @@
 #include "Creature.h"
+#include <cstdlib>
 
 //https://github.com/feixia-chan/inf1010.git    maude.carrier@polymtl.ca
 
@@ -14,7 +15,6 @@ Creature::Creature(){
     experience_=0;
     experienceNecessaire_=0;
     niveau_=0;
-    pouvoir_=new Pouvoir(); //surcharge d'opérateur necessaire
 }
 
 Creature::Creature(string nom, int attaque, int defense, int pointDeVie, int energie){
@@ -28,13 +28,11 @@ Creature::Creature(string nom, int attaque, int defense, int pointDeVie, int ene
     experience_=0;
     experienceNecessaire_=100;
     niveau_=1;
-    pouvoir_= new Pouvoir();
     }
 
     //destructeur
 
 Creature::~Creature(){
-    delete pouvoir_;
 };
 
     //accesseurs
@@ -78,7 +76,7 @@ int Creature::getNiveau() const{
     return niveau_;
 }
 
-Pouvoir* Creature::getPouvoir() const{
+Pouvoir Creature::getPouvoir() const{
     return pouvoir_;
 }
 
@@ -123,7 +121,7 @@ void Creature::setNiveau(int lvl){
     niveau_=lvl;
 }
 
-void Creature::setPouvoir(Pouvoir* pouvoir){
+void Creature::setPouvoir(Pouvoir pouvoir){
     pouvoir_=pouvoir;
 }
     //methodes
@@ -131,19 +129,19 @@ void Creature::attaquer(Creature & creature)   //modifié
 {
 		//L'attaque est possible si votre créature a assez d'energie
 		//Et que la creature adverse a encore des points de vie
-		if(energie_> (pouvoir_->getEnergieNecessaire()) && pointDeVie_>=0){
+		if(this->getEnergie() > this->getPouvoir().getEnergieNecessaire() && pointDeVie_>=0){
 
 
 
 			//Calcul du nombre de degat selon une formule
-			unsigned int degat = (pouvoir_->getNombreDeDegat())* (attaque_ / 2 - creature.defense_);
+			unsigned int degat = this->getPouvoir().getNombreDeDegat()* (attaque_ / 2 - creature.defense_);
 			//On choisit un nombre aléatoire entre 1 et 6
 			int tentative = rand() % 6;
 			//l'attaque rate une fois sur 6
 			if (tentative != 3) {
 				//Afficher le nom de la créature qui lance l'attaque, le nom de l'attaque,
 				//le nombre de dégat infligé, et la créature qui est attaquée
-				cout << this->getNom() << "lance une attaque" << pouvoir_->getNom() <<"!" << endl;
+				cout << this->getNom() << "lance une attaque" << pouvoir_.getNom() << "!" << endl;
 				cout << degat << "points de dégâts sont infligés à " << creature.getNom() << endl;
 
                 //encaissement des dégâts par la créature
@@ -164,7 +162,7 @@ void Creature::attaquer(Creature & creature)   //modifié
 		}
         else {
             //La créature adverse est déjà vaincue
-            std::cout << "Attaque " << pouvoir_->getNom() << " a échouée" << endl;
+            std::cout << "Attaque " << this->getPouvoir().getNom() << " a échouée" << endl;
         }
     }
 
@@ -200,7 +198,7 @@ void Creature::information(){
     cout << "Niveau : "<< this->getNiveau() <<endl;
     cout << "Experience totale : "<< this->getExperience() <<endl;
     cout << "Expérience nécessaire pour le prochain niveau: "<< this->getExperienceNecessaire() <<endl;
-    cout << "Pouvoir : "<< pouvoir_->getNom() <<endl;
+    cout << "Pouvoir : "<< pouvoir_.getNom() <<endl;
     cout << "Points de vie restants : "<< this->getPointDeVie() << "/" << this->getPointDeVieTotal() << endl;
     cout << "Attaque : "<< this->getAttaque() <<endl;
     cout << "Defense : "<< this->getDefense() <<endl;
