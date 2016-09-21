@@ -1,6 +1,6 @@
 /*
 Fichier: Creature.h
-Auteurs: AlexandrA LIN & Maxime HAUDEGOND
+Auteurs: Alexandra LIN & Maxime HAUDEGOND
 Date de creation: 14 sept 2016
 
 Description: les créatures peuplent PolyLand
@@ -24,33 +24,33 @@ public:
     ~Creature();
 
     //accesseurs
-    void getNom() const;
-    void getAttaque() const;
-    void getDefense() const;
-    void getPointDeVie() const;
-    void getPointDeVieTotal() const;
-    void getEnergie() const;
-    void getEnergieTotale() const;
-    void getExperience()const ;
-    void getExperienceNecessaire() const;
-    void getNiveau() const;
-    void getPouvoir() const;
+    string getNom() const;
+    int getAttaque() const;
+    int getDefense() const;
+    int getPointDeVie() const;
+    int getPointDeVieTotal() const;
+    int getEnergie() const;
+    int getEnergieTotale() const;
+    int getExperience()const ;
+    int getExperienceNecessaire() const;
+    int getNiveau() const;
+    Pouvoir getPouvoir() const;
 
     //modificateurs
-    String setNom(string nom) ;
-    int setAttaque(int attaque) ;
-    int setDefense(int defense) ;
-    int setPointDeVie(int pv) ;
-    int setPointDeVieTotal(int pvTotal) ;
-    int setEnergie(int energie) ;
-    int setEnergieTotale(int energieTotale) ;
-    int setExperience(int xp) ;
-    int setExperienceNecessaire(int xpNecessaire) ;
-    int setNiveau(int lvl) ;
-    Pouvoir setPouvoir(Pouvoir pouvoir) ;
+    void setNom(string nom) ;
+    void setAttaque(int attaque) ;
+    void setDefense(int defense) ;
+    void setPointDeVie(int pv) ;
+    void setPointDeVieTotal(int pvTotal) ;
+    void setEnergie(int energie) ;
+    void setEnergieTotale(int energieTotale) ;
+    void setExperience(int xp) ;
+    void setExperienceNecessaire(int xpNecessaire) ;
+    void setNiveau(int lvl) ;
+    void setPouvoir(Pouvoir pouvoir) ;
 
     //methodes
-    void attaquer(const Pouvoir & pouvoir, Creature & creature);    // attaque la créature ciblée avec le pouvoir
+    void attaquer(Creature & creature);    // attaque la créature ciblée avec le pouvoir
     int experienceGagner(const Creature& creature);     //calcule et donne l'XP gagnée par la créature
     void information();     //affiche les stats de la créature
 

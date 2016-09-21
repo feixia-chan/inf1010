@@ -95,13 +95,15 @@ int main()
     }
 
     cout << endl;
+	cout << endl << "LA DECOUVERTE DE LA POTION MAGIQUE" << endl;
     cout << "Vous trouvez une potion magique, vous décidez de l'utilisez sur Pokachu" << endl;
 
     ObjetMagique potionMagique("Potion magique", 15);
-    //Vous venez de trouver une potion magique
-    Vous.setObjetMagique(potionMagique);
-    //Soin de votre creature
-    Vous.utiliserObjetMagique(Vous.getCreatures()[0]);
+	//Vous venez de trouver une potion magique
+	Vous.setObjetMagique(potionMagique);
+	//Soin de votre creature
+	Vous.getObjetMagique().affichage();
+	Vous.utiliserObjetMagique(Vous.getCreatures()[0]);
 
     //Choix d'une creature aleatoirement parmi celles possibles
     Creature* creatureAleatoire = polyland.choisirCreatureAleatoire();
@@ -162,7 +164,7 @@ int main()
     Vous.getCreatures()[0]->setPointDeVie(Vous.obtenirCreatures()[0]->setPointDeVieTotal());
     Vous.getCreatures()[0]->setEnergie(Vous.obtenirCreatures()[0]->setEnergieTotale());
 
-    cout << endl << "UN DRESSEUR SOUHAITE VOUS DEFIEZ" << endl;
+    cout << endl << "UN DRESSEUR SOUHAITE VOUS DEFIER" << endl;
     dresseurAleatoire->affichage();
     //Vous vous faites toujours attaquer dans Polyland, ça serait presque une terre hostile...
     cout << dresseurAleatoire->getNom() << " surgit avec son " << dresseurAleatoire->getCreatures()[0]->getNom() << endl;
@@ -176,7 +178,7 @@ int main()
                 dresseurAleatoire->getCreatures()[0]->attaquer(*Vous.getCreatures()[0]);
         }
         else {
-            //Vous avez trouvé un puit de potion pour régénrer votre Pokachu
+            //Vous avez trouvé un puit de potion pour régénérer votre Pokachu
             cout << "Votre Pokachu est mal en point, vous utilisez une potion sur lui " << endl;
             Vous.utiliserObjetMagique(Vous.getCreatures()[0]);
         }
