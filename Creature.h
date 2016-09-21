@@ -10,6 +10,7 @@ Description: les créatures peuplent PolyLand
 #define CREATURE_H_INCLUDED
 
 #include <string>
+#include <iostream>
 #include "Pouvoir.h"
 
 using namespace std;
@@ -34,7 +35,7 @@ public:
     int getExperience()const ;
     int getExperienceNecessaire() const;
     int getNiveau() const;
-    Pouvoir getPouvoir() const;
+    Pouvoir* getPouvoir() const;
 
     //modificateurs
     void setNom(string nom) ;
@@ -47,7 +48,7 @@ public:
     void setExperience(int xp) ;
     void setExperienceNecessaire(int xpNecessaire) ;
     void setNiveau(int lvl) ;
-    void setPouvoir(Pouvoir pouvoir) ;
+    void setPouvoir(Pouvoir* pouvoir) ;
 
     //methodes
     void attaquer(Creature & creature);    // attaque la créature ciblée avec le pouvoir
@@ -60,13 +61,13 @@ public:
    int attaque_;
    int defense_;
    int pointDeVie_;
-   int PointDeVieTotal_;
+   int pointDeVieTotal_;
    int energie_;
    int energieTotale_; //modification du nom de base energieTotal >> energieTotale
    int experience_;
    int experienceNecessaire_;
    int niveau_;
-   Pouvoir pouvoir_;
+   Pouvoir* pouvoir_;
 };
 
 

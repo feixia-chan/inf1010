@@ -1,6 +1,6 @@
 /*
 Fichier: Pouvoir.h
-Auteurs: AlexandrA LIN & Maxime HAUDEGOND
+Auteurs: Alexandra LIN & Maxime HAUDEGOND
 Date de creation: 14 sept 2016
 
 Description: Un pouvoir demande une certaine quantité d’énergie pour être exécuté et
@@ -17,19 +17,31 @@ class Pouvoir{
 public:
     //constructeurs
     Pouvoir();
-    Pouvoir();
+    Pouvoir(string nom, int nombreDeDegat, int energieNecessaire);
+
     //destructeur
     ~Pouvoir();
+
     //Accesseurs
+    void getNom() const;
+    void getNombreDeDegat() const;
+    void getEnergieNecessaire() const;
 
     //Modificateurs
+    string setNom(string nom);
+    int setNombreDeDegat(int nbDeDegat);
+    int setEnergieNecessaire(int energie);
+
+    //méthode
+
+    void description();
+
 
     private:
     //attributs
     string nom_;
     int nombreDeDegat_;
     int energieNecessaire_;
-
 };
 
 #endif // POUVOIR_H_INCLUDED
