@@ -1,5 +1,5 @@
 #include "Creature.h"
-#include <cstdlib>
+
 
 //https://github.com/feixia-chan/inf1010.git    maude.carrier@polymtl.ca
 
@@ -135,7 +135,7 @@ void Creature::attaquer(Creature & creature)   //modifié
 
 			//Calcul du nombre de degat selon une formule
 			unsigned int degat = this->getPouvoir().getNombreDeDegat()* (attaque_ / 2 - creature.defense_);
-			//On choisit un nombre aléatoire entre 1 et 6
+			//On choisit un nombre aléatoire entre 0 et 5
 			int tentative = rand() % 6;
 			//l'attaque rate une fois sur 6
 			if (tentative != 3) {

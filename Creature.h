@@ -9,6 +9,7 @@ Description: les créatures peuplent PolyLand
 #ifndef CREATURE_H_INCLUDED
 #define CREATURE_H_INCLUDED
 
+#include <cstdlib>
 #include <string>
 #include <iostream>
 #include "Pouvoir.h"
