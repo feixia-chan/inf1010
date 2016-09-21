@@ -35,7 +35,7 @@ public:
     Creature** getCreatures() const;
     void setCreature(Creature** creatures);
 
-    bool ajouterCreature(const Creature& creature);
+    bool ajouterCreature(const Creature creature);
     bool retirerCreature(const std::string& nom);
 
     void affichage() const;

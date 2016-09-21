@@ -39,5 +39,5 @@ void ObjetMagique::setBonus(const int& bonus){
 
 //Affichage
 void ObjetMagique::afficher() const{
-    cout<<"L'objet "<<this->getNom()<<" confère un regain de "<<this->getBonus()<<" points de vie et d'énergie"<<endl;
+    cout<<"L'objet "<<this->getNom()<<" confère un bonus de "<<this->getBonus()<<endl;
 }

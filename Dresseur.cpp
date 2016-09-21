@@ -62,7 +62,7 @@ void Dresseur::setCreature(Creature** creatures){
 
 //Ajouter ou retirer des créatures
 
-bool Dresseur::ajouterCreature(const Creature& creature){
+bool Dresseur::ajouterCreature(const Creature creature){
     for (int i=0; i<creatures_->size();i++){
         if (creature==creatures_[i]){
             return false;
