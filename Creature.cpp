@@ -17,7 +17,7 @@ Creature::Creature(){
     niveau_=0;
 }
 
-Creature::Creature(string nom, int attaque, int defense, int pointDeVie, int energie){
+Creature::Creature(string nom, int attaque, int defense, int pointDeVie, int energie, Pouvoir pouvoir){
     nom_=nom;
     attaque_=attaque;
     defense_=defense;
@@ -28,6 +28,7 @@ Creature::Creature(string nom, int attaque, int defense, int pointDeVie, int ene
     experience_=0;
     experienceNecessaire_=100;
     niveau_=1;
+    pouvoir_=pouvoir;
     }
 
     //destructeur

@@ -19,15 +19,15 @@ Pouvoir::Pouvoir(string nom, int nombreDeDegat, int energieNecessaire){
 Pouvoir::~Pouvoir(){}
 
     //Accesseurs
-string Pouvoir::getNom(){
+string Pouvoir::getNom() const{
     return nom_;
 }
 
-int Pouvoir::getNombreDeDegat(){
+int Pouvoir::getNombreDeDegat() const{
     return nombreDeDegat_;
 }
 
-int Pouvoir::getEnergieNecessaire(){
+int Pouvoir::getEnergieNecessaire() const{
     return energieNecessaire_;
 }
 
@@ -47,5 +47,5 @@ void Pouvoir::setEnergieNecessaire(int energie){
 void Pouvoir::description(){
     cout << "nom :" << this->getNom() <<endl;
     cout << "Force (nombre de dégats) :" << this->getNombreDeDegat() <<endl;
-    cout << "Energie nécessaire :" << this->getEnergieNecessaire()) <<endl;
+    cout << "Energie nécessaire :" << this->getEnergieNecessaire() <<endl;
 }

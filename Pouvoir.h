@@ -11,6 +11,8 @@ inflige un certain nombre de dégâts à une autre créature cible
 #ifndef POUVOIR_H_INCLUDED
 #define POUVOIR_H_INCLUDED
 
+#include <iostream>
+
 using namespace std;
 
 class Pouvoir{

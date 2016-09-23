@@ -1,5 +1,4 @@
 #include "ObjetMagique.h"
-#include <iostream>
 
 //Constructeurs
 ObjetMagique::ObjetMagique()    //Constructeur par défaut

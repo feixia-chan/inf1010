@@ -1,6 +1,9 @@
 #ifndef OBJETMAGIQUE_H
 #define OBJETMAGIQUE_H
 
+#include <iostream>
+
+
 using namespace std;
 
 class ObjetMagique

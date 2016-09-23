@@ -6,6 +6,9 @@
 #include "Dresseur.h"
 #include "Creature.h"
 
+#define MAX_NOMBRE_CREATURES 1000
+#define MAX_NOMBRE_DRESSEURS 100
+
 using namespace std;
 
 class Polyland
@@ -20,20 +23,20 @@ class Polyland
         int getNbCreatures() const;
 
         //Modifier le tableau de dresseurs
-        void ajouterDresseur(const Dresseur& dresseur);
-        void retirerDresseur(const string& nom);
+        bool ajouterDresseur(Dresseur* dresseur);
+        bool retirerDresseur(const string& nom);
 
         //Modifier le tableau créatures
-        void ajouterCreature(Creature creature);
-        void retirerCreature(string nom);
+        bool ajouterCreature(Creature creature);
+        bool retirerCreature(string nom);
 
         //Méthodes de choix aléatoire
-        Dresseur choisirDresseurAleatoire();
-        Creature choisirCreatureAleatoire();
+        Dresseur* choisirDresseurAleatoire();
+        Creature* choisirCreatureAleatoire();
 
         //Attraper et relacher des créatures
-        bool attraperCreature(Dresseur& dresseur, Creature& creature);
-        bool relacherCreature(Dresseur& dresseur, Creature& creature);
+        bool attraperCreature(Dresseur* dresseur, Creature creature);
+        bool relacherCreature(Dresseur* dresseur, const string& nom);
 
         //Infos
         void infosDresseur(const string& nom) const;

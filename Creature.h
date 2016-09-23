@@ -22,7 +22,7 @@ class Creature{
 public:
     //constructeurs
     Creature();
-    Creature(string nom, int attaque, int defense, int pointDeVie, int energie);
+    Creature(string nom, int attaque, int defense, int pointDeVie, int energie, Pouvoir pouvoir);
 
     //destructeur
     ~Creature();
