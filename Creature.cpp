@@ -130,7 +130,7 @@ void Creature::attaquer(Creature & creature)   //modifié
 {
 		//L'attaque est possible si votre créature a assez d'energie
 		//Et que la creature adverse a encore des points de vie
-		if(this->getEnergie() > this->getPouvoir().getEnergieNecessaire() && pointDeVie_>=0){
+		if(this->getEnergie() > this->getPouvoir().getEnergieNecessaire() && creature.pointDeVie_>=0){
 
 
 
@@ -142,19 +142,20 @@ void Creature::attaquer(Creature & creature)   //modifié
 			if (tentative != 3) {
 				//Afficher le nom de la créature qui lance l'attaque, le nom de l'attaque,
 				//le nombre de dégat infligé, et la créature qui est attaquée
-				cout << this->getNom() << "lance une attaque" << pouvoir_.getNom() << "!" << endl;
-				cout << degat << "points de dégâts sont infligés à " << creature.getNom() << endl;
+				cout << this->getNom() << " lance une attaque " << pouvoir_.getNom() << " !" << endl;
+				cout << degat << " points de dégâts sont infligés à " << creature.getNom() << endl;
 
                 //encaissement des dégâts par la créature
                 creature.setPointDeVie(creature.getPointDeVie()-degat);
                 int xp = experienceGagner(creature);
 
+
 				//Afficher le nombre d'XP gagné ou non
 				if(xp!=0){ //la créature adverse est morte
-                    cout << this->getNom() << "a gagné"<< xp << "point d'expérience !" << endl;
+                    cout << this->getNom() << " a gagné "<< xp << "point d'expérience !" << endl;
 				}
                 else {
-                    cout << creature.getNom() << "a encore" << creature.getPointDeVie() <<endl;
+                    cout << creature.getNom() << " a encore " << creature.getPointDeVie()<<" PV"<<endl;
 				//Afficher le nombre de point de vie restant de la créature attaquée
 				//Faites attention aux requis d'une attaque
 
@@ -163,7 +164,7 @@ void Creature::attaquer(Creature & creature)   //modifié
 		}
         else {
             //La créature adverse est déjà vaincue
-            std::cout << "Attaque " << this->getPouvoir().getNom() << " a échouée" << endl;
+            cout << "Attaque " << this->getPouvoir().getNom() << " a échouée" << endl;
         }
     }
 
@@ -197,11 +198,12 @@ int Creature::experienceGagner(const Creature& creature)
 void Creature::information(){
     cout << "Nom : "<< this->getNom() <<endl;
     cout << "Niveau : "<< this->getNiveau() <<endl;
-    cout << "Experience totale : "<< this->getExperience() <<endl;
-    cout << "Expérience nécessaire pour le prochain niveau: "<< this->getExperienceNecessaire() <<endl;
+    cout << "Experience totale : "<< this->getExperience() <<" XP"<<endl;
+    cout << "Expérience nécessaire pour le prochain niveau: "<< this->getExperienceNecessaire() <<" XP"<<endl;
     cout << "Pouvoir : "<< pouvoir_.getNom() <<endl;
-    cout << "Points de vie restants : "<< this->getPointDeVie() << "/" << this->getPointDeVieTotal() << endl;
+    cout << pouvoir_.getNom()<<" inflige "<<pouvoir_.getNombreDeDegat()<<" points de dégats et coute "<<pouvoir_.getEnergieNecessaire()<<" PE"<<endl;
+    cout << "Points de vie restants : "<< this->getPointDeVie() << "/" << this->getPointDeVieTotal() <<" PV"<< endl;
     cout << "Attaque : "<< this->getAttaque() <<endl;
     cout << "Defense : "<< this->getDefense() <<endl;
-    cout << "Energie restante : " << this->getEnergie() << "/"<< this->getEnergieTotale() <<  endl;
+    cout << "Energie restante : " << this->getEnergie() << "/"<< this->getEnergieTotale() <<" PE"<< endl;
 }

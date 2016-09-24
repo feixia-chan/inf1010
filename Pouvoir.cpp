@@ -45,7 +45,7 @@ void Pouvoir::setEnergieNecessaire(int energie){
 }
     //Méthode
 void Pouvoir::description(){
-    cout << "nom :" << this->getNom() <<endl;
+    cout << "Nom :" << this->getNom() <<endl;
     cout << "Force (nombre de dégats) :" << this->getNombreDeDegat() <<endl;
-    cout << "Energie nécessaire :" << this->getEnergieNecessaire() <<endl;
+    cout << "Energie nécessaire :" << this->getEnergieNecessaire() <<" PE"<<endl;
 }

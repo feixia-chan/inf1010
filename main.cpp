@@ -132,7 +132,7 @@ int main()
     }
 
     //Il se peut que vous gagniez...
-    if (creatureAleatoire->getPointDeVie() == 0)
+    if (creatureAleatoire->getPointDeVie() <= 0)
         cout << "Vous avez vaincu " << creatureAleatoire->getNom() << endl;
     else {
         //Sinon votre seconde créature se charge de finir le combat
@@ -156,7 +156,7 @@ int main()
     polyland.ajouterDresseur(&Vous);
     polyland.infosDresseur("Vous");
 
-    cout << "Pokachu et salimouche n'arrete pas de se chamailler, vous decidez d'abandonner Salimouche" << endl;
+    cout << "Pokachu et Salimouche n'arrete pas de se chamailler, vous decidez d'abandonner Salimouche" << endl;
     polyland.infosDresseur("Sasha");
     //Vous en avez marre des chamailleries, vous décidez de relacher Salimouche
     if (polyland.relacherCreature(&Vous, Salimouche.getNom())) {

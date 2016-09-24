@@ -69,17 +69,6 @@ void Dresseur::setCreature(Creature** creatures){
 //Ajouter ou retirer des créatures
 
 bool Dresseur::ajouterCreature(const Creature& creature){
-    for (unsigned int i=0; i<nombreCreaturesMax_;i++){
-        if (creatures_[i]== &creature){
-            return false;
-        }
-    }
-    int c=0;
-    while(creatures_[c]!=nullptr){
-        c++;
-    }
-    creatures_[c]= new Creature(creature);
-    nombreCreatures_++;
     if (nombreCreatures_==nombreCreaturesMax_){
         Creature** copie = new Creature*[nombreCreaturesMax_];
         for(unsigned int i=0;i<nombreCreaturesMax_;i++){
@@ -95,8 +84,23 @@ bool Dresseur::ajouterCreature(const Creature& creature){
         delete [] copie;
         copie = nullptr;
 
+        return false;
     }
-    return true;
+    else{
+        for (unsigned int i=0; i<nombreCreaturesMax_;i++){
+            if (creatures_[i]== &creature){
+                return false;
+            }
+        }
+        int c=0;
+        while(creatures_[c]!=nullptr){
+            c++;
+        }
+        creatures_[c]= new Creature(creature);
+        nombreCreatures_++;
+
+        return true;
+    }
 }
 
 bool Dresseur::retirerCreature(const string& nom){
@@ -131,5 +135,11 @@ void Dresseur::utiliserObjetMagique(Creature* creature){
 
 void Dresseur::affichage() const
 {
-    cout<<"Le dresseur "<<this->getNom()<<" possède "<<this->getNombreCreatures()<<" créatures"<<endl;
+    cout<<"Le dresseur "<<this->getNom()<<" possède "<<this->getNombreCreatures()<<" créature(s)"<<endl;
+    for(unsigned int i=0;i<nombreCreatures_;i++){
+        if(creatures_[i]!=nullptr){
+            creatures_[i]->information();
+            cout<<endl;
+        }
+    }
 }

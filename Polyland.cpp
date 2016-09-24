@@ -191,11 +191,16 @@ bool Polyland::relacherCreature(Dresseur* dresseur, const string& nom)
 //Infos Dresseur
 void Polyland::infosDresseur(const string& nom) const
 {
-    int indiceNom=0;
+    int indiceNom=nombreDresseur_+1;
     for(int i=0;i<nombreDresseur_;i++){
         if(listeDresseur[i]->getNom()==nom){
             indiceNom=i;
         }
     }
-    listeDresseur[indiceNom]->affichage();
+    if(indiceNom<nombreDresseur_){
+        listeDresseur[indiceNom]->affichage();
+    }
+    else{
+        cout<<"Il n'y a pas de dresseur avec ce nom à Polyland"<< endl;
+    }
 }
