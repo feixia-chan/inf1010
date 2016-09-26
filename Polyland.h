@@ -39,7 +39,7 @@ class Polyland
         bool relacherCreature(Dresseur* dresseur, const string& nom);
 
         //Infos
-        void infosDresseur(string nom) const;
+        void infosDresseur(const string& nom) const;
 
     private:
         Dresseur** listeDresseur;
