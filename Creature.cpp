@@ -148,7 +148,7 @@ void Creature::attaquer(Creature & creature)   //modifié
                 //encaissement des dégâts par la créature et diminution de l'énergie
                 creature.setPointDeVie(creature.getPointDeVie()-degat);
                 this->setEnergie(this->getEnergie()-this->getPouvoir().getEnergieNecessaire());
-                cout << this->getNom() << "a encore " << energie_ << " PE" <<endl;
+                cout << this->getNom() << " a encore " << energie_ << " PE" <<endl;
 
                 //Afficher le nombre d'XP gagné ou non
                 int xp = experienceGagner(creature);

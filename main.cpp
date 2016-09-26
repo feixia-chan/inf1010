@@ -100,7 +100,6 @@ int main()
         //ce cas ne devrait pas s'afficher
         cout << "Le salimouche s'est échappé" << endl;
     }
-    (Vous.getCreatures())[1]->information();
     cout << endl;
 	cout << endl << "LA DECOUVERTE DE LA POTION MAGIQUE" << endl;
     cout << "Vous trouvez une potion magique, vous décidez de l'utilisez sur Pokachu" << endl;
@@ -120,7 +119,7 @@ int main()
     cout << "Un duel entre Pokachu et " << creatureAleatoire->getNom() << " est engagé" << endl;
 
     //Vous attaquez la créature tant que qu'elle est en vie...
-    while (creatureAleatoire->getPointDeVie() > 0) {
+ /*   while (creatureAleatoire->getPointDeVie() > 0) {
         if (Vous.getCreatures()[0]->getPointDeVie() > 0) {
             //... ou que votre créature est morte
             (Vous.getCreatures()[0])->attaquer(*creatureAleatoire);
@@ -203,7 +202,7 @@ int main()
         cout << "Oh il y a eu un petit problème technique... " << dresseurAleatoire->getNom() << "n'a pas pu s'enfuir" << endl;
     }
 
-    cout<<polyland.getNbDresseurs()<<endl;
+
     cout << endl << "INFO DRESSEUR APRES TOUTES CES PERIPETIES" << endl;
    polyland.infosDresseur("Vous");
     //On ne devrait plus avoir d'information sur le dresseur aleatoire qui s'est enfui
@@ -220,9 +219,10 @@ int main()
     Pierre=nullptr;
     delete Regis;
     Regis=nullptr;
-    delete dresseurAleatoire;
+/*    delete dresseurAleatoire;
     dresseurAleatoire=nullptr;
-
-    //system("pause");
+    delete creatureAleatoire;
+    creatureAleatoire = nullptr;
+ */   //system("pause");
 	return 0;
 }
