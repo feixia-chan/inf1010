@@ -151,13 +151,12 @@ int main()
         cout << creatureAleatoire->getNom() << " s'est échappé" << endl;
     }
 
-    cout << endl << "AFFICHAGE DE VOS INFORMATIONS" << endl;
-    Dresseur* dresseurAleatoire = polyland.choisirDresseurAleatoire();
-    polyland.ajouterDresseur(&Vous);
-    polyland.infosDresseur("Vous");
-
-    cout << "Pokachu et Salimouche n'arrete pas de se chamailler, vous decidez d'abandonner Salimouche" << endl;
+    cout << endl << "AFFICHAGE DE VOS INFORMATIONS toto" << endl;
+ //   Dresseur* dresseurAleatoire = polyland.choisirDresseurAleatoire();
+    //polyland.ajouterDresseur(&Vous);
     polyland.infosDresseur("Sasha");
+/*
+    cout << "Pokachu et Salimouche n'arrete pas de se chamailler, vous decidez d'abandonner Salimouche" << endl;
     //Vous en avez marre des chamailleries, vous décidez de relacher Salimouche
     if (polyland.relacherCreature(&Vous, Salimouche.getNom())) {
         cout << "Vous avez decidé de relacher Salimouche !" << endl;
@@ -166,6 +165,8 @@ int main()
         //ce cas ne devrait pas s'afficher
         cout << "Oh il y a eu un petit problème technique... Salimouche n'a pas pu être relaché" << endl;
     }
+
+    polyland.infosDresseur("Vous");
 
     //On soigne votre Pokachu
     Vous.getCreatures()[0]->setPointDeVie(Vous.getCreatures()[0]->getPointDeVieTotal());
@@ -201,9 +202,9 @@ int main()
         cout << "Oh il y a eu un petit problème technique... " << dresseurAleatoire->getNom() << "n'a pas pu s'enfuir" << endl;
     }
 
-
+    cout<<polyland.getNbDresseurs()<<endl;
     cout << endl << "INFO DRESSEUR APRES TOUTES CES PERIPETIES" << endl;
-    polyland.infosDresseur("Vous");
+    //polyland.infosDresseur("Vous");
     //On ne devrait plus avoir d'information sur le dresseur aleatoire qui s'est enfui
     polyland.infosDresseur(dresseurAleatoire->getNom());
     /*******************************/
@@ -211,13 +212,15 @@ int main()
     /*******************************/
 
     // Liberer les ressources s'il le faut
-    delete Sasha;
+ /*   delete Sasha;
     Sasha=nullptr;
     delete Pierre;
     Pierre=nullptr;
     delete Regis;
     Regis=nullptr;
+    delete dresseurAleatoire;
+    dresseurAleatoire=nullptr;
 
     //system("pause");
-	return 0;
+*/	return 0;
 }

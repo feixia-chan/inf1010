@@ -15,6 +15,8 @@ Creature::Creature(){
     experience_=0;
     experienceNecessaire_=0;
     niveau_=0;
+    Pouvoir pouvoir;
+    pouvoir_=pouvoir;
 }
 
 Creature::Creature(string nom, int attaque, int defense, int pointDeVie, int energie, Pouvoir pouvoir){
