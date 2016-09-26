@@ -25,7 +25,7 @@ int main()
 	Dresseur* Sasha = new Dresseur("Sasha");
 	Dresseur* Pierre = new Dresseur("Pierre");
 	Dresseur* Regis = new Dresseur("Regis");
-	// A COMPLETER...
+
 
 
 
@@ -42,7 +42,7 @@ int main()
 	Creature Balbazar("Balbazar", 11, 2, 50, 22, lanceFeuille);
 
 
-	// Afficher les informations sur Pokachu creature (en utilisant la m�thode d'affichage)
+	// Afficher les informations sur Pokachu creature (en utilisant la méthode d'affichage)
 	Pokachu.information();
 
 	cout << endl << "Ajout des creatures et dresseurs de Polyland" << endl;
@@ -64,7 +64,7 @@ int main()
     /*                       DEBUT DES TESTS                           */
     /* Les modifications restantes sont a la fin de la fonction main.  */
     /*******************************************************************/
-    cout << endl << "BIENVENUE A POLYLAND" << endl;
+  cout << endl << "BIENVENUE A POLYLAND" << endl;
 
     Sasha->ajouterCreature(Salimouche);
     Pierre->ajouterCreature(Balbazar);
@@ -100,7 +100,7 @@ int main()
         //ce cas ne devrait pas s'afficher
         cout << "Le salimouche s'est échappé" << endl;
     }
-
+    (Vous.getCreatures())[1]->information();
     cout << endl;
 	cout << endl << "LA DECOUVERTE DE LA POTION MAGIQUE" << endl;
     cout << "Vous trouvez une potion magique, vous décidez de l'utilisez sur Pokachu" << endl;
@@ -136,6 +136,7 @@ int main()
         cout << "Vous avez vaincu " << creatureAleatoire->getNom() << endl;
     else {
         //Sinon votre seconde créature se charge de finir le combat
+
         while (creatureAleatoire->getPointDeVie() > 0)
             (Vous.getCreatures()[1])->attaquer(*creatureAleatoire);
         cout << "Votre Pokachu a été battu mais heuresement votre Salimouche finit par vaincre " << creatureAleatoire->getNom() << endl;
@@ -151,14 +152,14 @@ int main()
         cout << creatureAleatoire->getNom() << " s'est échappé" << endl;
     }
 
-    cout << endl << "AFFICHAGE DE VOS INFORMATIONS toto" << endl;
- //   Dresseur* dresseurAleatoire = polyland.choisirDresseurAleatoire();
-    //polyland.ajouterDresseur(&Vous);
-    polyland.infosDresseur("Sasha");
-/*
+    cout << endl << "AFFICHAGE DE VOS INFORMATIONS " << endl;
+    Dresseur* dresseurAleatoire = polyland.choisirDresseurAleatoire();
+    polyland.ajouterDresseur(&Vous);
+   polyland.infosDresseur("Vous");
+
     cout << "Pokachu et Salimouche n'arrete pas de se chamailler, vous decidez d'abandonner Salimouche" << endl;
     //Vous en avez marre des chamailleries, vous décidez de relacher Salimouche
-    if (polyland.relacherCreature(&Vous, Salimouche.getNom())) {
+   if (polyland.relacherCreature(&Vous, Salimouche.getNom())) {
         cout << "Vous avez decidé de relacher Salimouche !" << endl;
     }
     else {
@@ -193,7 +194,7 @@ int main()
     }
 
     //Vous n'êtes pas sympa vous avez fait fuir un dresseur de Polyland...
-    cout << endl << "Suite à sa défaite " << dresseurAleatoire->getNom() << " s'enfuit de Polyland" << endl;
+    cout << endl << "Suite à sa défaite " << dresseurAleatoire->getNom() << " s'enfuit de Polyland " << endl;
     if (polyland.retirerDresseur(dresseurAleatoire->getNom())) {
         cout << dresseurAleatoire->getNom() << " s'est bien enfuit de Polyland..." << endl;
     }
@@ -204,15 +205,16 @@ int main()
 
     cout<<polyland.getNbDresseurs()<<endl;
     cout << endl << "INFO DRESSEUR APRES TOUTES CES PERIPETIES" << endl;
-    //polyland.infosDresseur("Vous");
+   polyland.infosDresseur("Vous");
     //On ne devrait plus avoir d'information sur le dresseur aleatoire qui s'est enfui
     polyland.infosDresseur(dresseurAleatoire->getNom());
     /*******************************/
     /*       FIN DES TESTS         */
     /*******************************/
 
+
     // Liberer les ressources s'il le faut
- /*   delete Sasha;
+    delete Sasha;
     Sasha=nullptr;
     delete Pierre;
     Pierre=nullptr;
@@ -222,5 +224,5 @@ int main()
     dresseurAleatoire=nullptr;
 
     //system("pause");
-*/	return 0;
+	return 0;
 }

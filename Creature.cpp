@@ -134,8 +134,6 @@ void Creature::attaquer(Creature & creature)   //modifié
 		//Et que la creature adverse a encore des points de vie
 		if(this->getEnergie() > this->getPouvoir().getEnergieNecessaire() && creature.pointDeVie_>=0){
 
-
-
 			//Calcul du nombre de degat selon une formule
 			unsigned int degat = this->getPouvoir().getNombreDeDegat()* (attaque_ / 2 - creature.defense_);
 			//On choisit un nombre aléatoire entre 0 et 5
@@ -147,18 +145,20 @@ void Creature::attaquer(Creature & creature)   //modifié
 				cout << this->getNom() << " lance une attaque " << pouvoir_.getNom() << " !" << endl;
 				cout << degat << " points de dégâts sont infligés à " << creature.getNom() << endl;
 
-                //encaissement des dégâts par la créature
+                //encaissement des dégâts par la créature et diminution de l'énergie
                 creature.setPointDeVie(creature.getPointDeVie()-degat);
+                this->setEnergie(this->getEnergie()-this->getPouvoir().getEnergieNecessaire());
+                cout << this->getNom() << "a encore " << energie_ << " PE" <<endl;
+
+                //Afficher le nombre d'XP gagné ou non
                 int xp = experienceGagner(creature);
-
-
-				//Afficher le nombre d'XP gagné ou non
 				if(xp!=0){ //la créature adverse est morte
-                    cout << this->getNom() << " a gagné "<< xp << "point d'expérience !" << endl;
+                    cout << this->getNom() << " a gagné "<< xp << " point d'expérience !" << endl;
 				}
                 else {
+                    //Afficher le nombre de point de vie restant de la créature attaquée
                     cout << creature.getNom() << " a encore " << creature.getPointDeVie()<<" PV"<<endl;
-				//Afficher le nombre de point de vie restant de la créature attaquée
+
 				//Faites attention aux requis d'une attaque
 
                 }

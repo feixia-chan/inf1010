@@ -84,7 +84,8 @@ bool Polyland::retirerDresseur(const string& nom)
         bool supprime=false;
         for(int i=0;i<nombreDresseur_;i++){
             if(listeDresseur[i]->getNom() == nom){ //on teste si ce dresseur existe
-                listeDresseur[i] = nullptr;        //si oui on le retire
+                listeDresseur[i] = listeDresseur[this->getNbDresseurs()];   //le dernier dresseur est translaté à sa place
+                listeDresseur[this->getNbDresseurs()]; // on retire le dernier indice
                 nombreDresseur_--;                 //et on décrémente le nombre de dresseurs
                 supprime=true;
                 cout<<nom<<" a bien été expulsé de Polyland"<<endl;
@@ -183,6 +184,10 @@ Creature* Polyland::choisirCreatureAleatoire()
 //Attraper et relacher des créatures
 bool Polyland::attraperCreature(Dresseur* dresseur, Creature creature)
 {
+    //on regénère la créature
+    creature.setEnergie(creature.getEnergieTotale());
+    creature.setPointDeVie(creature.getPointDeVieTotal());
+
     return(dresseur->ajouterCreature(creature));    //on retourne si la creature a bien été ajoutée au dresseur
 }
 
@@ -192,28 +197,27 @@ bool Polyland::relacherCreature(Dresseur* dresseur, const string& nom)
 }
 
 //Infos Dresseur
-void Polyland::infosDresseur(string nom) const
-{
+void Polyland::infosDresseur(string nom) const {
     //on va chercher l'indice du dresseur portant le nom en paramètre
     //on initialise l'indice à un nombre supérieur au nombre de dresseurs max (au cas où il y aurait des trous dans la liste)
 
-    int indiceNom=-1;
+    int i=0;
+    bool trouve = false;
 
-    for(int i=1;i<100;i++){
+    while(trouve!=true && i< nombreDresseur_){
         //on cherche s'il est à polyland
-        cout << i << " " ;
+
         if(listeDresseur[i]->getNom()==nom){
             //si oui on obtient son indice
-            indiceNom=i;
-            cout << " trouvé : " << i << endl;
+            trouve=true;
         }
-        cout << "for" ;
+        else i++;
     }
-    cout << "test";
-    //si le dresseur était bien à polyland alors l'indice est inférieur au nombre de dresseur max
-    if(indiceNom>=0){
+
+    //si le dresseur était bien à polyland alors on l'a trouvé
+    if(trouve){
         //on affiche les infos du dresseur
-        listeDresseur[indiceNom]->affichage();
+        listeDresseur[i]->affichage();
     }
     else{
         //sinon le dresseur n'est pas à polyland

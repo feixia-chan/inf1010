@@ -1,0 +1,15 @@
+1/
+Polyland est une agrégation de Dresseurs : ces derniers sont listés sous forme de pointeurs, la destruction de Polyland n'entraîne pas celle des Dresseurs.
+(raison pour laquelle on doit faire une destruction manuelle de chaque dresseur à la fin du main)
+
+2/
+Polyland est une composition de créatures, car dans l'implémentation de la méthode ajouterCreature() on créée les créatures :  
+	listeCreature[trou]= new Creature(creature);
+
+3/
+ Dresseur est une composition de Créatures pour la même raison que la question deux :  
+	creatures_[c]= new Creature(creature);
+	
+4/
+Il s'agit d'une composition car pouvoir est un attribut privé de créature, on créé l'objet pouvoir lors de la construction d'une nouvelle créature.
+	 pouvoir_=pouvoir;
