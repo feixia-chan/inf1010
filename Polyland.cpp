@@ -197,25 +197,23 @@ bool Polyland::relacherCreature(Dresseur* dresseur, const string& nom)
 }
 
 //Infos Dresseur
-void Polyland::infosDresseur(string nom) const {
+void Polyland::infosDresseur(const string& nom) const
+{
     //on va chercher l'indice du dresseur portant le nom en paramètre
     //on initialise l'indice à un nombre supérieur au nombre de dresseurs max (au cas où il y aurait des trous dans la liste)
 
-    int i=0;
-    bool trouve = false;
+    int indiceNom=-1, i=0;
 
-    while(trouve!=true && i< nombreDresseur_){
-        //on cherche s'il est à polyland
-
-        if(listeDresseur[i]->getNom()==nom){
-            //si oui on obtient son indice
-            trouve=true;
+    while(i<MAX_NOMBRE_DRESSEURS && indiceNom==-1){
+        if(listeDresseur[i]!=nullptr && listeDresseur[i]->getNom()==nom){
+            indiceNom=i;
         }
-        else i++;
+        else{
+            i++;
+        }
     }
-
-    //si le dresseur était bien à polyland alors on l'a trouvé
-    if(trouve){
+    //si le dresseur était bien à polyland alors l'indice est inférieur au nombre de dresseur max
+    if(indiceNom>=0){
         //on affiche les infos du dresseur
         listeDresseur[i]->affichage();
     }
