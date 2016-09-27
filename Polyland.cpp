@@ -41,26 +41,35 @@ int Polyland::getNbCreatures() const
 //Modifier le tableau de Dresseurs
 bool Polyland::ajouterDresseur(Dresseur* dresseur)
 {
-    if(nombreDresseur_==MAX_NOMBRE_DRESSEURS){   //Test pour savoir si le tableau est déjà plein
+    if(nombreDresseur_==MAX_NOMBRE_DRESSEURS){
+        //Test pour savoir si le tableau est déjà plein
         cout<<"Polyland est déjà surpeuplée en dresseurs ! Pas de rajout possible !"<<endl;
         return false;
     }
     else{
         bool existe=false; //existence du dresseur
-        int trou=nombreDresseur_;
-        for(int i=0;i<nombreDresseur_;i++){
-            if (listeDresseur_!=nullptr && listeDresseur_[i]->getNom() == dresseur->getNom()){ //on teste si ce dresseur existe déjà
+        int trou=MAX_NOMBRE_DRESSEURS;
+        int i =0;
+       while(i<MAX_NOMBRE_DRESSEURS && !existe){
+            if (listeDresseur_[i]!=nullptr && listeDresseur_[i]->getNom() == dresseur->getNom()){ //on teste si ce dresseur existe déjà
                 existe=true;
+                cout << "existant" <<endl;
             }
             //on cherche la première place disponible
-            if(listeDresseur_[i]==nullptr){
+            if(listeDresseur_[i]==nullptr && trou>=i){
                 trou=i;
+                cout << i;
             }
+
+            i++;
         }
+        cout << endl;
         //si ce dresseur n'est pas déjà à polyland
         if(!existe){
+            cout << "non existant";
             //on l'insère à la première place disponible
-            listeDresseur_[trou]= dresseur;
+           listeDresseur_[trou]= new Dresseur(*dresseur);
+            cout <<"insertion place" << trou <<endl;
             //on incrémente le nombre de dresseurs
             nombreDresseur_++;
             cout<<"Bienvenue "<<dresseur->getNom()<<endl;
@@ -84,8 +93,7 @@ bool Polyland::retirerDresseur(const string& nom)
         bool supprime=false;
         for(int i=0;i<nombreDresseur_;i++){
             if(listeDresseur_[i]->getNom() == nom){ //on teste si ce dresseur existe
-                listeDresseur_[i] = listeDresseur_[this->getNbDresseurs()];   //le dernier dresseur est translaté à sa place
-                listeDresseur_[this->getNbDresseurs()]; // on retire le dernier indice
+               listeDresseur_[i]=nullptr;
                 nombreDresseur_--;                 //et on décrémente le nombre de dresseurs
                 supprime=true;
                 cout<<nom<<" a bien été expulsé de Polyland"<<endl;
@@ -108,15 +116,17 @@ bool Polyland::ajouterCreature(Creature creature)
     }
     else{
         bool existe=false;
-        int trou=nombreCreature_;
-        for(int i=0;i<nombreCreature_;i++){
-            if(listeCreature_[i]->getNom() == creature.getNom()){ //on teste si cette créature existe déjà
+        int trou=MAX_NOMBRE_CREATURES;
+        int i=0;
+         while(i<MAX_NOMBRE_CREATURES && !existe){
+            if(listeCreature_[i]!=nullptr && listeCreature_[i]->getNom() == creature.getNom()){ //on teste si cette créature existe déjà
                 existe=true;
             }
             //on regarde où est la première place disponible
-            if(listeCreature_[i]==nullptr){
+            if(listeCreature_[i]==nullptr && trou>=i){
                 trou=i;
             }
+            i++;
         }
         if(!existe){
             //si elle n'est pas à Polyland alors on la met à la première place disponible

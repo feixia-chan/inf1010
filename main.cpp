@@ -52,7 +52,7 @@ int main()
 
 	// Ajouter les dresseurs et les creatures à Polyland
 	polyland.ajouterDresseur(Sasha);
-	polyland.ajouterDresseur(Pierre);
+    polyland.ajouterDresseur(Pierre);
 	polyland.ajouterDresseur(Regis);
 	polyland.ajouterCreature(Pokachu);
 	polyland.ajouterCreature(Salimouche);
@@ -119,7 +119,7 @@ int main()
     cout << "Un duel entre Pokachu et " << creatureAleatoire->getNom() << " est engagé" << endl;
 
     //Vous attaquez la créature tant que qu'elle est en vie...
- /*   while (creatureAleatoire->getPointDeVie() > 0) {
+    while (creatureAleatoire->getPointDeVie() > 0) {
         if (Vous.getCreatures()[0]->getPointDeVie() > 0) {
             //... ou que votre créature est morte
             (Vous.getCreatures()[0])->attaquer(*creatureAleatoire);
@@ -219,10 +219,11 @@ int main()
     Pierre=nullptr;
     delete Regis;
     Regis=nullptr;
-/*    delete dresseurAleatoire;
+    delete dresseurAleatoire;
     dresseurAleatoire=nullptr;
     delete creatureAleatoire;
     creatureAleatoire = nullptr;
- */   //system("pause");
+    //system("pause");
+
 	return 0;
 }

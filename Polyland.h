@@ -2,9 +2,10 @@
 Fichier: Polyland.h
 Auteur(s): Maxime HAUDEGOND & Alexandra LIN
 Date de creation: 20 Septembre 2016
-Date de modification: 26 septembre 2016
+
 Description: les dresseurs sont les etres capables d'attraper des creatures
 */
+
 #ifndef POLYLAND_H
 #define POLYLAND_H
 
@@ -49,9 +50,9 @@ class Polyland
         void infosDresseur(const string& nom) const;
 
     private:
-        Dresseur** listeDresseur;
+        Dresseur** listeDresseur_;
         int nombreDresseur_;
-        Creature** listeCreature;
+        Creature** listeCreature_;
         int nombreCreature_;
 };
 
