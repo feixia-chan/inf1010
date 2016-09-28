@@ -12,7 +12,7 @@ class Creature
 public:
 	Creature(); // A MODIFIER... (si necessaire)
 	Creature(const string& nom, unsigned int attaque,
-		unsigned int defense, unsigned int pointDeVie, unsigned int energie); // A COMPLETER... (si necessaire)
+		unsigned int defense, unsigned int pointDeVie, unsigned int energie, vector <Pouvoir*> pouvoirs); // A COMPLETER... (si necessaire)
 	~Creature(); // A MODIFIER... (si necessaire)
 
 	string getNom() const;
@@ -27,7 +27,7 @@ public:
 	unsigned int getNiveau() const;
 	Pouvoir getPouvoirs() const; // A MODIFIER... (si necessaire)
 
-	void attaquer(Creature& creature);// A MODIFIER... (si necessaire)
+	void attaquer(Pouvoir pouvoir, Creature& creature);// A MODIFIER... (si necessaire)
 	int experienceGagnee(const Creature& creature);
 
 	void setAttaque(unsigned int attaque);
@@ -36,11 +36,20 @@ public:
 	void setEnergie(unsigned int energie);
 	void setExperience(unsigned int experience);
 	void setNiveau(unsigned int niveau);
-	void setPouvoirs(const Pouvoir& pouvoirs); // A MODIFIER... (si necessaire)
+	void setPouvoirs(const vector <Pouvoir*> pouvoirs); // A MODIFIER... (si necessaire)
 
 	void information() const; // A MODIFIER... (si necessaire)
 
 	// _________TP2___________
+
+	//constructeur par copie
+	Creature Creature(const Creature& creature);
+	//operators
+	Creature& operator=(const Creature& creature);
+	bool operator==(const Creature& creature); //compare 2 créatures sauf leurs pouvoirs
+	bool operator==(const string& nom);        //compare le nom de la créature avec celui en parametre
+	friend bool operator==(const string& nom, const Creature& creature);
+	friend ostream& operator<<(ostream& o, const Creature& creature);
 
 private:
 
@@ -56,6 +65,9 @@ private:
 	unsigned int niveau_;
 
 	// _________TP2___________
+
+	//vecteur de pointeurs pour les pouvoirs
+	vector <Pouvoir*> pouvoirs_;
 
 };
 

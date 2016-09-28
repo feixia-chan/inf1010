@@ -24,6 +24,13 @@ public:
 
 	//________TP2________
 
+    //constructeur par copie
+    Pouvoir(const Pouvoir& pouvoir);
+    //surcharges operateurs
+    Pouvoir& operator=(const Pouvoir& pouvoir);
+    bool operator==(const Pouvoir& pouvoir);
+    friend ostream& operator<<(ostream& o, const Pouvoir& pouvoir);
+
 private:
 	string nom_;
 	unsigned int nombreDeDegat_ ;

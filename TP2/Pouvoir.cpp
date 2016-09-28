@@ -11,7 +11,13 @@ Pouvoir::Pouvoir(const string& nom,
 	nom_(nom), nombreDeDegat_(nombreDeDegat), energieNecessaire_(energieNecessaire)
 {
 }
-
+//Constructeur par copie
+Pouvoir::Pouvoir(const Pouvoir& pouvoir)
+{
+    nom_=pouvoir.nom_;
+    nombreDeDegat_=pouvoir.nombreDeDegat_;
+    energieNecessaire_=pouvoir.energieNecessaire_;
+}
 
 Pouvoir::~Pouvoir()
 {
@@ -49,5 +55,26 @@ void Pouvoir::setNom(const string& nom)
 
 void Pouvoir::description() const // A MODIFIER... (si necessaire)
 {
-	cout << nom_ << " necessite " << energieNecessaire_ << " energie et inflige " << nombreDeDegat_ << " degats" << endl;
+	//cout << nom_ << " necessite " << energieNecessaire_ << " energie et inflige " << nombreDeDegat_ << " degats" << endl;
+	cout<<*this<<endl;
+}
+
+//surcharge d'operateurs
+Pouvoir& Pouvoir::operator=(const Pouvoir& pouvoir)
+{
+    if(this!=pouvoir){
+        nom_=pouvoir.nom_;
+        nombreDeDegat_=pouvoir.nombreDeDegat_;
+        energieNecessaire_=pouvoir.energieNecessaire_;
+    }
+    return *this;
+}
+
+bool Pouvoir::operator==(const Pouvoir& pouvoir)
+{
+    return(nom_==pouvoir.nom_ && nombreDeDegat_==pouvoir.nombreDeDegat_ && energieNecessaire_==pouvoir.energieNecessaire_);
+}
+
+ostream& operator<<(ostream& o, const Pouvoir& pouvoir){
+    return o<<pouvoir.nom_<< " fait "<<pouvoir.nombreDeDegat_<<" de degats et a besoin de "<<pouvoir.energieNecessaire_<<" PE";
 }

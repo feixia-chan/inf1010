@@ -23,9 +23,32 @@ Creature::Creature(const string& nom, unsigned int attaque,
 	pointDeVieTotal_ = pointDeVie;
 }
 
+//constructeur par copie
+Creature Creature::Creature(const Creature& creature)
+{
+    nom_=creature.nom_;
+    attaque_=creature.attaque_;
+    defense_=creature.defense_;
+    pointDeVie_=creature.pointDeVie_;
+    pointDeVieTotal_=creature.pointDeVieTotal_;
+    energie_=creature.energie_;
+    energieTotal_=creature.energieTotal_;
+    niveau_=creature.niveau_;
+    experience_=creature.experience_;
+    experienceNecessaire_=creature.experienceNecessaire_;
+    for(int i=0;i<pouvoirs.size();i++){
+        pouvoirs_.push_back(new Pouvoir(*pouvoirs[i]));
+    }
+}
+
 Creature::~Creature() // A MODIFIER... (si necessaire)
 {
-
+    //destruction des pointeurs qui sont dans le vecteur pouvoir
+    for(int i=pouvoirs_.size()-1;i>=0;i--){
+        delete pouvoirs_[i];
+        pouvoirs_[i]=nullptr;
+        pouvoirs_.pop_back();
+    }
 }
 
 string Creature::getNom() const
@@ -78,13 +101,13 @@ unsigned int Creature::getNiveau() const
 	return niveau_;
 }
 
-Pouvoir Creature::getPouvoirs() const
+vector <Pouvoir*> Creature::getPouvoirs() const
 {
-	return pouvoir_;
+	return pouvoirs_;
 }
 
 
-void Creature::attaquer(Creature & creature)// A MODIFIER... (si necessaire)
+void Creature::attaquer(Pouvoir pouvoir, Creature & creature)// A MODIFIER... (si necessaire)
 {
 	if (energie_ >= pouvoir_.getEnergieNecessaire())
     {
@@ -176,9 +199,31 @@ void Creature::setNiveau(unsigned int niveau)
 	niveau_ = niveau;
 }
 
-void Creature::setPouvoirs(Pouvoir pouvoirs) // A MODIFIER... (si necessaire)
+void Creature::setPouvoirs(const vector <Pouvoir*> pouvoirs) // A MODIFIER... (si necessaire)
 {
-	pouvoir_ = pouvoirs;
+	if(pouvoirs_.size()==pouvoirs.size()){
+        for(int i=0;i<pouvoirs.size();i++){
+            *pouvoirs_[i]=*pouvoirs[i];
+        }
+	}
+	else if(pouvoirs_.size()<pouvoirs.size()){
+        for(int i=0;i<pouvoirs_.size();i++){
+            *pouvoirs_[i]=*pouvoirs[i];
+        }
+        for(int i=pouvoirs_.size();i<pouvoirs.size();i++){
+            pouvoirs_.push_back(new Pouvoir(*pouvoirs[i]));
+        }
+	}
+	else{
+        for(int i=0;i<pouvoirs.size();i++){
+            *pouvoirs_[i]=*pouvoirs[i];
+        }
+        for(int i=pouvoirs.size();i<pouvoirs_.size();i++){
+            delete pouvoirs_[i];
+            pouvoirs_[i]=nullptr;
+            pouvoirs_.pop_back();
+        }
+	}
 }
 
 void Creature::information() const // A MODIFIER... (si necessaire)
@@ -188,8 +233,79 @@ void Creature::information() const // A MODIFIER... (si necessaire)
 		<< "Il est au niveau " << niveau_ << " avec " << experience_ << "d'XP" << endl
 		<< "Il lui manque " << experienceNecessaire_ - experience_ << " jusqu'au prochain niveau " << endl;
 	cout << "Son pouvoir  est : ";
-	pouvoir_.description();
+	pouvoirs_.description();
 	cout << endl;
 }
 
 // _______TP2________
+
+//operators
+Creature& Creature::operator=(const Creature& creature)
+{
+    if(this!=creature){
+        for(int i=pouvoirs_.size()-1;i>=0;i--){
+            delete pouvoirs_[i];
+            pouvoirs_[i]=nullptr;
+            pouvoirs_.pop_back();
+        }
+        nom_=creature.nom_;
+        attaque_=creature.attaque_;
+        defense_=creature.defense_;
+        pointDeVie_=creature.pointDeVie_;
+        pointDeVieTotal_=creature.pointDeVieTotal_;
+        energie_=creature.energie_;
+        energieTotal_=creature.energieTotal_;
+        niveau_=creature.niveau_;
+        experience_=creature.experience_;
+        experienceNecessaire_=creature.experienceNecessaire_;
+        for(int i=0;i<pouvoirs.size();i++){
+            pouvoirs_.push_back(new Pouvoir(*pouvoirs[i]));
+        }
+    }
+    return *this;
+}
+
+bool Creature::operator==(const Creature& creature)
+{
+    return(nom_==creature.nom_
+            && attaque_==creature.attaque_
+            && defense_==creature.defense_
+            && pointDeVie_==creature.pointDeVie_
+            && pointDeVieTotal_==creature.pointDeVieTotal_
+            && energie_==creature.energie_
+            && energieTotal_==creature.energieTotal_
+            && niveau_==creature.niveau_
+            && experience_==creature.experience_
+            && experienceNecessaire_==creature.experienceNecessaire_);
+}
+
+bool Creature::operator==(const string& nom)
+{
+    return(nom_==nom);
+}
+
+bool operator==(const string& nom, const Creature& creature)
+{
+    return nom==creature.nom_;
+}
+
+ostream& operator<<(ostream& o, const Creature& creature)
+{
+    if(pouvoirs_.size()==0){
+        o<<nom_<<" a "<<attaque_<<" en attaque et "<<defense_<<" en defense,\nil a "
+        <<pointDeVie_<<"/"<<pointDeVieTotal_<<" PV et "<<energie_<<"/"<<energieTotal_<<" PE,\nil est au niveau "
+        <<niveau_<<" avec "<<experience_<<" XP,\n il lui manque "
+        <<experienceNecessaire_-experience_<<" XP pour monter d'un niveau.\nPouvoirs :\n"
+        <<nom_<<" ne possede aucun pouvoir";
+    }
+    else{
+        o<<nom_<<" a "<<attaque_<<" en attaque et "<<defense_<<" en defense,\nil a "
+        <<pointDeVie_<<"/"<<pointDeVieTotal_<<" PV et "<<energie_<<"/"<<energieTotal_<<" PE,\nil est au niveau "
+        <<niveau_<<" avec "<<experience_<<" XP,\n il lui manque "
+        <<experienceNecessaire_-experience_<<" XP pour monter d'un niveau.\nPouvoirs :\n";
+        for(int i=0; i<pouvoirs_.size();i++){
+            o<<*pouvoirs_[i]<<"\n";
+        }
+    }
+    return o;
+}
