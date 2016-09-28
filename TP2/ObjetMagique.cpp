@@ -35,6 +35,11 @@ void ObjetMagique::setBonus(int bonus)
 	bonus_ = bonus;
 }
 
+ostream& ObjetMagique::operator<< (const ObjetMagique& potion, ostream& flux){
+    return flux << "l'objet " << potion.nom_ << "fournit un bonus de " << potion.bonus_;
+}
+
+
 void ObjetMagique::affichage() const // A MODIFIER... (si necessaire)
 {
 	cout << "l'objet " << nom_ << "fournit un bonus de " << bonus_ << endl;
