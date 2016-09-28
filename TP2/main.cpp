@@ -11,15 +11,15 @@ int main()
 	srand(time(NULL));
 	setlocale(LC_ALL, "");
 
-	std::cout << "CREATION DES DRESSEURS" << std::endl;
+	cout << "CREATION DES DRESSEURS" << endl;
 	// Creer DYNAMIQUEMENT les dresseurs suivants (nom):
 	// ("Sasha")
 	// ("Pierre")
 	// ("Regis")
 	// A COMPLETER...
-	
 
-	std::cout << std::endl << "CREATION ET AFFICHAGE DES CREATURES" << std::endl;
+
+	cout << endl << "CREATION ET AFFICHAGE DES CREATURES" << endl;
 	// Creer les Creatures suivantes (nom, attaque, defense, pointDeVie, mana):
 	// ("Pokachu", 10, 2, 50, 25)
 	// ("Salimouche", 12, 3, 45, 20)
@@ -39,8 +39,8 @@ int main()
 	// A COMPLETER...
 
 
-	std::cout << std::endl << "AJOUT DE CREATURES ET DE DRESSEURS A POLYLAND" << std::endl << std::endl;
-	
+	cout << endl << "AJOUT DE CREATURES ET DE DRESSEURS A POLYLAND" << endl << endl;
+
 	PolyLand polyland;
 
 	// Ajouter les dresseurs et les creatures. Attention, vous devez utiliser l'operateur += pour ajouter un dresseur.
@@ -51,15 +51,15 @@ int main()
 	// A COMPLETER...
 	polyland += Pierre;
 
-	std::cout << "TEST D'AFFICHAGE" << std::endl << std::endl;
+	cout << "TEST D'AFFICHAGE" << endl << endl;
 	// Tests d'affichage
-	std::cout << polyland << std::endl;
-	std::cout << *(polyland.choisirCreatureAleatoire()) << std::endl;
-	std::cout << *(polyland.choisirDresseurAleatoire()) << std::endl;
+	cout << polyland << endl;
+	cout << *(polyland.choisirCreatureAleatoire()) << endl;
+	cout << *(polyland.choisirDresseurAleatoire()) << endl;
 
-	std::cout << std::endl << "COMPETITION" << std::endl;
+	cout << endl << "COMPETITION" << endl;
 	// Debut de la competition
-	std::cout << std::endl << "Bienvenue a Polyland" << std::endl;
+	cout << endl << "Bienvenue a Polyland" << endl;
 	Dresseur Vous("Hey", "Team INF1010");
 
 	// Creer les pouvoirs suivants
@@ -106,95 +106,96 @@ int main()
 
 	// Assignez à vous-meme Pokachu
 	// A COMPLETER...
-	
+
 	/*******************************************************************/
 	/*                       DEBUT DES TESTS                           */
 	/* Les modifications restantes sont a la fin de la fonction main.  */
 	/*******************************************************************/
 	//Duel entre vous et salimouche
-	std::cout << std::endl << "TESTS DE COMBAT" << std::endl;
+	cout << endl << "TESTS DE COMBAT" << endl;
 
-	std::cout << std::endl << "Un Salimouche surgit" << std::endl;
+	cout << endl << "Un Salimouche surgit" << endl;
 
-	std::cout << "Vous avez rencontré un Salimouche sauvage qui vous attaque..." << std::endl;
-	
-	Salimouche.attaquer(bouleDeFeu, *(Vous.obtenirUneCreature("Pokachu")));
-	Vous.obtenirUneCreature("Pokachu")->attaquer(eclair, Salimouche);
+	cout << "Vous avez rencontré un Salimouche sauvage qui vous attaque..." << endl;
+
+	Salimouche.attaquer(bouleDeFeu, *(Vous.getUneCreature("Pokachu")));
+	Vous.getUneCreature("Pokachu")->attaquer(eclair, Salimouche);
 	//Vous gagnez obligatoirement le duel
-	while (Salimouche.obtenirPointDeVie() > 0) {
-		((Vous.obtenirUneCreature("Pokachu")))->attaquer(eclair, Salimouche);
+	while (Salimouche.getPointDeVie() > 0) {
+		((Vous.getUneCreature("Pokachu")))->attaquer(eclair, Salimouche);
 	}
-	std::cout << "Vous avez battu un Salimouche, vous pouvez maintenante le capturer" << std::endl;
+	cout << "Vous avez battu un Salimouche, vous pouvez maintenante le capturer" << endl;
 
 	if (polyland.attraperCreature(&Vous, &Salimouche)) {
-		std::cout << "Felicitation vous avez attrapé un Salimouche !" << std::endl;
+		cout << "Felicitation vous avez attrapé un Salimouche !" << endl;
 	}
 	else {
-		std::cout << "Le Salimouche s'est échappé" << std::endl;
+		cout << "Le Salimouche s'est échappé" << endl;
 	}
 
 
-	std::cout << std::endl;
-	std::cout << "Vous trouvez une potion magique, vous décidez de l'utilisez sur Pokachu" << std::endl;
+	cout << endl;
+	cout << "Vous trouvez une potion magique, vous décidez de l'utilisez sur Pokachu" << endl;
 
 	ObjetMagique potionMagique("Potion magique", 15);
 	//Vous venez de trouver une potion magique
-	Vous.modifierObjetMagique(potionMagique);
+	//cout potion magique
+	Vous.setObjetMagique(potionMagique);
 	//Soin de votre creature
-	Vous.utiliserObjetMagique(Vous.obtenirUneCreature("Pokachu"));
+	Vous.utiliserObjetMagique(Vous.getUneCreature("Pokachu"));
 
 	//Choix d'une creature aleatoirement parmi celles possibles
 	Creature* creatureAleatoire = polyland.choisirCreatureAleatoire();
 	//Debut du duel avec la creature choisie aléatoirement
-	std::cout << std::endl << "Un " << creatureAleatoire->obtenirNom() << " se jette sur votre Pokachu" << std::endl;
-	std::cout << "Un duel entre Pokachu et " << creatureAleatoire->obtenirNom() << " est engagé" << std::endl;
+	cout << endl << "Un " << creatureAleatoire->getNom() << " se jette sur votre Pokachu" << endl;
+	cout << "Un duel entre Pokachu et " << creatureAleatoire->getNom() << " est engagé" << endl;
 
 	//Vous attaquez la créature tant que qu'elle est en vie...
-	while (creatureAleatoire->obtenirPointDeVie() > 0) {
-		if (Vous.obtenirUneCreature("Pokachu")->obtenirPointDeVie() > 0) {
+	while (creatureAleatoire->getPointDeVie() > 0) {
+		if (Vous.getUneCreature("Pokachu")->getPointDeVie() > 0) {
 			//... ou que votre créature est morte
-			(Vous.obtenirUneCreature("Pokachu"))->attaquer(eclair, *creatureAleatoire);
-			if (creatureAleatoire->obtenirPointDeVie() > 0)
-				creatureAleatoire->attaquer(*(creatureAleatoire->obtenirPouvoirs()[0]), *(Vous.obtenirUneCreature("Pokachu")));
+			(Vous.getUneCreature("Pokachu"))->attaquer(eclair, *creatureAleatoire);
+			if (creatureAleatoire->getPointDeVie() > 0)
+				creatureAleatoire->attaquer(*(creatureAleatoire->getPouvoirs()[0]), *(Vous.getUneCreature("Pokachu")));
 		}
 		else
 			break;
 	}
 
 	//Il se peut que vous gagniez...
-	if (creatureAleatoire->obtenirPointDeVie() == 0)
-		std::cout << "Vous avez vaincu " << creatureAleatoire->obtenirNom() << std::endl;
+	if (creatureAleatoire->getPointDeVie() == 0)
+		cout << "Vous avez vaincu " << creatureAleatoire->getNom() << endl;
 	else {
 		//Sinon votre seconde créature se charge de finir le combat
-		while (creatureAleatoire->obtenirPointDeVie() > 0)
-			(Vous.obtenirUneCreature("Salimouche"))->attaquer(bouleDeFeu, *creatureAleatoire);
-		std::cout << "Votre Pokachu a été battu mais heuresement votre Salimouche finit par vaincre " << creatureAleatoire->obtenirNom() << std::endl;
+		while (creatureAleatoire->getPointDeVie() > 0)
+			(Vous.getUneCreature("Salimouche"))->attaquer(bouleDeFeu, *creatureAleatoire);
+		cout << "Votre Pokachu a été battu mais heuresement votre Salimouche finit par vaincre " << creatureAleatoire->getNom() << endl;
 	}
 
 
 
 
 
-	std::cout << "Pokachu et salimouche n'arrete pas de se chamailler, vous decidez d'abandonner Salimouche" << std::endl;
-	
+	cout << "Pokachu et salimouche n'arrete pas de se chamailler, vous decidez d'abandonner Salimouche" << endl;
+
 	//Vous en avez marre des chamailleries, vous décidez de relacher Salimouche
 	if (polyland.relacherCreature(&Vous, "Salimouche")) {
-		std::cout << "Vous avez decidé de relacher Salimouche !" << std::endl;
+		cout << "Vous avez decidé de relacher Salimouche !" << endl;
 	}
 	else {
 		//ce cas ne devrait pas s'afficher
-		std::cout << "Oh il y a eu un petit problème technique... Salimouche n'a pas pu être relaché" << std::endl;
+		cout << "Oh il y a eu un petit problème technique... Salimouche n'a pas pu être relaché" << endl;
 	}
-	
+
 	/*******************************/
 	/*       FIN DES TESTS         */
 	/*******************************/
 
 
-	std::cout << std::endl << "INFO DRESSEUR APRES TOUTES CES PERIPETIES" << std::endl;
+	cout << endl << "INFO DRESSEUR APRES TOUTES CES PERIPETIES" << endl;
 	// Afficher les informations de Polyland
 	// A COMPLETER...
-	std::cout << std::endl << "DERNIER TESTS" << std::endl;
+	cout << endl << "DERNIER TESTS" << endl;
 	// Cette commande ne devrait pas fonctionner
 	Carapouce.oublierPouvoir(&eclair);
 
@@ -210,23 +211,23 @@ int main()
 	test2.ajouterCreature(&Touflamme);
 	test2.ajouterCreature(&Pokachu);
 
-	std::cout << "________________________________________________" << std::endl;
-	std::cout << "TEST OPERATEURS" << std::endl << std::endl;
-	std::cout << "dresseur == dresseur : \t" << (test1 == test2) << " --- Reponse attendue : 1" << std::endl;
-	std::cout << "dresseur == nom : \t" << (test1 == test2.obtenirNom()) << " --- Reponse attendue : 1" << std::endl;
-	std::cout << "nom == dresseur : \t" << (test1.obtenirNom() == test2) << " --- Reponse attendue : 1" << std::endl;
+	cout << "________________________________________________" << endl;
+	cout << "TEST OPERATEURS" << endl << endl;
+	cout << "dresseur == dresseur : \t" << (test1 == test2) << " --- Reponse attendue : 1" << endl;
+	cout << "dresseur == nom : \t" << (test1 == test2.getNom()) << " --- Reponse attendue : 1" << endl;
+	cout << "nom == dresseur : \t" << (test1.getNom() == test2) << " --- Reponse attendue : 1" << endl;
 
 	test1.ajouterCreature(&Carapouce);
-	std::cout << "dresseur == dresseur : \t" << (test1 == test2) << " --- Reponse attendue : 0" << std::endl;
+	cout << "dresseur == dresseur : \t" << (test1 == test2) << " --- Reponse attendue : 0" << endl;
 
-	test1.modifierNom("testNouveau");
-	std::cout << "dresseur == nom : \t" << (test1 == test2.obtenirNom()) << " --- Reponse attendue : 0" << std::endl;
-	std::cout << "nom == dresseur : \t" << (test1.obtenirNom() == test2) << " --- Reponse attendue : 0" << std::endl;
+	test1.setNom("testNouveau");
+	cout << "dresseur == nom : \t" << (test1 == test2.getNom()) << " --- Reponse attendue : 0" << endl;
+	cout << "nom == dresseur : \t" << (test1.getNom() == test2) << " --- Reponse attendue : 0" << endl;
 
 
 	// Liberer les ressources s'il le faut
 	// A COMPLETER...
-	
+
 
 	system("pause");
 	return 0;
