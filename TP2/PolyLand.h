@@ -13,8 +13,21 @@ using namespace std;
 class PolyLand
 {
 public:
+    //constructeur, destructeur
 	PolyLand(); // A MODIFIER... (si necessaire)
 	~PolyLand(); // A MODIFIER... (si necessaire)
+
+	//accesseur
+	vector<Dresseur*> getListeDresseurs();
+	int getNombreDresseurs();
+	vector<Creature*> getListeCreatures();
+	int getNombreCreatures();
+
+    //modificateurs
+    void setListeDresseurs(const vector<Dresseur*>& listeD);
+    void setNombreDresseurs(const int& nombreD);
+    void setListeCreatures(const vector<Creature*>& listeC);
+    void setNombreCreatures(const int& nombreC);
 
 	bool ajouterDresseur(Dresseur* dresseur); // A MODIFIER... (si necessaire)
 	bool ajouterCreature(const Creature& creature); // A MODIFIER... (si necessaire)
@@ -34,7 +47,9 @@ public:
 
 private:
 	//________TP2_______
-    vector <Dresseur*> dresseur_;
-    vector <Creature*> creature_;
+    vector <Dresseur*> listeDresseurs_;
+    int nombreDresseurs_;
+    vector <Creature*> listeCreatures_;
+    int nombreCreatures_;
 };
 #endif

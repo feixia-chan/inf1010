@@ -26,6 +26,34 @@ PolyLand::~PolyLand() // A MODIFIER... (si necessaire)
 
 }
 
+//accesseurs
+vector<Dresseur*> PolyLand::getListeDresseurs(){
+    return listeDresseurs_;
+}
+int PolyLand::getNombreDresseurs(){
+    return nombreDresseurs_;
+}
+vector<Creature*> PolyLand::getListeCreatures(){
+    return listeCreatures_;
+}
+int Polyland::getNombreCreatures(){
+    return nombreCreatures_;
+}
+
+//modicateurs
+void PolyLand::setListeDresseurs(const vector<Dresseur*>& listeD){
+    listeDresseurs_=listeD;
+}
+void PolyLand::setNombreDresseurs(const int& nombreD){
+    nombreDresseurs_=nombreD;
+}
+void PolyLand::setListeCreatures(const vector<Creature*>& listeC){
+    listeCreatures_=listeC;
+}
+void PolyLand::setNombreCreatures(const int& nombreC){
+    nombreCreatures_=nombreC;
+}
+
 bool PolyLand::ajouterDresseur(Dresseur* dresseur) // A MODIFIER... (si necessaire)
 {
 	if (nombreDresseurs_ >= MAX_DRESSEURS)
@@ -84,12 +112,12 @@ bool PolyLand::retirerCreature(const string& nom) // A MODIFIER... (si necessair
 
 Dresseur* PolyLand::choisirDresseurAleatoire() // A MODIFIER... (si necessaire)
 {
-	if (nombreDresseurs_ > 0) 
+	if (nombreDresseurs_ > 0)
     {
 		unsigned int indice = rand() % nombreDresseurs_;
 		return dresseurs_[indice];
 	}
-	else 
+	else
     {
 		return nullptr;
 	}
@@ -97,7 +125,7 @@ Dresseur* PolyLand::choisirDresseurAleatoire() // A MODIFIER... (si necessaire)
 
 Creature* PolyLand::choisirCreatureAleatoire() // A MODIFIER... (si necessaire)
 {
-	if (nombreCreatures_ > 0) 
+	if (nombreCreatures_ > 0)
     {
 		unsigned int indice = rand() % nombreCreatures_;
 		return creatures_[indice];

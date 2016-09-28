@@ -71,7 +71,7 @@ Creature* getUneCreature(Creature creature){
     bool trouve=false;
     int compteur = 0;
     while(!trouve && compteur<creature_.size()){
-        if (*creature_[compteur] == Creature){
+        if (*creature_[compteur] == creature){
             trouve=true;
         }
         else{
@@ -82,7 +82,7 @@ Creature* getUneCreature(Creature creature){
         return creature[compteur];
     }
     else{
-        cout <<"la créature que vous cherchez n'a pas été attrapée" << endl;
+        cout <<"la créature que vous cherchez n'a pas été attrapée par ce dresseur" << endl;
         return nullptr;
     }
 }
@@ -105,33 +105,35 @@ void Dresseur::utiliserObjetMagique(Creature* creature)
 	}
 }
 
-bool Dresseur::ajouterCreature(const Creature& creature) // A MODIFIER... (si necessaire)
+bool Dresseur::ajouterCreature(const Creature& creature)
 {
-	if (nombreCreatures_ < MAX_NOMBRE_CREATURES) {
-		for (unsigned int i = 0; i < nombreCreatures_; i++)
+		for (unsigned int i = 0; i < creatures_.size(); i++)
 		{
 			if (creatures_[i]->getNom() == creature.getNom())
-				return false;
+				return false;   //si on a déjà la créature on peut pas l'ajouter
 		}
-		creatures_[nombreCreatures_] = new Creature();
-		*creatures_[nombreCreatures_] = creature;
-		nombreCreatures_++;
-	}
-	else {
-		return false;
-	}
+		creatures_.push_back(new Creature(creature));   //ajout d'une créature
+		return true;
 }
 
-bool Dresseur::enleverCreature(const string& nom) // A MODIFIER... (si necessaire)
+bool Dresseur::enleverCreature(const string& nom)
 {
-	for (unsigned int i = 0; i < nombreCreatures_; i++)
+	for (unsigned int i = 0; i < creatures_.size(); i++)
 	{
 		if (creatures_[i]->getNom() == nom)
 		{
-			nombreCreatures_--;
-			creatures_[i] = creatures_[nombreCreatures_];
-			delete creatures_[nombreCreatures_];
-			creatures_[nombreCreatures_] = nullptr;
+		    if(i==creatures_.size()-1){
+                //si c'est la derniere créature
+                delete creatures_[i];
+                creatures_.pop_back();
+		    }
+		    else{
+//                creatures_[i] = creatures_[nombreCreatures_];
+//			delete creatures_[nombreCreatures_];
+//			creatures_[nombreCreatures_] = nullptr;
+
+		    }
+
 
 			return true;
 		}
