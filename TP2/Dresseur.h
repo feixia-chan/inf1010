@@ -11,31 +11,44 @@ using namespace std;
 class Dresseur
 {
 public:
-	Dresseur(); // A MODIFIER... (si necessaire)
-	Dresseur(const string& nom); // A MODIFIER... (si necessaire)
+    //constructeurs et destructeur
+	Dresseur();
+	Dresseur(const string& nom, const string& equipe, const ObjetMagique potion); // A MODIFIER... (si necessaire)
 	~Dresseur(); // A MODIFIER... (si necessaire)
 
+	//accesseurs set/get
 	string getNom() const;
 	void setNom(const string& nom);
+	unsigned int getNombreCreatures() const; //vecteur.size()
 
-	unsigned int getNombreCreatures() const; // A MODIFIER... (si necessaire)
-
-	Creature** getCreatures() const; // A MODIFIER... (si necessaire)
-	void setCreature(Creature** creatures); // A MODIFIER... (si necessaire)
+	vector <Creature*> getCreatures() const;
+	void setCreature(const vector <Creature*>& creatures);
 
 	ObjetMagique getObjetMagique() const;
 	void setObjetMagique(const ObjetMagique& objetMagique);
 
-	void utiliserObjetMagique(Creature* creature);
+    string getEquipe();
+    void setEquipe(string& equipe);
 
+    Creature* getUneCreature(Creature creature); //methode obtenirUneCreature renommée de façon cohérente avec nos accesseurs
+
+	void utiliserObjetMagique(Creature* creature);
 	bool ajouterCreature(const Creature& creature); // A MODIFIER... (si necessaire)
 	bool enleverCreature(const string& nom); // A MODIFIER... (si necessaire)
 
 	void affichage() const; // A COMPLETER... (si necessaire)
+    //opérateurs
+    friend ostream& operator<<(ostream& flux, Dresseur dresseur);
+    friend bool operator==(const Dresseur& dresseur2) const;
+    friend bool operator==(const string& nom) const;
+    friend bool operator==(const Dresseur& d2);
 
 private:
 	string nom_;
 	ObjetMagique objetMagique_;
+	string equipe_;
+	vector <Creature*> creature_;
+
 
 	// ___TP2____
 

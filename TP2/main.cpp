@@ -1,4 +1,4 @@
-ï»¿#include <iostream>
+#include <iostream>
 #include "Creature.h"
 #include "Dresseur.h"
 #include "PolyLand.h"
@@ -27,7 +27,7 @@ int main()
 	// ("Balbazar", 11, 2, 50, 22)
 	// A COMPLETER...
 
-	// Creer la Creature Touflamme en utilisant l'opÃ©rateur = et en utilisant la creature existante Salimouche.
+	// Creer la Creature Touflamme en utilisant l'opérateur = et en utilisant la creature existante Salimouche.
 	// Le nom de Touflamme devrai ensuite etre modifie pour "Touflamme" et son attaque passera de 12 a 15.
 	// A COMPLETER...
 
@@ -104,7 +104,7 @@ int main()
 	// Regis -> Carapouce
 	// A COMPLETER...
 
-	// Assignez Ã  vous-meme Pokachu
+	// Assignez à vous-meme Pokachu
 	// A COMPLETER...
 
 	/*******************************************************************/
@@ -116,7 +116,7 @@ int main()
 
 	cout << endl << "Un Salimouche surgit" << endl;
 
-	cout << "Vous avez rencontrÃ© un Salimouche sauvage qui vous attaque..." << endl;
+	cout << "Vous avez rencontré un Salimouche sauvage qui vous attaque..." << endl;
 
 	Salimouche.attaquer(bouleDeFeu, *(Vous.getUneCreature("Pokachu")));
 	Vous.getUneCreature("Pokachu")->attaquer(eclair, Salimouche);
@@ -127,33 +127,33 @@ int main()
 	cout << "Vous avez battu un Salimouche, vous pouvez maintenante le capturer" << endl;
 
 	if (polyland.attraperCreature(&Vous, &Salimouche)) {
-		cout << "Felicitation vous avez attrapÃ© un Salimouche !" << endl;
+		cout << "Felicitation vous avez attrapé un Salimouche !" << endl;
 	}
 	else {
-		cout << "Le Salimouche s'est Ã©chappÃ©" << endl;
+		cout << "Le Salimouche s'est échappé" << endl;
 	}
 
 
 	cout << endl;
-	cout << "Vous trouvez une potion magique, vous dÃ©cidez de l'utilisez sur Pokachu" << endl;
+	cout << "Vous trouvez une potion magique, vous décidez de l'utilisez sur Pokachu" << endl;
 
 	ObjetMagique potionMagique("Potion magique", 15);
 	//Vous venez de trouver une potion magique
-	//cout potion magique
+	cout << potionMagique;
 	Vous.setObjetMagique(potionMagique);
 	//Soin de votre creature
 	Vous.utiliserObjetMagique(Vous.getUneCreature("Pokachu"));
 
 	//Choix d'une creature aleatoirement parmi celles possibles
 	Creature* creatureAleatoire = polyland.choisirCreatureAleatoire();
-	//Debut du duel avec la creature choisie alÃ©atoirement
+	//Debut du duel avec la creature choisie aléatoirement
 	cout << endl << "Un " << creatureAleatoire->getNom() << " se jette sur votre Pokachu" << endl;
-	cout << "Un duel entre Pokachu et " << creatureAleatoire->getNom() << " est engagÃ©" << endl;
+	cout << "Un duel entre Pokachu et " << creatureAleatoire->getNom() << " est engagé" << endl;
 
-	//Vous attaquez la crÃ©ature tant que qu'elle est en vie...
+	//Vous attaquez la créature tant que qu'elle est en vie...
 	while (creatureAleatoire->getPointDeVie() > 0) {
 		if (Vous.getUneCreature("Pokachu")->getPointDeVie() > 0) {
-			//... ou que votre crÃ©ature est morte
+			//... ou que votre créature est morte
 			(Vous.getUneCreature("Pokachu"))->attaquer(eclair, *creatureAleatoire);
 			if (creatureAleatoire->getPointDeVie() > 0)
 				creatureAleatoire->attaquer(*(creatureAleatoire->getPouvoirs()[0]), *(Vous.getUneCreature("Pokachu")));
@@ -166,10 +166,10 @@ int main()
 	if (creatureAleatoire->getPointDeVie() == 0)
 		cout << "Vous avez vaincu " << creatureAleatoire->getNom() << endl;
 	else {
-		//Sinon votre seconde crÃ©ature se charge de finir le combat
+		//Sinon votre seconde créature se charge de finir le combat
 		while (creatureAleatoire->getPointDeVie() > 0)
 			(Vous.getUneCreature("Salimouche"))->attaquer(bouleDeFeu, *creatureAleatoire);
-		cout << "Votre Pokachu a Ã©tÃ© battu mais heuresement votre Salimouche finit par vaincre " << creatureAleatoire->getNom() << endl;
+		cout << "Votre Pokachu a été battu mais heuresement votre Salimouche finit par vaincre " << creatureAleatoire->getNom() << endl;
 	}
 
 
@@ -178,13 +178,13 @@ int main()
 
 	cout << "Pokachu et salimouche n'arrete pas de se chamailler, vous decidez d'abandonner Salimouche" << endl;
 
-	//Vous en avez marre des chamailleries, vous dÃ©cidez de relacher Salimouche
+	//Vous en avez marre des chamailleries, vous décidez de relacher Salimouche
 	if (polyland.relacherCreature(&Vous, "Salimouche")) {
-		cout << "Vous avez decidÃ© de relacher Salimouche !" << endl;
+		cout << "Vous avez decidé de relacher Salimouche !" << endl;
 	}
 	else {
 		//ce cas ne devrait pas s'afficher
-		cout << "Oh il y a eu un petit problÃ¨me technique... Salimouche n'a pas pu Ãªtre relachÃ©" << endl;
+		cout << "Oh il y a eu un petit problème technique... Salimouche n'a pas pu être relaché" << endl;
 	}
 
 	/*******************************/
@@ -203,7 +203,7 @@ int main()
 	// A COMPLETER...
 	Carapouce.oublierPouvoir(&pistoletAEau);
 
-	// test des opÃ©rateurs == de la classe Dresseur
+	// test des opérateurs == de la classe Dresseur
 	Dresseur test1("test", "testeur");
 	Dresseur test2("test", "testeur");
 	test1.ajouterCreature(&Pokachu);
