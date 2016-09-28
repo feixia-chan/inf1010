@@ -39,9 +39,8 @@ public:
 	void affichage() const; // A COMPLETER... (si necessaire)
     //opérateurs
     friend ostream& operator<<(ostream& flux, Dresseur dresseur);
-    friend bool operator==(const Dresseur& dresseur2) const;
-    friend bool operator==(const string& nom) const;
-    friend bool operator==(const Dresseur& d2);
+
+    friend bool operator==(const string nom, const Dresseur& d2);
 
 private:
 	string nom_;
@@ -54,5 +53,6 @@ private:
 
 
 };
-
+     bool operator==(const Dresseur& dresseur2) const;
+     bool operator==(const string& nom) const;
 #endif

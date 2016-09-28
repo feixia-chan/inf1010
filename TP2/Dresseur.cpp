@@ -147,7 +147,7 @@ void Dresseur::affichage() const // A MODIFIER... (si necessaire)
 
 // ___TP2___
 
-ostream& Dresseur::operator<<(ostream& flux, Dresseur dresseur){
+ostream& operator<<(ostream& flux, Dresseur dresseur){
     return flux << nom_ << " possede " << nombreCreatures_  << " creature(s) et appartient à l'équipe "<< equipe_ << endl;
 }
 
@@ -168,4 +168,8 @@ bool Dresseur::operator==(const Dresseur& dresseur2) const{
 
 bool operator==(const string& nom) const{
     return(nom_==nom);
+}
+
+bool operator==(const string& nom, const Dresseur& d2){
+    return nom==d2.getNom();
 }
