@@ -126,15 +126,20 @@ bool Dresseur::enleverCreature(const string& nom)
                 //si c'est la derniere créature
                 delete creatures_[i];
                 creatures_.pop_back();
+                cout << "la créature " << nom << "a bien été retirée !"<<endl;
 		    }
 		    else{
-//                creatures_[i] = creatures_[nombreCreatures_];
-//			delete creatures_[nombreCreatures_];
-//			creatures_[nombreCreatures_] = nullptr;
+                //on déplace la créature à la fin du tableau
+                Creature* stock = creatures_[creatures_.size()-1];
+                creatures_[creatures_.size()-1]=creature_[i];
+                creatures_[i]=stock;
 
+                //delete
+
+                delete creatures_[creatures_.size()-1];
+                creatures_.pop_back();
+                cout << "la créature " << nom << "a bien été retirée !"<<endl;
 		    }
-
-
 			return true;
 		}
 	}
@@ -168,7 +173,7 @@ bool Dresseur::operator==(const Dresseur& dresseur2) const{
     return false;       //la taille ou les créatures sont différentes
 }
 
-bool operator==(const string& nom) const{
+bool Dresseur::operator==(const string& nom) const{
     return(nom_==nom);
 }
 

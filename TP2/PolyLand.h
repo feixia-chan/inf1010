@@ -52,4 +52,7 @@ private:
     vector <Creature*> listeCreatures_;
     int nombreCreatures_;
 };
+
+bool operator+=(const Dresseur& dresseur);
+
 #endif

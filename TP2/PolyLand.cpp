@@ -54,16 +54,17 @@ void PolyLand::setNombreCreatures(const int& nombreC){
     nombreCreatures_=nombreC;
 }
 
-bool PolyLand::ajouterDresseur(Dresseur* dresseur) // A MODIFIER... (si necessaire)
+bool PolyLand::ajouterDresseur(Dresseur* dresseur) //modifié
 {
-	if (nombreDresseurs_ >= MAX_DRESSEURS)
-		return false;
+
 	for (unsigned int i = 0; i < nombreDresseurs_; i++)
 	{
-		if (dresseurs_[i]->getNom() == dresseur->getNom())
+		if (listeDresseurs_[i]->getNom() == dresseur->getNom())
 			return false;
 	}
-	dresseurs_[nombreDresseurs_++] = dresseur;
+	nombreDresseurs_++;
+	listeDresseurs_.push_back(dresseur);
+
 	cout << dresseur->getNom() << " a bien été ajouté !" << endl;
 	return true;
 }
@@ -83,15 +84,29 @@ bool PolyLand::retirerDresseur(const string& nom) // A MODIFIER... (si necessair
 {
 	for (unsigned int i = 0; i < nombreDresseurs_; i++)
 	{
-		if (dresseurs_[i]->getNom() == nom)
+		if (listeDresseurs_[i]->getNom() == nom)
 		{
-			dresseurs_[i] = dresseurs_[nombreDresseurs_ - 1];
-			dresseurs_[nombreDresseurs_ - 1] = nullptr;
-			nombreDresseurs_--;
-			return true;
+		    if(i==nombreDresseurs_){    //le dresseur est en dernière position du tableau
+                delete listeDresseurs_[i];
+                listeDresseurs_.pop_back();
+                cout << "Le dresseur " << nom <<" a bien été retiré ! << endl;
+		    }
+		    else{
+                Dresseur* stockDresseur=listeDresseurs_[nombreDresseurs_];
+                listeDresseurs_[nombreDresseur_]=listeDresseurs_[i];
+                listeDresseurs_[i]=stockDresseur;
+
+                //suppression du dresseur
+                delete listeDresseur_[nombreDresseurs_];
+                listeDresseurs_.pop_back();
+                cout << "Le dresseur " << nom <<" a bien été retiré ! << endl;
+            }
+            return true;
 		}
-	}
-	return false;
+		else {  //message d'erreur
+            cout <<" Le dresseur renseigné ne fait pas partie de Polyland. Il n'a pas pu être retiré." << endl;
+			return false;
+		}
 }
 
 bool PolyLand::retirerCreature(const string& nom) // A MODIFIER... (si necessaire)
@@ -170,4 +185,9 @@ void PolyLand::infoDresseur(const string& nom) const // A MODIFIER... (si necess
 	{
 		cout << "Dresseur introuvable!" << endl;
 	}
+}
+
+//opérateurs
+bool PolyLand::operator+=(const Dresseur& dresseur){
+
 }
