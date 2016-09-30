@@ -50,6 +50,10 @@ public:
 	bool operator==(const string& nom);        //compare le nom de la créature avec celui en parametre
 	friend bool operator==(const string& nom, const Creature& creature);
 	friend ostream& operator<<(ostream& o, const Creature& creature);
+	//ajour d'un pouvoir
+	bool ajouterPouvoir(const Pouvoir& pouvoir);
+	//oublie d'un pouvoir
+	bool oublierPouvoir(const string& nom);
 
 private:
 

@@ -109,16 +109,22 @@ vector <Pouvoir*> Creature::getPouvoirs() const
 
 void Creature::attaquer(Pouvoir pouvoir, Creature & creature)// A MODIFIER... (si necessaire)
 {
-	if (energie_ >= pouvoir_.getEnergieNecessaire())
+	//on vérifie que la créature possède le pouvoir qu'on lui demande de lancer
+	bool attaque=false;
+	for(int i=0;i<pouvoirs_.size();i++){
+        if(pouvoirs_[i] == &pouvoir)
+        attaque=true;
+	}
+	if (attque && energie_ >= pouvoir.getEnergieNecessaire())
     {
 		if (creature.getPointDeVie() >= 0)
         {
 			//Calcul du nombre de degat selon une formule
-			unsigned int degat = (pouvoir_.getNombreDeDegat())* (attaque_ / 2 - creature.defense_);
+			unsigned int degat = (pouvoir.getNombreDeDegat())* (attaque_ / 2 - creature.defense_);
 			int tentative = rand() % 6;
 			//l'attaque rate une fois sur 6
 			if (tentative != 3) {
-				cout << nom_ << " lance " << pouvoir_.getNom() << " qui inflige " << degat << " degat a " << creature.getNom() << endl;
+				cout << nom_ << " lance " << pouvoir.getNom() << " qui inflige " << degat << " degat a " << creature.getNom() << endl;
 				if (degat > creature.getPointDeVie()) {
 					creature.setPointDeVie(0);
 					int xp = experienceGagnee(creature);
@@ -127,7 +133,7 @@ void Creature::attaquer(Pouvoir pouvoir, Creature & creature)// A MODIFIER... (s
 				else
 					creature.setPointDeVie(creature.getPointDeVie() - degat);
 				cout << creature.getNom() << " a encore " << creature.getPointDeVie() << " PV" << endl;
-				energie_ -= pouvoir_.getEnergieNecessaire();
+				energie_ -= pouvoir_.getEnergieNecessaire();    //je pense que ce serait plus logique de mettre cette ligne de code avant de savoir si la créature est vaincue car l'attaquant est censé utiliser de l'énergie dans tous les cas
 			}
 			else {
 				cout << "Attaque " << pouvoir_.getNom() << " a échouée" << endl;
@@ -265,7 +271,7 @@ Creature& Creature::operator=(const Creature& creature)
     return *this;
 }
 
-bool Creature::operator==(const Creature& creature)
+bool Creature::operator==(const Creature& creature) //pour comparer 2 créature sans les pouvoirs
 {
     return(nom_==creature.nom_
             && attaque_==creature.attaque_
@@ -279,26 +285,26 @@ bool Creature::operator==(const Creature& creature)
             && experienceNecessaire_==creature.experienceNecessaire_);
 }
 
-bool Creature::operator==(const string& nom)
+bool Creature::operator==(const string& nom)    //pour comparer une créature avec un nom donné
 {
     return(nom_==nom);
 }
 
-bool operator==(const string& nom, const Creature& creature)
+bool operator==(const string& nom, const Creature& creature)    //pour comparer un nom avec une créature
 {
     return nom==creature.nom_;
 }
 
-ostream& operator<<(ostream& o, const Creature& creature)
+ostream& operator<<(ostream& o, const Creature& creature) //pour l'affichage de créature avec ou sans pouvoir
 {
-    if(pouvoirs_.size()==0){
+    if(pouvoirs_.size()==0){    //affichage sans pouvoir
         o<<nom_<<" a "<<attaque_<<" en attaque et "<<defense_<<" en defense,\nil a "
         <<pointDeVie_<<"/"<<pointDeVieTotal_<<" PV et "<<energie_<<"/"<<energieTotal_<<" PE,\nil est au niveau "
         <<niveau_<<" avec "<<experience_<<" XP,\n il lui manque "
         <<experienceNecessaire_-experience_<<" XP pour monter d'un niveau.\nPouvoirs :\n"
         <<nom_<<" ne possede aucun pouvoir";
     }
-    else{
+    else{   //affichage avec pouvoirs
         o<<nom_<<" a "<<attaque_<<" en attaque et "<<defense_<<" en defense,\nil a "
         <<pointDeVie_<<"/"<<pointDeVieTotal_<<" PV et "<<energie_<<"/"<<energieTotal_<<" PE,\nil est au niveau "
         <<niveau_<<" avec "<<experience_<<" XP,\n il lui manque "
@@ -308,4 +314,31 @@ ostream& operator<<(ostream& o, const Creature& creature)
         }
     }
     return o;
+}
+
+bool Creature::ajouterPouvoir(const Pouvoir& pouvoir)
+{
+    for(int i=0;i<pouvoirs_.size();i++){    //on vérifie si la créature possède déjà le pouvoir
+        if(pouvoirs_[i] == &pouvoir){
+            return false;
+        }
+        //si elle ne le possède pas on l'ajoute
+            pouvoirs_.push_back(&pouvoir);
+            return true;
+    }
+}
+
+bool Creature::oublierPouvoir(const string& nom)
+{
+    //on cherche si la creature possède le pouvoir demandé
+    for(int i=0;i<pouvoirs_.size();i++){
+        if(pouvoirs_[i].getNom()==nom){ //si elle le possède
+            pouvoirs_[i]=pouvoirs_[pouvoirs_.size()-1]; //on met le dernier pouvoir du vecteur à sa place
+            delete pouvoirs_[pouvoirs_.size()-1];   //on supprime le dernier pointeur
+            pouvoirs_.pop_back();   //on le pop pour réduire le vecteur
+            return true;
+        }
+    }
+    //si elle ne le possède pas
+    return false;
 }
