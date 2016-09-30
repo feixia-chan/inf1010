@@ -17,7 +17,7 @@ int main()
 	// ("Pierre")
 	// ("Regis")
 	// A COMPLETER...
-	
+
 
 	cout << endl << "CREATION ET AFFICHAGE DES CREATURES" << endl;
 	// Creer les Creatures suivantes (nom, attaque, defense, pointDeVie, mana):
@@ -38,7 +38,7 @@ int main()
 	// Afficher les informations sur Pokachu, Touflamme et Pokachum
 	// A COMPLETER...
 
-	
+
 	// Creer les pouvoirs suivants
 	// ("Boule de feu", 5, 5)
 	// pistoletAEau("Pistolet a eau", 6, 6)
@@ -71,8 +71,9 @@ int main()
 	// A COMPLETER...
 
 	cout << endl << "AJOUT DE CREATURES ET DE DRESSEURS A POLYLAND" << endl << endl;
-	
+
 	PolyLand polyland;
+
 
 	// Ajouter les dresseurs et les creatures. Attention, vous devez utiliser l'operateur += pour ajouter un dresseur.
 	// A COMPLETER...
@@ -106,7 +107,7 @@ int main()
 
 	// Assignez à vous-meme Pokachu
 	// A COMPLETER...
-	
+
 	/*******************************************************************/
 	/*                       DEBUT DES TESTS                           */
 	/* Les modifications restantes sont a la fin de la fonction main.  */
@@ -117,7 +118,7 @@ int main()
 	cout << endl << "Un Salimouche surgit" << endl;
 
 	cout << "Vous avez rencontré un Salimouche sauvage qui vous attaque..." << endl;
-	
+
 	Salimouche.attaquer(bouleDeFeu, *(Vous.getUneCreature("Pokachu")));
 	Vous.getUneCreature("Pokachu")->attaquer(eclair, Salimouche);
 	//Vous gagnez obligatoirement le duel
@@ -177,7 +178,7 @@ int main()
 
 
 	cout << "Pokachu et salimouche n'arrete pas de se chamailler, vous decidez d'abandonner Salimouche" << endl;
-	
+
 	//Vous en avez marre des chamailleries, vous décidez de relacher Salimouche
 	if (polyland.relacherCreature(&Vous, "Salimouche")) {
 		cout << "Vous avez decidé de relacher Salimouche !" << endl;
@@ -186,7 +187,7 @@ int main()
 		//ce cas ne devrait pas s'afficher
 		cout << "Oh il y a eu un petit problème technique... Salimouche n'a pas pu être relaché" << endl;
 	}
-	
+
 	/*******************************/
 	/*       FIN DES TESTS         */
 	/*******************************/
@@ -227,7 +228,7 @@ int main()
 
 	// Liberer les ressources s'il le faut
 	// A COMPLETER...
-	
+
 
 	system("pause");
 	return 0;
