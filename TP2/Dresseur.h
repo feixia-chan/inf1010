@@ -14,8 +14,8 @@ class Dresseur
 public:
     //constructeurs et destructeur
 	Dresseur();
-	Dresseur(const string& nom, const string& equipe); // A MODIFIER... (si necessaire)
-	~Dresseur(); // A MODIFIER... (si necessaire)
+	Dresseur(const string& nom, const string& equipe);
+	~Dresseur();
 
 	//accesseurs set/get
 	string getNom() const;
@@ -31,19 +31,19 @@ public:
     string getEquipe();
     void setEquipe(const string& equipe);
 
-    Creature* getUneCreature(const string& creature); //methode obtenirUneCreature renommée de façon cohérente avec nos accesseurs
+    Creature* getUneCreature(const string& creature); //methode obtenirUneCreature renommée de façon cohérente avec nos accesseurs : retourne la créature dont on a renseigné le nom
 
-	void utiliserObjetMagique(Creature* creature);
-	bool ajouterCreature(Creature* creature); // modifié
-	bool enleverCreature(const string& nom); // A MODIFIER... (si necessaire)
+	void utiliserObjetMagique(Creature* creature);  //utiliser un objet
+	bool ajouterCreature(Creature* creature); //dit si on a réussit à ajouter une créature
+	bool enleverCreature(const string& nom);    //retire la créature de la liste
 
-	void affichage() const; //a supprimer ?
+	void affichage() const;
 
     //opérateurs
     friend ostream& operator<<(ostream& flux, const Dresseur& dresseur);
-    friend bool operator==(const string nom, const Dresseur& d2);
-    bool operator==(Dresseur dresseur2) const;
-    bool operator==(const string& nom) const;
+    friend bool operator==(const string& nom, const Dresseur& d2);   //nom==dresseur
+    bool operator==(Dresseur dresseur2) const;  //compare les tableaux de créatures des dresseurs
+    bool operator==(const string& nom) const;   //dresseur==nom
 
 private:
 	string nom_;

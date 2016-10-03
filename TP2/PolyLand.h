@@ -14,8 +14,8 @@ class PolyLand
 {
 public:
     //constructeur, destructeur
-	PolyLand(); // A MODIFIER... (si necessaire)
-	~PolyLand(); // A MODIFIER... (si necessaire)
+	PolyLand();
+	~PolyLand();
 
 	//accesseur
 	vector<Dresseur*> getListeDresseurs();
@@ -29,24 +29,24 @@ public:
     void setListeCreatures(const vector<Creature*>& listeC);
     void setNombreCreatures(const int& nombreC);
 
-	bool ajouterDresseur(Dresseur* dresseur); // A MODIFIER... (si necessaire)
-	bool ajouterCreature(const Creature& creature); // A MODIFIER... (si necessaire)
+	bool ajouterDresseur(Dresseur* dresseur); //ajoute un dresseur dans PolyLand
+	bool ajouterCreature(const Creature& creature); //ajoute une créature dans PolyLand
 
-	bool retirerDresseur(const string& nom); // A MODIFIER... (si necessaire)
-	bool retirerCreature(const string& nom); // A MODIFIER... (si necessaire)
+	bool retirerDresseur(const string& nom); //enlève le dresseur si existant
+	bool retirerCreature(const string& nom); // enlève la créature si existante
 
-	Dresseur* choisirDresseurAleatoire(); // A MODIFIER... (si necessaire)
-	Creature* choisirCreatureAleatoire(); // A MODIFIER... (si necessaire)
+	Dresseur* choisirDresseurAleatoire(); //
+	Creature* choisirCreatureAleatoire(); //
 
-	bool attraperCreature(Dresseur* dresseur, Creature* creature); // A MODIFIER... (si necessaire)
-	bool relacherCreature(Dresseur* dresseur, const string& nomCreature); // A MODIFIER... (si necessaire)
+	bool attraperCreature(Dresseur* dresseur, Creature* creature); //permet au dresseur d'ajouter la créature si attrapée
+	bool relacherCreature(Dresseur* dresseur, const string& nomCreature); // supprime la créature du dresseur
 
-	void infoDresseur(const string& nom) const; // A MODIFIER... (si necessaire)
+	void infoDresseur(const string& nom) const;
 
 	//________TP2_______
-	friend ostream& operator<<(ostream& flux, const PolyLand& polyland);
-	bool operator+=(Dresseur* dresseur);
-    bool operator-=(const Dresseur& dresseur);
+	friend ostream& operator<<(ostream& flux, const PolyLand& polyland); //affiche les infoDresseurs de polyland
+	bool operator+=(Dresseur* dresseur);    //ajoute un dresseur dans Polyland
+    bool operator-=(const Dresseur& dresseur); //enlève un dresseur de polyland
 
 private:
 	//________TP2_______

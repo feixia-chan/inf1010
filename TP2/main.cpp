@@ -6,6 +6,8 @@
 #include <time.h>
 #include <clocale>  // pour setlocale
 
+#include <cstdlib>
+
 int main()
 {
 	srand(time(NULL));
@@ -109,7 +111,7 @@ int main()
     polyland+=Pierre;
     polyland+=Regis;
     polyland.ajouterCreature(Salimouche);
-    polyland.ajouterCreature(Carapouce);
+ /*   polyland.ajouterCreature(Carapouce);
     polyland.ajouterCreature(Balbazar);
     polyland.ajouterCreature(Pokachu);
     polyland.ajouterCreature(Touflamme);
@@ -152,7 +154,7 @@ int main()
 	/*                       DEBUT DES TESTS                           */
 	/* Les modifications restantes sont a la fin de la fonction main.  */
 	/*******************************************************************/
-	//Duel entre vous et salimouche
+/*	//Duel entre vous et salimouche
 	cout << endl << "TESTS DE COMBAT" << endl;
 
 	cout << endl << "Un Salimouche surgit" << endl;
@@ -232,7 +234,7 @@ int main()
 	/*       FIN DES TESTS         */
 	/*******************************/
 
-
+/*
 	cout << endl << "INFO DRESSEUR APRES TOUTES CES PERIPETIES" << endl;
 	// Afficher les informations de Polyland
 	// A COMPLETER...
@@ -269,7 +271,7 @@ int main()
 
 	// Liberer les ressources s'il le faut
 	// A COMPLETER...
-	delete Sasha;
+/*	delete Sasha;
 	Sasha=nullptr;
 	delete Pierre;
 	Pierre=nullptr;
@@ -279,6 +281,6 @@ int main()
 	creatureAleatoire=nullptr;
 
 
-	system("pause");
+*/	system("pause");
 	return 0;
 }

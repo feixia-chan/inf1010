@@ -11,11 +11,11 @@ Dresseur::Dresseur(const string& nom, const string& equipe):	nom_(nom),equipe_(e
 {
     ObjetMagique potion;
     objetMagique_=potion;
-    //la capacité du vecteur se remplira toute seule
+    //la capacitï¿½ du vecteur se remplira toute seule
 }
 
 
-Dresseur::~Dresseur() //modifié
+Dresseur::~Dresseur() //modifiï¿½
 {
 	for (unsigned int i = 0; i < creatures_.size(); i++)
 	{
@@ -82,7 +82,7 @@ Creature* Dresseur::getUneCreature(const string& creature){
         return creatures_[compteur];
     }
     else{
-        cout <<"la créature que vous cherchez n'a pas été attrapée par ce dresseur" << endl;
+        cout <<"la crÃ©ature que vous cherchez n'a pas Ã©tÃ© attrapÃ©e par ce dresseur" << endl;
         return nullptr;
     }
 }
@@ -110,9 +110,9 @@ bool Dresseur::ajouterCreature(Creature* creature)
 		for (unsigned int i = 0; i < creatures_.size(); i++)
 		{
 			if (creatures_[i]->getNom() == creature->getNom())
-				return false;   //si on a déjà la créature on peut pas l'ajouter
+				return false;   //si on a dï¿½jï¿½ la crï¿½ature on peut pas l'ajouter
 		}
-		creatures_.push_back(new Creature(*creature));   //ajout d'une créature
+		creatures_.push_back(new Creature(*creature));   //ajout d'une crï¿½ature
 		return true;
 }
 
@@ -123,13 +123,13 @@ bool Dresseur::enleverCreature(const string& nom)
 		if (creatures_[i]->getNom() == nom)
 		{
 		    if(i==creatures_.size()-1){
-                //si c'est la derniere créature
+                //si c'est la derniere crï¿½ature
                 delete creatures_[i];
                 creatures_.pop_back();
-                cout << "la créature " << nom << "a bien été retirée !"<<endl;
+                cout << "la crï¿½ature " << nom << "a bien ï¿½tï¿½ retirï¿½e !"<<endl;
 		    }
 		    else{
-                //on déplace la créature à la fin du tableau
+                //on dï¿½place la crï¿½ature ï¿½ la fin du tableau
                 Creature* stock = creatures_[creatures_.size()-1];
                 creatures_[creatures_.size()-1]=creatures_[i];
                 creatures_[i]=stock;
@@ -138,7 +138,7 @@ bool Dresseur::enleverCreature(const string& nom)
 
                 delete creatures_[creatures_.size()-1];
                 creatures_.pop_back();
-                cout << "la créature " << nom << "a bien été retirée !"<<endl;
+                cout << "la crï¿½ature " << nom << "a bien ï¿½tï¿½ retirï¿½e !"<<endl;
 		    }
 			return true;
 		}
@@ -155,10 +155,11 @@ void Dresseur::affichage() const // A MODIFIER... (si necessaire)
 // ___TP2___
 
 ostream& operator<<(ostream& flux, const Dresseur& dresseur){
-    return flux << dresseur.nom_ << " possede " << dresseur.getNombreCreatures()  << " creature(s) et appartient à l'équipe "<< dresseur.equipe_ << endl;
+    return flux << dresseur.nom_ << " possede " << dresseur.getNombreCreatures()  << " creature(s) et appartient ï¿½ l'ï¿½quipe "<< dresseur.equipe_ << endl;
 }
 
 bool Dresseur::operator==(Dresseur dresseur2) const{
+    //on compare les tableaux de crÃ©atures
     if(creatures_.size()==dresseur2.getCreatures().size()){
         for(int i=0; i<creatures_.size();i++){   //parcourt le vecteur de d1
             if(creatures_[i] == dresseur2.getUneCreature(creatures_[i]->getNom())){ //d2 possede la creature_[i]
@@ -168,9 +169,9 @@ bool Dresseur::operator==(Dresseur dresseur2) const{
                 break;
             }
         }
-        return true;    //toutes les créatures sont égales
+        return true;    //toutes les crÃ©atures sont Ã©gales
     }
-    return false;       //la taille ou les créatures sont différentes
+    return false;       //la taille ou les crÃ©atures sont diffÃ©rentes
 }
 
 bool Dresseur::operator==(const string& nom) const{

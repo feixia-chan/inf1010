@@ -256,7 +256,6 @@ Creature& Creature::operator=(const Creature& creature)
     if(this != &creature){
         for(int i=pouvoirs_.size()-1;i>=0;i--){
             delete pouvoirs_[i];
-            pouvoirs_[i]=nullptr;
             pouvoirs_.pop_back();
         }
         nom_=creature.nom_;
