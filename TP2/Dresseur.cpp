@@ -2,26 +2,26 @@
 #include <iostream>
 
 Dresseur::Dresseur() :nom_(""),equipe_("") {
-    potion ObjetMagique;
+    ObjetMagique potion;
     objetMagique_=potion;
     //pas d'initialisation du vecteur
 };
 
-Dresseur::Dresseur(const string& nom, const string& equipe,const ObjetMagique& potion):	nom_(nom),equipe_(equipe),objetMagique_(potion)
+Dresseur::Dresseur(const string& nom, const string& equipe):	nom_(nom),equipe_(equipe)
 {
+    ObjetMagique potion;
+    objetMagique_=potion;
     //la capacité du vecteur se remplira toute seule
 }
 
 
 Dresseur::~Dresseur() //modifié
 {
-	for (unsigned int i = 0; i < creature_.size(); i++)
+	for (unsigned int i = 0; i < creatures_.size(); i++)
 	{
 		delete creatures_[i];
-		creatures_[i] = nullptr;
+		creatures_.pop_back();
 	}
-	delete[]creatures_;
-	creatures_ = nullptr;
 }
 
 string Dresseur::getNom() const
@@ -36,7 +36,7 @@ void Dresseur::setNom(const string& nom)
 
 unsigned int Dresseur::getNombreCreatures() const
 {
-	return creature_.size();
+	return creatures_.size();
 }
 
 vector <Creature*> Dresseur::getCreatures() const
@@ -67,11 +67,11 @@ void Dresseur::setEquipe(const string& equipe){
     equipe_=equipe;
 }
 
-Creature* getUneCreature(Creature creature){
+Creature* Dresseur::getUneCreature(const string& creature){
     bool trouve=false;
     int compteur = 0;
-    while(!trouve && compteur<creature_.size()){
-        if (*creature_[compteur] == creature){
+    while(!trouve && compteur<creatures_.size()){
+        if (creatures_[compteur]->getNom() == creature){
             trouve=true;
         }
         else{
@@ -79,7 +79,7 @@ Creature* getUneCreature(Creature creature){
         }
     }
     if(trouve){
-        return creature[compteur];
+        return creatures_[compteur];
     }
     else{
         cout <<"la créature que vous cherchez n'a pas été attrapée par ce dresseur" << endl;
@@ -131,7 +131,7 @@ bool Dresseur::enleverCreature(const string& nom)
 		    else{
                 //on déplace la créature à la fin du tableau
                 Creature* stock = creatures_[creatures_.size()-1];
-                creatures_[creatures_.size()-1]=creature_[i];
+                creatures_[creatures_.size()-1]=creatures_[i];
                 creatures_[i]=stock;
 
                 //delete
@@ -149,19 +149,19 @@ bool Dresseur::enleverCreature(const string& nom)
 
 void Dresseur::affichage() const // A MODIFIER... (si necessaire)
 {
-	cout << nom_ << " possede " << nombreCreatures_  << " creature(s) "<< endl;
+	cout << this << endl;
 }
 
 // ___TP2___
 
-ostream& operator<<(ostream& flux, Dresseur dresseur){
-    return flux << nom_ << " possede " << nombreCreatures_  << " creature(s) et appartient à l'équipe "<< equipe_ << endl;
+ostream& operator<<(ostream& flux, const Dresseur& dresseur){
+    return flux << dresseur.nom_ << " possede " << dresseur.getNombreCreatures()  << " creature(s) et appartient à l'équipe "<< dresseur.equipe_ << endl;
 }
 
-bool Dresseur::operator==(const Dresseur& dresseur2) const{
-    if(creature_.size()==dresseur2.getCreature().size()){
-        for(int i=0; i<creature_.size();i++){   //parcourt le vecteur de d1
-            if(dresseur2.getUneCreature(*creature[i])!=nullptr){ //d2 possede la creature_[i]
+bool Dresseur::operator==(Dresseur dresseur2) const{
+    if(creatures_.size()==dresseur2.getCreatures().size()){
+        for(int i=0; i<creatures_.size();i++){   //parcourt le vecteur de d1
+            if(creatures_[i] == dresseur2.getUneCreature(creatures_[i]->getNom())){ //d2 possede la creature_[i]
                 i++;
             }
             else{
@@ -180,4 +180,4 @@ bool Dresseur::operator==(const string& nom) const{
 bool operator==(const string& nom, const Dresseur& d2){
     return nom==d2.getNom();
 }
-friend ostream& operator<<(ostream& flux, Dresseur dresseur);
+

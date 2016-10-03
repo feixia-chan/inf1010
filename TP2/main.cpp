@@ -17,6 +17,9 @@ int main()
 	// ("Pierre")
 	// ("Regis")
 	// A COMPLETER...
+	Dresseur* Sasha = new Dresseur("Sasha","");
+	Dresseur* Pierre = new Dresseur("Pierre","");
+	Dresseur* Regis = new Dresseur("Regis","");
 
 
 	cout << endl << "CREATION ET AFFICHAGE DES CREATURES" << endl;
@@ -26,17 +29,30 @@ int main()
 	// ("Carapouce", 10, 1, 55, 25)
 	// ("Balbazar", 11, 2, 50, 22)
 	// A COMPLETER...
+	Creature Pokachu("Pokachu",10,2,50,25) ;
+	Creature Salimouche("Salimouche", 12, 3, 45, 20);
+	Creature Carapouce("Carapouce", 10, 1, 55, 25);
+	Creature Balbazar("Balbazar", 11, 2, 50, 22);
 
 	// Creer la Creature Touflamme en utilisant l'opérateur = et en utilisant la creature existante Salimouche.
 	// Le nom de Touflamme devrai ensuite etre modifie pour "Touflamme" et son attaque passera de 12 a 15.
 	// A COMPLETER...
+	Creature Touflamme = Salimouche;
+	Touflamme.setNom("Touflamme");
+	Touflamme.setAttaque(15);
 
 	// Creer la Creature Pokachoum en utilisant le constructeur de copie et en utilisant la creature existante Pokachu.
 	// Le nom de Pokachoum devrai ensuite etre modifie pour "Pokachoum" et sa defense passera de 2 a 7.
 	// A COMPLETER...
+	Creature Pokachoum(Pokachu);
+	Pokachoum.setNom("Pokachum");
+	Pokachoum.setDefense(7);
 
 	// Afficher les informations sur Pokachu, Touflamme et Pokachum
 	// A COMPLETER...
+	cout<<Pokachu<<endl;
+	cout<<Touflamme<<endl;
+	cout<<Pokachoum<<endl;
 
 
 	// Creer les pouvoirs suivants
@@ -44,22 +60,28 @@ int main()
 	// pistoletAEau("Pistolet a eau", 6, 6)
 	// eclair("Eclair", 10, 5)
 	// A COMPLETER...
-
+	Pouvoir bouleDeFeu("Boule de feu", 5, 5);
+	Pouvoir pistoletAEau("Pistolet a eau", 6, 6);
+	Pouvoir eclair("Eclair", 10, 5);
 
 	// Creer le pouvoir lanceFeuille en utilisant le contructeur par copie et en utilisant le pouvoir bouleDeFeu.
 	// Le nom du pouvoir lanceFeuille doit ensuite etre modifie pour "Lance Feuille".
 	// A COMPLETER...
-
+	Pouvoir lanceFeuille(bouleDeFeu);
+	lanceFeuille.setNom("Lance Feuille");
 
 	// Creer le pouvoir tonerre en utilisant l'operateur = et en utilisant le pouvoir eclair.
 	// Le nom du pouvoir tonerre doit ensuite etre modifie pour "Tonerre" et son nombre de degat doit etre diminue a 3.
 	// A COMPLETER...
-
-
+    Pouvoir tonerre = eclair;
+    tonerre.setNom("Tonerre");
+    tonerre.setNombreDeDegat(3);
 
 	// Faites afficher les informations des pouvoirs bouleDeFeu, lanceFeuille et tonnerre.
 	// A COMPLETER...
-
+    cout<<bouleDeFeu<<endl;
+    cout<<lanceFeuille<<endl;
+    cout<<tonerre<<endl;
 
 	// Ajouter le pouvoir a la creature correspondante
 	// Salimouche -> bouleDeFeu
@@ -69,15 +91,29 @@ int main()
 	// Touflamme -> tonnerre
 	// Pokachum -> eclair
 	// A COMPLETER...
+	Salimouche.ajouterPouvoir(bouleDeFeu);
+	Carapouce.ajouterPouvoir(pistoletAEau);
+	Balbazar.ajouterPouvoir(lanceFeuille);
+	Pokachu.ajouterPouvoir(eclair);
+	Pokachu.ajouterPouvoir(tonerre);
+	Touflamme.ajouterPouvoir(tonerre);
+	Pokachoum.ajouterPouvoir(eclair);
 
 	cout << endl << "AJOUT DE CREATURES ET DE DRESSEURS A POLYLAND" << endl << endl;
 
 	PolyLand polyland;
 
-
 	// Ajouter les dresseurs et les creatures. Attention, vous devez utiliser l'operateur += pour ajouter un dresseur.
 	// A COMPLETER...
-
+    polyland+=Sasha;
+    polyland+=Pierre;
+    polyland+=Regis;
+    polyland.ajouterCreature(Salimouche);
+    polyland.ajouterCreature(Carapouce);
+    polyland.ajouterCreature(Balbazar);
+    polyland.ajouterCreature(Pokachu);
+    polyland.ajouterCreature(Touflamme);
+    polyland.ajouterCreature(Pokachoum);
 
 	//Ce dresseur est deja present, il ne devrais pas s'ajouter.
 	// A COMPLETER...
@@ -96,7 +132,7 @@ int main()
 
 
 	// Cette commande ne devrait pas fonctionner
-	Carapouce.oublierPouvoir(&eclair);
+	Carapouce.oublierPouvoir(eclair.getNom());
 
 
 	// Assignez une creature au dresseur.
@@ -104,9 +140,13 @@ int main()
 	// Pierre -> Balbazar
 	// Regis -> Carapouce
 	// A COMPLETER...
+	Sasha->ajouterCreature(&Salimouche);
+	Pierre->ajouterCreature(&Balbazar);
+	Regis->ajouterCreature(&Carapouce);
 
 	// Assignez à vous-meme Pokachu
 	// A COMPLETER...
+	Vous.ajouterCreature(&Pokachu);
 
 	/*******************************************************************/
 	/*                       DEBUT DES TESTS                           */
@@ -196,13 +236,14 @@ int main()
 	cout << endl << "INFO DRESSEUR APRES TOUTES CES PERIPETIES" << endl;
 	// Afficher les informations de Polyland
 	// A COMPLETER...
+	cout<<polyland<<endl;
 	cout << endl << "DERNIER TESTS" << endl;
 	// Cette commande ne devrait pas fonctionner
-	Carapouce.oublierPouvoir(&eclair);
+	Carapouce.oublierPouvoir(eclair.getNom());
 
 	// Suite a un combat intense, Carapouce perd son pouvoir pistoletAEau. Retirez ce pouvoir.
 	// A COMPLETER...
-	Carapouce.oublierPouvoir(&pistoletAEau);
+	Carapouce.oublierPouvoir(pistoletAEau.getNom());
 
 	// test des opérateurs == de la classe Dresseur
 	Dresseur test1("test", "testeur");
@@ -228,6 +269,14 @@ int main()
 
 	// Liberer les ressources s'il le faut
 	// A COMPLETER...
+	delete Sasha;
+	Sasha=nullptr;
+	delete Pierre;
+	Pierre=nullptr;
+	delete Regis;
+	Regis=nullptr;
+	delete creatureAleatoire;
+	creatureAleatoire=nullptr;
 
 
 	system("pause");

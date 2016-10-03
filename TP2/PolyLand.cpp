@@ -6,23 +6,24 @@
 
 PolyLand::PolyLand() // A MODIFIER... (si necessaire)
 {
-	dresseurs_ = new Dresseur*[MAX_DRESSEURS]();
-	creatures_ = new Creature*[MAX_CREATURES]();
+	nombreCreatures_=0;
+	nombreDresseurs_=0;
 }
 
 
 PolyLand::~PolyLand() // A MODIFIER... (si necessaire)
 {
-	delete[]dresseurs_;
-	dresseurs_ = nullptr;
-
-	for (unsigned int i = 0; i < nombreCreatures_; i++)
+	for (unsigned int i = 0; i < listeDresseurs_.size(); i++)
 	{
-		delete creatures_[i];
-		creatures_[i] = nullptr;
+		delete listeDresseurs_[i];
+		listeDresseurs_.pop_back();
 	}
-	delete[]creatures_;
-	creatures_ = nullptr;
+
+	for (unsigned int i = 0; i < listeCreatures_.size(); i++)
+	{
+		delete listeCreatures_[i];
+		listeCreatures_.pop_back();
+	}
 
 }
 
@@ -36,7 +37,7 @@ int PolyLand::getNombreDresseurs(){
 vector<Creature*> PolyLand::getListeCreatures(){
     return listeCreatures_;
 }
-int Polyland::getNombreCreatures(){
+int PolyLand::getNombreCreatures(){
     return nombreCreatures_;
 }
 
@@ -73,8 +74,7 @@ bool PolyLand::ajouterCreature(const Creature& creature) // A MODIFIER... (si ne
 {
 	if(nombreCreatures_ >= MAX_CREATURES)
 		return false;
-	creatures_[nombreCreatures_] = new Creature();
-	*creatures_[nombreCreatures_] = creature;
+	listeCreatures_[nombreCreatures_] = new Creature(creature);
 	nombreCreatures_++;
 	cout << creature.getNom() << " a bien été ajouté !" << endl;
 	return true;
@@ -89,17 +89,17 @@ bool PolyLand::retirerDresseur(const string& nom) // A MODIFIER... (si necessair
 		    if(i==nombreDresseurs_){    //le dresseur est en dernière position du tableau
                 delete listeDresseurs_[i];
                 listeDresseurs_.pop_back();
-                cout << "Le dresseur " << nom <<" a bien été retiré ! << endl;
+                cout << "Le dresseur " << nom <<" a bien été retiré !" << endl;
 		    }
 		    else{
                 Dresseur* stockDresseur=listeDresseurs_[nombreDresseurs_];
-                listeDresseurs_[nombreDresseur_]=listeDresseurs_[i];
+                listeDresseurs_[nombreDresseurs_]=listeDresseurs_[i];
                 listeDresseurs_[i]=stockDresseur;
 
                 //suppression du dresseur
-                delete listeDresseur_[nombreDresseurs_];
+                delete listeDresseurs_[nombreDresseurs_];
                 listeDresseurs_.pop_back();
-                cout << "Le dresseur " << nom <<" a bien été retiré ! << endl;
+                cout << "Le dresseur " << nom <<" a bien été retiré !" << endl;
             }
             return true;
 		}
@@ -113,16 +113,29 @@ bool PolyLand::retirerCreature(const string& nom) // A MODIFIER... (si necessair
 {
 	for (unsigned int i = 0; i < nombreCreatures_; i++)
 	{
-		if (creatures_[i]->getNom() == nom)
+		if (listeCreatures_[i]->getNom() == nom)
 		{
-			delete creatures_[i];
-			creatures_[i] = creatures_[nombreCreatures_ - 1];
-			creatures_[nombreCreatures_ - 1] = nullptr;
-			nombreCreatures_--;
-			return true;
+		    if(i==nombreCreatures_){    //le dresseur est en dernière position du tableau
+                delete listeCreatures_[i];
+                listeCreatures_.pop_back();
+                cout << "La créature " << nom <<" a bien été retirée !" << endl;
+		    }
+		    else{
+                Creature* stockCreature=listeCreatures_[nombreCreatures_];
+                listeCreatures_[nombreCreatures_]=listeCreatures_[i];
+                listeCreatures_[i]=stockCreature;
+
+                //suppression du dresseur
+                delete listeCreatures_[nombreCreatures_];
+                listeCreatures_.pop_back();
+                cout << "La créature " << nom <<" a bien été retirée !" << endl;
+            }
+            return true;
 		}
-	}
-	return false;
+		else {  //message d'erreur
+            cout <<" La créature renseignée ne fait pas partie de Polyland. Elle n'a pas pu être retirée." << endl;
+			return false;
+		}
 }
 
 Dresseur* PolyLand::choisirDresseurAleatoire() // A MODIFIER... (si necessaire)
@@ -150,7 +163,7 @@ Creature* PolyLand::choisirCreatureAleatoire() // A MODIFIER... (si necessaire)
 	}
 }
 
-bool PolyLand::attraperCreature(Dresseur* dresseur,const Creature& creature) // A MODIFIER... (si necessaire)
+bool PolyLand::attraperCreature(Dresseur* dresseur, Creature* creature) // A MODIFIER... (si necessaire)
 {
 	return dresseur->ajouterCreature(creature);
 }
@@ -188,13 +201,16 @@ void PolyLand::infoDresseur(const string& nom) const // A MODIFIER... (si necess
 }
 
 //opérateurs
-bool PolyLand::operator+=(const Dresseur& dresseur){
-    return ajouterDresseur();
+bool PolyLand::operator+=(Dresseur* dresseur){
+    return ajouterDresseur(dresseur);
 }
-bool operator-=(const Dresseur& dresseur){
+bool PolyLand::operator-=(const Dresseur& dresseur){
     return retirerDresseur(dresseur.getNom());
 }
 
-ostream& operator<<(ostream& flux, Dresseur dresseur){
-    flux << dresseur; //on utilise l'opérateur < de la classe Dresseur
+ostream& operator<<(ostream& flux, const PolyLand& polyland){
+    for(unsigned int i=0;i<listeDresseurs_.size();i++){
+        flux<<listeDresseurs_[i]->affichage();
+    }
+    return flux;
 }

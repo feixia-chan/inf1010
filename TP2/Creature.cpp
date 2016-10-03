@@ -24,7 +24,7 @@ Creature::Creature(const string& nom, unsigned int attaque,
 }
 
 //constructeur par copie
-Creature Creature::Creature(const Creature& creature)
+Creature::Creature(const Creature& creature)
 {
     nom_=creature.nom_;
     attaque_=creature.attaque_;
@@ -36,8 +36,8 @@ Creature Creature::Creature(const Creature& creature)
     niveau_=creature.niveau_;
     experience_=creature.experience_;
     experienceNecessaire_=creature.experienceNecessaire_;
-    for(int i=0;i<pouvoirs.size();i++){
-        pouvoirs_.push_back(new Pouvoir(*pouvoirs[i]));
+    for(int i=0;i<creature.getPouvoirs().size();i++){
+        pouvoirs_.push_back(new Pouvoir(*creature.getPouvoirs()[i]));
     }
 }
 
@@ -46,7 +46,6 @@ Creature::~Creature() // A MODIFIER... (si necessaire)
     //destruction des pointeurs qui sont dans le vecteur pouvoir
     for(int i=pouvoirs_.size()-1;i>=0;i--){
         delete pouvoirs_[i];
-        pouvoirs_[i]=nullptr;
         pouvoirs_.pop_back();
     }
 }
@@ -101,7 +100,7 @@ unsigned int Creature::getNiveau() const
 	return niveau_;
 }
 
-vector <Pouvoir*> Creature::getPouvoirs() const
+vector<Pouvoir*> Creature::getPouvoirs() const
 {
 	return pouvoirs_;
 }
@@ -115,7 +114,7 @@ void Creature::attaquer(Pouvoir pouvoir, Creature & creature)// A MODIFIER... (s
         if(pouvoirs_[i] == &pouvoir)
         attaque=true;
 	}
-	if (attque && energie_ >= pouvoir.getEnergieNecessaire())
+	if (attaque && energie_ >= pouvoir.getEnergieNecessaire())
     {
 		if (creature.getPointDeVie() >= 0)
         {
@@ -133,10 +132,10 @@ void Creature::attaquer(Pouvoir pouvoir, Creature & creature)// A MODIFIER... (s
 				else
 					creature.setPointDeVie(creature.getPointDeVie() - degat);
 				cout << creature.getNom() << " a encore " << creature.getPointDeVie() << " PV" << endl;
-				energie_ -= pouvoir_.getEnergieNecessaire();    //je pense que ce serait plus logique de mettre cette ligne de code avant de savoir si la créature est vaincue car l'attaquant est censé utiliser de l'énergie dans tous les cas
+				energie_ -= pouvoir.getEnergieNecessaire();    //je pense que ce serait plus logique de mettre cette ligne de code avant de savoir si la créature est vaincue car l'attaquant est censé utiliser de l'énergie dans tous les cas
 			}
 			else {
-				cout << "Attaque " << pouvoir_.getNom() << " a échouée" << endl;
+				cout << "Attaque " << pouvoir.getNom() << " a échouée" << endl;
 			}
 		}
 		else
@@ -205,7 +204,7 @@ void Creature::setNiveau(unsigned int niveau)
 	niveau_ = niveau;
 }
 
-void Creature::setPouvoirs(const vector <Pouvoir*> pouvoirs) // A MODIFIER... (si necessaire)
+void Creature::setPouvoirs(vector<Pouvoir*> pouvoirs) // A MODIFIER... (si necessaire)
 {
 	if(pouvoirs_.size()==pouvoirs.size()){
         for(int i=0;i<pouvoirs.size();i++){
@@ -226,10 +225,14 @@ void Creature::setPouvoirs(const vector <Pouvoir*> pouvoirs) // A MODIFIER... (s
         }
         for(int i=pouvoirs.size();i<pouvoirs_.size();i++){
             delete pouvoirs_[i];
-            pouvoirs_[i]=nullptr;
             pouvoirs_.pop_back();
         }
 	}
+}
+
+void Creature::setNom(const string& nom)
+{
+    nom_=nom;
 }
 
 void Creature::information() const // A MODIFIER... (si necessaire)
@@ -239,7 +242,9 @@ void Creature::information() const // A MODIFIER... (si necessaire)
 		<< "Il est au niveau " << niveau_ << " avec " << experience_ << "d'XP" << endl
 		<< "Il lui manque " << experienceNecessaire_ - experience_ << " jusqu'au prochain niveau " << endl;
 	cout << "Son pouvoir  est : ";
-	pouvoirs_.description();
+	for(unsigned int i=0;i<pouvoirs_.size();i++){
+        pouvoirs_[i]->description();
+    }
 	cout << endl;
 }
 
@@ -248,7 +253,7 @@ void Creature::information() const // A MODIFIER... (si necessaire)
 //operators
 Creature& Creature::operator=(const Creature& creature)
 {
-    if(this!=creature){
+    if(this != &creature){
         for(int i=pouvoirs_.size()-1;i>=0;i--){
             delete pouvoirs_[i];
             pouvoirs_[i]=nullptr;
@@ -264,8 +269,8 @@ Creature& Creature::operator=(const Creature& creature)
         niveau_=creature.niveau_;
         experience_=creature.experience_;
         experienceNecessaire_=creature.experienceNecessaire_;
-        for(int i=0;i<pouvoirs.size();i++){
-            pouvoirs_.push_back(new Pouvoir(*pouvoirs[i]));
+        for(int i=0;i<creature.getPouvoirs().size();i++){
+            pouvoirs_.push_back(new Pouvoir(*creature.getPouvoirs()[i]));
         }
     }
     return *this;
@@ -297,20 +302,20 @@ bool operator==(const string& nom, const Creature& creature)    //pour comparer 
 
 ostream& operator<<(ostream& o, const Creature& creature) //pour l'affichage de créature avec ou sans pouvoir
 {
-    if(pouvoirs_.size()==0){    //affichage sans pouvoir
-        o<<nom_<<" a "<<attaque_<<" en attaque et "<<defense_<<" en defense,\nil a "
-        <<pointDeVie_<<"/"<<pointDeVieTotal_<<" PV et "<<energie_<<"/"<<energieTotal_<<" PE,\nil est au niveau "
-        <<niveau_<<" avec "<<experience_<<" XP,\n il lui manque "
-        <<experienceNecessaire_-experience_<<" XP pour monter d'un niveau.\nPouvoirs :\n"
-        <<nom_<<" ne possede aucun pouvoir";
+    if(creature.pouvoirs_.size()==0){    //affichage sans pouvoir
+        o<<creature.nom_<<" a "<<creature.attaque_<<" en attaque et "<<creature.defense_<<" en defense,\nil a "
+        <<creature.pointDeVie_<<"/"<<creature.pointDeVieTotal_<<" PV et "<<creature.energie_<<"/"<<creature.energieTotal_<<" PE,\nil est au niveau "
+        <<creature.niveau_<<" avec "<<creature.experience_<<" XP,\n il lui manque "
+        <<creature.experienceNecessaire_-creature.experience_<<" XP pour monter d'un niveau.\nPouvoirs :\n"
+        <<creature.nom_<<" ne possede aucun pouvoir";
     }
     else{   //affichage avec pouvoirs
-        o<<nom_<<" a "<<attaque_<<" en attaque et "<<defense_<<" en defense,\nil a "
-        <<pointDeVie_<<"/"<<pointDeVieTotal_<<" PV et "<<energie_<<"/"<<energieTotal_<<" PE,\nil est au niveau "
-        <<niveau_<<" avec "<<experience_<<" XP,\n il lui manque "
-        <<experienceNecessaire_-experience_<<" XP pour monter d'un niveau.\nPouvoirs :\n";
-        for(int i=0; i<pouvoirs_.size();i++){
-            o<<*pouvoirs_[i]<<"\n";
+        o<<creature.nom_<<" a "<<creature.attaque_<<" en attaque et "<<creature.defense_<<" en defense,\nil a "
+        <<creature.pointDeVie_<<"/"<<creature.pointDeVieTotal_<<" PV et "<<creature.energie_<<"/"<<creature.energieTotal_<<" PE,\nil est au niveau "
+        <<creature.niveau_<<" avec "<<creature.experience_<<" XP,\n il lui manque "
+        <<creature.experienceNecessaire_-creature.experience_<<" XP pour monter d'un niveau.\nPouvoirs :\n";
+        for(int i=0; i<creature.pouvoirs_.size();i++){
+            o<<*creature.pouvoirs_[i]<<"\n";
         }
     }
     return o;
@@ -323,7 +328,7 @@ bool Creature::ajouterPouvoir(const Pouvoir& pouvoir)
             return false;
         }
         //si elle ne le possède pas on l'ajoute
-            pouvoirs_.push_back(&pouvoir);
+            pouvoirs_.push_back(new Pouvoir(pouvoir));
             return true;
     }
 }
@@ -332,7 +337,7 @@ bool Creature::oublierPouvoir(const string& nom)
 {
     //on cherche si la creature possède le pouvoir demandé
     for(int i=0;i<pouvoirs_.size();i++){
-        if(pouvoirs_[i].getNom()==nom){ //si elle le possède
+        if(pouvoirs_[i]->getNom()==nom){ //si elle le possède
             pouvoirs_[i]=pouvoirs_[pouvoirs_.size()-1]; //on met le dernier pouvoir du vecteur à sa place
             delete pouvoirs_[pouvoirs_.size()-1];   //on supprime le dernier pointeur
             pouvoirs_.pop_back();   //on le pop pour réduire le vecteur

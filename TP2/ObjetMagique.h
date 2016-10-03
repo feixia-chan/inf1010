@@ -20,8 +20,7 @@ public:
 
 	void affichage() const; // A MODIFIER... (si necessaire)
 
-    friend ostream& operator<< (const ObjetMagique& potion, ostream& flux);
-
+	friend ostream& operator<<(ostream& flux, const ObjetMagique& potion);
 
 private:
 	string nom_;
