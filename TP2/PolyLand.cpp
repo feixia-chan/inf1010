@@ -194,3 +194,7 @@ bool PolyLand::operator+=(const Dresseur& dresseur){
 bool operator-=(const Dresseur& dresseur){
     return retirerDresseur(dresseur.getNom());
 }
+
+ostream& operator<<(ostream& flux, Dresseur dresseur){
+    flux << dresseur; //on utilise l'opérateur < de la classe Dresseur
+}

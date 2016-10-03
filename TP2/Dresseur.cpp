@@ -180,3 +180,4 @@ bool Dresseur::operator==(const string& nom) const{
 bool operator==(const string& nom, const Dresseur& d2){
     return nom==d2.getNom();
 }
+friend ostream& operator<<(ostream& flux, Dresseur dresseur);

@@ -44,6 +44,7 @@ public:
 	void infoDresseur(const string& nom) const; // A MODIFIER... (si necessaire)
 
 	//________TP2_______
+	friend ostream& operator<<(ostream& flux, Dresseur dresseur);
 
 private:
 	//________TP2_______
