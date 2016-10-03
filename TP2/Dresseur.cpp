@@ -105,14 +105,14 @@ void Dresseur::utiliserObjetMagique(Creature* creature)
 	}
 }
 
-bool Dresseur::ajouterCreature(const Creature& creature)
+bool Dresseur::ajouterCreature(Creature* creature)
 {
 		for (unsigned int i = 0; i < creatures_.size(); i++)
 		{
-			if (creatures_[i]->getNom() == creature.getNom())
+			if (creatures_[i]->getNom() == creature->getNom())
 				return false;   //si on a déjà la créature on peut pas l'ajouter
 		}
-		creatures_.push_back(new Creature(creature));   //ajout d'une créature
+		creatures_.push_back(new Creature(*creature));   //ajout d'une créature
 		return true;
 }
 

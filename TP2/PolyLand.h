@@ -54,5 +54,6 @@ private:
 };
 
 bool operator+=(const Dresseur& dresseur);
+bool operator-=(const Dresseur& dresseur);
 
 #endif

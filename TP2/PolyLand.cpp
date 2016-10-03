@@ -189,5 +189,8 @@ void PolyLand::infoDresseur(const string& nom) const // A MODIFIER... (si necess
 
 //opérateurs
 bool PolyLand::operator+=(const Dresseur& dresseur){
-
+    return ajouterDresseur();
+}
+bool operator-=(const Dresseur& dresseur){
+    return retirerDresseur(dresseur.getNom());
 }

@@ -33,10 +33,11 @@ public:
     Creature* getUneCreature(Creature creature); //methode obtenirUneCreature renommée de façon cohérente avec nos accesseurs
 
 	void utiliserObjetMagique(Creature* creature);
-	bool ajouterCreature(const Creature& creature); // A MODIFIER... (si necessaire)
+	bool ajouterCreature(Creature* creature); // modifié
 	bool enleverCreature(const string& nom); // A MODIFIER... (si necessaire)
 
-	void affichage() const; // A COMPLETER... (si necessaire)
+	void affichage() const; //a supprimer ?
+
     //opérateurs
     friend ostream& operator<<(ostream& flux, Dresseur dresseur);
 
