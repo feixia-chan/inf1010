@@ -100,7 +100,7 @@ int main()
 	Pokachu.ajouterPouvoir(tonerre);
 	Touflamme.ajouterPouvoir(tonerre);
 	Pokachoum.ajouterPouvoir(eclair);
-
+    cout << Pokachoum;
 	cout << endl << "AJOUT DE CREATURES ET DE DRESSEURS A POLYLAND" << endl << endl;
 
 	PolyLand polyland;
@@ -164,7 +164,7 @@ int main()
 	cout << "Vous avez rencontré un Salimouche sauvage qui vous attaque..." << endl;
 
 	Salimouche.attaquer(bouleDeFeu, *(Vous.getUneCreature("Pokachu")));
-/*	Vous.getUneCreature("Pokachu")->attaquer(eclair, Salimouche);
+	Vous.getUneCreature("Pokachu")->attaquer(eclair, Salimouche);
 	//Vous gagnez obligatoirement le duel
 	while (Salimouche.getPointDeVie() > 0) {
 		((Vous.getUneCreature("Pokachu")))->attaquer(eclair, Salimouche);
@@ -181,7 +181,7 @@ int main()
 
 	cout << endl;
 	cout << "Vous trouvez une potion magique, vous décidez de l'utilisez sur Pokachu" << endl;
-/*
+
 	ObjetMagique potionMagique("Potion magique", 15);
 	cout << potionMagique << endl;
 	//Vous venez de trouver une potion magique
@@ -220,7 +220,6 @@ int main()
 
 
 
-
 	cout << "Pokachu et salimouche n'arrete pas de se chamailler, vous decidez d'abandonner Salimouche" << endl;
 
 	//Vous en avez marre des chamailleries, vous décidez de relacher Salimouche
@@ -236,15 +235,15 @@ int main()
 	/*       FIN DES TESTS         */
 	/*******************************/
 
-/*
+
 	cout << endl << "INFO DRESSEUR APRES TOUTES CES PERIPETIES" << endl;
 	// Afficher les informations de Polyland
 	// A COMPLETER...
 	cout<<polyland<<endl;
 	cout << endl << "DERNIER TESTS" << endl;
+
 	// Cette commande ne devrait pas fonctionner
 	Carapouce.oublierPouvoir(eclair.getNom());
-
 	// Suite a un combat intense, Carapouce perd son pouvoir pistoletAEau. Retirez ce pouvoir.
 	// A COMPLETER...
 	Carapouce.oublierPouvoir(pistoletAEau.getNom());
@@ -273,7 +272,8 @@ int main()
 
 	// Liberer les ressources s'il le faut
 	// A COMPLETER...
-/*	delete Sasha;
+
+	delete Sasha;
 	Sasha=nullptr;
 	delete Pierre;
 	Pierre=nullptr;
@@ -283,6 +283,6 @@ int main()
 	creatureAleatoire=nullptr;
 
 
-*/	system("pause");
+	system("pause");
 	return 0;
 }

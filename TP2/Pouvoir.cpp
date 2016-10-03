@@ -62,9 +62,11 @@ void Pouvoir::description() const // A MODIFIER... (si necessaire)
 //surcharge d'operateurs
 Pouvoir& Pouvoir::operator=(const Pouvoir& pouvoir)
 {
+    if(this!=&pouvoir){
         nom_=pouvoir.nom_;
         nombreDeDegat_=pouvoir.nombreDeDegat_;
         energieNecessaire_=pouvoir.energieNecessaire_;
+    }
     return *this;
 }
 

@@ -110,16 +110,16 @@ void Creature::attaquer(Pouvoir pouvoir, Creature & creature)// A MODIFIER... (s
 {
 	//on vérifie que la créature possède le pouvoir qu'on lui demande de lancer
 	bool attaque=false;
-	cout <<"boucle"<<endl
 	for(int i=0;i<pouvoirs_.size();i++){
-            cout<<i<<endl;
-        if(pouvoirs_[i] == &pouvoir){
+        if(*pouvoirs_[i] == pouvoir){
             cout << "ATTAQUE !"<<endl;
         attaque=true;
         }
 	}
 	if (attaque && energie_ >= pouvoir.getEnergieNecessaire())
     {
+        cout << "if"<<endl;
+
 		if (creature.getPointDeVie() >= 0)
         {
 			//Calcul du nombre de degat selon une formule
@@ -143,9 +143,9 @@ void Creature::attaquer(Pouvoir pouvoir, Creature & creature)// A MODIFIER... (s
 			}
 		}
 		else
-			cout << "Vous deja avez vaincu " << creature.getNom() << endl;
+			cout << "Vous avez déjà vaincu " << creature.getNom() << endl;
 	}
-
+    cout <<"marche" <<endl;
 }
 
 int Creature::experienceGagnee(const Creature& creature)
@@ -328,13 +328,16 @@ bool Creature::ajouterPouvoir(const Pouvoir& pouvoir)
 {
     for(int i=0;i<pouvoirs_.size();i++){    //on vérifie si la créature possède déjà le pouvoir
         if(pouvoirs_[i] == &pouvoir){
+                cout << "pouvoir deja existant"<< endl;
             return false;
         }
+    }
         //si elle ne le possède pas on l'ajoute
             pouvoirs_.push_back(new Pouvoir(pouvoir));
+            cout<<"pouvoir ajouté !"<<endl;
             return true;
     }
-}
+
 
 bool Creature::oublierPouvoir(const string& nom)
 {
@@ -344,6 +347,7 @@ bool Creature::oublierPouvoir(const string& nom)
             pouvoirs_[i]=pouvoirs_[pouvoirs_.size()-1]; //on met le dernier pouvoir du vecteur à sa place
             delete pouvoirs_[pouvoirs_.size()-1];   //on supprime le dernier pointeur
             pouvoirs_.pop_back();   //on le pop pour réduire le vecteur
+            cout << "la créature a oublié "<< nom<< endl;
             return true;
         }
     }
