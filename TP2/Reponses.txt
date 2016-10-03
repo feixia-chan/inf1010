@@ -1,0 +1,10 @@
+1.Quelle est l’utilité de l’opérateur = et du constructeur par copie ?  
+Ils permettent de crééer un nouvel objet possédant tous les attributs/caractéristiques de l'objet copié.
+
+2. Dans quel cas est-il absolument nécessaire de les implémenter ? 
+Il est nécessaire de les implémenter si on veut copier un pointeur. En effet, une simple copie créera un pointeur pointant vers le même objet, alors qu'avec le constructeur par copie un nouveau pointeur pointera vers un nouvel objet possédant les mêmes caractéristiques que celui copié.
+
+3. Qu’est-ce qui différencie l’opérateur = du constructeur par copie ? 
+ Constructeur par copie : on le créé directement un nouvel objet avec les attributs de l'objet copié.
+ Opérateur = : on affecte à un objet déjà existant tous les attributs de l'objet à copier.
+ 
