@@ -110,9 +110,13 @@ void Creature::attaquer(Pouvoir pouvoir, Creature & creature)// A MODIFIER... (s
 {
 	//on vérifie que la créature possède le pouvoir qu'on lui demande de lancer
 	bool attaque=false;
+	cout <<"boucle"<<endl
 	for(int i=0;i<pouvoirs_.size();i++){
-        if(pouvoirs_[i] == &pouvoir)
+            cout<<i<<endl;
+        if(pouvoirs_[i] == &pouvoir){
+            cout << "ATTAQUE !"<<endl;
         attaque=true;
+        }
 	}
 	if (attaque && energie_ >= pouvoir.getEnergieNecessaire())
     {
@@ -344,5 +348,6 @@ bool Creature::oublierPouvoir(const string& nom)
         }
     }
     //si elle ne le possède pas
+    cout << "cette créature ne peut pas oublier "<< nom <<"!!" << endl;
     return false;
 }

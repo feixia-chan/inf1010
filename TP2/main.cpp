@@ -111,19 +111,21 @@ int main()
     polyland+=Pierre;
     polyland+=Regis;
     polyland.ajouterCreature(Salimouche);
- /*   polyland.ajouterCreature(Carapouce);
+    polyland.ajouterCreature(Carapouce);
     polyland.ajouterCreature(Balbazar);
     polyland.ajouterCreature(Pokachu);
     polyland.ajouterCreature(Touflamme);
     polyland.ajouterCreature(Pokachoum);
 
-	//Ce dresseur est deja present, il ne devrais pas s'ajouter.
+	//Ce dresseur est deja present, il ne devrait pas s'ajouter.
 	// A COMPLETER...
 	polyland += Pierre;
 
 	cout << "TEST D'AFFICHAGE" << endl << endl;
 	// Tests d'affichage
 	cout << polyland << endl;
+
+
 	cout << *(polyland.choisirCreatureAleatoire()) << endl;
 	cout << *(polyland.choisirDresseurAleatoire()) << endl;
 
@@ -154,7 +156,7 @@ int main()
 	/*                       DEBUT DES TESTS                           */
 	/* Les modifications restantes sont a la fin de la fonction main.  */
 	/*******************************************************************/
-/*	//Duel entre vous et salimouche
+	//Duel entre vous et salimouche
 	cout << endl << "TESTS DE COMBAT" << endl;
 
 	cout << endl << "Un Salimouche surgit" << endl;
@@ -162,7 +164,7 @@ int main()
 	cout << "Vous avez rencontré un Salimouche sauvage qui vous attaque..." << endl;
 
 	Salimouche.attaquer(bouleDeFeu, *(Vous.getUneCreature("Pokachu")));
-	Vous.getUneCreature("Pokachu")->attaquer(eclair, Salimouche);
+/*	Vous.getUneCreature("Pokachu")->attaquer(eclair, Salimouche);
 	//Vous gagnez obligatoirement le duel
 	while (Salimouche.getPointDeVie() > 0) {
 		((Vous.getUneCreature("Pokachu")))->attaquer(eclair, Salimouche);
@@ -179,7 +181,7 @@ int main()
 
 	cout << endl;
 	cout << "Vous trouvez une potion magique, vous décidez de l'utilisez sur Pokachu" << endl;
-
+/*
 	ObjetMagique potionMagique("Potion magique", 15);
 	cout << potionMagique << endl;
 	//Vous venez de trouver une potion magique

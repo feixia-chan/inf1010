@@ -68,8 +68,10 @@ bool PolyLand::ajouterDresseur(Dresseur* dresseur) //modifié
 
     for (unsigned int i = 0; i < nombreDresseurs_; i++)
     {
-        if (listeDresseurs_[i]->getNom() == dresseur->getNom())
+        if (listeDresseurs_[i]->getNom() == dresseur->getNom()){
+            cout << "ce dresseur existe deja !"<<endl;
             return false;
+        }
     }
     nombreDresseurs_++;
     listeDresseurs_.push_back(dresseur);
@@ -80,12 +82,17 @@ bool PolyLand::ajouterDresseur(Dresseur* dresseur) //modifié
 
 bool PolyLand::ajouterCreature(const Creature& creature) // A MODIFIER... (si necessaire)
 {
-    if(nombreCreatures_ >= MAX_CREATURES)
-        return false;
-    listeCreatures_[nombreCreatures_] = new Creature(creature);
-    nombreCreatures_++;
-    cout << creature.getNom() << " a bien été ajouté !" << endl;
-    return true;
+        for (unsigned int i = 0; i < nombreCreatures_; i++)
+    {
+        if (listeCreatures_[i]->getNom() == creature.getNom())
+            return false;
+    }
+
+        listeCreatures_.push_back(new Creature(creature));
+        nombreCreatures_++;
+        cout << creature.getNom() << " a bien été ajouté !" << endl;
+        return true;
+
 }
 
 bool PolyLand::retirerDresseur(const string& nom) // A MODIFIER... (si necessaire)
@@ -230,7 +237,7 @@ bool PolyLand::retirerCreature(const string& nom) // A MODIFIER... (si necessair
     {
         for(unsigned int i=0; i<polyland.listeDresseurs_.size(); i++)
         {
-            flux << polyland.listeDresseurs_[i];
+            flux << *polyland.listeDresseurs_[i];
         }
         return flux;
     }
