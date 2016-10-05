@@ -1,3 +1,10 @@
+/*
+Fichier: EtatEndormi.h
+Auteur(s): Alexandra LIN & Maxime HAUDEGOND
+Date de creation: 5/10/2016
+Description: sous classe de EtatCreature
+*/
+
 #ifndef ETATENDORMI_H
 #define ETATENDORMI_H
 

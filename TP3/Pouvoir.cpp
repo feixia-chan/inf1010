@@ -6,7 +6,7 @@ Pouvoir::Pouvoir()
 {
 }
 
-Pouvoir::Pouvoir(const string& nom, 
+Pouvoir::Pouvoir(const string& nom,
 	unsigned int nombreDeDegat,	unsigned int energieNecessaire):
 	nom_(nom), nombreDeDegat_(nombreDeDegat), energieNecessaire_(energieNecessaire), type_(TypeEtat_normal)
 {
@@ -86,7 +86,7 @@ void Pouvoir::appliquerEffetOffensif(Creature & creatureEnnemie)
 
 void Pouvoir::appliquerEffetDefensif(Creature & creatureAllie)
 {
-    //par défaut un pouvoir n'apas d'effet sur la 
+    //par défaut un pouvoir n'a pas d'effet sur la
     //creature qui lance le pouvoir
 
     return;

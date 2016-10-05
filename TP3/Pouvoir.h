@@ -3,7 +3,7 @@ Fichier: Pouvoir.h
 Auteur(s): Alexandre MAO
 Date de creation: 31 aout 2016
 Date de modification: 30 septembre par Philippe Troclet
-Description: La classe Pouvoir correspond aux differents attaques 
+Description: La classe Pouvoir correspond aux differents attaques
 */
 #ifndef POUVOIR_H
 #define POUVOIR_H
@@ -22,7 +22,7 @@ class Pouvoir
 {
 public:
 	Pouvoir();
-	Pouvoir(const string& nom, 
+	Pouvoir(const string& nom,
 		unsigned int nombreDeDegat, unsigned int energieNecessaire);
 	~Pouvoir();
 
@@ -44,6 +44,7 @@ public:
 
     void appliquerEffetOffensif(Creature& creatureEnnemie);
     void appliquerEffetDefensif(Creature& creatureAllie);
+
 protected:
 	string nom_;
 	unsigned int nombreDeDegat_ ;

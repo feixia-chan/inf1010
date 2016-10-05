@@ -1,3 +1,10 @@
+/*
+Fichier: EtatEmpoisonne.h
+Auteur(s): Alexandra LIN & Maxime HAUDEGOND
+Date de creation: 5/10/2016
+Description: sous classe de EtatCreature
+*/
+
 #ifndef ETATEMPOISONNE_H
 #define ETATEMPOISONNE_H
 
