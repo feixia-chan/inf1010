@@ -1,8 +1,8 @@
 #ifndef ETATENDORMI_H
 #define ETATENDORMI_H
 
-#include <EtatCreature.h>
-
+#include "EtatCreature.h"
+using namespace std;
 
 class EtatEndormi : public EtatCreature
 {

@@ -1,8 +1,8 @@
 #ifndef ETATCONFUS_H
 #define ETATCONFUS_H
 
-#include <EtatCreature.h>
-
+#include "EtatCreature.h"
+using namespace std;
 
 class EtatConfus : public EtatCreature
 {
