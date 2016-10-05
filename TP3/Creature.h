@@ -3,7 +3,7 @@ Fichier: Creature.h
 Auteur(s): Alexandre MAO
 Date de creation: 31 aout 2016
 Date de modification: 30 septembre 2016 par Philippe Troclet
-Description: Les creatures sont des etres destines au combat 
+Description: Les creatures sont des etres destines au combat
 */
 #ifndef CREATURE_H
 #define CREATURE_H
@@ -26,10 +26,10 @@ class Creature
 {
 public:
 	Creature();
-	Creature(const string& nom, unsigned int attaque, 
+	Creature(const string& nom, unsigned int attaque,
 		unsigned int defense, unsigned int pointDeVie, unsigned int energie);
 	~Creature();
-	
+
 	string getNom() const;
 	unsigned int getAttaque() const;
 	unsigned int getDefense() const;
@@ -47,7 +47,7 @@ public:
 
 	bool apprendrePouvoir(Pouvoir* pouvoir);
 	bool oublierPouvoir(Pouvoir* pouvoir);
-	
+
 	void setNom(const string& nom);
 	void setAttaque(unsigned int attaque);
 	void setDefense(unsigned int defense);
