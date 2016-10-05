@@ -14,7 +14,7 @@ class EtatConfus : public EtatCreature
 
     void appliquerEtat(Creature& creature); //une fois sur 3 : elle perd 5% de ses PV actuels ou 5PV direct.
                                             //La durée est décrémentée
-    bool peutAttaquer() const; //marche à 50%
+    bool peutAttaquer() const; //la créature peut attaquer l'autre 50% du tps
     bool estFini() const; //finit si duree =0 ou une fois sur trois
 
 
@@ -23,6 +23,6 @@ class EtatConfus : public EtatCreature
     private:
 };
 
-ostream& operator<<(ostream& o, const EtatCreature& etatCreature); //fonction globale d'affichage
+ostream& operator<<(ostream& o, const Etatconfus& etatCreature); //fonction globale d'affichage
 
 #endif // ETATCONFUS_H
