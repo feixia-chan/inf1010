@@ -2,7 +2,7 @@
 Fichier: EtatCreature.h
 Auteur(s): Philippe Troclet
 Date de creation: 30 septembre 2016
-Description: Caractèrise l'état d'une créature, et l'impact qu'à ce dernier sur la 
+Description: Caractèrise l'état d'une créature, et l'impact qu'à ce dernier sur la
                 dite créature
 */
 #ifndef ETAT_CREATURE_H
@@ -10,7 +10,7 @@ Description: Caractèrise l'état d'une créature, et l'impact qu'à ce dernier sur 
 
 #include <iostream>
 
-#include "Creature.h"  
+#include "Creature.h"
 #include "TypeEtat.h"
 
 using namespace std;
@@ -34,10 +34,10 @@ public:
 
     friend ostream& operator<<(ostream& o, const EtatCreature& etatCreature);
 private:
-    string nom_;
+    string nom_;    //normal, faible, critique
 protected:
-    unsigned int duree_;
-    TypeEtat type_;
+    unsigned int duree_;    //durée de l'état nom_
+    TypeEtat type_;     //normal, confus, empoisonné ou endormi
 };
 #endif // !ETAT_CREATURE_H
 
