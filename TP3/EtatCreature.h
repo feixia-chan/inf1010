@@ -34,7 +34,7 @@ public:
 
     friend ostream& operator<<(ostream& o, const EtatCreature& etatCreature);
 private:
-    string nom_;    //normal, faible, critique
+    string nom_;    //normal, confus, empoisonné ou endormi
 protected:
     unsigned int duree_;    //durée de l'état nom_
     TypeEtat type_;     //normal, confus, empoisonné ou endormi

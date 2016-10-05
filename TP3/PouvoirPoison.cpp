@@ -10,12 +10,12 @@ C:\Users\Alexandra\Documents\POLY\Info 1010\TP\Rendu\inf1010\TP3
 #include "PouvoirPoison.h"
 
 PouvoirPoison::PouvoirPoison(const string& nom,	unsigned int nombreDeDegat, unsigned int energieNecessaire):
-    nom_(nom),nombreDeDegat_(nombreDeDegat),energieNecessaire_(energieNecessaire), type_(TypeEtat_empoisonne){
+    Pouvoir(nom, nombreDegat, energieNecessaire), type_(TypeEtat_empoisonne){
     duree_=0;
 }
 
 PouvoirPoison::PouvoirPoison(const string& nom,	unsigned int nombreDeDegat, unsigned int energieNecessaire, int duree):
-    nom_(nom),nombreDeDegat_(nombreDeDegat),energieNecessaire_(energieNecessaire),duree_(duree_),type_(TypeEtat_empoisonne){
+    Pouvoir(nom, nombreDegat, energieNecessaire),duree_(duree_),type_(TypeEtat_empoisonne){
 
 }
 
@@ -32,5 +32,5 @@ ostream& operator<<(ostream& os, const PouvoirPoison& pouvoir){
 }
 
 void PouvoirPoison::appliquerEffetOffensif(Creature& creatureEnnemie){
-
+    creatureEnnemie.setEtat("empoisonnée");//a quoi ca sert?
 }

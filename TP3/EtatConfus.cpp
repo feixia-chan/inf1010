@@ -6,7 +6,7 @@ EtatConfus::EtatConfus(const string& nom): nom_(nom), duree_(0), type_(TypeEtat:
 
 }
 
-EtatConfus::EtatConfus(const string& nom, unsigned int duree): nom_(nom), duree_(duree), type_(TypeEtat::TypeEtat_confus)
+EtatConfus::EtatConfus(const string& nom, unsigned int duree): EtatCreature(nom, duree) , type_(TypeEtat::TypeEtat_confus)
 {
 
 }
