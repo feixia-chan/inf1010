@@ -1,3 +1,12 @@
+/*
+Fichier: PouvoirPoison.h
+Auteur(s): Alexandra LIN & Maxime HAUDEGOND
+Date de creation: 5/10/2016
+Description: sous classe de Pouvoir
+
+C:\Users\Alexandra\Documents\POLY\Info 1010\TP\Rendu\inf1010\TP3
+*/
+
 #ifndef POUVOIRPOISON_H
 #define POUVOIRPOISON_H
 
