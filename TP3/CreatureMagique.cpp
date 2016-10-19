@@ -8,9 +8,9 @@ CreatureMagique::CreatureMagique(const string& nom, unsigned int attaque,
 CreatureMagique::~CreatureMagique()
 {}
 //constructeur par copie
-CreatureMagique::CreatureMagique(const CreatureMagique& creatureMagique)
+CreatureMagique::CreatureMagique(const CreatureMagique& creatureMagique) : Creature(creatureMagique)
 {
-    Creature(creatureMagique);
+
     etat_=new EtatCreature(*creatureMagique.etat_);
 }
 //Accesseurs
@@ -45,8 +45,8 @@ CreatureMagique& CreatureMagique::operator=(const CreatureMagique& creatureMagiq
 void CreatureMagique::attaquer(const Pouvoir& pouvoir, Creature& creature)
 {
     Creature::attaquer(pouvoir, creature);
-    if(pointDeVie_+bonus_>=pointDeVieTotal_){
-        pointDeVie_=pointDeVieTotal_;
+    if(this->getPointDeVie()+bonus_>this->getPointDeVieTotal()){
+        this->setPointDeVie(this->getPointDeVieTotal());
     }
     else{
         pointDeVie_+=bonus_;
