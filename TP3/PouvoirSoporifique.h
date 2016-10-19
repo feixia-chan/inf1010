@@ -10,7 +10,7 @@ Description: sous classe de Pouvoir
 #define POUVOIRSOPORIFIQUE_H
 
 #include "Pouvoir.h"
-
+include namespace std
 
 class PouvoirSoporifique : public Pouvoir
 {

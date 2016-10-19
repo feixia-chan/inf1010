@@ -11,6 +11,7 @@ Description: sous classe de Pouvoir
 
 #include "Pouvoir.h"
 
+include namespace std
 
 class PouvoirHallucinogene : public Pouvoir
 {

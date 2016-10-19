@@ -11,6 +11,7 @@ Description: les elixirs servent à soigner les créatures
 
 #include "ObjetMagique.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
 

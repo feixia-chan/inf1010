@@ -11,7 +11,7 @@ Description: sous classe de EtatCreature
 #include "EtatCreature.h"
 using namespace std;
 
-class EtatEmpoisonne : public EtatCreatureS
+class EtatEmpoisonne : public EtatCreature
 {
     public:
         EtatEmpoisonne(const string& nom);

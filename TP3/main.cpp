@@ -4,7 +4,7 @@
 Fichier: main.cpp
 Auteur(s): Alexandre MAO
 Date de creation: 31 aout 2016
-Date de modification: 30 septembre 2016 par Philippe Troclet
+Date de modification:
 Description: Programme de test
 */
 
@@ -45,7 +45,9 @@ void appliquerEtatSelonType(Creature& creature) {
         etatEndormi = static_cast<EtatEndormi*>(creature.getEtat());
         etatEndormi->appliquerEtat(creature);
         break;
-    case TypeEtat_confus: //TODO à compléter
+    case TypeEtat_confus:
+        etatConfus = static_cast<EtatConfus*>(creature.getEtat());
+        etatCOnfus->appliquerEtat(creature);
         break;
     default:
         break;
@@ -76,6 +78,8 @@ bool peutAttaquerSelonType(Creature& creature) {
         break;
     case TypeEtat_confus:
         //TODO
+        etatConfus = static_cast<EtatConfus*>(creature.getEtat());
+        peutAttaquer = etatConfus->peutAttaquer();
         break;
     default:
         break;
@@ -94,6 +98,7 @@ bool estFiniSelonType(Creature& creature) {
     {
     case TypeEtat_normal:
         //TODO
+        estFini = etat->estFini();
         break;
     case TypeEtat_empoisonne:
         etatPoison = static_cast<EtatEmpoisonne*>(creature.getEtat());
@@ -222,7 +227,7 @@ int main()
     {
         Miaouss.attaquer(morsureVenin, Pokachu);
         morsureVenin.appliquerEffetOffensif(Pokachu);
-        //Pauvre pokachu, l'attaque l'a possibelment empoisonne!
+        //Pauvre pokachu, l'attaque l'a possiblement empoisonné!
         appliquerEtatSelonType(Pokachu);
         if (peutAttaquerSelonType(Pokachu))
             Pokachu.attaquer( eclair, Miaouss);
@@ -306,7 +311,7 @@ int main()
     cout << "Votre Pokachu surprend un Rondodu, terrifié celui-ci lui chante une berceuse" << endl;
     Rondodu.attaquer(berceuse, Pokachu);
     berceuse.appliquerEffetOffensif(Pokachu);
-    //rondodu devrait dormir pour deux tours
+    //rondodu (ou plutot Pokachu ?) devrait dormir pour deux tours
     for (unsigned int i = 0; i < 4; ++i) {
         appliquerEtatSelonType(Pokachu);
     }
@@ -326,6 +331,13 @@ int main()
     cout << Orme << endl;
     cout << Phelina << endl;
     cout << "FIN TEST" << endl;
+
+
+
+
+    //delete : pas de delete dans notre cas ?
+
+
 
 	return 0;
 }
