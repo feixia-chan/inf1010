@@ -25,7 +25,8 @@ ostream& operator<<(ostream& os, const PouvoirPoison& pouvoir){
 }
 
 void PouvoirPoison::appliquerEffetOffensif(Creature& creatureEnnemie){  //meth fausse
-    creatureEnnemie.etat_=nullptr;
-    etat= new EtatEmpoisonne("empoisonne",10)); //il faut créer un nouvel objet etat empoisonné et le remplacer dans etat_
+    delete creatureEnnemie.etat_;
+    //creatureEnnemie.etat_=nullptr;
+    EtatEmpoisonne* etat= new EtatEmpoisonne("empoisonne",duree_); //il faut créer un nouvel objet etat empoisonné et le remplacer dans etat_
     creatureEnnemie.setEtat(static_cast<EtatEmpoisonne>etat);
 }
