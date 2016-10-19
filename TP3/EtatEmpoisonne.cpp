@@ -1,13 +1,13 @@
 #include "EtatEmpoisonne.h"
 
-EtatEmpoisonne::EtatEmpoisonne(const string& nom): EtatCreature(nom), type_(TypeEtat::TypeEtat_empoisonne)
+EtatEmpoisonne::EtatEmpoisonne(const string& nom): EtatCreature(nom)
 {
-
+ type_=TypeEtat_empoisonne;
 }
 
-EtatEmpoisonne::EtatEmpoisonne(const string& nom, unsigned int duree): EtatCreature(nom,duree), type_(TypeEtat::TypeEtat_empoisonne)
+EtatEmpoisonne::EtatEmpoisonne(const string& nom, unsigned int duree): EtatCreature(nom,duree)
 {
-
+ type_=TypeEtat_empoisonne;
 }
 
 EtatEmpoisonne::~EtatEmpoisonne()

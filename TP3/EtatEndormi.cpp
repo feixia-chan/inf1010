@@ -1,12 +1,13 @@
 #include "EtatEndormi.h"
 
-EtatEndormi::EtatEndormi(const string& nom): nom_(nom), duree_(0), type_(TypeEtat::TypeEtat_endormi)
+EtatEndormi::EtatEndormi(const string& nom): EtatCreature(nom)
 {
-
+ type_=TypeEtat_endormi;
 }
 
-EtatConfus::EtatEndormi(const string& nom, unsigned int duree): EtatCreature(nom,duree) , type_(TypeEtat::TypeEtat_endormi)
+EtatConfus::EtatEndormi(const string& nom, unsigned int duree): EtatCreature(nom,duree)
 {
+ type_=TypeEtat_endormi;
 
 }
 
