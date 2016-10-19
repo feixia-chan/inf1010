@@ -2,13 +2,14 @@
 
 
 PouvoirHallucinogene::PouvoirHallucinogene(const string& nom,	unsigned int nombreDeDegat, unsigned int energieNecessaire):
-    Pouvoir(nom, nombreDegat, energieNecessaire), type_(TypeEtat_confus){
+    Pouvoir(nom, nombreDegat, energieNecessaire){
     duree_=0;
+    type_ =TypeEtat_confus;
 }
 
 PouvoirHallucinogene::PouvoirHallucinogene(const string& nom,	unsigned int nombreDeDegat, unsigned int energieNecessaire, int duree):
-    Pouvoir(nom, nombreDegat, energieNecessaire),duree_(duree_),type_(TypeEtat_confus){
-
+    Pouvoir(nom, nombreDegat, energieNecessaire),duree_(duree_)){
+    type_ =TypeEtat_confus;
 }
 
 

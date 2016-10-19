@@ -3,13 +3,14 @@
 #include "PouvoirPoison.h"
 
 PouvoirPoison::PouvoirPoison(const string& nom,	unsigned int nombreDeDegat, unsigned int energieNecessaire):
-    Pouvoir(nom, nombreDegat, energieNecessaire), type_(TypeEtat_empoisonne){
+    Pouvoir(nom, nombreDegat, energieNecessaire){
     duree_=0;
+    type_=TypeEtat_Empoisonne;
 }
 
 PouvoirPoison::PouvoirPoison(const string& nom,	unsigned int nombreDeDegat, unsigned int energieNecessaire, int duree):
-    Pouvoir(nom, nombreDegat, energieNecessaire),duree_(duree_),type_(TypeEtat_empoisonne){
-
+    Pouvoir(nom, nombreDegat, energieNecessaire),duree_(duree_){
+    type_=TypeEtat_Empoisonne;
 }
 
 
