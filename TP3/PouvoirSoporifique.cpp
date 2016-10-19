@@ -24,7 +24,8 @@ ostream& operator<<(ostream& os, const PouvoirSoporifique& pouvoir){
 }
 
 void PouvoirSoporifique::appliquerEffetOffensif(Creature& creatureEnnemie){  //meth fausse
-    creatureEnnemie.etat_=nullptr;
-    etat= new EtatEmpoisonne("endormi",10)); //il faut créer un nouvel objet etat endormi et le remplacer dans etat_
+     delete creatureEnnemie.etat_;
+    //creatureEnnemie.etat_=nullptr;
+    etat= new EtatEmpoisonne("endormi",duree_)); //il faut créer un nouvel objet etat endormi et le remplacer dans etat_
     creatureEnnemie.setEtat(static_cast<EtatEndormi>etat);
 }

@@ -11,7 +11,7 @@ Description: sous classe de EtatCreature
 #include "EtatCreature.h"
 using namespace std;
 
-class EtatEmpoisonne : public EtatCreature
+class EtatEmpoisonne : public EtatCreatureS
 {
     public:
         EtatEmpoisonne(const string& nom);
@@ -22,11 +22,13 @@ class EtatEmpoisonne : public EtatCreature
     void appliquerEtat(Creature& creature); //décrémente durée et enleve 5PV
 
     bool estFini() const; //finit si duree =0
+
+    friend ostream& operator<<(ostream& o, const EtatEmpoisonne& etatCreature); //fonction globale d'affichage
+
     protected:
 
     private:
 };
 
-ostream& operator<<(ostream& o, const EtatEmpoisonne& etatCreature); //fonction globale d'affichage
 
 #endif // ETATEMPOISONNE_H

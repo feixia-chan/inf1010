@@ -24,7 +24,8 @@ ostream& operator<<(ostream& os, const PouvoirHallucinogene& pouvoir){
 }
 
 void PouvoirHallucinogene::appliquerEffetOffensif(Creature& creatureEnnemie){  //meth fausse
-    creatureEnnemie.etat_=nullptr;
-    etat= new EtatEmpoisonne("confus",10)); //il faut créer un nouvel objet etat confus et le remplacer dans etat_
+     delete creatureEnnemie.etat_;
+    //creatureEnnemie.etat_=nullptr;
+    etat= new EtatEmpoisonne("confus",duree_)); //il faut créer un nouvel objet etat confus et le remplacer dans etat_
     creatureEnnemie.setEtat(static_cast<EtatConfus>etat);
 }

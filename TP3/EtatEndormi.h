@@ -24,12 +24,12 @@ class EtatEndormi : public EtatCreature
 
     bool estFini() const; //finit si duree =0
 
+ostream& operator<<(ostream& o, const EtatEndormi& etatCreature); //fonction globale d'affichage
 
     protected:
 
     private:
 };
 
-ostream& operator<<(ostream& o, const EtatEndormi& etatCreature); //fonction globale d'affichage
 
 #endif // ETATENDORMI_H
