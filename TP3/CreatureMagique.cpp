@@ -49,6 +49,6 @@ void CreatureMagique::attaquer(const Pouvoir& pouvoir, Creature& creature)
         this->setPointDeVie(this->getPointDeVieTotal());
     }
     else{
-        pointDeVie_+=bonus_;
+        this->getPointDeVie()+=bonus_;
     }
 }
