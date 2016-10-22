@@ -1,6 +1,6 @@
 #include "GreenBull.h"
 
-GreenBull::GreenBull()  //constructeur par défaut
+GreenBull::GreenBull():ObjetMagique()  //constructeur par défaut
 {}
 
 GreenBull::GreenBull(const string& nom, int bonus):ObjetMagique(nom, bonus) //constructeur par paramètres
@@ -9,16 +9,10 @@ GreenBull::GreenBull(const string& nom, int bonus):ObjetMagique(nom, bonus) //co
 GreenBull::~GreenBull()
 {}
 
-GreenBull::GreenBull(const GreenBull& greenBull)    //constructeur par copie
-{
-    nom_=greenBull.nom_;
-    bonus_=greenBull.bonus_;
-}
-
 //operator
 ostream& operator<<(ostream& flux, const GreenBull potion)
 {
-    return flux<<"La boisson énergisante "<<potion.nom_<<" rend "<<potion.bonus_<<" énergies"<<endl;
+    return flux<<"La boisson énergisante "<<potion.getNom() <<" rend "<<potion.getBonus()<<" énergies";
 }
 
 //surcharge de la méthode utiliserSur

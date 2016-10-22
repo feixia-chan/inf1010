@@ -20,7 +20,6 @@ class PotionMagique : public ObjetMagique
         PotionMagique();    //constructeur par défaut
         PotionMagique(const string& nom, int bonus);    //constructeur par paramètres
         ~PotionMagique();
-        PotionMagique(const PotionMagique& potion); //constructeur par copie
         //operator
         friend ostream& operator<<(ostream& flux, const PotionMagique& potion);
         //surcharge de la méthode utiliserSur

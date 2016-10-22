@@ -10,8 +10,9 @@ Description: sous classe de Pouvoir
 #define POUVOIRHALLUCINOGENE_H
 
 #include "Pouvoir.h"
+#include "EtatConfus.h"
 
-include namespace std
+using namespace std;
 
 class PouvoirHallucinogene : public Pouvoir
 {

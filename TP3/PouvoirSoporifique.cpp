@@ -1,14 +1,15 @@
 #include "PouvoirSoporifique.h"
 
 
-PouvoirSoporifique::PouvoirSoporifique(const string& nom,	unsigned int nombreDeDegat, unsigned int energieNecessaire):
-    Pouvoir(nom, nombreDegat, energieNecessaire){
+PouvoirSoporifique::PouvoirSoporifique(const string& nom, unsigned int nombreDeDegat, unsigned int energieNecessaire):
+    Pouvoir(nom, nombreDeDegat, energieNecessaire){
     duree_=0;
     type_ = TypeEtat_endormi;
 }
 
-PouvoirSoporifique::PouvoirSoporifique(const string& nom,	unsigned int nombreDeDegat, unsigned int energieNecessaire, int duree):
-    Pouvoir(nom, nombreDegat, energieNecessaire),duree_(duree_)){
+PouvoirSoporifique::PouvoirSoporifique(const string& nom, unsigned int nombreDeDegat, unsigned int energieNecessaire, int duree):
+    Pouvoir(nom, nombreDeDegat, energieNecessaire),duree_(duree_)
+{
     type_ = TypeEtat_endormi;
 }
 
@@ -25,8 +26,8 @@ ostream& operator<<(ostream& os, const PouvoirSoporifique& pouvoir){
 }
 
 void PouvoirSoporifique::appliquerEffetOffensif(Creature& creatureEnnemie){  //meth fausse
-     delete creatureEnnemie.etat_;
+     delete creatureEnnemie.getEtat();
     //creatureEnnemie.etat_=nullptr;
-    EtatEndormi* etat= new EtatEmpoisonne("endormi",duree_)); //il faut créer un nouvel objet etat endormi et le remplacer dans etat_
-    creatureEnnemie.setEtat(static_cast<EtatEndormi*>etat);
+    EtatEndormi* etat= new EtatEndormi("endormi",duree_); //il faut créer un nouvel objet etat endormi et le remplacer dans etat_
+    creatureEnnemie.setEtat(static_cast<EtatEndormi*>(etat));
 }

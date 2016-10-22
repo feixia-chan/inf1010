@@ -11,6 +11,7 @@ C:\Users\Alexandra\Documents\POLY\Info 1010\TP\Rendu\inf1010\TP3
 #define POUVOIRPOISON_H
 
 #include "Pouvoir.h"
+#include "EtatEmpoisonne.h"
 
 
 class PouvoirPoison : public Pouvoir

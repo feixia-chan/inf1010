@@ -8,11 +8,9 @@ Professeur::Professeur(const string& nom, const string& equipe) //constructeur p
 
 Professeur::Professeur(const Professeur& prof)
 {
-    nom_=prof.nom_;
-    equipe_=prof.equipe_;
-    for(unsigned int i=0;i<prof.creatures_.size();i++){
-        creatures_.push_back(new Creature(*prof.creatures_[i]));
-    }
+    this->setNom(prof.getNom());
+    this->setEquipe(prof.getEquipe());
+    this->setCreature(prof.getCreatures());
     outil_=new OutilScientifique(*prof.outil_);
 }
 
@@ -23,16 +21,16 @@ Professeur::~Professeur()   //Destructeur
 }
 
 //Accesseurs/Modificateurs
-OutilScientifique* Professeur::getOutil()
+OutilScientifique* Professeur::getOutil() const
 {
     return outil_;
 }
 
-void Professeur::setOutil(OutilScientifique* outil)
+void Professeur::setOutil(OutilScientifique outil)
 {
     delete outil_;
     outil_=nullptr;
-    outil_=outil;
+    outil_=new OutilScientifique(outil);
 }
 
 //Soigner une créature
@@ -53,11 +51,9 @@ Professeur& Professeur::operator=(const Professeur& prof)
     if(this!= &prof){
         delete outil_;
         outil_=nullptr;
-        nom_=prof.nom_;
-        equipe_=prof.equipe_;
-        for(unsigned int i=0;i<prof.creatures_.size();i++){
-            creatures_.push_back(new Creature(*prof.creatures_[i]));
-        }
+        this->setNom(prof.getNom());
+        this->setEquipe(prof.getEquipe());
+        this->setCreature(prof.getCreatures());
         outil_=new OutilScientifique(*prof.outil_);
     }
 }

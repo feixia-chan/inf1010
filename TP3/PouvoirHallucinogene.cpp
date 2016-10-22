@@ -2,13 +2,14 @@
 
 
 PouvoirHallucinogene::PouvoirHallucinogene(const string& nom,	unsigned int nombreDeDegat, unsigned int energieNecessaire):
-    Pouvoir(nom, nombreDegat, energieNecessaire){
+    Pouvoir(nom, nombreDeDegat, energieNecessaire){
     duree_=0;
     type_ =TypeEtat_confus;
 }
 
 PouvoirHallucinogene::PouvoirHallucinogene(const string& nom,	unsigned int nombreDeDegat, unsigned int energieNecessaire, int duree):
-    Pouvoir(nom, nombreDegat, energieNecessaire),duree_(duree_)){
+    Pouvoir(nom, nombreDeDegat, energieNecessaire),duree_(duree)
+{
     type_ =TypeEtat_confus;
 }
 
@@ -25,8 +26,8 @@ ostream& operator<<(ostream& os, const PouvoirHallucinogene& pouvoir){
 }
 
 void PouvoirHallucinogene::appliquerEffetOffensif(Creature& creatureEnnemie){  //meth fausse
-     delete creatureEnnemie.etat_;
+     delete creatureEnnemie.getEtat();
     //creatureEnnemie.etat_=nullptr;
-    EtatHallucinogene* etat= new EtatEmpoisonne("confus",duree_)); //il faut créer un nouvel objet etat confus et le remplacer dans etat_
-    creatureEnnemie.setEtat(static_cast<EtatConfus*>etat);
+    EtatConfus* etat= new EtatConfus("confus",duree_); //il faut créer un nouvel objet etat confus et le remplacer dans etat_
+    creatureEnnemie.setEtat(static_cast<EtatConfus*>(etat));
 }

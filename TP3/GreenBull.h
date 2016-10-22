@@ -19,7 +19,7 @@ class GreenBull : public ObjetMagique
     public:
         GreenBull();
         ~GreenBull();
-        GreenBull(const GreenBull& greenBull);
+        GreenBull(const string& nom , int bonus);
         //operator
         friend ostream& operator<<(ostream& flux, const GreenBull& potion);
         //surcharge de la méthode utiliserSur

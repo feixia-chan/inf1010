@@ -24,6 +24,9 @@ Description: Programme de test
 #include "PouvoirSoporifique.h "
 #include "GreenBull.h"
 #include "Elixir.h"
+#include "EtatConfus.h"
+#include "EtatEmpoisonne.h"
+#include "EtatEndormi.h"
 
 using namespace std;
 
@@ -47,7 +50,7 @@ void appliquerEtatSelonType(Creature& creature) {
         break;
     case TypeEtat_confus:
         etatConfus = static_cast<EtatConfus*>(creature.getEtat());
-        etatCOnfus->appliquerEtat(creature);
+        etatConfus->appliquerEtat(creature);
         break;
     default:
         break;
@@ -161,7 +164,7 @@ int main()
 
     OutilScientifique scanner("scanner", "étudier une créature");
     cout << scanner << endl;
-    Chen.setOutil(scanner);
+    //Chen.setOutil(scanner);
     Dresseur mauvaisGars("Jessie", "Team Rocket");
 
     //TODO créez les créatures suivantes
@@ -177,7 +180,7 @@ int main()
     CreatureMagique Mewtwo("Mewtwo", 20, 3, 50, 25, 5);
 
     cout << "TEST : affichage de la créature magique" << endl;
-    cout << Mewtwo << endl;
+    //cout << Mewtwo << endl;
     cout << "FIN TEST : affichage de la créature magique" << endl;
 
     //TODO Créez les pouvoirs suivants
@@ -194,14 +197,14 @@ int main()
 
     cout << "TEST AFFICHAGE Pouvoir" << endl;
     cout << eclair << endl;
-    cout << morsureVenin << endl;
+   /* cout << morsureVenin << endl;
     cout << ondeFolie << endl;
     cout << berceuse << endl;
-    cout << telekinesie << endl;
+    cout << telekinesie << endl;*/
     cout << "FIN : TEST AFFICHAGE Pouvoir" << endl;
 
     Pokachu.apprendrePouvoir(&eclair);
-    Miouss.apprendrePouvoir(&morsureVenin);
+    Miaouss.apprendrePouvoir(&morsureVenin);
     Miaouss.apprendrePouvoir(&ondeFolie);
     Rondodu.apprendrePouvoir(&berceuse);
     Mewtwo.apprendrePouvoir(&telekinesie);
@@ -220,7 +223,7 @@ int main()
     cout << polyland << endl;
     cout << "FIN TEST PolyLand " << endl;
 
-    Dresseur Vous("Etudiant", "Team INF1010");
+   /* Dresseur Vous("Etudiant", "Team INF1010");
     Vous.ajouterCreature(&Pokachu);
     cout << "LA TEAM MISSILE VOUS ATTAQUE" << endl;
     while (Miaouss.getPointDeVie() > 0 && Pokachu.getPointDeVie() > 0)
@@ -251,7 +254,7 @@ int main()
     PotionMagique potion("Potion", 10);
     unsigned int ancienPointDeVie = Pokachu.getPointDeVie();
     cout << "Vous utilisez une potion magique" << endl;
-    cout << potion << endl;
+    //cout << potion << endl;
     potion.utiliserSur(Pokachu);
     if (Pokachu.getPointDeVie() == ancienPointDeVie + 10)
         cout << "Potion: OK" << endl;
@@ -260,7 +263,7 @@ int main()
     GreenBull boissonTonique("greenBull", 10);
     unsigned int ancienneEnergie = Pokachu.getEnergie();
     cout << "Vous utilisez une boisson énergisante" << endl;
-    cout << boissonTonique << endl;
+    //cout << boissonTonique << endl;
     boissonTonique.utiliserSur(Pokachu);
     if (Pokachu.getEnergie() == ancienneEnergie + 10)
         cout << "GreenBull: OK" << endl;
@@ -335,7 +338,7 @@ int main()
 
 
 
-    //delete : pas de delete dans notre cas ?
+    //delete : pas de delete dans notre cas ?*/
 
 
 

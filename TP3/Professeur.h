@@ -10,6 +10,7 @@ Description: les professeurs sont des dresseurs scientifiques
 #define PROFESSEUR_H
 
 #include "OutilScientifique.h"
+#include "Dresseur.h"
 #include <iostream>
 
 using namespace std;
@@ -22,7 +23,7 @@ class Professeur: public Dresseur
         ~Professeur();
         //Accesseurs/Modificateurs
         OutilScientifique* getOutil() const;
-        void setOutil(OutilScientifique* outils);
+        void setOutil(OutilScientifique outil);
         //Soigner une créature
         void soigner(Creature& creature);
         //utiliser l'outil

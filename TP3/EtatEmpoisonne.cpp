@@ -15,17 +15,23 @@ EtatEmpoisonne::~EtatEmpoisonne()
 
 }
 
+//Affichage
+ostream& operator<<(ostream& o, const EtatEmpoisonne& etatCreature){
+    o << "etat" << etatCreature.getNom() << endl;
+    return o;
+}
 
  void EtatEmpoisonne::appliquerEtat(Creature& creature){
-    creature.setPointDeVie(creature.getPointDeVie()-5;
-    if(creature.getPointDeVie()==0){
+    creature.setPointDeVie(creature.getPointDeVie()-5);
+    if(creature.getPointDeVie()<=0){
         creature.setPointDeVie(0);
     }
-    duree --;
+    duree_ --;
  }
 
 
 
-  bool EtatEmpoisonne::estFini() const{
-    return(duree_==0),
+  bool EtatEmpoisonne::estFini() const
+  {
+    return(duree_==0);
   }

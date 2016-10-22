@@ -9,16 +9,10 @@ PotionMagique::PotionMagique(const string& nom, int bonus):ObjetMagique(nom, bon
 PotionMagique::~PotionMagique()
 {}
 
-PotionMagique::PotionMagique(const PotionMagique& potion)   //constructeur par copie
-{
-    nom_=potion.nom_;
-    bonus_=potion.bonus_;
-}
-
 //operator
 ostream& operator<<(ostream& flux, const PotionMagique potion)
 {
-    return flux<<"La potion "<<potion.nom_<<" rend "<<potion.bonus_<<" points de vie"<<endl;
+    return flux<<"La potion "<<potion.getNom()<<" rend "<<potion.getBonus()<<" points de vie";
 }
 
 //surcharge de la méthode utiliserSur
