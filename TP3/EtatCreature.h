@@ -9,6 +9,7 @@ Description: Caractèrise l'état d'une créature, et l'impact qu'à ce dernier sur 
 #define ETAT_CREATURE_H
 
 #include <iostream>
+#include <stdlib.h>
 #include<string>
 
 #include "Creature.h"
