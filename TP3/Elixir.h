@@ -10,12 +10,13 @@ Description: les elixirs servent à soigner les créatures
 #define ELIXIR_H
 
 #include "ObjetMagique.h"
+#include "PotionMagique.h"
 #include <iostream>
 #include <string>
 
 using namespace std;
 
-class Elixir : public ObjetMagique
+class Elixir : public PotionMagique
 {
     public:
         Elixir();   //constructeur par défaut

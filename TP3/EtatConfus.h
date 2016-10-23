@@ -23,7 +23,7 @@ class EtatConfus : public EtatCreature
                                             //La durée est décrémentée
     bool peutAttaquer() const; //la créature peut attaquer l'autre 50% du tps
     bool estFini() const; //finit si duree =0 ou une fois sur trois
-friend ostream& operator<<(ostream& o, const Etatconfus& etatCreature); //fonction globale d'affichage
+    friend ostream& operator<<(ostream& o, const EtatConfus& etatCreature); //fonction globale d'affichage
 
     protected:
 

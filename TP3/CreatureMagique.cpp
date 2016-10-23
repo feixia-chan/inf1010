@@ -8,10 +8,9 @@ CreatureMagique::CreatureMagique(const string& nom, unsigned int attaque,
 CreatureMagique::~CreatureMagique()
 {}
 //constructeur par copie
-CreatureMagique::CreatureMagique(const CreatureMagique& creatureMagique) : Creature(creatureMagique)
+CreatureMagique::CreatureMagique(const CreatureMagique& creatureMagique): Creature(creatureMagique)
 {
-
-    etat_=new EtatCreature(*creatureMagique.etat_);
+    bonus_=creatureMagique.bonus_;
 }
 //Accesseurs
 int CreatureMagique::getBonus() const
@@ -26,8 +25,8 @@ void CreatureMagique::setBonus(int bonus)
 //operators
 ostream& operator<<(ostream& os, const CreatureMagique& creatureMagique)
 {
-    Creature::operator<<(os,creatureMagique);
-    os<<"Et "<<creatureMagique.nom_<<" a aussi un bonus de "<<creatureMagique.bonus_;
+    os<<creatureMagique;
+    os<<"Et "<<creatureMagique.getNom()<<" a aussi un bonus de "<<creatureMagique.bonus_;
     return os;
 }
 
@@ -35,9 +34,7 @@ CreatureMagique& CreatureMagique::operator=(const CreatureMagique& creatureMagiq
 {
     if(this != &creatureMagique){
         Creature::operator=(creatureMagique);
-        delete etat_;
-        etat_=nullptr;
-        etat_=new EtatCreature(*creatureMagique.etat_);
+        bonus_=creatureMagique.bonus_;
     }
     return *this;
 }
@@ -49,6 +46,6 @@ void CreatureMagique::attaquer(const Pouvoir& pouvoir, Creature& creature)
         this->setPointDeVie(this->getPointDeVieTotal());
     }
     else{
-        this->getPointDeVie()+=bonus_;
+        setPointDeVie(this->getPointDeVie()+bonus_);
     }
 }
