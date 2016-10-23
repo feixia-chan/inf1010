@@ -21,7 +21,7 @@ PouvoirHallucinogene::~PouvoirHallucinogene()
 
 ostream& operator<<(ostream& os, const PouvoirHallucinogene& pouvoir){
 
-    os << pouvoir << "il peut rendre cible confuse";    //Pouvoir::<<
+    os << static_cast<const Pouvoir&>(pouvoir) << "il peut rendre cible confuse";    //Pouvoir::<<
     return os;
 }
 

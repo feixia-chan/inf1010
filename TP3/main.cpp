@@ -1,4 +1,4 @@
-ï»¿
+
 
 /*
 Fichier: main.cpp
@@ -57,9 +57,9 @@ void appliquerEtatSelonType(Creature& creature) {
     }
 }
 
-//TODO Ã  complÃ©ter appelle la mÃ©thode appropriÃ©e selon le type
-//dit si la crÃ©ature peut attaquer, il faut appeler la bonne
-// mÃ©thode de Ã©tatCrÃ©ature ou d'une de ses classes filles
+//TODO à compléter appelle la méthode appropriée selon le type
+//dit si la créature peut attaquer, il faut appeler la bonne
+// méthode de étatCréature ou d'une de ses classes filles
 bool peutAttaquerSelonType(Creature& creature) {
     bool peutAttaquer = false;
     EtatCreature* etat = creature.getEtat();
@@ -90,7 +90,7 @@ bool peutAttaquerSelonType(Creature& creature) {
     return peutAttaquer;
 }
 
-//TODO Ã  complÃ©ter (s'inpirer des fonctions au-dessus)
+//TODO à compléter (s'inpirer des fonctions au-dessus)
 bool estFiniSelonType(Creature& creature) {
     bool estFini = false;
     EtatCreature* etat = creature.getEtat();
@@ -121,16 +121,16 @@ bool estFiniSelonType(Creature& creature) {
     return estFini;
 }
 
-//TODO Ã©tudier le fonctionnement et s'en inspirer pour l'implÃ©mentation des
+//TODO étudier le fonctionnement et s'en inspirer pour l'implémentation des
 //operator << dans les classes filles /!\ il est probable qu'il faille
-//que l'opÃ©rateur<< ne travaille pas, il faudra sÃ»rement adapter la mÃ©thode
+//que l'opérateur<< ne travaille pas, il faudra sûrement adapter la méthode
 //ci-dessous
 void afficherEtatSelonType(Creature& creature) {
     EtatCreature* etat = creature.getEtat();
     EtatEmpoisonne* etatPoison;
     EtatEndormi* etatEndormi;
     EtatConfus* etatConfus;
-    cout << creature.getNom() << " est dans l'Ã©tat: ";
+    cout << creature.getNom() << " est dans l'état: ";
     switch (etat->getType())
     {
     case TypeEtat_normal:
@@ -161,15 +161,15 @@ int main()
     setlocale(LC_ALL, "");
 
     cout << "BIENVENU DANS LE MONDE MERVEILLEUX DE POLYLAND" << endl;
-    //TODO crÃ©ez un Professeur nommÃ© Chen ("Chen", "Laboratoire Poly")
+    //TODO créez un Professeur nommé Chen ("Chen", "Laboratoire Poly")
     Professeur Chen("Chen","Laboratoire Poly");
 
-/*    OutilScientifique scanner("scanner", "Ã©tudier une crÃ©ature");
+    OutilScientifique scanner("scanner", "étudier une créature");
     cout << scanner << endl;
-    //Chen.setOutil(scanner);
+    Chen.setOutil(scanner);
     Dresseur mauvaisGars("Jessie", "Team Rocket");
 
-    //TODO crÃ©ez les crÃ©atures suivantes
+    //TODO créez les créatures suivantes
     //miaouss ("Miaouss", 10, 2, 50, 22) type = Creature
     //pokachu ("Pokachu", 10, 2, 100, 25) type = Creature
     //Salimouche ("Salimouche", 12, 3, 45, 20) type = Creature
@@ -181,11 +181,11 @@ int main()
     Creature Rondodu("Rondodu", 10, 2, 50, 25);
     CreatureMagique Mewtwo("Mewtwo", 20, 3, 50, 25, 5);
 
-    cout << "TEST : affichage de la crÃ©ature magique" << endl;
-    //cout << Mewtwo << endl;
-    cout << "FIN TEST : affichage de la crÃ©ature magique" << endl;
+    cout << "TEST : affichage de la créature magique" << endl;
+    cout << Mewtwo << endl;
+    cout << "FIN TEST : affichage de la créature magique" << endl;
 
-    //TODO CrÃ©ez les pouvoirs suivants
+    //TODO Créez les pouvoirs suivants
     // eclair ("Eclair", 10, 5) type = Pouvoir
     //morsureVenin ("Morsure Venin", 10, 5, 3) type = PouvoirPoison
     //ondeFolie ("onde Folie", 4, 5, 4) type = PouvoirHallucinogene
@@ -232,17 +232,17 @@ int main()
     {
         Miaouss.attaquer(morsureVenin, Pokachu);
         morsureVenin.appliquerEffetOffensif(Pokachu);
-        //Pauvre pokachu, l'attaque l'a possiblement empoisonnÃ©!
+        //Pauvre pokachu, l'attaque l'a possiblement empoisonné!
         appliquerEtatSelonType(Pokachu);
         if (peutAttaquerSelonType(Pokachu))
             Pokachu.attaquer( eclair, Miaouss);
 
         if (estFiniSelonType(Pokachu))
-            Pokachu.setEtat(new EtatCreature("normal")); //attention aux fuites mÃ©moires
+            Pokachu.setEtat(new EtatCreature("normal")); //attention aux fuites mémoires
 
         cout << "affichage de l'etat de Pokachu" << endl;
-        cout << "Pokachu est dans l'Ã©tat: " << *(Pokachu.getEtat()) << endl;
-        cout << "affichage de l'etat de Pokachu (autre mÃ©thode)" << endl;
+        cout << "Pokachu est dans l'état: " << *(Pokachu.getEtat()) << endl;
+        cout << "affichage de l'etat de Pokachu (autre méthode)" << endl;
         afficherEtatSelonType(Pokachu);
     }
 
@@ -253,7 +253,7 @@ int main()
         cout << "Hum Pokachu est mal en point" << endl;
     }
     //Test potion magique
-    PotionMagique potion("Potion", 10);
+   /* PotionMagique potion("Potion", 10);
     unsigned int ancienPointDeVie = Pokachu.getPointDeVie();
     cout << "Vous utilisez une potion magique" << endl;
     //cout << potion << endl;
@@ -264,7 +264,7 @@ int main()
     //Test GreenBull
     GreenBull boissonTonique("greenBull", 10);
     unsigned int ancienneEnergie = Pokachu.getEnergie();
-    cout << "Vous utilisez une boisson Ã©nergisante" << endl;
+    cout << "Vous utilisez une boisson énergisante" << endl;
     //cout << boissonTonique << endl;
     boissonTonique.utiliserSur(Pokachu);
     if (Pokachu.getEnergie() == ancienneEnergie + 10)
@@ -280,27 +280,27 @@ int main()
         Pokachu.getPointDeVie() == ancienPointDeVie + 20) {
         cout << "Elixir: OK" << endl;
     }
-    //Le professeur soigne votre crÃ©ature
+    //Le professeur soigne votre créature
     Chen.soigner(Pokachu);
     if (Pokachu.getPointDeVie() == Pokachu.getPointDeVieTotal() &&
         Pokachu.getEnergie() == Pokachu.getEnergieTotale()) {
         cout << "Soigner: OK" << endl;
     }
 
-    cout << "C'est incroyable, une crÃ©ature magique vous attaque" << endl;
+    cout << "C'est incroyable, une créature magique vous attaque" << endl;
     while (Mewtwo.getPointDeVie() > 0 && Pokachu.getPointDeVie() > 0)
     {
-        //l'attaqe devrait augmenter les points de vie de la crÃ©ature
+        //l'attaqe devrait augmenter les points de vie de la créature
         unsigned int pointDeVie = Mewtwo.getPointDeVie();
         Mewtwo.attaquer(telekinesie, Pokachu);
-        //Les points de vie de la crÃ©ature doivent augmenter
+        //Les points de vie de la créature doivent augmenter
         //quand elle attaque
         if (Mewtwo.getPointDeVie() >= pointDeVie) {
             cout << "Creature magique OK" << endl;
         }
         telekinesie.appliquerEffetOffensif(Pokachu);
 
-        //TODO : appliquer l'Ã©tat selon le type
+        //TODO : appliquer l'état selon le type
         //Indice: regardez plus haut dans le code
         if (peutAttaquerSelonType(Pokachu))
             Pokachu.attaquer(eclair, Mewtwo);
@@ -310,10 +310,10 @@ int main()
 
         //TODO : afficher l'etat en prenant en compte le type
         //Indice: regardez plus haut dans le code
-        //et rÃ©pondre Ã  la question relative Ã  l'affichage
+        //et répondre à la question relative à l'affichage
     }
     Chen.soigner(Pokachu);
-    cout << "Votre Pokachu surprend un Rondodu, terrifiÃ© celui-ci lui chante une berceuse" << endl;
+    cout << "Votre Pokachu surprend un Rondodu, terrifié celui-ci lui chante une berceuse" << endl;
     Rondodu.attaquer(berceuse, Pokachu);
     berceuse.appliquerEffetOffensif(Pokachu);
     //rondodu (ou plutot Pokachu ?) devrait dormir pour deux tours
@@ -321,16 +321,16 @@ int main()
         appliquerEtatSelonType(Pokachu);
     }
     if (estFiniSelonType(Pokachu)) {
-        cout << "Pokachu s'est rÃ©veillÃ©! : Berceuse OK" << endl;
+        cout << "Pokachu s'est réveillé! : Berceuse OK" << endl;
     }
     else {
-        cout << "Bizarre pokachu aurait dÃ» se rÃ©veiller..." << endl;
+        cout << "Bizarre pokachu aurait dû se réveiller..." << endl;
     }
-    //Attention aux double free et fuites mÃ©moires
+    //Attention aux double free et fuites mémoires
     Professeur Phelina(Chen);
     Professeur Orme(Chen);
     Orme = Phelina;
-    //vÃ©rification de la copie
+    //vérification de la copie
     cout << "TEST Professeur : affichage de l'information des professeurs" << endl;
     cout << Chen << endl;
     cout << Orme << endl;

@@ -27,5 +27,5 @@ void OutilScientifique::utiliser(Creature & creature)
 
 ostream & operator<<(ostream & os, const OutilScientifique & outil)
 {
-    return os << "l'outil " << outil.nom_ << " Permet de " << outil.description_;
+    return os << "l'outil " << outil.nom_ << " permet de " << outil.description_;
 }

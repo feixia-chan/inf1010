@@ -25,7 +25,7 @@ void CreatureMagique::setBonus(int bonus)
 //operators
 ostream& operator<<(ostream& os, const CreatureMagique& creatureMagique)
 {
-    os<<creatureMagique;
+    os<<static_cast<const Creature&>(creatureMagique);
     os<<"Et "<<creatureMagique.getNom()<<" a aussi un bonus de "<<creatureMagique.bonus_;
     return os;
 }

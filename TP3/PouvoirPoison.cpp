@@ -21,7 +21,7 @@ PouvoirPoison::~PouvoirPoison()
 
 ostream& operator<<(ostream& os, const PouvoirPoison& pouvoir){
 
-    os << pouvoir << "il peut empoisonner la cible";    //Pouvoir::<<
+    os << static_cast<const Pouvoir&>(pouvoir)<< "il peut empoisonner la cible";    //Pouvoir::<<
     return os;
 }
 

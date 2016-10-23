@@ -21,7 +21,7 @@ PouvoirSoporifique::~PouvoirSoporifique()
 
 ostream& operator<<(ostream& os, const PouvoirSoporifique& pouvoir){
 
-    os << pouvoir << "il peut endormir la cible";    //Pouvoir::<<
+    os << static_cast<const Pouvoir&>(pouvoir) << "il peut endormir la cible";    //Pouvoir::<<
     return os;
 }
 
