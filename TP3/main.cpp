@@ -152,7 +152,9 @@ void afficherEtatSelonType(Creature& creature) {
         break;
     }
 }
-
+/*###############################################################################
+*###############################Debut MAIN#######################################*
+*################################################################################*/
 int main()
 {
 	srand(time(NULL));
@@ -162,7 +164,7 @@ int main()
     //TODO créez un Professeur nommé Chen ("Chen", "Laboratoire Poly")
     Professeur Chen("Chen","Laboratoire Poly");
 
-    OutilScientifique scanner("scanner", "étudier une créature");
+/*    OutilScientifique scanner("scanner", "étudier une créature");
     cout << scanner << endl;
     //Chen.setOutil(scanner);
     Dresseur mauvaisGars("Jessie", "Team Rocket");
@@ -197,10 +199,10 @@ int main()
 
     cout << "TEST AFFICHAGE Pouvoir" << endl;
     cout << eclair << endl;
-   /* cout << morsureVenin << endl;
+    cout << morsureVenin << endl;
     cout << ondeFolie << endl;
     cout << berceuse << endl;
-    cout << telekinesie << endl;*/
+    cout << telekinesie << endl;
     cout << "FIN : TEST AFFICHAGE Pouvoir" << endl;
 
     Pokachu.apprendrePouvoir(&eclair);
@@ -223,7 +225,7 @@ int main()
     cout << polyland << endl;
     cout << "FIN TEST PolyLand " << endl;
 
-   /* Dresseur Vous("Etudiant", "Team INF1010");
+    Dresseur Vous("Etudiant", "Team INF1010");
     Vous.ajouterCreature(&Pokachu);
     cout << "LA TEAM MISSILE VOUS ATTAQUE" << endl;
     while (Miaouss.getPointDeVie() > 0 && Pokachu.getPointDeVie() > 0)

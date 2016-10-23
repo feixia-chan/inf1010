@@ -1,9 +1,9 @@
 #include "Professeur.h"
 
-Professeur::Professeur(const string& nom, const string& equipe) //constructeur par paramÃ¨tre semblable Ã  celui de Dresseur
+Professeur::Professeur(const string& nom, const string& equipe):Dresseur(nom,equipe) //constructeur par paramètres semblable à celui de Dresseur
 {
-    Dresseur(nom, equipe);
-    outil_=nullptr;
+    outil_= nullptr;
+
 }
 
 Professeur::Professeur(const Professeur& prof)
@@ -33,11 +33,11 @@ void Professeur::setOutil(OutilScientifique outil)
     outil_=new OutilScientifique(outil);
 }
 
-//Soigner une crÃ©ature
+//Soigner une créature
 void Professeur::soigner(Creature& creature)
 {
-    creature.setPointDeVie(creature.getPointDeVieTotal());  //rend toute la vie Ã  la crÃ©ature
-    creature.setEnergie(creature.getEnergieTotale());   //rend toute l'Ã©nergie Ã  la crÃ©ature
+    creature.setPointDeVie(creature.getPointDeVieTotal());  //rend toute la vie à la créature
+    creature.setEnergie(creature.getEnergieTotale());   //rend toute l'énergie à la créature
 }
 
 //utiliser l'outil
@@ -56,4 +56,5 @@ Professeur& Professeur::operator=(const Professeur& prof)
         this->setCreature(prof.getCreatures());
         outil_=new OutilScientifique(*prof.outil_);
     }
+    return *this;
 }
