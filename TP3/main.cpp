@@ -140,7 +140,7 @@ void afficherEtatSelonType(Creature& creature) {
         break;
     case TypeEtat_empoisonne:
         etatPoison = static_cast<EtatEmpoisonne*>(creature.getEtat());
-        cout << *etatPoison << " : Empoisonne durera : " << etatPoison->getDuree()<< " tours"<< endl;
+        cout <<*etatPoison << " Empoisonne durera : " << etatPoison->getDuree()<< " tours"<< endl;
         break;
     case TypeEtat_endormi:
         etatEndormi = static_cast<EtatEndormi*>(creature.getEtat());
@@ -193,7 +193,7 @@ int main()
     //ondeFolie ("onde Folie", 4, 5, 4) type = PouvoirHallucinogene
     //berceuse ("Berceuse", 2, 5, 2) type = PouvoirSoporifique
     //telekinesie ("Telekinesie", 15, 5, 4) type = PouvoirHallucinogene
-    Pouvoir eclair("Eclair", 10, 5);
+    Pouvoir eclair("Eclair", 0, 5);
     PouvoirPoison morsureVenin("Morsure Venin", 10, 5, 3);
     PouvoirHallucinogene ondeFolie("Onde Folie", 4, 5, 4);
     PouvoirSoporifique berceuse("Berceuse", 2, 5, 2);
@@ -230,23 +230,22 @@ int main()
     Dresseur Vous("Etudiant", "Team INF1010");
     Vous.ajouterCreature(&Pokachu);
     cout << "LA TEAM MISSILE VOUS ATTAQUE" << endl;
-    while (Miaouss.getPointDeVie() > 0 && Pokachu.getPointDeVie() > 0)
+    while (Pokachu.getPointDeVie() > 0 && Miaouss.getPointDeVie() > 0)
     {
         Miaouss.attaquer(morsureVenin, Pokachu);
         morsureVenin.appliquerEffetOffensif(Pokachu);
         //Pauvre pokachu, l'attaque l'a possiblement empoisonné!
         appliquerEtatSelonType(Pokachu);
-        if (peutAttaquerSelonType(Pokachu)&& Pokachu.getPointDeVie()>0) //obligatoire de rajouter les PV de Pokachu ou sinon on peut attaqué un fois mort
-
+        if (peutAttaquerSelonType(Pokachu)){
             Pokachu.attaquer( eclair, Miaouss);
-
+        }
         if (estFiniSelonType(Pokachu)){
             Pokachu.setEtat(new EtatCreature("normal")); //attention aux fuites mémoires
-        }
+      }
 
-        cout << "affichage de l'etat de Pokachu" << endl;
-        cout << "Pokachu est dans l'état: " << *(Pokachu.getEtat()) << endl;
-        cout << "affichage de l'etat de Pokachu (autre méthode)" << endl;
+        cout << "Fin d'attaque, affichage de l'etat de Pokachu" << endl;
+        cout << "Pokachu est dans l'état: " << *(Pokachu.getEtat()) << "il a encore (PV)" << Pokachu.getPointDeVie() <<endl;
+        cout << "affichage de l'etat de Pokachu (autre méthode)" << endl << endl;
         afficherEtatSelonType(Pokachu);
     }
 

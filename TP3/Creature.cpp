@@ -101,14 +101,14 @@ void Creature::attaquer(const Pouvoir & pouvoir, Creature & creature)
 			pouvoirEstDansVector = true;
 		}
 	}
-	if (energie_ >= pouvoir.getEnergieNecessaire() && pouvoirEstDansVector)
+	if (energie_ >= pouvoir.getEnergieNecessaire() && pouvoirEstDansVector && pointDeVie_>0)    //on a inon des créatures qui attaquent sans PV...
 	{
 		if (creature.getPointDeVie() >= 0) {
-			//Calcul du nombre de degat selon une formule 
+			//Calcul du nombre de degat selon une formule
 			unsigned int degat = abs((int)((pouvoir.getNombreDeDegat())* (attaque_ / 2 - creature.defense_)));
             int peutAttaquer = rand() % 6;
-			if (peutAttaquer) {
-				cout << nom_ << " lance " << pouvoir.getNom() << " qui inflige " << degat 
+			if (peutAttaquer!=0) { //il faut rajouter !=0 !!
+				cout << nom_ << " lance " << pouvoir.getNom() << " qui inflige " << degat
                     << " degat a " << creature.getNom() << endl;
 				if (degat > creature.getPointDeVie()) {
 					creature.setPointDeVie(0);
@@ -118,12 +118,12 @@ void Creature::attaquer(const Pouvoir & pouvoir, Creature & creature)
                 else {
                     creature.setPointDeVie(creature.getPointDeVie() - degat);
                 }
-					
+
 				cout << creature.getNom() << " a encore " << creature.getPointDeVie() << " PV" << endl;
 				energie_ -= pouvoir.getEnergieNecessaire();
 			}
 			else {
-                cout << "La creature est dans " << *etat_ << endl;
+                cout << " Aie ! La creature est dans " << *etat_ << endl;
 				cout << "Attaque " << pouvoir.getNom() << " a échouée" << endl;
 			}
 		}
@@ -136,7 +136,7 @@ void Creature::attaquer(const Pouvoir & pouvoir, Creature & creature)
 int Creature::experienceGagnee(const Creature& creature)
 {
 	if (creature.getPointDeVie() <= 0) {
-		//Calcul de l'experience selon une formule 
+		//Calcul de l'experience selon une formule
 		int experience = (creature.getNiveau() + 1 - niveau_) * ((creature.getAttaque() + 5 - attaque_) * (creature.getDefense() + 3 - defense_)) + (pointDeVie_ / 2);
 		if (experience > (experienceNecessaire_ - experience_)) {
 			int experienceRestante = experience - (experienceNecessaire_ - experience_);
@@ -175,7 +175,7 @@ bool Creature::oublierPouvoir(Pouvoir* pouvoir)
 {
 	for (unsigned int i = 0; i < pouvoirs_.size(); i++)
 	{
-		if (*(pouvoirs_[i]) == *pouvoir) 
+		if (*(pouvoirs_[i]) == *pouvoir)
 		{
 			pouvoirs_[i] = pouvoirs_.back();
 			pouvoirs_.pop_back();
