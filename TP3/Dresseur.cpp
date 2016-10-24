@@ -12,7 +12,16 @@ Dresseur::Dresseur() :nom_(""), equipe_("") {};
 
 Dresseur::Dresseur(const string& nom, const string& equipe) : nom_(nom), equipe_(equipe) {
     objetMagique_= new ObjetMagique(); //sinon ca marche pas
-};
+}
+
+Dresseur::Dresseur(const Dresseur& dresseur)
+{
+    this->setNom(dresseur.getNom());
+    this->setEquipe(dresseur.getEquipe());
+    this->setCreature(dresseur.getCreatures());
+    objetMagique_=new ObjetMagique(*dresseur.objetMagique_);
+}
+
 
 Dresseur::~Dresseur()
 {

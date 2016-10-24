@@ -6,11 +6,8 @@ Professeur::Professeur(const string& nom, const string& equipe):Dresseur(nom,equ
 
 }
 
-Professeur::Professeur(const Professeur& prof)
+Professeur::Professeur(const Professeur& prof):Dresseur(prof)
 {
-    this->setNom(prof.getNom());
-    this->setEquipe(prof.getEquipe());
-    this->setCreature(prof.getCreatures());
     outil_=new OutilScientifique(*prof.outil_);
 }
 
