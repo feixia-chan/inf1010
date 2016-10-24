@@ -330,7 +330,7 @@ int main()
     else {
         cout << "Bizarre pokachu aurait dû se réveiller..." << endl;
     }
- /*   //Attention aux double free et fuites mémoires
+    //Attention aux double free et fuites mémoires
     Professeur Phelina(Chen);
     Professeur Orme(Chen);
     Orme = Phelina;
@@ -344,7 +344,7 @@ int main()
 
 
 
-    //delete : pas de delete dans notre cas ?*/
+    //delete : pas de delete dans notre cas ?
 
 
 

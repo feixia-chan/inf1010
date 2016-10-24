@@ -20,17 +20,18 @@ class Dresseur
 public:
 	Dresseur();
 	Dresseur(const string& nom, const string& equipe);
+	Dresseur (const Dresseur& dresseur); //constructeur par copie
 	~Dresseur();
 
 	string getNom() const;
 	void setNom(const string& nom);
-	
+
 	unsigned int getNombreCreatures() const;
 
 	vector<Creature*> getCreatures() const;
 	Creature* getUneCreature(const string& nom) const;
 	void setCreature(vector<Creature*> creatures);
-	
+
 	bool ajouterCreature(Creature* creature);
 	bool enleverCreature(const string& nom);
 
