@@ -33,6 +33,7 @@ public:
 
     string getNom() const;
     TypeEtat getType() const;
+    int getDuree() const ; //rajout pour le main
 
     friend ostream& operator<<(ostream& o, const EtatCreature& etatCreature);
 private:

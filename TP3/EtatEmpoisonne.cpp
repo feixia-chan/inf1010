@@ -33,5 +33,6 @@ ostream& operator<<(ostream& o, const EtatEmpoisonne& etatCreature){
 
   bool EtatEmpoisonne::estFini() const
   {
-    return(duree_==0);
+
+    return(duree_<=0);
   }

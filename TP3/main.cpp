@@ -47,10 +47,12 @@ void appliquerEtatSelonType(Creature& creature) {
     case TypeEtat_endormi:
         etatEndormi = static_cast<EtatEndormi*>(creature.getEtat());
         etatEndormi->appliquerEtat(creature);
+
         break;
     case TypeEtat_confus:
         etatConfus = static_cast<EtatConfus*>(creature.getEtat());
         etatConfus->appliquerEtat(creature);
+
         break;
     default:
         break;
@@ -138,15 +140,15 @@ void afficherEtatSelonType(Creature& creature) {
         break;
     case TypeEtat_empoisonne:
         etatPoison = static_cast<EtatEmpoisonne*>(creature.getEtat());
-        cout << *etatPoison << endl;
+        cout << *etatPoison << " : Empoisonne durera : " << etatPoison->getDuree()<< " tours"<< endl;
         break;
     case TypeEtat_endormi:
         etatEndormi = static_cast<EtatEndormi*>(creature.getEtat());
-        cout << *etatEndormi << endl;
+        cout << *etatEndormi << " : Somnolence durera : " << etatEndormi->getDuree()<< " tours"<<endl;
         break;
     case TypeEtat_confus:
         etatConfus = static_cast<EtatConfus*>(creature.getEtat());
-        cout << *etatConfus << endl;
+        cout << *etatConfus <<" : Confusion durera : " << etatConfus->getDuree()<< " tours"<<  endl;
         break;
     default:
         break;
@@ -234,11 +236,13 @@ int main()
         morsureVenin.appliquerEffetOffensif(Pokachu);
         //Pauvre pokachu, l'attaque l'a possiblement empoisonné!
         appliquerEtatSelonType(Pokachu);
-        if (peutAttaquerSelonType(Pokachu))
+        if (peutAttaquerSelonType(Pokachu)&& Pokachu.getPointDeVie()>0) //obligatoire de rajouter les PV de Pokachu ou sinon on peut attaqué un fois mort
+
             Pokachu.attaquer( eclair, Miaouss);
 
-        if (estFiniSelonType(Pokachu))
+        if (estFiniSelonType(Pokachu)){
             Pokachu.setEtat(new EtatCreature("normal")); //attention aux fuites mémoires
+        }
 
         cout << "affichage de l'etat de Pokachu" << endl;
         cout << "Pokachu est dans l'état: " << *(Pokachu.getEtat()) << endl;

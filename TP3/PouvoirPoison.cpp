@@ -9,7 +9,7 @@ PouvoirPoison::PouvoirPoison(const string& nom,	unsigned int nombreDeDegat, unsi
 }
 
 PouvoirPoison::PouvoirPoison(const string& nom,	unsigned int nombreDeDegat, unsigned int energieNecessaire, int duree):
-    Pouvoir(nom, nombreDeDegat, energieNecessaire),duree_(duree_){
+    Pouvoir(nom, nombreDeDegat, energieNecessaire),duree_(duree){
     type_=TypeEtat_empoisonne;
 }
 
