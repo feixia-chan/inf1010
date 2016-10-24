@@ -32,6 +32,7 @@ void EtatEndormi::appliquerEtat(Creature& creature){
 }
 
 bool EtatEndormi::estFini() const{
+    cout << duree_ << endl;
     if(duree_<=0){
         return true;
     }

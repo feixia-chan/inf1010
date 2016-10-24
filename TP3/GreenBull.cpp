@@ -10,9 +10,9 @@ GreenBull::~GreenBull()
 {}
 
 //operator
-ostream& operator<<(ostream& flux, const GreenBull potion)
+ostream& operator<<(ostream& flux, const GreenBull& potion)
 {
-    return flux<<"La boisson énergisante "<<potion.getNom() <<" rend "<<potion.getBonus()<<" énergies";
+    return flux<<"La boisson énergisante "<<potion.getNom() <<" rend "<<potion.getBonus()<<" Points d'énergies";
 }
 
 //surcharge de la méthode utiliserSur

@@ -112,6 +112,7 @@ bool estFiniSelonType(Creature& creature) {
     case TypeEtat_endormi:
         etatEndormi = static_cast<EtatEndormi*>(creature.getEtat());
         estFini = etatEndormi->estFini();
+        cout <<estFini << endl;
         break;
     case TypeEtat_confus:
         etatConfus = static_cast<EtatConfus*>(creature.getEtat());
@@ -193,7 +194,7 @@ int main()
     //ondeFolie ("onde Folie", 4, 5, 4) type = PouvoirHallucinogene
     //berceuse ("Berceuse", 2, 5, 2) type = PouvoirSoporifique
     //telekinesie ("Telekinesie", 15, 5, 4) type = PouvoirHallucinogene
-    Pouvoir eclair("Eclair", 0, 5);
+    Pouvoir eclair("Eclair", 10, 5);
     PouvoirPoison morsureVenin("Morsure Venin", 10, 5, 3);
     PouvoirHallucinogene ondeFolie("Onde Folie", 4, 5, 4);
     PouvoirSoporifique berceuse("Berceuse", 2, 5, 2);
@@ -244,22 +245,22 @@ int main()
       }
 
         cout << "Fin d'attaque, affichage de l'etat de Pokachu" << endl;
-        cout << "Pokachu est dans l'état: " << *(Pokachu.getEtat()) << "il a encore (PV)" << Pokachu.getPointDeVie() <<endl;
+        cout << "Pokachu est dans l'état: " << *(Pokachu.getEtat()) <<endl;
         cout << "affichage de l'etat de Pokachu (autre méthode)" << endl << endl;
         afficherEtatSelonType(Pokachu);
     }
 
     if (Pokachu.getPointDeVie() > 0) {
-        cout << "Felicitation vous avez gagne" << endl;
+        cout << "Felicitation vous avez gagné" << endl;
     }
     else {
         cout << "Hum Pokachu est mal en point" << endl;
     }
     //Test potion magique
-   /* PotionMagique potion("Potion", 10);
+    PotionMagique potion("Potion", 10);
     unsigned int ancienPointDeVie = Pokachu.getPointDeVie();
     cout << "Vous utilisez une potion magique" << endl;
-    //cout << potion << endl;
+    cout << potion << endl;
     potion.utiliserSur(Pokachu);
     if (Pokachu.getPointDeVie() == ancienPointDeVie + 10)
         cout << "Potion: OK" << endl;
@@ -268,7 +269,7 @@ int main()
     GreenBull boissonTonique("greenBull", 10);
     unsigned int ancienneEnergie = Pokachu.getEnergie();
     cout << "Vous utilisez une boisson énergisante" << endl;
-    //cout << boissonTonique << endl;
+    cout << boissonTonique << endl;
     boissonTonique.utiliserSur(Pokachu);
     if (Pokachu.getEnergie() == ancienneEnergie + 10)
         cout << "GreenBull: OK" << endl;
@@ -293,7 +294,7 @@ int main()
     cout << "C'est incroyable, une créature magique vous attaque" << endl;
     while (Mewtwo.getPointDeVie() > 0 && Pokachu.getPointDeVie() > 0)
     {
-        //l'attaqe devrait augmenter les points de vie de la créature
+        //l'attaque devrait augmenter les points de vie de la créature
         unsigned int pointDeVie = Mewtwo.getPointDeVie();
         Mewtwo.attaquer(telekinesie, Pokachu);
         //Les points de vie de la créature doivent augmenter
@@ -329,7 +330,7 @@ int main()
     else {
         cout << "Bizarre pokachu aurait dû se réveiller..." << endl;
     }
-    //Attention aux double free et fuites mémoires
+ /*   //Attention aux double free et fuites mémoires
     Professeur Phelina(Chen);
     Professeur Orme(Chen);
     Orme = Phelina;

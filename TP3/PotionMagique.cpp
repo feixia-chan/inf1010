@@ -10,7 +10,7 @@ PotionMagique::~PotionMagique()
 {}
 
 //operator
-ostream& operator<<(ostream& flux, const PotionMagique potion)
+ostream& operator<<(ostream& flux, const PotionMagique& potion)
 {
     return flux<<"La potion "<<potion.getNom()<<" rend "<<potion.getBonus()<<" points de vie";
 }

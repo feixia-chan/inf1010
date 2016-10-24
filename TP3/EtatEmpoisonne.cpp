@@ -22,13 +22,9 @@ ostream& operator<<(ostream& o, const EtatEmpoisonne& etatCreature){
 }
 
  void EtatEmpoisonne::appliquerEtat(Creature& creature){
-     if(creature.getPointDeVie()>0){
-     cout <<"on applique l'etat a la créature"<<endl;
+     if(creature.getPointDeVie()>=5){
     creature.setPointDeVie(creature.getPointDeVie()-5);
-    cout << creature.getPointDeVie() << endl << endl;
-    if(creature.getPointDeVie()<=0){
-        creature.setPointDeVie(0);
-    }
+
     duree_--;
      }
  }
