@@ -24,7 +24,7 @@ public:
 
 
     //meths
-    string getTypeAttaque() const;
+//    string getTypeAttaque() const;
     //appliquerAttaque n'est pas virtuelle
     bool appliquerAttaque(Creature& creatureAdverse);    //energie -2 à 33%de réussite si energie >5 && duree_>0
     bool estFini(); //vrai si durée_==0

@@ -35,7 +35,7 @@ AttaqueMagique::~AttaqueMagique()
 
  string AttaqueMagique::getTypeAttaque() const
 {
-    return typeid(AttaqueMagique).name(); //retourne une string "AttaqueMagique"
+    return typeid(*this).name(); //retourne une string "AttaqueMagique"
 }
 
  bool AttaqueMagique::estFini(){

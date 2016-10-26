@@ -25,8 +25,13 @@ CreatureMagique::CreatureMagique(const CreatureMagique& creatureMagique): Creatu
     bonus_=creatureMagique.bonus_;
     delete attaqueMagique_;
     attaqueMagique_=nullptr;
-    attaqueMagique_= new typeid(creatureMagique.attaqueMagique_().name()(*creatureMagique.attaqueMagique_());
-}
+//       attaqueMagique_= new (creatureMagique.attaqueMagique_->getTypeAttaque())();
+//       //AttaqueMagiquePoison
+
+if(creatureMagique.attaqueMagique_->getTypeAttaque()=="class AttaqueMagiquePoison")
+    attaqueMagique_= new AttaqueMagiquePoison();
+else
+    attaqueMagique_= new AttaqueMagiqueConfusion();
 
 //Accesseurs
 AttaqueMagique* CreatureMagique::getAttaqueMagique() const

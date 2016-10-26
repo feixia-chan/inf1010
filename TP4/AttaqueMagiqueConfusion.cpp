@@ -19,10 +19,10 @@ AttaqueMagiqueConfusion::~AttaqueMagiqueConfusion()
 
 //meths
 
-string  AttaqueMagiqueConfusion::getTypeAttaque() const
-{
-    return typeid(AttaqueMagiqueConfusion).name(); //retourne une string "AttaqueMagiqueConfusion"
-}
+//string  AttaqueMagiqueConfusion::getTypeAttaque() const
+//{
+//    return typeid(AttaqueMagiqueConfusion).name(); //retourne une string "AttaqueMagiqueConfusion"
+//}
 
 bool AttaqueMagiqueConfusion::appliquerAttaque(Creature& creatureAdverse)
 {
