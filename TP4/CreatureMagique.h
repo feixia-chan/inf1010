@@ -16,8 +16,7 @@ class CreatureMagique : public Creature
 {
     public:
         CreatureMagique();
-        CreatureMagique(const string nom, unsigned int attaque, unsigned int defense,
-                         unsigned int pointDeVie, unsigned int energie, unsigned int bonus);
+        CreatureMagique(Creature creatute, unsigned int bonus);
         ~CreatureMagique();
         CreatureMagique(const CreatureMagique& creatureMagique);
 
