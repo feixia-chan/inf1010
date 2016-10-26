@@ -8,9 +8,13 @@ Description: Programme de test
 
 #include <iostream>
 #include "Creature.h"
+#include "CreatureMagique.h"
 #include "Dresseur.h"
 #include "PolyLand.h"
 #include "Pouvoir.h"
+#include "AttaqueMagique.h"
+#include "AttaqueMagiqueConfusion.h"
+#include "AttaqueMagiquePoison.h"
 #include <time.h>
 
 using namespace std;
@@ -66,6 +70,9 @@ int main()
 	// Creer la CREATURE MAGIQUE Touflamme en utilisant la creature existante Salimouche et un bonus de 2.
 	// Le nom de Touflamme devrai ensuite etre modifie pour "Touflamme" et son attaque passera de 12 a 15.
 	// A COMPLETER...
+    CreatureMagique Touflamme(Salimouche,2);
+    Touflamme.setNom("Touflamme");
+    Touflamme.setAttaque(15);
 
 	// Creer la CREATURE MAGIQUE Pokachoum en utilisant la creature existante Pokachu et un bonus de 3.
 	// Le nom de Pokachoum devrai ensuite etre modifie pour "Pokachoum" et sa defense passera de 2 a 7.
@@ -237,6 +244,10 @@ int main()
 	// Liberer les ressources si il le faut
 	// A COMPLETER...
 
+    //dresseurs
+    delete Sasha;
+    delete Pierre;
+    delete Regis;
 
 	system("pause");
 	return 0;
