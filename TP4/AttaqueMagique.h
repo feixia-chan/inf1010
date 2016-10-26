@@ -10,6 +10,11 @@ Description: classe abstraite pour les attaques des créatures magiques
 #define ATTAQUEMAGIQUE_H
 
 #include <string>
+#include <iostream>
+#include <typeinfo>
+#include "Creature.h" //attention aux inclusions circulaires
+
+
 
 using namespace std;
 
@@ -26,7 +31,7 @@ class AttaqueMagique
 
         //meths
         virtual string getTypeAttaque() const;    //nom modifié pour rester cohérent avec nos accesseurs
-        virtual bool appliquerAttaque() =0;  //methode virtuelle pure rendant la classe abstraite. on met un booléen pour savoir si ca a marché
+        virtual bool appliquerAttaque(Creature creatureAdverse) =0;  //methode virtuelle pure rendant la classe abstraite. on met un booléen pour savoir si ca a marché
         virtual bool estFini();
 
         //opérateurs

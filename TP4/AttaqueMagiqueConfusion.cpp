@@ -1,5 +1,7 @@
 #include "AttaqueMagiqueConfusion.h"
 
+
+
 AttaqueMagiqueConfusion::AttaqueMagiqueConfusion():AttaqueMagique(2)
 {
     //ctor
@@ -19,7 +21,7 @@ AttaqueMagiqueConfusion::~AttaqueMagiqueConfusion()
 
 string  AttaqueMagiqueConfusion::getTypeAttaque() const
 {
-    return typeid(AttaqueMagiqueConfusion).name; //retourne une string "AttaqueMagiqueConfusion"
+    return typeid(AttaqueMagiqueConfusion).name(); //retourne une string "AttaqueMagiqueConfusion"
 }
 
 bool AttaqueMagiqueConfusion::appliquerAttaque(Creature& creatureAdverse)

@@ -9,6 +9,7 @@ Description: attaque des créatures magiques
 #define ATTAQUEMAGIQUEPOISON_H
 
 #include "AttaqueMagique.h"
+#include <typeinfo>
 
 using namespace std;
 

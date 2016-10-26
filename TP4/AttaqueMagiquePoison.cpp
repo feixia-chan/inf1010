@@ -1,6 +1,6 @@
 #include "AttaqueMagiquePoison.h"
 
-#include <stdlib>
+
 
 //constructeurs & destructeurs
 AttaqueMagiquePoison::AttaqueMagiquePoison():AttaqueMagique(2)

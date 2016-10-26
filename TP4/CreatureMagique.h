@@ -9,6 +9,7 @@ Description: Les creatures magiques sont des etres destines au combat et possède
 #define CREATUREMAGIQUE_H
 
 #include "Creature.h"
+#include <typeinfo>
 
 using namespace std;
 
