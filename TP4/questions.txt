@@ -1,0 +1,5 @@
+1- Pourquoi la classe AttaqueMagique est-elle une classe abstraite ? 
+
+2- Dans la classe Créature, quelle(s) méthode(s) avez-vous déclarées virtuelles et pourquoi ? 
+
+3- Pourquoi est-il important que les destructeurs de Créature et de CréatureMagique soient virtuels ?

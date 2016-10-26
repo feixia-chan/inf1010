@@ -125,7 +125,6 @@ void Creature::attaquer(const Pouvoir & pouvoir, Creature & creature)
 		else
 			cout << "Vous deja avez vaincu " << creature.getNom() << endl;
 	}
-
 }
 
 int Creature::experienceGagnee(const Creature& creature)
