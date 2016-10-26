@@ -49,6 +49,9 @@ public:
 	void setNiveau(unsigned int niveau);
 	void setPouvoirs(vector<Pouvoir*> pouvoirs);
 
+    virtual string getTypeCreature();   //virtuelle, et nom modifié pr notre TP
+
+
 	Creature(const Creature& creature);
 	Creature& operator=(const Creature& creature);
 
