@@ -20,17 +20,17 @@ Dresseur::~Dresseur()
 	}
 }
 
-std::string Dresseur::obtenirNom() const
+std::string Dresseur::getNom() const
 {
 	return nom_;
 }
 
-void Dresseur::modifierNom(const std::string& nom)
+void Dresseur::setNom(const std::string& nom)
 {
 	nom_ = nom;
 }
 
-unsigned int Dresseur::obtenirNombreCreatures() const
+unsigned int Dresseur::getNombreCreatures() const
 {
 	return creatures_.size();
 }
@@ -52,7 +52,7 @@ Creature* Dresseur::obtenirUneCreature(const std::string& nom) const
 	return nullptr;
 }
 
-void Dresseur::modifierCreature(std::vector<Creature*> creatures)
+void Dresseur::setCreature(std::vector<Creature*> creatures)
 {
 	creatures_ = creatures;
 }
@@ -90,7 +90,7 @@ ObjetMagique Dresseur::obtenirObjetMagique() const
 	return objetMagique_;
 }
 
-void Dresseur::modifierObjetMagique(const ObjetMagique & objetMagique)
+void Dresseur::setObjetMagique(const ObjetMagique & objetMagique)
 {
 	objetMagique_ = objetMagique;
 }
@@ -99,16 +99,16 @@ void Dresseur::utiliserObjetMagique(Creature* creature)
 {
 
 	if ((creature->obtenirPointDeVieTotal() - creature->obtenirPointDeVie()) >= objetMagique_.obtenirBonus()) {
-		creature->modifierPointDeVie(creature->obtenirPointDeVie() + objetMagique_.obtenirBonus());
+		creature->setPointDeVie(creature->obtenirPointDeVie() + objetMagique_.obtenirBonus());
 	}
 	else {
-		creature->modifierPointDeVie(creature->obtenirPointDeVieTotal());
+		creature->setPointDeVie(creature->obtenirPointDeVieTotal());
 	}
 	if ((creature->obtenirEnergieTotale() - creature->obtenirEnergie()) > objetMagique_.obtenirBonus()) {
-		creature->modifierEnergie(creature->obtenirEnergie() + objetMagique_.obtenirBonus());
+		creature->setEnergie(creature->obtenirEnergie() + objetMagique_.obtenirBonus());
 	}
 	else {
-		creature->modifierEnergie(creature->obtenirEnergieTotale());
+		creature->setEnergie(creature->obtenirEnergieTotale());
 	}
 }
 
@@ -117,7 +117,7 @@ std::string Dresseur::obtenirEquipe() const
 	return equipe_;
 }
 
-void Dresseur::modifierEquipe(const std::string& equipe)
+void Dresseur::setEquipe(const std::string& equipe)
 {
 	equipe_ = equipe;
 }

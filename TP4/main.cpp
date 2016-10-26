@@ -52,14 +52,14 @@ int main()
 	// Creer le pouvoir lanceFeuille en utilisant le contructeur par copie et en utilisant le pouvoir bouleDeFeu.
 	// Le nom du pouvoir lanceFeuille doit ensuite etre modifie pour "Lance Feuille".
 	Pouvoir lanceFeuille(bouleDeFeu);
-	lanceFeuille.modifierNom("Lance feuille");
+	lanceFeuille.setNom("Lance feuille");
 
 	// Creer le pouvoir tonerre en utilisant l'operateur = et en utilisant le pouvoir eclair.
 	// Le nom du pouvoir tonerre doit ensuite etre modifie pour "Tonerre" et son nombre de degat doit etre diminue a 3.
 	Pouvoir tonerre;
 	tonerre = eclair;
-	tonerre.modifierNom("Tonerre");
-	tonerre.modifierNombreDeDegat(3);
+	tonerre.setNom("Tonerre");
+	tonerre.setNombreDeDegat(3);
 
 	std::cout << "CRÉATION DES CREATURES MAGIQUES" << std::endl;
 	// Creer la CREATURE MAGIQUE Touflamme en utilisant la creature existante Salimouche et un bonus de 2.
@@ -150,11 +150,11 @@ int main()
 	std::cout << "Vous avez rencontré un Salimouche sauvage qui vous attaque..." << std::endl;
 
 
-	Salimouche.attaquer(bouleDeFeu, *(Vous.obtenirUneCreature("Pokachoum")));
-	Vous.obtenirUneCreature("Pokachoum")->attaquer(eclair, Salimouche);
+	Salimouche.attaquer(bouleDeFeu, *(Vous.getUneCreature("Pokachoum")));
+	Vous.getUneCreature("Pokachoum")->attaquer(eclair, Salimouche);
 	//Vous gagnez obligatoirement le duel
-	while (Salimouche.obtenirPointDeVie() > 0) {
-		((Vous.obtenirUneCreature("Pokachoum")))->attaquer(eclair, Salimouche);
+	while (Salimouche.getPointDeVie() > 0) {
+		((Vous.getUneCreature("Pokachoum")))->attaquer(eclair, Salimouche);
 	}
 	std::cout << "Vous avez battu un Salimouche, vous pouvez maintenante le capturer" << std::endl;
 
@@ -172,24 +172,24 @@ int main()
 	ObjetMagique potionMagique("Potion magique", 15);
 	std::cout << potionMagique << std::endl;
 	//Vous venez de trouver une potion magique
-	Vous.modifierObjetMagique(potionMagique);
+	Vous.setObjetMagique(potionMagique);
 	//Soin de votre creature
-	Vous.utiliserObjetMagique(Vous.obtenirUneCreature("Pokachoum"));
+	Vous.utiliserObjetMagique(Vous.getUneCreature("Pokachoum"));
 
 	//Debut du duel avec Touflamme
 	std::cout << std::endl << "Touflamme se jette sur votre Pokachoum" << std::endl;
 	std::cout << "Un duel entre Pokachoum et Touflamme est engagé" << std::endl;
 
 	//Vous attaquez la créature tant que qu'elle est en vie...
-	while (Touflamme.obtenirPointDeVie() > 0)
+	while (Touflamme.getPointDeVie() > 0)
 	{
-		if (Vous.obtenirUneCreature("Pokachoum")->obtenirPointDeVie() > 0)
+		if (Vous.getUneCreature("Pokachoum")->getPointDeVie() > 0)
 		{
 			//... ou que votre créature est morte
-			(Vous.obtenirUneCreature("Pokachoum"))->attaquer(eclair, Touflamme);
-			if (Touflamme.obtenirPointDeVie() > 0)
+			(Vous.getUneCreature("Pokachoum"))->attaquer(eclair, Touflamme);
+			if (Touflamme.getPointDeVie() > 0)
 			{
-				Touflamme.attaquer(*(Touflamme.obtenirPouvoirs().back()), *(Vous.obtenirUneCreature("Pokachoum")));
+				Touflamme.attaquer(*(Touflamme.getPouvoirs().back()), *(Vous.getUneCreature("Pokachoum")));
 			}
 		}
 		else
@@ -197,12 +197,12 @@ int main()
 	}
 
 	//Il se peut que vous gagniez...
-	if (Touflamme.obtenirPointDeVie() == 0)
+	if (Touflamme.getPointDeVie() == 0)
 		std::cout << "Vous avez vaincu Touflamme" << std::endl;
 	else {
 		//Sinon votre seconde créature se charge de finir le combat
-		while (Touflamme.obtenirPointDeVie() > 0)
-			(Vous.obtenirUneCreature("Salimouche"))->attaquer(bouleDeFeu, Touflamme);
+		while (Touflamme.getPointDeVie() > 0)
+			(Vous.getUneCreature("Salimouche"))->attaquer(bouleDeFeu, Touflamme);
 		std::cout << "Votre Pokachoum a été battu mais heuresement votre Salimouche finit par vaincre Touflamme" << std::endl;
 	}
 

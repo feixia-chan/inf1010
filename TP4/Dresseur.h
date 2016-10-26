@@ -21,15 +21,15 @@ public:
 	Dresseur(const std::string& nom, const std::string& equipe);
 	~Dresseur();
 
-	std::string obtenirNom() const;
+	std::string getNom() const;
 	void modifierNom(const std::string& nom);
-	
-	unsigned int obtenirNombreCreatures() const;
+
+	unsigned int getNombreCreatures() const;
 
 	std::vector<Creature*> obtenirCreatures() const;
 	Creature* obtenirUneCreature(const std::string& nom) const;
 	void modifierCreature(std::vector<Creature*> creatures);
-	
+
 	bool ajouterCreature(Creature* creature);
 	bool enleverCreature(const std::string& nom);
 
