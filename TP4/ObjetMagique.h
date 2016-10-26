@@ -20,8 +20,8 @@ public:
 	ObjetMagique(const std::string &nom, int bonus);
 	~ObjetMagique();
 
-	std::string obtenirNom() const;
-	int obtenirBonus() const;
+	std::string getNom() const;
+	int getBonus() const;
 
 	void modifierNom(const std::string& nom);
 	void modifierBonus(int bonus);

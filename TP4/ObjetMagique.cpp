@@ -15,22 +15,22 @@ ObjetMagique::~ObjetMagique()
 {
 }
 
-std::string ObjetMagique::obtenirNom() const
+std::string ObjetMagique::getNom() const
 {
 	return nom_;
 }
 
-int ObjetMagique::obtenirBonus() const
+int ObjetMagique::getBonus() const
 {
 	return bonus_;
 }
 
-void ObjetMagique::modifierNom(const std::string& nom)
+void ObjetMagique::setNom(const std::string& nom)
 {
 	nom_ = nom;
 }
 
-void ObjetMagique::modifierBonus(int bonus)
+void ObjetMagique::setBonus(int bonus)
 {
 	bonus_ = bonus;
 }

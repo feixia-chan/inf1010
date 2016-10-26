@@ -14,7 +14,7 @@ Description:
 PolyLand::PolyLand() {};
 
 
-PolyLand::~PolyLand() 
+PolyLand::~PolyLand()
 {
 	while (creatures_.size() != 0)
 	{
@@ -34,14 +34,14 @@ bool PolyLand::ajouterDresseur(Dresseur* dresseur)
 {
 	for (unsigned int i = 0; i < dresseurs_.size(); i++)
 	{
-		if (dresseur->obtenirNom() == *(dresseurs_[i]))
+		if (dresseur->getNom() == *(dresseurs_[i]))
 		{
-			std::cout << dresseur->obtenirNom() << " n'a pas ete ajoute" << std::endl;
+			std::cout << dresseur->getNom() << " n'a pas ete ajoute" << std::endl;
 			return false;
 		}
 	}
 	dresseurs_.push_back(dresseur);
-	std::cout << dresseur->obtenirNom() << " a bien été ajouté !" << std::endl;
+	std::cout << dresseur->getNom() << " a bien été ajouté !" << std::endl;
 	return true;
 }
 
@@ -63,7 +63,7 @@ bool PolyLand::retirerDresseur(const std::string& nom)
 bool PolyLand::ajouterCreature(Creature* creature)
 {
 	creatures_.push_back(new Creature(*creature));
-	std::cout << creature->obtenirNom() << " a bien été ajouté !" << std::endl;
+	std::cout << creature->getNom() << " a bien été ajouté !" << std::endl;
 	return true;
 }
 
@@ -71,7 +71,7 @@ bool PolyLand::retirerCreature(const std::string& nom)
 {
 	for (unsigned int i = 0; i < creatures_.size(); i++)
 	{
-		if (creatures_[i]->obtenirNom() == nom)
+		if (creatures_[i]->getNom() == nom)
 		{
 			delete creatures_[i];
 			creatures_[i] = creatures_.back();
@@ -123,7 +123,7 @@ PolyLand& PolyLand::operator+= (Dresseur* dresseur)
 
 PolyLand& PolyLand::operator-=(Dresseur* dresseur)
 {
-	retirerDresseur(dresseur->obtenirNom());
+	retirerDresseur(dresseur->getNom());
 	return *this;
 }
 
@@ -135,7 +135,7 @@ PolyLand& PolyLand::operator+= (Creature* creature)
 
 PolyLand& PolyLand::operator-=(Creature* creature)
 {
-	retirerCreature(creature->obtenirNom());
+	retirerCreature(creature->getNom());
 	return *this;
 }
 
