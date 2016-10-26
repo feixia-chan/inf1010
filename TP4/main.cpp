@@ -77,15 +77,17 @@ int main()
 	// Creer la CREATURE MAGIQUE Pokachoum en utilisant la creature existante Pokachu et un bonus de 3.
 	// Le nom de Pokachoum devrai ensuite etre modifie pour "Pokachoum" et sa defense passera de 2 a 7.
 	// A COMPLETER...
-
+    CreatureMagique Pokachoum(Pokachu,3);
+    Pokachoum.setNom("Pokachoum");
+    Pokachoum.setDefense(7);
 
 	cout << "CRÉATION DES ATTAQUES MAGIQUES" << endl;
 	//Creer une attaque magique de poison avec le constructeur par défaut
 	// A COMPLETER...
-
+    attaquePoisonm = AttaqueMagiquePoison()
 	//Creer une attaque magique de confusion qui a une durée de 4
 	// A COMPLETER...
-
+    attaqueConfusionm = AttaqueMagiqueConfusion(4);
 
 	cout << "APPRENTISSAGE DES POUVOIRS" << endl;
 	// Ajouter le pouvoir a la creature correspondante
@@ -108,7 +110,8 @@ int main()
 	// Pokachoum -> Confusion
 	// Touflamme -> Poison
 	// A COMPLETER...
-
+    Pokachoum.apprendreAttaqueMagique(attaqueConfusionm);
+    Touflamme.apprendreAttaqueMagique(attaquePoisonm);
 
 	cout << endl << "AJOUT DE CREATURES ET DE DRESSEURS A POLYLAND" << endl << endl;
 
