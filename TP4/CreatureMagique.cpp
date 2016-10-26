@@ -25,7 +25,7 @@ CreatureMagique::CreatureMagique(const CreatureMagique& creatureMagique): Creatu
     bonus_=creatureMagique.bonus_;
     delete attaqueMagique_;
     attaqueMagique_=nullptr;
-    attaqueMagique_=new AttaqueMagique(*typeid(creatureMagique.attaqueMagique_));
+    attaqueMagique_= new typeid(creatureMagique.attaqueMagique_().name()(*creatureMagique.attaqueMagique_());
 }
 
 //Accesseurs
@@ -48,11 +48,11 @@ void CreatureMagique::setBonus(unsigned int bonus)
 //Type de la créature
 string CreatureMagique::getTypeCreature() const
 {
-    return typeid(CreatureMagique).name;
+    return typeid(CreatureMagique).name();
 }
 
 //Attaquer
-void attaquer(const Pouvoir& pouvoir, Creature& creature)
+void CreatureMagique::attaquer(const Pouvoir& pouvoir, Creature& creature)
 {
     if(!attaqueMagique_->estFini())
     {

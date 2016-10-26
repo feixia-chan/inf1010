@@ -13,7 +13,7 @@ Description: classe abstraite pour les attaques des créatures magiques
 #include <iostream>
 #include <typeinfo>
 #include "Creature.h" //attention aux inclusions circulaires
-
+#include <stdlib.h>
 
 
 using namespace std;

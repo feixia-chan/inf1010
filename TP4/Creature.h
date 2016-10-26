@@ -11,6 +11,7 @@ Description: Les creatures sont des etres destines au combat
 #include <string>
 #include "Pouvoir.h"
 #include <vector>
+#include <typeinfo>
 
 using namespace std;
 
@@ -49,7 +50,7 @@ public:
 	void setNiveau(unsigned int niveau);
 	void setPouvoirs(vector<Pouvoir*> pouvoirs);
 
-    virtual string getTypeCreature();   //virtuelle, et nom modifié pr notre TP
+    virtual string getTypeCreature() const;   //virtuelle, et nom modifié pr notre TP
 
 
 	Creature(const Creature& creature);
