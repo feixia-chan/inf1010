@@ -17,7 +17,7 @@ AttaqueMagiquePoison::~AttaqueMagiquePoison()
 
 //meths
 
-string getTypeAttaque()
+string getTypeAttaque() const
 {
     return typeid(AttaqueMagiquePoison).name; //retourne une string "AttaqueMagiquePoison"
 }

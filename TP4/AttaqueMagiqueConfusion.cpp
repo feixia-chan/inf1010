@@ -17,7 +17,7 @@ AttaqueMagiqueConfusion::~AttaqueMagiqueConfusion()
 
 //meths
 
-string getTypeAttaque()
+string getTypeAttaque() const
 {
     return typeid(AttaqueMagiqueConfusion).name; //retourne une string "AttaqueMagiqueConfusion"
 }

@@ -31,7 +31,7 @@ AttaqueMagique::~AttaqueMagique()
 
 //meths
 
-virtual string getTypeAttaque()
+virtual string getTypeAttaque() const
 {
     return typeid(AttaqueMagique).name; //retourne une string "AttaqueMagique"
 }
@@ -41,7 +41,7 @@ virtual bool estFini(){
 }
 
 friend ostream& operator<< (ostream& flux, AttaqueMagique& AttaqueMagique){
-    flux = "Cette créature de la classe " << typeid(CreatureMagique).name << " a aussi une attaque magique de type " << typeid(AttaqueMagique).name << " qui a une durée de "<< duree_ << endl;
+   // flux = "Cette créature de la classe " << typeid(CreatureMagique).name << " a aussi une attaque magique de type " << typeid(AttaqueMagique).name << " qui a une durée de "<< duree_ << endl;
     return flux;
 }
 
