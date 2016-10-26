@@ -32,7 +32,7 @@ class AttaqueMagique
         //opérateurs
 
         //affichage
-        //Cette créature de la classe class CreatureMagique a aussi une attaque magique de type class AttaqueMagique qui a une durée de 1
+        // a aussi une attaque magique de type class AttaqueMagique qui a une durée de 1
         friend ostream& operator<< (ostream& flux, AttaqueMagique& AttaqueMagique);
 
 

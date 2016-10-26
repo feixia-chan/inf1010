@@ -296,6 +296,6 @@ ostream& operator<<(ostream& os, const Creature& creature) // À set (si nécessai
 	return os;
 }
 
-string getTypeCreature()const{
+string Creature::getTypeCreature()const{
     return typeid(Creature).name; //retourne une string "Creature"
 }

@@ -17,12 +17,12 @@ AttaqueMagiquePoison::~AttaqueMagiquePoison()
 
 //meths
 
-string getTypeAttaque() const
+string AttaqueMagiquePoison::getTypeAttaque() const
 {
     return typeid(AttaqueMagiquePoison).name; //retourne une string "AttaqueMagiquePoison"
 }
 
-bool appliquerAttaque(Creature& creatureAdverse)
+bool  AttaqueMagiquePoison::appliquerAttaque(Creature& creatureAdverse)
 {
     if(duree_>0)
     {
@@ -41,9 +41,10 @@ bool appliquerAttaque(Creature& creatureAdverse)
 }
 
 
-bool estFini()
+bool  AttaqueMagiquePoison::estFini()
 {
     if(duree_=0)
         return true;
-    elsereturn false;
+    else
+    return false;
 }

@@ -17,12 +17,12 @@ AttaqueMagiqueConfusion::~AttaqueMagiqueConfusion()
 
 //meths
 
-string getTypeAttaque() const
+string  AttaqueMagiqueConfusion::getTypeAttaque() const
 {
     return typeid(AttaqueMagiqueConfusion).name; //retourne une string "AttaqueMagiqueConfusion"
 }
 
-bool appliquerAttaque(Creature& creatureAdverse)
+bool AttaqueMagiqueConfusion::appliquerAttaque(Creature& creatureAdverse)
 {
     if(duree_>0)
     {
@@ -40,9 +40,10 @@ bool appliquerAttaque(Creature& creatureAdverse)
         return false;
 }
 
-bool estFini()
+bool AttaqueMagiqueConfusion::estFini()
 {
     if(duree_=0)
         return true;
-    elsereturn false;
+    else
+        return false;
 }

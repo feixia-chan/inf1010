@@ -31,17 +31,17 @@ AttaqueMagique::~AttaqueMagique()
 
 //meths
 
-virtual string getTypeAttaque() const
+virtual string AttaqueMagique::getTypeAttaque() const
 {
     return typeid(AttaqueMagique).name; //retourne une string "AttaqueMagique"
 }
 
-virtual bool estFini(){
+virtual bool AttaqueMagique::estFini(){
     return true;
 }
 
 friend ostream& operator<< (ostream& flux, AttaqueMagique& AttaqueMagique){
-   // flux = "Cette créature de la classe " << typeid(CreatureMagique).name << " a aussi une attaque magique de type " << typeid(AttaqueMagique).name << " qui a une durée de "<< duree_ << endl;
+    flux = " a aussi une attaque magique de type " << getTypeAttaque() << " qui a une durée de "<< duree_ << endl;
     return flux;
 }
 
