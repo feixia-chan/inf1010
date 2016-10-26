@@ -14,43 +14,45 @@ Description: les dresseurs sont les etres capables d'attraper des creatures
 #include <iostream>
 #include <vector>
 
+using namespace std;
+
 class Dresseur
 {
 public:
 	Dresseur();
-	Dresseur(const std::string& nom, const std::string& equipe);
+	Dresseur(const string& nom, const string& equipe);
 	~Dresseur();
 
-	std::string getNom() const;
-	void modifierNom(const std::string& nom);
+	string getNom() const;
+	void modifierNom(const string& nom);
 
 	unsigned int getNombreCreatures() const;
 
-	std::vector<Creature*> obtenirCreatures() const;
-	Creature* obtenirUneCreature(const std::string& nom) const;
-	void modifierCreature(std::vector<Creature*> creatures);
+	vector<Creature*> obtenirCreatures() const;
+	Creature* obtenirUneCreature(const string& nom) const;
+	void modifierCreature(vector<Creature*> creatures);
 
 	bool ajouterCreature(Creature* creature);
-	bool enleverCreature(const std::string& nom);
+	bool enleverCreature(const string& nom);
 
 	ObjetMagique obtenirObjetMagique() const;
 	void modifierObjetMagique(const ObjetMagique& objetMagique);
 
 	void utiliserObjetMagique(Creature* creature);
 
-	std::string obtenirEquipe() const;
-	void modifierEquipe(const std::string& equipe);
+	string obtenirEquipe() const;
+	void modifierEquipe(const string& equipe);
 
-	friend std::ostream& operator<<(std::ostream& os, const Dresseur& dresseur);
+	friend ostream& operator<<(ostream& os, const Dresseur& dresseur);
 
 	bool operator==(const Dresseur& dresseur) const;
-	bool operator==(const std::string& nom) const;
-	friend bool operator==(const std::string& nom, const Dresseur& dresseur);
+	bool operator==(const string& nom) const;
+	friend bool operator==(const string& nom, const Dresseur& dresseur);
 
 private:
-	std::string nom_;
-	std::vector<Creature*> creatures_;
-	std::string equipe_;
+	string nom_;
+	vector<Creature*> creatures_;
+	string equipe_;
 	ObjetMagique objetMagique_;
 
 

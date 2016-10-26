@@ -9,7 +9,7 @@ Date de modification: 11 octobre 2016 par Maude Carrier
 
 Dresseur::Dresseur() :nom_(""), equipe_("") {};
 
-Dresseur::Dresseur(const std::string& nom, const std::string& equipe) : nom_(nom), equipe_(equipe) {};
+Dresseur::Dresseur(const string& nom, const string& equipe) : nom_(nom), equipe_(equipe) {};
 
 Dresseur::~Dresseur()
 {
@@ -20,12 +20,12 @@ Dresseur::~Dresseur()
 	}
 }
 
-std::string Dresseur::getNom() const
+string Dresseur::getNom() const
 {
 	return nom_;
 }
 
-void Dresseur::setNom(const std::string& nom)
+void Dresseur::setNom(const string& nom)
 {
 	nom_ = nom;
 }
@@ -35,12 +35,12 @@ unsigned int Dresseur::getNombreCreatures() const
 	return creatures_.size();
 }
 
-std::vector<Creature*> Dresseur::obtenirCreatures() const
+vector<Creature*> Dresseur::obtenirCreatures() const
 {
 	return creatures_;
 }
 
-Creature* Dresseur::obtenirUneCreature(const std::string& nom) const
+Creature* Dresseur::obtenirUneCreature(const string& nom) const
 {
 	for (unsigned int i = 0; i < creatures_.size(); i++)
 	{
@@ -52,7 +52,7 @@ Creature* Dresseur::obtenirUneCreature(const std::string& nom) const
 	return nullptr;
 }
 
-void Dresseur::setCreature(std::vector<Creature*> creatures)
+void Dresseur::setCreature(vector<Creature*> creatures)
 {
 	creatures_ = creatures;
 }
@@ -70,7 +70,7 @@ bool Dresseur::ajouterCreature(Creature* creature)
 	return true;
 }
 
-bool Dresseur::enleverCreature(const std::string& nom)
+bool Dresseur::enleverCreature(const string& nom)
 {
 	for (unsigned int i = 0; i < creatures_.size(); i++)
 	{
@@ -112,19 +112,19 @@ void Dresseur::utiliserObjetMagique(Creature* creature)
 	}
 }
 
-std::string Dresseur::obtenirEquipe() const
+string Dresseur::obtenirEquipe() const
 {
 	return equipe_;
 }
 
-void Dresseur::setEquipe(const std::string& equipe)
+void Dresseur::setEquipe(const string& equipe)
 {
 	equipe_ = equipe;
 }
 
-std::ostream& operator<<(std::ostream& os, const Dresseur& dresseur)
+ostream& operator<<(ostream& os, const Dresseur& dresseur)
 {
-	return os << dresseur.nom_ << " possede " << dresseur.creatures_.size() << " creature(s) et appartient a l'equipe " << dresseur.equipe_ << std::endl;
+	return os << dresseur.nom_ << " possede " << dresseur.creatures_.size() << " creature(s) et appartient a l'equipe " << dresseur.equipe_ << endl;
 }
 
 bool Dresseur::operator==(const Dresseur& dresseur) const
@@ -157,12 +157,12 @@ bool Dresseur::operator==(const Dresseur& dresseur) const
 	return true;
 }
 
-bool Dresseur::operator==(const std::string& nom) const
+bool Dresseur::operator==(const string& nom) const
 {
 	return (nom_ == nom);
 }
 
-bool operator==(const std::string& nom, const Dresseur& dresseur)
+bool operator==(const string& nom, const Dresseur& dresseur)
 {
 	return dresseur == nom;
 }

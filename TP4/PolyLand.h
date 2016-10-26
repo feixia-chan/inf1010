@@ -14,33 +14,35 @@ Description: Polyland represente le pays que l'on va explorer, il va contenir
 #include <vector>
 #include <iostream>
 
+using namespace std;
+
 class PolyLand
 {
 public:
 	PolyLand();
 	~PolyLand();
-	
+
 	bool ajouterDresseur(Dresseur* dresseur);
-	bool retirerDresseur(const std::string& nom);
+	bool retirerDresseur(const string& nom);
 
 	bool ajouterCreature(Creature* creature);
-	bool retirerCreature(const std::string& nom);
+	bool retirerCreature(const string& nom);
 
 	Dresseur* choisirDresseurAleatoire();
 	Creature* choisirCreatureAleatoire();
 
 	bool attraperCreature(Dresseur* dresseur, Creature* creature);
-	bool relacherCreature(Dresseur* dresseur, const std::string nomCreature);
+	bool relacherCreature(Dresseur* dresseur, const string nomCreature);
 
 	PolyLand& operator+=(Dresseur* dresseur);
 	PolyLand& operator-=(Dresseur* dresseur);
 	PolyLand& operator+=(Creature* creature);
 	PolyLand& operator-=(Creature* creature);
 
-	friend std::ostream& operator<<(std::ostream& os, const PolyLand& poly);
+	friend ostream& operator<<(ostream& os, const PolyLand& poly);
 
 private:
-	std::vector<Dresseur*> dresseurs_;
-	std::vector<Creature*> creatures_;
+	vector<Dresseur*> dresseurs_;
+	vector<Creature*> creatures_;
 };
 #endif

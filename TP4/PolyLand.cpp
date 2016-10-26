@@ -36,16 +36,16 @@ bool PolyLand::ajouterDresseur(Dresseur* dresseur)
 	{
 		if (dresseur->getNom() == *(dresseurs_[i]))
 		{
-			std::cout << dresseur->getNom() << " n'a pas ete ajoute" << std::endl;
+			cout << dresseur->getNom() << " n'a pas ete ajoute" << endl;
 			return false;
 		}
 	}
 	dresseurs_.push_back(dresseur);
-	std::cout << dresseur->getNom() << " a bien été ajouté !" << std::endl;
+	cout << dresseur->getNom() << " a bien été ajouté !" << endl;
 	return true;
 }
 
-bool PolyLand::retirerDresseur(const std::string& nom)
+bool PolyLand::retirerDresseur(const string& nom)
 {
 	for (unsigned int i = 0; i < dresseurs_.size(); i++)
 	{
@@ -53,7 +53,7 @@ bool PolyLand::retirerDresseur(const std::string& nom)
 		{
 			dresseurs_[i] = dresseurs_.back();
 			dresseurs_.pop_back();
-			std::cout << nom << " a bien été retire !" << std::endl;
+			cout << nom << " a bien été retire !" << endl;
 			return true;
 		}
 	}
@@ -63,11 +63,11 @@ bool PolyLand::retirerDresseur(const std::string& nom)
 bool PolyLand::ajouterCreature(Creature* creature)
 {
 	creatures_.push_back(new Creature(*creature));
-	std::cout << creature->getNom() << " a bien été ajouté !" << std::endl;
+	cout << creature->getNom() << " a bien été ajouté !" << endl;
 	return true;
 }
 
-bool PolyLand::retirerCreature(const std::string& nom)
+bool PolyLand::retirerCreature(const string& nom)
 {
 	for (unsigned int i = 0; i < creatures_.size(); i++)
 	{
@@ -76,7 +76,7 @@ bool PolyLand::retirerCreature(const std::string& nom)
 			delete creatures_[i];
 			creatures_[i] = creatures_.back();
 			creatures_.pop_back();
-			std::cout << nom << " a bien été retire !" << std::endl;
+			cout << nom << " a bien été retire !" << endl;
 			return true;
 		}
 	}
@@ -110,7 +110,7 @@ bool PolyLand::attraperCreature(Dresseur* dresseur, Creature* creature)
 	return dresseur->ajouterCreature(creature);
 }
 
-bool PolyLand::relacherCreature(Dresseur* dresseur, const std::string nomCreature)
+bool PolyLand::relacherCreature(Dresseur* dresseur, const string nomCreature)
 {
 	return dresseur->enleverCreature(nomCreature);
 }
@@ -139,7 +139,7 @@ PolyLand& PolyLand::operator-=(Creature* creature)
 	return *this;
 }
 
-std::ostream& operator<<(std::ostream& os, const PolyLand& poly)
+ostream& operator<<(ostream& os, const PolyLand& poly)
 {
 	for (unsigned int i = 0; i < poly.dresseurs_.size(); i++)
 	{

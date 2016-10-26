@@ -13,7 +13,7 @@ energie_(0), experience_(0), niveau_(1)
 	pointDeVieTotal_ = 0;
 }
 
-Creature::Creature(const std::string& nom, unsigned int attaque,
+Creature::Creature(const string& nom, unsigned int attaque,
 	unsigned int defense, unsigned int pointDeVie, unsigned int energie) :
 	nom_(nom), attaque_(attaque), defense_(defense), pointDeVie_(pointDeVie),
 	energie_(energie), experience_(0), niveau_(1)
@@ -33,7 +33,7 @@ Creature::~Creature()
 	}
 }
 
-std::string Creature::getNom() const
+string Creature::getNom() const
 {
 	return nom_;
 }
@@ -83,7 +83,7 @@ unsigned int Creature::getNiveau() const
 	return niveau_;
 }
 
-std::vector<Pouvoir*> Creature::getPouvoirs() const
+vector<Pouvoir*> Creature::getPouvoirs() const
 {
 	return pouvoirs_;
 }
@@ -107,23 +107,23 @@ void Creature::attaquer(const Pouvoir & pouvoir, Creature & creature)
 			int tentative = rand() % 6;
 			//l'attaque rate une fois sur 6
 			if (tentative != 3) {
-				std::cout << nom_ << " lance " << pouvoir.getNom() << " qui inflige " << degat << " degat a " << creature.getNom() << std::endl;
+				cout << nom_ << " lance " << pouvoir.getNom() << " qui inflige " << degat << " degat a " << creature.getNom() << endl;
 				if (degat > creature.getPointDeVie()) {
 					creature.setPointDeVie(0);
 					int xp = experienceGagnee(creature);
-					std::cout << nom_ << " a gagné " << xp << " XP" << std::endl;
+					cout << nom_ << " a gagné " << xp << " XP" << endl;
 				}
 				else
 					creature.setPointDeVie(creature.getPointDeVie() - degat);
-				std::cout << creature.getNom() << " a encore " << creature.getPointDeVie() << " PV" << std::endl;
+				cout << creature.getNom() << " a encore " << creature.getPointDeVie() << " PV" << endl;
 				energie_ -= pouvoir.getEnergieNecessaire();
 			}
 			else {
-				std::cout << "Attaque " << pouvoir.getNom() << " a échouée" << std::endl;
+				cout << "Attaque " << pouvoir.getNom() << " a échouée" << endl;
 			}
 		}
 		else
-			std::cout << "Vous deja avez vaincu " << creature.getNom() << std::endl;
+			cout << "Vous deja avez vaincu " << creature.getNom() << endl;
 	}
 
 }
@@ -176,15 +176,15 @@ bool Creature::oublierPouvoir(Pouvoir* pouvoir)
 			pouvoirs_[i] = nullptr;
 			pouvoirs_[i] = pouvoirs_.back();
 			pouvoirs_.pop_back();
-			std::cout << "Le pouvoir " << pouvoir->getNom() << " a bien ete retire." << std::endl;
+			cout << "Le pouvoir " << pouvoir->getNom() << " a bien ete retire." << endl;
 			return true;
 		}
 	}
-	std::cout << "Le pouvoir " << pouvoir->getNom() << " n'a pas ete retire." << std::endl;
+	cout << "Le pouvoir " << pouvoir->getNom() << " n'a pas ete retire." << endl;
 	return false;
 }
 
-void Creature::setNom(const std::string& nom)
+void Creature::setNom(const string& nom)
 {
 	nom_ = nom;
 }
@@ -219,7 +219,7 @@ void Creature::setNiveau(unsigned int niveau)
 	niveau_ = niveau;
 }
 
-void Creature::setPouvoirs(std::vector<Pouvoir*> pouvoirs)
+void Creature::setPouvoirs(vector<Pouvoir*> pouvoirs)
 {
 	while (pouvoirs_.size() != 0)
 	{
@@ -269,23 +269,23 @@ bool Creature::operator==(const Creature& creature) const
 		&& experience_ == creature.experience_ && experienceNecessaire_ == creature.experienceNecessaire_ && niveau_ == creature.niveau_);
 }
 
-bool Creature::operator==(const std::string& nom) const
+bool Creature::operator==(const string& nom) const
 {
 	return (nom_ == nom);
 }
 
-bool operator==(const std::string& nom, const Creature& creature)
+bool operator==(const string& nom, const Creature& creature)
 {
 	return (creature == nom);
 }
 
-std::ostream& operator<<(std::ostream& os, const Creature& creature) // À set (si nécessaire...)
+ostream& operator<<(ostream& os, const Creature& creature) // À set (si nécessaire...)
 {
-	os << creature.nom_ << " a " << creature.attaque_ << " en attaque et " << creature.defense_ << " en defense, " << std::endl
-		<< "Il a " << creature.pointDeVie_ << "/" << creature.pointDeVieTotal_ << " PV et " << creature.energie_ << "/" << creature.energieTotal_ << " Energie" << std::endl
-		<< "Il est au niveau " << creature.niveau_ << " avec " << creature.experience_ << "d'XP" << std::endl
-		<< "Il lui manque " << creature.experienceNecessaire_ - creature.experience_ << " jusqu'au prochain niveau " << std::endl;
-	os << "Pouvoirs : " << std::endl;
+	os << creature.nom_ << " a " << creature.attaque_ << " en attaque et " << creature.defense_ << " en defense, " << endl
+		<< "Il a " << creature.pointDeVie_ << "/" << creature.pointDeVieTotal_ << " PV et " << creature.energie_ << "/" << creature.energieTotal_ << " Energie" << endl
+		<< "Il est au niveau " << creature.niveau_ << " avec " << creature.experience_ << "d'XP" << endl
+		<< "Il lui manque " << creature.experienceNecessaire_ - creature.experience_ << " jusqu'au prochain niveau " << endl;
+	os << "Pouvoirs : " << endl;
 	if (!creature.pouvoirs_.empty()) {
 		for (unsigned int i = 0; i < creature.pouvoirs_.size(); i++) {
 			os << *(creature.pouvoirs_[i]);
@@ -293,6 +293,6 @@ std::ostream& operator<<(std::ostream& os, const Creature& creature) // À set (s
 	}
 	else
 		os << creature.nom_ << " ne connait aucun pouvoir";
-	os << std::endl;
+	os << endl;
 	return os;
 }
