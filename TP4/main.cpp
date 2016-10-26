@@ -13,12 +13,13 @@ Description: Programme de test
 #include "Pouvoir.h"
 #include <time.h>
 
+using namespace std;
 
 int main()
 {
 	srand(time(NULL));
 
-	std::cout << "CREATION DES DRESSEURS" << std::endl;
+	cout << "CREATION DES DRESSEURS" << endl;
 	// Creer DYNAMIQUEMENT les dresseurs suivants (nom, equipe):
 	// ("Sasha", "Team de feu")
 	// ("Pierre", "Equipe de Poly")
@@ -27,7 +28,7 @@ int main()
 	Dresseur* Pierre = new Dresseur("Pierre", "Equipe de Poly");
 	Dresseur* Regis = new Dresseur("Regis", "Equipe de Poly");
 
-	std::cout << std::endl << "CREATION DES CREATURES" << std::endl;
+	cout << endl << "CREATION DES CREATURES" << endl;
 	// Creer les Creatures suivantes (nom, attaque, defense, pointDeVie, energie):
 	// ("Pokachu", 10, 2, 50, 25)
 	// ("Salimouche", 12, 3, 45, 20)
@@ -38,7 +39,7 @@ int main()
 	Creature Carapouce = Creature("Carapouce", 10, 1, 55, 25);
 	Creature Balbazar = Creature("Balbazar", 11, 2, 50, 22);
 
-	std::cout << "CRÉATION DES POUVOIRS" << std::endl;
+	cout << "CRÉATION DES POUVOIRS" << endl;
 	// Creer les pouvoirs ci-dessous (nom, degat, energie)
 	// ("Boule de feu", 5, 5)
 	// ("Pistolet a eau", 6, 6)
@@ -61,7 +62,7 @@ int main()
 	tonerre.setNom("Tonerre");
 	tonerre.setNombreDeDegat(3);
 
-	std::cout << "CRÉATION DES CREATURES MAGIQUES" << std::endl;
+	cout << "CRÉATION DES CREATURES MAGIQUES" << endl;
 	// Creer la CREATURE MAGIQUE Touflamme en utilisant la creature existante Salimouche et un bonus de 2.
 	// Le nom de Touflamme devrai ensuite etre modifie pour "Touflamme" et son attaque passera de 12 a 15.
 	// A COMPLETER...
@@ -71,7 +72,7 @@ int main()
 	// A COMPLETER...
 
 
-	std::cout << "CRÉATION DES ATTAQUES MAGIQUES" << std::endl;
+	cout << "CRÉATION DES ATTAQUES MAGIQUES" << endl;
 	//Creer une attaque magique de poison avec le constructeur par défaut
 	// A COMPLETER...
 
@@ -79,7 +80,7 @@ int main()
 	// A COMPLETER...
 
 
-	std::cout << "APPRENTISSAGE DES POUVOIRS" << std::endl;
+	cout << "APPRENTISSAGE DES POUVOIRS" << endl;
 	// Ajouter le pouvoir a la creature correspondante
 	// Salimouche -> bouleDeFeu
 	// Carapouce -> pistoletAEau
@@ -95,14 +96,14 @@ int main()
 	Touflamme.apprendrePouvoir(&etincelle);
 	Pokachoum.apprendrePouvoir(&eclair);
 
-	std::cout << "APPRENTISSAGE DES ATTAQUES MAGIQUES" << std::endl;
+	cout << "APPRENTISSAGE DES ATTAQUES MAGIQUES" << endl;
 	// Ajouter l'attaque magique à la créature magique correspondante
 	// Pokachoum -> Confusion
 	// Touflamme -> Poison
 	// A COMPLETER...
 
 
-	std::cout << std::endl << "AJOUT DE CREATURES ET DE DRESSEURS A POLYLAND" << std::endl << std::endl;
+	cout << endl << "AJOUT DE CREATURES ET DE DRESSEURS A POLYLAND" << endl << endl;
 
 	PolyLand polyland;
 
@@ -131,11 +132,11 @@ int main()
 	// Assignez à vous-meme Pokachoum
 	Vous.ajouterCreature(&Pokachoum);
 
-	std::cout << "TEST D'AFFICHAGE" << std::endl << std::endl;
-	std::cout << polyland << std::endl;
+	cout << "TEST D'AFFICHAGE" << endl << endl;
+	cout << polyland << endl;
 
 
-	std::cout << std::endl << "COMPETITION" << std::endl;
+	cout << endl << "COMPETITION" << endl;
 
 
 	/*******************************************************************/
@@ -143,11 +144,11 @@ int main()
 	/* Les modifications restantes sont a la fin de la fonction main.  */
 	/*******************************************************************/
 	//Duel entre vous et salimouche
-	std::cout << std::endl << "TESTS DE COMBAT" << std::endl;
+	cout << endl << "TESTS DE COMBAT" << endl;
 
-	std::cout << std::endl << "Un Salimouche surgit" << std::endl;
+	cout << endl << "Un Salimouche surgit" << endl;
 
-	std::cout << "Vous avez rencontré un Salimouche sauvage qui vous attaque..." << std::endl;
+	cout << "Vous avez rencontré un Salimouche sauvage qui vous attaque..." << endl;
 
 
 	Salimouche.attaquer(bouleDeFeu, *(Vous.getUneCreature("Pokachoum")));
@@ -156,29 +157,29 @@ int main()
 	while (Salimouche.getPointDeVie() > 0) {
 		((Vous.getUneCreature("Pokachoum")))->attaquer(eclair, Salimouche);
 	}
-	std::cout << "Vous avez battu un Salimouche, vous pouvez maintenante le capturer" << std::endl;
+	cout << "Vous avez battu un Salimouche, vous pouvez maintenante le capturer" << endl;
 
 	if (polyland.attraperCreature(&Vous, &Salimouche)) {
-		std::cout << "Felicitation vous avez attrapé un Salimouche !" << std::endl;
+		cout << "Felicitation vous avez attrapé un Salimouche !" << endl;
 	}
 	else {
-		std::cout << "Le Salimouche s'est échappé" << std::endl;
+		cout << "Le Salimouche s'est échappé" << endl;
 	}
 
 
-	std::cout << std::endl;
-	std::cout << "Vous trouvez une potion magique, vous décidez de l'utilisez sur Pokachoum" << std::endl;
+	cout << endl;
+	cout << "Vous trouvez une potion magique, vous décidez de l'utilisez sur Pokachoum" << endl;
 
 	ObjetMagique potionMagique("Potion magique", 15);
-	std::cout << potionMagique << std::endl;
+	cout << potionMagique << endl;
 	//Vous venez de trouver une potion magique
 	Vous.setObjetMagique(potionMagique);
 	//Soin de votre creature
 	Vous.utiliserObjetMagique(Vous.getUneCreature("Pokachoum"));
 
 	//Debut du duel avec Touflamme
-	std::cout << std::endl << "Touflamme se jette sur votre Pokachoum" << std::endl;
-	std::cout << "Un duel entre Pokachoum et Touflamme est engagé" << std::endl;
+	cout << endl << "Touflamme se jette sur votre Pokachoum" << endl;
+	cout << "Un duel entre Pokachoum et Touflamme est engagé" << endl;
 
 	//Vous attaquez la créature tant que qu'elle est en vie...
 	while (Touflamme.getPointDeVie() > 0)
@@ -198,36 +199,36 @@ int main()
 
 	//Il se peut que vous gagniez...
 	if (Touflamme.getPointDeVie() == 0)
-		std::cout << "Vous avez vaincu Touflamme" << std::endl;
+		cout << "Vous avez vaincu Touflamme" << endl;
 	else {
 		//Sinon votre seconde créature se charge de finir le combat
 		while (Touflamme.getPointDeVie() > 0)
 			(Vous.getUneCreature("Salimouche"))->attaquer(bouleDeFeu, Touflamme);
-		std::cout << "Votre Pokachoum a été battu mais heuresement votre Salimouche finit par vaincre Touflamme" << std::endl;
+		cout << "Votre Pokachoum a été battu mais heuresement votre Salimouche finit par vaincre Touflamme" << endl;
 	}
 
 
-	std::cout << "Pokachoum et Salimouche n'arrete pas de se chamailler, vous decidez d'abandonner Pokachum" << std::endl;
+	cout << "Pokachoum et Salimouche n'arrete pas de se chamailler, vous decidez d'abandonner Pokachum" << endl;
 
 	//Vous en avez marre des chamailleries, vous décidez de relacher Salimouche
 	if (polyland.relacherCreature(&Vous, "Pokachoum")) {
 
-		std::cout << "Vous avez bien relaché Pokachoum !" << std::endl;
+		cout << "Vous avez bien relaché Pokachoum !" << endl;
 	}
 	else {
 		//ce cas ne devrait pas s'afficher
-		std::cout << "Oh il y a eu un petit problème technique... Pokachoum n'a pas pu être relaché" << std::endl;
+		cout << "Oh il y a eu un petit problème technique... Pokachoum n'a pas pu être relaché" << endl;
 	}
 
 
-	std::cout << std::endl << "DERNIER TEST AFFICHAGE" << std::endl;
-	std::cout << Salimouche << std::endl;
-	std::cout << Carapouce << std::endl;
-	std::cout << Salimouche << std::endl;
-	std::cout << Balbazar << std::endl;
-	std::cout << Pokachu << std::endl;
-	std::cout << Touflamme << std::endl;
-	std::cout << Pokachoum << std::endl;
+	cout << endl << "DERNIER TEST AFFICHAGE" << endl;
+	cout << Salimouche << endl;
+	cout << Carapouce << endl;
+	cout << Salimouche << endl;
+	cout << Balbazar << endl;
+	cout << Pokachu << endl;
+	cout << Touflamme << endl;
+	cout << Pokachoum << endl;
 
 	/*******************************/
 	/*       FIN DES TESTS         */
