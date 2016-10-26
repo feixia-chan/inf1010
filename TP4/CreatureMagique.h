@@ -38,6 +38,7 @@ class CreatureMagique : public Creature
 
         //operator
         operator=(const CreatureMagique& creatureMagique);
+        friend ostream& operator<<(ostream& os, const CreatureMagique& creatureMagique);
 
     private:
         AttaqueMagique* attaqueMagique_;

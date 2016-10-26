@@ -84,6 +84,10 @@ CreatureMagique::operator=(const CreatureMagique& creatureMagique)
     return *this;
 
 }
+ostream& operator<<(ostream& os, const CreatureMagique& creatureMagique)
+{
+
+}
 
 //Apprentissage et oubli d'attaque magique
 void CreatureMagique::apprendreAttaqueMagique(AttaqueMagique* attaqueMagique)
@@ -94,4 +98,5 @@ void CreatureMagique::apprendreAttaqueMagique(AttaqueMagique* attaqueMagique)
 void CreatureMagique::oublierAttaqueMagique()
 {
     delete attaqueMagique_;
+    attaqueMagique_=nullptr;
 }
