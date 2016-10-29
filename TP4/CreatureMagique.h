@@ -20,34 +20,34 @@ using namespace std;
 
 class CreatureMagique : public Creature
 {
-    public:
-        CreatureMagique();
-        CreatureMagique(Creature creatute, unsigned int bonus);
-        ~CreatureMagique();
-        CreatureMagique(const CreatureMagique& creatureMagique);
+public:
+    CreatureMagique();
+    CreatureMagique(Creature creatute, unsigned int bonus);
+    ~CreatureMagique();
+    CreatureMagique(const CreatureMagique& creatureMagique);
 
-        //Accesseurs et Modificateurs
-        AttaqueMagique* getAttaqueMagique() const;
-        unsigned int getBonus() const;
-        void setBonus(unsigned int bonus);
+    //Accesseurs et Modificateurs
+    AttaqueMagique* getAttaqueMagique() const;
+    unsigned int getBonus() const;
+    void setBonus(unsigned int bonus);
 
-        //Type de la créature
-        string getTypeCreature() const;
+    //Type de la créature
+    string getTypeCreature() const;
 
-        //Attaquer
-        void attaquer(const Pouvoir& pouvoir, Creature& creature);
+    //Attaquer
+    void attaquer(const Pouvoir& pouvoir, Creature& creature);
 
-        //Appentissage et oubli d'attaque magique
-        void apprendreAttaqueMagique(AttaqueMagique* attaqueMagique);
-        void oublierAttaqueMagique();
+    //Appentissage et oubli d'attaque magique
+    void apprendreAttaqueMagique(AttaqueMagique* attaqueMagique);
+    void oublierAttaqueMagique();
 
-        //operator
-        operator=(const CreatureMagique& creatureMagique);
-        friend ostream& operator<<(ostream& os, const CreatureMagique& creatureMagique);
+    //operator
+    CreatureMagique& operator=(const CreatureMagique& creatureMagique);
+    friend ostream& operator<<(ostream& os, const CreatureMagique& creatureMagique);
 
-    private:
-        AttaqueMagique* attaqueMagique_;
-        unsigned int bonus_;
+private:
+    AttaqueMagique* attaqueMagique_;
+    unsigned int bonus_;
 };
 
 #endif // CREATUREMAGIQUE_H

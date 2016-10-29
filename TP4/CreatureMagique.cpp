@@ -9,7 +9,7 @@ CreatureMagique::CreatureMagique(): Creature()
 
 //constructeur par paramètres
 CreatureMagique::CreatureMagique(Creature creature, unsigned int bonus):
-                                     Creature(creature), bonus_(bonus)
+    Creature(creature), bonus_(bonus)
 {
     attaqueMagique_=nullptr;
 }
@@ -25,13 +25,11 @@ CreatureMagique::CreatureMagique(const CreatureMagique& creatureMagique): Creatu
     bonus_=creatureMagique.bonus_;
     delete attaqueMagique_;
     attaqueMagique_=nullptr;
-//       attaqueMagique_= new (creatureMagique.attaqueMagique_->getTypeAttaque())();
-//       //AttaqueMagiquePoison
-
-if(creatureMagique.attaqueMagique_->getTypeAttaque()=="class AttaqueMagiquePoison")
-    attaqueMagique_= new AttaqueMagiquePoison();
-else
-    attaqueMagique_= new AttaqueMagiqueConfusion();
+    if(creatureMagique.attaqueMagique_->getTypeAttaque()=="20AttaqueMagiquePoison") //explication sur cette ligne à la fin du fichier
+        attaqueMagique_= new AttaqueMagiquePoison();
+    else
+        attaqueMagique_= new AttaqueMagiqueConfusion();
+}
 
 //Accesseurs
 AttaqueMagique* CreatureMagique::getAttaqueMagique() const
@@ -65,7 +63,7 @@ void CreatureMagique::attaquer(const Pouvoir& pouvoir, Creature& creature)
     }
     if(pointDeVie_+bonus_<pointDeVieTotal_)
     {
-       pointDeVie_+=bonus_;
+        pointDeVie_+=bonus_;
     }
     else
     {
@@ -75,28 +73,43 @@ void CreatureMagique::attaquer(const Pouvoir& pouvoir, Creature& creature)
 
 }
 //operator
-CreatureMagique::operator=(const CreatureMagique& creatureMagique)
+CreatureMagique& CreatureMagique::operator=(const CreatureMagique& creatureMagique)
 {
     if(this != &creatureMagique)
     {
-       Creature::operator=(creatureMagique);
-       bonus_=creatureMagique.bonus_;
-       delete attaqueMagique_;
-       attaqueMagique_=nullptr;
-       attaqueMagique_=new AttaqueMagique(*typeid(creatureMagique.attaqueMagique_));
+        Creature::operator=(creatureMagique);
+        bonus_=creatureMagique.bonus_;
+        delete attaqueMagique_;
+        attaqueMagique_=nullptr;
+        if(creatureMagique.attaqueMagique_->getTypeAttaque()=="20AttaqueMagiquePoison")  //lorsque l'on veut afficher un string
+            attaqueMagique_= new AttaqueMagiquePoison();                                //avec typeid().name(), pour une AttaqueMagiquePoison
+        else                                                                            //on obtient "20AttaqueMagiquePoison" je ne sais pas d'où vient le 20
+            attaqueMagique_= new AttaqueMagiqueConfusion();                             //et peut être qu'il diffère d'un compilateur à l'autre
     }
     return *this;
 
 }
 ostream& operator<<(ostream& os, const CreatureMagique& creatureMagique)
 {
-
+    os<<static_cast<Creature>(creatureMagique);
+    os<<"Cette créature a un bonus de "<<creatureMagique.bonus_<<endl;
+    os<<"Cette créature appartient à la "<<typeid(creatureMagique).name()<<endl;
+    os<<"et "<<*creatureMagique.attaqueMagique_<<endl;
+    return os;
 }
 
 //Apprentissage et oubli d'attaque magique
 void CreatureMagique::apprendreAttaqueMagique(AttaqueMagique* attaqueMagique)
 {
-    attaqueMagique_=new AttaqueMagique(*attaqueMagique);
+    cout<<attaqueMagique->getTypeAttaque()<<endl;
+    if(attaqueMagique->getTypeAttaque()=="20AttaqueMagiquePoison")
+    {
+        attaqueMagique_= new AttaqueMagiquePoison();
+    }
+    else
+    {
+        attaqueMagique_= new AttaqueMagiqueConfusion();
+    }
 }
 
 void CreatureMagique::oublierAttaqueMagique()

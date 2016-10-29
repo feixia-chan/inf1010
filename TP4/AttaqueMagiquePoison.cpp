@@ -46,5 +46,5 @@ bool  AttaqueMagiquePoison::estFini()
     if(duree_=0)
         return true;
     else
-    return false;
+        return false;
 }

@@ -20,31 +20,31 @@ using namespace std;
 
 class AttaqueMagique
 {
-    public:
-        //constructeurs & destructeurs
-        AttaqueMagique(int duree);
-        virtual ~AttaqueMagique();
+public:
+    //constructeurs & destructeurs
+    AttaqueMagique(int duree);
+    virtual ~AttaqueMagique();
 
-        //accesseurs
-         int getDuree() const;
-         void setDuree(int& duree);
+    //accesseurs
+    int getDuree() const;
+    void setDuree(int& duree);
 
-        //meths
-        virtual string getTypeAttaque() const;    //nom modifié pour rester cohérent avec nos accesseurs
-        virtual bool appliquerAttaque(Creature creatureAdverse) =0;  //methode virtuelle pure rendant la classe abstraite. on met un booléen pour savoir si ca a marché
-        virtual bool estFini();
+    //meths
+    virtual string getTypeAttaque() const;    //nom modifié pour rester cohérent avec nos accesseurs
+    virtual bool appliquerAttaque(Creature& creatureAdverse) =0;  //methode virtuelle pure rendant la classe abstraite. on met un booléen pour savoir si ca a marché
+    virtual bool estFini();
 
-        //opérateurs
+    //opérateurs
 
-        //affichage
-        // a aussi une attaque magique de type class AttaqueMagique qui a une durée de 1
-        friend ostream& operator<< (ostream& flux, AttaqueMagique& AttaqueMagique);
+    //affichage
+    // a aussi une attaque magique de type class AttaqueMagique qui a une durée de 1
+    friend ostream& operator<< (ostream& flux, AttaqueMagique& AttaqueMagique);
 
 
-    protected:
-        int duree_;
+protected:
+    int duree_;
 
-    private:
+private:
 };
 
 #endif // ATTAQUEMAGIQUE_H

@@ -17,21 +17,21 @@ using namespace std;
 class ObjetMagique
 {
 public:
-	ObjetMagique();
-	ObjetMagique(const string &nom, int bonus);
-	~ObjetMagique();
+    ObjetMagique();
+    ObjetMagique(const string &nom, int bonus);
+    ~ObjetMagique();
 
-	string getNom() const;
-	int getBonus() const;
+    string getNom() const;
+    int getBonus() const;
 
-	void modifierNom(const string& nom);
-	void modifierBonus(int bonus);
+    void setNom(const string& nom);
+    void setBonus(int bonus);
 
-	friend ostream& operator<<(ostream& os, const ObjetMagique& objet);
+    friend ostream& operator<<(ostream& os, const ObjetMagique& objet);
 
 private:
-	string nom_;
-	int bonus_;
+    string nom_;
+    int bonus_;
 };
 
 #endif

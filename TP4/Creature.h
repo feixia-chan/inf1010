@@ -18,63 +18,63 @@ using namespace std;
 class Creature
 {
 public:
-	Creature();
-	Creature(const string& nom, unsigned int attaque,
-		unsigned int defense, unsigned int pointDeVie, unsigned int energie);
-	~Creature();
+    Creature();
+    Creature(const string& nom, unsigned int attaque,
+             unsigned int defense, unsigned int pointDeVie, unsigned int energie);
+    ~Creature();
 
-	string getNom() const;
-	unsigned int getAttaque() const;
-	unsigned int getDefense() const;
-	unsigned int getPointDeVie() const;
-	unsigned int getPointDeVieTotal() const;
-	unsigned int getEnergie() const;
-	unsigned int getEnergieTotale() const;
-	unsigned int getExperience() const;
-	unsigned int getExperienceNecessaire() const;
-	unsigned int getNiveau() const;
-	vector<Pouvoir*> getPouvoirs() const;
+    string getNom() const;
+    unsigned int getAttaque() const;
+    unsigned int getDefense() const;
+    unsigned int getPointDeVie() const;
+    unsigned int getPointDeVieTotal() const;
+    unsigned int getEnergie() const;
+    unsigned int getEnergieTotale() const;
+    unsigned int getExperience() const;
+    unsigned int getExperienceNecessaire() const;
+    unsigned int getNiveau() const;
+    vector<Pouvoir*> getPouvoirs() const;
 
-	void attaquer(const Pouvoir& pouvoir,Creature& creature);
-	int experienceGagnee(const Creature& creature);
+    void attaquer(const Pouvoir& pouvoir,Creature& creature);
+    int experienceGagnee(const Creature& creature);
 
-	bool apprendrePouvoir(Pouvoir* pouvoir);
-	bool oublierPouvoir(Pouvoir* pouvoir);
+    bool apprendrePouvoir(Pouvoir* pouvoir);
+    bool oublierPouvoir(Pouvoir* pouvoir);
 
-	void setNom(const string& nom);
-	void setAttaque(unsigned int attaque);
-	void setDefense(unsigned int defense);
-	void setPointDeVie(unsigned int pointDeVie);
-	void setEnergie(unsigned int energie);
-	void setExperience(unsigned int experience);
-	void setNiveau(unsigned int niveau);
-	void setPouvoirs(vector<Pouvoir*> pouvoirs);
+    void setNom(const string& nom);
+    void setAttaque(unsigned int attaque);
+    void setDefense(unsigned int defense);
+    void setPointDeVie(unsigned int pointDeVie);
+    void setEnergie(unsigned int energie);
+    void setExperience(unsigned int experience);
+    void setNiveau(unsigned int niveau);
+    void setPouvoirs(vector<Pouvoir*> pouvoirs);
 
     virtual string getTypeCreature() const;   //virtuelle, et nom modifié pr notre TP
 
 
-	Creature(const Creature& creature);
-	Creature& operator=(const Creature& creature);
+    Creature(const Creature& creature);
+    Creature& operator=(const Creature& creature);
 
-	bool operator==(const Creature& creature) const;
-	bool operator==(const string& nom) const;
-	friend bool operator==(const string& nom, const Creature& creature);
+    bool operator==(const Creature& creature) const;
+    bool operator==(const string& nom) const;
+    friend bool operator==(const string& nom, const Creature& creature);
 
-	friend ostream& operator<<(ostream& os, const Creature& creature); // À set (si nécessaire...)
+    friend ostream& operator<<(ostream& os, const Creature& creature); // À set (si nécessaire...)
 
 protected:
 
-	string nom_;
-	unsigned int attaque_;
-	unsigned int defense_;
-	unsigned int pointDeVie_;
-	unsigned int pointDeVieTotal_;
-	unsigned int energie_;
-	unsigned int energieTotal_;
-	unsigned int experience_;
-	unsigned int experienceNecessaire_;
-	unsigned int niveau_;
-	vector<Pouvoir*> pouvoirs_;
+    string nom_;
+    unsigned int attaque_;
+    unsigned int defense_;
+    unsigned int pointDeVie_;
+    unsigned int pointDeVieTotal_;
+    unsigned int energie_;
+    unsigned int energieTotal_;
+    unsigned int experience_;
+    unsigned int experienceNecessaire_;
+    unsigned int niveau_;
+    vector<Pouvoir*> pouvoirs_;
 
 };
 

@@ -24,24 +24,24 @@ public:
 	~Dresseur();
 
 	string getNom() const;
-	void modifierNom(const string& nom);
+	void setNom(const string& nom);
 
 	unsigned int getNombreCreatures() const;
 
-	vector<Creature*> obtenirCreatures() const;
-	Creature* obtenirUneCreature(const string& nom) const;
-	void modifierCreature(vector<Creature*> creatures);
+	vector<Creature*> getCreatures() const;
+	Creature* getUneCreature(const string& nom) const;
+	void setCreature(vector<Creature*> creatures);
 
 	bool ajouterCreature(Creature* creature);
 	bool enleverCreature(const string& nom);
 
-	ObjetMagique obtenirObjetMagique() const;
-	void modifierObjetMagique(const ObjetMagique& objetMagique);
+	ObjetMagique getObjetMagique() const;
+	void setObjetMagique(const ObjetMagique& objetMagique);
 
-	void utiliserObjetMagique(Creature* creature);
+    void utiliserObjetMagique(Creature* creature);
 
-	string obtenirEquipe() const;
-	void modifierEquipe(const string& equipe);
+	string getEquipe() const;
+	void setEquipe(const string& equipe);
 
 	friend ostream& operator<<(ostream& os, const Dresseur& dresseur);
 

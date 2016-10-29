@@ -21,28 +21,30 @@ AttaqueMagique::~AttaqueMagique()
 
 //accesseurs
 
- int AttaqueMagique::getDuree() const
+int AttaqueMagique::getDuree() const
 {
     return duree_;
 }
 
- void AttaqueMagique::setDuree(int& duree)
+void AttaqueMagique::setDuree(int& duree)
 {
     duree_=duree;
 }
 
 //meths
 
- string AttaqueMagique::getTypeAttaque() const
+string AttaqueMagique::getTypeAttaque() const
 {
     return typeid(*this).name(); //retourne une string "AttaqueMagique"
 }
 
- bool AttaqueMagique::estFini(){
+bool AttaqueMagique::estFini()
+{
     return true;
 }
 
- ostream& operator<< (ostream& flux, AttaqueMagique& AttaqueMagique){
+ostream& operator<< (ostream& flux, AttaqueMagique& AttaqueMagique)
+{
     flux << " a aussi une attaque magique de type " << AttaqueMagique.getTypeAttaque() << " qui a une durée de "<< AttaqueMagique.duree_<<endl;
     return flux;
 }
