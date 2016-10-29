@@ -1,6 +1,6 @@
 #include "AttaqueMagiquePoison.h"
 
-#include <stdlib>
+
 
 //constructeurs & destructeurs
 AttaqueMagiquePoison::AttaqueMagiquePoison():AttaqueMagique(2)
@@ -17,10 +17,10 @@ AttaqueMagiquePoison::~AttaqueMagiquePoison()
 
 //meths
 
-string AttaqueMagiquePoison::getTypeAttaque() const
-{
-    return typeid(AttaqueMagiquePoison).name; //retourne une string "AttaqueMagiquePoison"
-}
+//string AttaqueMagiquePoison::getTypeAttaque() const
+//{
+//    return typeid(AttaqueMagiquePoison).name(); //retourne une string "AttaqueMagiquePoison"
+//}
 
 bool  AttaqueMagiquePoison::appliquerAttaque(Creature& creatureAdverse)
 {

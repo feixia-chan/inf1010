@@ -9,6 +9,7 @@ Description:  attaques des créatures magiques
 #define ATTAQUEMAGIQUECONFUSION_H
 
 #include "AttaqueMagique.h"
+#include <typeinfo>
 
 using namespace std;
 
@@ -23,7 +24,7 @@ public:
     virtual ~AttaqueMagiqueConfusion();
 
     //meths
-    string getTypeAttaque() const;
+  //  string getTypeAttaque() const;
 //appliquerAttaque n'est pas virtuelle
     bool appliquerAttaque(Creature& creatureAdverse);    //PV -2 à 33% de réussite si PV >5 && duree_>0
     bool estFini();
