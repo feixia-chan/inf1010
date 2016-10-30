@@ -179,7 +179,6 @@ int main()
         cout << "Le Salimouche s'est échappé" << endl;
     }
 
-
     cout << endl;
     cout << "Vous trouvez une potion magique, vous décidez de l'utilisez sur Pokachoum" << endl;
 
@@ -222,7 +221,6 @@ int main()
             (Vous.getUneCreature("Salimouche"))->attaquer(bouleDeFeu, Touflamme);
         cout << "Votre Pokachoum a été battu mais heuresement votre Salimouche finit par vaincre Touflamme" << endl;
     }
-
 
     cout << "Pokachoum et Salimouche n'arrete pas de se chamailler, vous decidez d'abandonner Pokachum" << endl;
 
