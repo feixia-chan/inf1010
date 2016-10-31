@@ -59,7 +59,6 @@ void CreatureMagique::attaquer(const Pouvoir& pouvoir, Creature& creature)
 {
     if(!attaqueMagique_->estFini())
     {
-        cout<<"Tentative d'application de l'attaque magique"<<endl;
         attaqueMagique_->appliquerAttaque(creature);
     }
     if(pointDeVie_+bonus_<pointDeVieTotal_)

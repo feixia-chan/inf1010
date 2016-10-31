@@ -32,12 +32,12 @@ public:
     void setBonus(unsigned int bonus);
 
     //Type de la créature
-    virtual string getTypeCreature() const;
+    string getTypeCreature() const;
 
     //Attaquer
     virtual void attaquer(const Pouvoir& pouvoir, Creature& creature);
 
-    //Appentissage et oubli d'attaque magique
+    //Apprentissage et oubli d'attaque magique
     void apprendreAttaqueMagique(AttaqueMagique* attaqueMagique);
     void oublierAttaqueMagique();
 

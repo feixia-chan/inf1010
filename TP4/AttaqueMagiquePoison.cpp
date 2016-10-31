@@ -32,7 +32,6 @@ bool  AttaqueMagiquePoison::appliquerAttaque(Creature& creatureAdverse)
             if (chance ==0)  //une chance sur 3
             {
                 creatureAdverse.setEnergie(creatureAdverse.getEnergie()-2);
-                cout<<"Le poison a retiré de l'énergie à "<<creatureAdverse.getNom()<<endl;
                 return true;
             }
         }
@@ -44,7 +43,7 @@ bool  AttaqueMagiquePoison::appliquerAttaque(Creature& creatureAdverse)
 
 bool  AttaqueMagiquePoison::estFini()
 {
-    if(duree_=0)
+    if(duree_==0)
         return true;
     else
         return false;

@@ -34,7 +34,6 @@ bool AttaqueMagiqueConfusion::appliquerAttaque(Creature& creatureAdverse)
             if (chance ==0)  //une chance sur 3
             {
                 creatureAdverse.setPointDeVie(creatureAdverse.getPointDeVie()-2);
-                cout<<"La confusion a retiré de la vie à "<<creatureAdverse.getNom()<<endl;
                 return true;
             }
         }
@@ -45,7 +44,7 @@ bool AttaqueMagiqueConfusion::appliquerAttaque(Creature& creatureAdverse)
 
 bool AttaqueMagiqueConfusion::estFini()
 {
-    if(duree_=0)
+    if(duree_==0)
         return true;
     else
         return false;
