@@ -2,14 +2,15 @@
 
 
 
-La classe AttaqueMagique sert de classe mère pour des attaques magiques qui ont un type comme poison ou confusion qui ont elles mêmes leurs propres spécificités selon leur type. Il n'a donc pas de sens d'avoir un objet AttaqueMagique pour lequel il n'y a pas de spécificité, c'est pourquoi c'est une classe abstraite.
+La classe AttaqueMagique sert de classe mère pour des attaques magiques qui ont un type comme poison ou confusion, et qui ont elles mêmes leurs propres spécificités selon le type. 
+Il n'a donc pas de sens d'avoir un objet AttaqueMagique pour lequel il n'y a pas de spécificité, c'est pourquoi c'est une classe abstraite.
 
 2- Dans la classe Créature, quelle(s) méthode(s) avez-vous déclarées virtuelles et pourquoi ? 
 
-
-
-Les méthodes de Créature qui sont modifiées dans CréatureMagique sont attaquer() et obtenirTypeCreature(). Ces deux méthodes ont donc été déclarées virtuelles.
+Les méthodes attaquer et getTypeCreature sont redéfinies dans CreatureMagique ont été déclarées virtuelles: en effet elles dépendentdu  type (Creature ou CreatureMagique).
+Or dans le main certaines créatures peuvent être des créatures magique, il peut y avoir "confusion".
 
 3- Pourquoi est-il important que les destructeurs de Créature et de CréatureMagique soient virtuels ?
 
-Dans le destructeur de CreatureMagique ont ajoute la destruction de l'attaqueMagique_ que l'on a pas dans le destructeur de Creature, il faut donc le rajouter à l'aide d'un destructeur virtuel.
+Dans le destructeur de CreatureMagique ont ajoute la destruction de l'attaqueMagique_ que l'on a pas dans le destructeur de Creature.
+Or ainsi que dit dans la Q2, une créature peut être en réalité de type CréatureMagique. Si on n'indique pas le destructeur comme virtuel, on peut avoir des fuite mémoires.

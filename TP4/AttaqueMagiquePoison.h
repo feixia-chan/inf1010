@@ -24,10 +24,10 @@ public:
 
 
     //meths
-//    string getTypeAttaque() const;
-    //appliquerAttaque n'est pas virtuelle
-    bool appliquerAttaque(Creature& creatureAdverse);    //energie -2 à 33%de réussite si energie >5 && duree_>0
-    bool estFini(); //vrai si durée_==0
+//    virtual string getTypeAttaque() const;
+    //appliquerAttaque est virtuelle, car elle a été déclarée comme telle dans AttaqueMagique
+    virtual bool appliquerAttaque(Creature& creatureAdverse);    //energie -2 à 33%de réussite si energie >5 && duree_>0
+    virtual bool estFini(); //vrai si durée_==0
 protected:
 
 private:

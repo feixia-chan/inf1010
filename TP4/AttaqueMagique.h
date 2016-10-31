@@ -30,7 +30,7 @@ public:
     void setDuree(int& duree);
 
     //meths
-    virtual string getTypeAttaque() const;    //nom modifié pour rester cohérent avec nos accesseurs
+    string getTypeAttaque() const;    //nom modifié pour rester cohérent avec nos accesseurs
     virtual bool appliquerAttaque(Creature& creatureAdverse) =0;  //methode virtuelle pure rendant la classe abstraite. on met un booléen pour savoir si ca a marché
     virtual bool estFini();
 

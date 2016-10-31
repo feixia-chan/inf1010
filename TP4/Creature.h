@@ -50,7 +50,7 @@ public:
     void setNiveau(unsigned int niveau);
     void setPouvoirs(vector<Pouvoir*> pouvoirs);
 
-    virtual string getTypeCreature() const;   //virtuelle, et nom modifié pr notre TP
+    virtual string getTypeCreature() const;   //Virtuelle car on peut avoir des créatures créaturesMagique (d'ou l'utilisation de typeid)
 
 
     Creature(const Creature& creature);
