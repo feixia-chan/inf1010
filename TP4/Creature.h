@@ -21,7 +21,7 @@ public:
     Creature();
     Creature(const string& nom, unsigned int attaque,
              unsigned int defense, unsigned int pointDeVie, unsigned int energie);
-    ~Creature();
+    virtual ~Creature();
 
     string getNom() const;
     unsigned int getAttaque() const;
@@ -35,7 +35,7 @@ public:
     unsigned int getNiveau() const;
     vector<Pouvoir*> getPouvoirs() const;
 
-    void attaquer(const Pouvoir& pouvoir,Creature& creature);
+    virtual void attaquer(const Pouvoir& pouvoir,Creature& creature);
     int experienceGagnee(const Creature& creature);
 
     bool apprendrePouvoir(Pouvoir* pouvoir);

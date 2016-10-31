@@ -65,7 +65,7 @@ void CreatureMagique::attaquer(const Pouvoir& pouvoir, Creature& creature)
     if(pointDeVie_+bonus_<pointDeVieTotal_)
     {
         pointDeVie_+=bonus_;
-        cout<<nom_<<"applique son bonus et a maintenant "<<pointDeVie_<<" PV"<<endl;
+        cout<<nom_<<" applique son bonus et a maintenant "<<pointDeVie_<<" PV"<<endl;
     }
     else
     {
