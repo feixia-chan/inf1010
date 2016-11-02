@@ -1,4 +1,5 @@
-﻿/*
+﻿
+/*
 Fichier: main.cpp
 Auteur(s): Alexandre MAO
 Date de creation: 31 aout 2016
@@ -63,53 +64,53 @@ int main()
 	// A COMPLETER...
 
 
-    std::cout << "TEST AFFICHAGE" << std::endl;
-    std::cout << "pouvoir de la creature avant trie" << std::endl;
-    std::cout << pokachu << std::endl;
+    cout << "TEST AFFICHAGE" << endl;
+    cout << "pouvoir de la creature avant trie" << endl;
+    cout << pokachu << endl;
 
     pokachu.trierPouvoir(FoncteurComparerPouvoir());
-    std::cout << "pouvoir de la creature apres trie" << std::endl;
-    std::cout << pokachu << std::endl;
+    cout << "pouvoir de la creature apres trie" << endl;
+    cout << pokachu << endl;
 
-	std::cout << "Affichage de Polyland" << std::endl;
-	std::cout << polyland << std::endl;
-    std::cout << "FIN TEST AFFICHAGE" << std::endl;
-    std::cout <<  std::endl;
+	cout << "Affichage de Polyland" << endl;
+	cout << polyland << endl;
+    cout << "FIN TEST AFFICHAGE" << endl;
+    cout <<  endl;
 
-    std::cout << "TEST DRESSEUR" << std::endl;
+    cout << "TEST DRESSEUR" << endl;
 
     if (vous == sacha) //Les deux dresseurs n'ont pas les mêmes créatures
-        std::cout << "DRESSEUR operateur== : Erreur Technique!!!!" << std::endl;
+        cout << "DRESSEUR operateur== : Erreur Technique!!!!" << endl;
 
     sacha.ajouterCreature(&pokachu);
     vous.ajouterCreature(&salimouche);
     vous.ajouterCreature(&touflamme);
     if (!(vous == sacha)) //Les deux dresseurs ont maintenant les mêmes créatures
-        std::cout << "DRESSEUR operateur== : Erreur Technique!!!!" << std::endl;
+        cout << "DRESSEUR operateur== : Erreur Technique!!!!" << endl;
     vous.enleverCreature(touflamme.obtenirNom());
 
     FoncteurCreatureVie vieCompriseEntre(80, 150);
     vous.appliquerFoncteurUnaire(vieCompriseEntre);
     if (vieCompriseEntre.obtenirCompteur() == 2)
-        std::cout << "appliquerFoncteurUnaire: OK" << std::endl;
+        cout << "appliquerFoncteurUnaire: OK" << endl;
     else
-        std::cout << "appliquerFoncteurUnaire: Erreur Technique!!!!" << std::endl;
+        cout << "appliquerFoncteurUnaire: Erreur Technique!!!!" << endl;
 
-    std::cout << "TEST DRESSEUR : obtenir element max" << std::endl;
-    std::cout << *(vous.obtenirCreatureMax(FoncteurComparerCreature())) << std::endl;
-    std::cout << "TEST DRESSEUR : FIN obtenir element max" << std::endl;
+    cout << "TEST DRESSEUR : obtenir element max" << endl;
+    cout << *(vous.obtenirCreatureMax(FoncteurComparerCreature())) << endl;
+    cout << "TEST DRESSEUR : FIN obtenir element max" << endl;
 
-    std::cout << "TEST DRESSEUR : suppression" << std::endl;
+    cout << "TEST DRESSEUR : suppression" << endl;
     //Supprime les créatures ayant une attaque supérieure a
     //attaque max
     unsigned int attaqueMax = 11;
     FoncteurObtenirAttaqueCreature obtenirAttaque;
     vous.supprimerElements(
-        std::bind(
+        bind(
             /*A COMPLETER générer un opérateur > pour les entiers*/,
             //Le bind ci-dessous permet d'appeler la méthode obtenirAttaque() de la
             //Creature* passée en argument du foncteur lors des appels de ce dernier dans supprimerElements
-                std::bind( 
+                bind(
                     obtenirAttaque,
                     /*A COMPLETER utiliser le premier placeholder (attention aux namespace) (reçoit un Creature*)*/
                 ),
@@ -118,13 +119,13 @@ int main()
     );
     //N.B: A l'issue de la fonction vous ne devriez plus posséder de Salimouche
 
-    std::cout << vous << std::endl;
-    std::cout << "FIN TEST DRESSEUR" << std::endl;
-    std::cout << std::endl;
-	
+    cout << vous << endl;
+    cout << "FIN TEST DRESSEUR" << endl;
+    cout << endl;
 
-    std::cout << "Début MAP" << std::endl;
-    std::cout << "Oyez fiers dresseurs, l'incroyable tournoi de polyland a lieu aujourd'hui!!!" << std::endl;
+
+    cout << "Début MAP" << endl;
+    cout << "Oyez fiers dresseurs, l'incroyable tournoi de polyland a lieu aujourd'hui!!!" << endl;
 
     //Les règles de ce tournoi sont particulières, chaque dresseur ne peut inscrire qu'une seule créature!!!
     //Créez une map Dresseur*-->Creature* avec une clé qui compare les dresseurs* en ordre alphabétique suivant leur nom.
@@ -138,15 +139,15 @@ int main()
 	// A COMPLETER...
 
 
-    std::cout << "Début MAP" << std::endl;
-    std::cout << "Vous a inscrit la créature:" << std::endl;
-    std::cout << *(creaturesInscrites[&vous]) << std::endl;
-    std::cout << "Sacha a inscrit la créature:" << std::endl;
-    std::cout << *(creaturesInscrites[&sacha]) << std::endl;
+    cout << "Début MAP" << endl;
+    cout << "Vous a inscrit la créature:" << endl;
+    cout << *(creaturesInscrites[&vous]) << endl;
+    cout << "Sacha a inscrit la créature:" << endl;
+    cout << *(creaturesInscrites[&sacha]) << endl;
 
 	//Debut du duel avec Touflamme
-	std::cout << std::endl << "Touflamme se jette sur votre Pokachu" << std::endl;
-	std::cout << "Un duel entre Pokachu et Touflamme est engagé" << std::endl;
+	cout << endl << "Touflamme se jette sur votre Pokachu" << endl;
+	cout << "Un duel entre Pokachu et Touflamme est engagé" << endl;
 
 	//Vous attaquez Touflamme tant que qu'elle est en vie, et miraculeusement touflamme ne réplique jamais... Vous allez gagner ce duel.
 	//Étapes: While (touflamme a encore des points de vie) { pokachu attaque }
@@ -159,10 +160,10 @@ int main()
 	// A COMPLETER...
 
 
-	std::cout << std::endl << "FIN DE POLYLAND ... :(" << std::endl;
-	std::cout << "Vous supprimer Sacha de polyland" << std::endl;
+	cout << endl << "FIN DE POLYLAND ... :(" << endl;
+	cout << "Vous supprimer Sacha de polyland" << endl;
 	polyland -= &sacha;
-	std::cout << "Vous supprimer Pokachu de polyland" << std::endl;
+	cout << "Vous supprimer Pokachu de polyland" << endl;
 	polyland -= &pokachu;
 
 	polyland.vider();

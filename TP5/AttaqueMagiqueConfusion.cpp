@@ -29,7 +29,7 @@ bool AttaqueMagiqueConfusion::estFini() const
     return ( duree_ <= 0 );
 }
 
-std::string AttaqueMagiqueConfusion::getTypeAttaque() const
+string AttaqueMagiqueConfusion::getTypeAttaque() const
 {
 	return (typeid(*this).name());
 }

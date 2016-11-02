@@ -64,15 +64,15 @@ void CreatureMagique::attaquer(const Pouvoir & pouvoir, Creature & creature)
 	Creature::attaquer(pouvoir, creature); //Ensuite on attaque la créature
 }
 
-std::ostream& operator<<(std::ostream & os, const CreatureMagique& creature)
+ostream& operator<<(ostream & os, const CreatureMagique& creature)
 {
 	Creature c(creature);
 	os << c << "Cette créature de la " << creature.getTypeCreature() << "a aussi une attaque magique de type " << creature.getAttaque()->getTypeAttaque();
-	os << " qui a une durée de " << creature.getAttaque()->getDuree() << std::endl;
+	os << " qui a une durée de " << creature.getAttaque()->getDuree() << endl;
     return os;
 }
 
-std::string CreatureMagique::getTypeCreature() const
+string CreatureMagique::getTypeCreature() const
 {
 	return (typeid(*this).name());
 }

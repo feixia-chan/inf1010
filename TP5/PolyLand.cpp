@@ -16,7 +16,7 @@ bool PolyLand::attraperCreature(Dresseur* dresseur, Creature* creature)
 	return dresseur->ajouterCreature(creature);
 }
 
-bool PolyLand::relacherCreature(Dresseur* dresseur, const std::string& nomCreature)
+bool PolyLand::relacherCreature(Dresseur* dresseur, const string& nomCreature)
 {
 	return dresseur->enleverCreature(nomCreature);
 }

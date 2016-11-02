@@ -6,7 +6,7 @@ Pouvoir::Pouvoir()
 {
 }
 
-Pouvoir::Pouvoir(const std::string& nom,
+Pouvoir::Pouvoir(const string& nom,
 	unsigned int nombreDeDegat,	unsigned int energieNecessaire):
 	nom_(nom), nombreDeDegat_(nombreDeDegat), energieNecessaire_(energieNecessaire)
 {
@@ -22,7 +22,7 @@ unsigned int Pouvoir::getEnergieNecessaire() const
 	return energieNecessaire_;
 }
 
-std::string Pouvoir::getNom() const
+string Pouvoir::getNom() const
 {
 	return nom_;
 }
@@ -37,7 +37,7 @@ void Pouvoir::setEnergieNecessarie(unsigned int energieNecessaire)
 	energieNecessaire_ = energieNecessaire;
 }
 
-void Pouvoir::setNom(const std::string& nom)
+void Pouvoir::setNom(const string& nom)
 {
 	nom_ = nom;
 }
@@ -70,7 +70,7 @@ bool Pouvoir::operator==(const Pouvoir& pouvoir) const
 	return (nom_ == pouvoir.nom_);
 }
 
-std::ostream& operator<<(std::ostream& os, const Pouvoir& pouvoir)
+ostream& operator<<(ostream& os, const Pouvoir& pouvoir)
 {
-	return os << pouvoir.nom_ << " possede un nombre de dégat de " << pouvoir.nombreDeDegat_ << " et une energie necessaire de " << pouvoir.energieNecessaire_ << std::endl;
+	return os << pouvoir.nom_ << " possede un nombre de dégat de " << pouvoir.nombreDeDegat_ << " et une energie necessaire de " << pouvoir.energieNecessaire_ << endl;
 }

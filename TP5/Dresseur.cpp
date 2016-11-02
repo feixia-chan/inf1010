@@ -10,18 +10,18 @@ Date de modification: 6 septembre 2016 par Maude Carrier
 
 Dresseur::Dresseur() :nom_(""), equipe_("") {};
 
-Dresseur::Dresseur(const std::string& nom, const std::string& equipe) : nom_(nom), equipe_(equipe) {};
+Dresseur::Dresseur(const string& nom, const string& equipe) : nom_(nom), equipe_(equipe) {};
 
 Dresseur::~Dresseur()
 {
 }
 
-std::string Dresseur::getNom() const
+string Dresseur::getNom() const
 {
 	return nom_;
 }
 
-void Dresseur::setNom(const std::string& nom)
+void Dresseur::setNom(const string& nom)
 {
 	nom_ = nom;
 }
@@ -36,13 +36,13 @@ auto Dresseur::getCreatures() const
 	return creatures_;
 }
 
-Creature* Dresseur::getUneCreature(const std::string& nom) const //À MODIFIFIER !!
+Creature* Dresseur::getUneCreature(const string& nom) const //À MODIFIFIER !!
 {
     /*complétez moi*/
 	return;
 }
 
-void Dresseur::setCreature(std::list<Creature*> creatures) //A Compléter
+void Dresseur::setCreature(list<Creature*> creatures) //A Compléter
 {
 	creatures_ = creatures;
 }
@@ -58,7 +58,7 @@ bool Dresseur::ajouterCreature(Creature* creature)
 	return true;
 }
 
-bool Dresseur::enleverCreature(const std::string& nom)
+bool Dresseur::enleverCreature(const string& nom)
 {
     FoncteurCreaturesDeMemeNom foncteurComparaison(nom);
     auto position = find_if(creatures_.begin(), creatures_.end(), foncteurComparaison);
@@ -97,12 +97,12 @@ void Dresseur::utiliserObjetMagique(Creature* creature)
 	}
 }
 
-std::string Dresseur::getEquipe() const
+string Dresseur::getEquipe() const
 {
 	return equipe_;
 }
 
-void Dresseur::setEquipe(const std::string& equipe)
+void Dresseur::setEquipe(const string& equipe)
 {
 	equipe_ = equipe;
 }
@@ -120,18 +120,18 @@ bool Dresseur::operator==(const Dresseur& dresseur) const //A compléter
 	return true;
 }
 
-bool Dresseur::operator==(const std::string& nom) const
+bool Dresseur::operator==(const string& nom) const
 {
 	return (nom_ == nom);
 }
 
-bool operator==(const std::string& nom, const Dresseur& dresseur)
+bool operator==(const string& nom, const Dresseur& dresseur)
 {
 	return dresseur == nom;
 }
 
-std::ostream& operator<<(std::ostream& os, const Dresseur& dresseur)
+ostream& operator<<(ostream& os, const Dresseur& dresseur)
 {
     return os << dresseur.nom_ << " possede " << dresseur.creatures_.size()
-        << " creature(s) et appartient a l'equipe " << dresseur.equipe_ << std::endl;
+        << " creature(s) et appartient a l'equipe " << dresseur.equipe_ << endl;
 }

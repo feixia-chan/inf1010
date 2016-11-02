@@ -28,7 +28,7 @@ bool AttaqueMagiquePoison::estFini() const
     return (duree_ <= 0);
 }
 
-std::string AttaqueMagiquePoison::getTypeAttaque() const
+string AttaqueMagiquePoison::getTypeAttaque() const
 {
 	return (typeid(*this).name());
 }
