@@ -64,7 +64,7 @@ public:
 	virtual string getTypeCreature() const;
 
 	template< typename PredicatBin >
-    void trierPouvoirs(PrenicatBin predicat); //bool pour un affichage en cas d'erreur
+    void trierPouvoirs(PredicatBin predicat); //bool pour un affichage en cas d'erreur
 
 protected:
 

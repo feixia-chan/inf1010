@@ -320,7 +320,8 @@ string Creature::getTypeCreature() const
 	return (typeid(*this).name());
 }
 
-void Creature::trierPouvoirs(PrenicatBin predicat){ //pas de copie pr éviter les fuites mémoires
+template <typename PredicatBin>
+void Creature::trierPouvoirs(PredicatBin predicat){ //pas de copie pr éviter les fuites mémoires
 
     sort(pouvoirs_.begin(),pouvoirs_(end),FoncteurComparerPouvoirs());
     return pouvoirs_;
