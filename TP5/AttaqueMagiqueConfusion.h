@@ -11,6 +11,8 @@ Description: Cette attaque magique rend la créature qui la reçoit tellement conf
 
 #include "AttaqueMagique.h"
 
+using namespace std;
+
 #define MIN_DUREE_CONFUSION 3
 
 class AttaqueMagiqueConfusion : public AttaqueMagique
@@ -18,16 +20,16 @@ class AttaqueMagiqueConfusion : public AttaqueMagique
 public:
     AttaqueMagiqueConfusion(); // À MODIFIER
 	AttaqueMagiqueConfusion(unsigned int duree); // À MODIFIER
-    virtual ~AttaqueMagiqueConfusion(); 
+    virtual ~AttaqueMagiqueConfusion();
 
     virtual void appliquerAttaque(Creature& Creature); // À MODIFIER
 
     virtual bool estFini() const;
 
-	virtual std::string obtenirTypeAttaque() const;
+	virtual string getTypeAttaque() const;
 
 };
-#endif 
+#endif
 
 
 

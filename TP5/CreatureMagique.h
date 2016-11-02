@@ -11,6 +11,8 @@ Description: Les creatures magiques peuvent bénificier d'une attaque magique
 #include "AttaqueMagiqueConfusion.h"
 #include "AttaqueMagiquePoison.h"
 
+using namespace std;
+
 class CreatureMagique : public Creature
 {
 public:
@@ -24,13 +26,13 @@ public:
 
     virtual void attaquer(const Pouvoir& pouvoir, Creature& creature); // À MODIFIER (si nécessaire...)
 
-    friend std::ostream& operator<<(std::ostream& os, const CreatureMagique& creature); // À MODIFIER (si nécessaire...)
-	
-	virtual std::string obtenirTypeCreature() const;
+    friend ostream& operator<<(ostream& os, const CreatureMagique& creature); // À MODIFIER (si nécessaire...)
 
-	AttaqueMagique* obtenirAttaque() const;
-	unsigned int obtenirBonus() const;
-	void modifierBonus(unsigned int bonus);
+	virtual string getTypeCreature() const;
+
+	AttaqueMagique* getAttaque() const;
+	unsigned int getBonus() const;
+	void setBonus(unsigned int bonus);
 
 	void apprendreAttaqueMagique(const AttaqueMagique* attaqueMagique);
 	void oublierAttaqueMagique(const AttaqueMagique* attaqueMagique);

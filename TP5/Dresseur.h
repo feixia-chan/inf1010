@@ -14,42 +14,44 @@ Description: les dresseurs sont les etres capables d'attraper des creatures
 #include "Creature.h"
 #include "ObjetMagique.h"
 
+using namespace std;
+
 class Dresseur
 {
 public:
 	Dresseur();
-	Dresseur(const std::string& nom, const std::string& equipe);
+	Dresseur(const string& nom, const string& equipe);
 	~Dresseur();
 
-	std::string obtenirNom() const;
-	void modifierNom(const std::string& nom);
-	
-	unsigned int obtenirNombreCreatures() const;
+	string getNom() const;
+	void setNom(const string& nom);
 
-	auto obtenirCreatures() const;
-	Creature* obtenirUneCreature(const std::string& nom) const; //À MODIFIFIER !!
-	void modifierCreature(std::list<Creature*>  creatures);
-	
+	unsigned int getNombreCreatures() const;
+
+	auto getCreatures() const;
+	Creature* getUneCreature(const string& nom) const; //À MODIFIFIER !!
+	void setCreature(list<Creature*>  creatures);
+
 	bool ajouterCreature(Creature* creature);
-	bool enleverCreature(const std::string& nom);
+	bool enleverCreature(const string& nom);
 
-	ObjetMagique obtenirObjetMagique() const;
-	void modifierObjetMagique(const ObjetMagique& objetMagique);
+	ObjetMagique getObjetMagique() const;
+	void setObjetMagique(const ObjetMagique& objetMagique);
 
 	void utiliserObjetMagique(Creature* creature);
 
-	std::string obtenirEquipe() const;
-	void modifierEquipe(const std::string& equipe);
+	string getEquipe() const;
+	void setEquipe(const string& equipe);
 
-	friend std::ostream& operator<<(std::ostream& os, const Dresseur& dresseur);
+	friend ostream& operator<<(ostream& os, const Dresseur& dresseur);
 
 	bool operator==(const Dresseur& dresseur) const;
-	bool operator==(const std::string& nom) const;
-	friend bool operator==(const std::string& nom, const Dresseur& dresseur);
+	bool operator==(const string& nom) const;
+	friend bool operator==(const string& nom, const Dresseur& dresseur);
 
 private:
-	std::string nom_;
-	std::string equipe_;
+	string nom_;
+	string equipe_;
 	ObjetMagique objetMagique_;
 	// À COMPLÉTER !! créatures
 

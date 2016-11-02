@@ -3,7 +3,7 @@ Fichier: Pouvoir.h
 Auteur(s): Alexandre MAO
 Date de creation: 31 aout 2016
 Date de modification: 3 septembre 2016
-Description: La classe Pouvoir correspond aux differents attaques 
+Description: La classe Pouvoir correspond aux differents attaques
 */
 #ifndef POUVOIR_H
 #define POUVOIR_H
@@ -11,32 +11,33 @@ Description: La classe Pouvoir correspond aux differents attaques
 #include <string>
 #include <iostream>
 
+using namespace std;
 
 class Pouvoir
 {
 public:
 	Pouvoir();
-	Pouvoir(const std::string& nom, 
+	Pouvoir(const string& nom,
 		unsigned int nombreDeDegat, unsigned int energieNecessaire);
 	~Pouvoir();
 
-	unsigned int obtenirNombreDeDegat() const;
-	unsigned int obtenirEnergieNecessaire() const;
-	std::string obtenirNom() const;
+	unsigned int getNombreDeDegat() const;
+	unsigned int getEnergieNecessaire() const;
+	string getNom() const;
 
-	void modifierNombreDeDegat(unsigned int nombreDegat);
-	void modifierEnergieNecessarie(unsigned int energieNecessaire);
-	void modifierNom(const std::string& nom);
+	void setNombreDeDegat(unsigned int nombreDegat);
+	void setEnergieNecessarie(unsigned int energieNecessaire);
+	void setNom(const string& nom);
 
 	Pouvoir(const Pouvoir& pouvoir);
 	Pouvoir& operator=(const Pouvoir& pouvoir);
 
 	bool operator==(const Pouvoir& pouvoir) const;
 
-	friend std::ostream& operator<<(std::ostream& os, const Pouvoir& pouvoir);
+	friend ostream& operator<<(ostream& os, const Pouvoir& pouvoir);
 
 private:
-	std::string nom_;
+	string nom_;
 	unsigned int nombreDeDegat_ ;
 	unsigned int energieNecessaire_;
 

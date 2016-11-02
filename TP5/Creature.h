@@ -3,7 +3,7 @@ Fichier: Creature.h
 Auteur(s): Alexandre MAO, Maude CARRIER et Philippe TROCLET
 Date de creation: 31 aout 2016
 Date de modification: 11 octobre 2016 par Maude Carrier
-Description: Les creatures sont des etres destines au combat 
+Description: Les creatures sont des etres destines au combat
 */
 #ifndef CREATURE_H
 #define CREATURE_H
@@ -14,55 +14,57 @@ Description: Les creatures sont des etres destines au combat
 
 #include "Pouvoir.h"
 
+using namespace std;
+
 class Creature
 {
 public:
 	Creature();
-	Creature(const std::string& nom, unsigned int attaque, 
+	Creature(const string& nom, unsigned int attaque,
 		unsigned int defense, unsigned int pointDeVie, unsigned int energie);
 	virtual ~Creature();
-	
-	std::string obtenirNom() const;
-	unsigned int obtenirAttaque() const;
-	unsigned int obtenirDefense() const;
-	unsigned int obtenirPointDeVie() const;
-	unsigned int obtenirPointDeVieTotal() const;
-	unsigned int obtenirEnergie() const;
-	unsigned int obtenirEnergieTotale() const;
-	unsigned int obtenirExperience() const;
-	unsigned int obtenirExperienceNecessaire() const;
-	unsigned int obtenirNiveau() const;
-	std::vector<Pouvoir*> obtenirPouvoirs() const;
+
+	string getNom() const;
+	unsigned int getAttaque() const;
+	unsigned int getDefense() const;
+	unsigned int getPointDeVie() const;
+	unsigned int getPointDeVieTotal() const;
+	unsigned int getEnergie() const;
+	unsigned int getEnergieTotale() const;
+	unsigned int getExperience() const;
+	unsigned int getExperienceNecessaire() const;
+	unsigned int getNiveau() const;
+	vector<Pouvoir*> getPouvoirs() const;
 
 	virtual void attaquer(const Pouvoir& pouvoir,Creature& creature);
 	int experienceGagnee(const Creature& creature);
 
 	bool apprendrePouvoir(Pouvoir* pouvoir);
 	bool oublierPouvoir(Pouvoir* pouvoir);
-	
-	void modifierNom(const std::string& nom);
-	void modifierAttaque(unsigned int attaque);
-	void modifierDefense(unsigned int defense);
-	void modifierPointDeVie(unsigned int pointDeVie);
-	void modifierEnergie(unsigned int energie);
-	void modifierExperience(unsigned int experience);
-	void modifierNiveau(unsigned int niveau);
-	void modifierPouvoirs(std::vector<Pouvoir*> pouvoirs);
+
+	void setNom(const string& nom);
+	void setAttaque(unsigned int attaque);
+	void setDefense(unsigned int defense);
+	void setPointDeVie(unsigned int pointDeVie);
+	void setEnergie(unsigned int energie);
+	void setExperience(unsigned int experience);
+	void setNiveau(unsigned int niveau);
+	void setPouvoirs(vector<Pouvoir*> pouvoirs);
 
 	Creature(const Creature& creature);
 	Creature& operator=(const Creature& creature);
 
 	bool operator==(const Creature& creature) const;
-	bool operator==(const std::string& nom) const;
-	friend bool operator==(const std::string& nom, const Creature& creature);
+	bool operator==(const string& nom) const;
+	friend bool operator==(const string& nom, const Creature& creature);
 
-	friend std::ostream& operator<<(std::ostream& os, const Creature& creature); 
+	friend ostream& operator<<(ostream& os, const Creature& creature);
 
-	virtual std::string obtenirTypeCreature() const;
+	virtual string getTypeCreature() const;
 
 protected:
 
-	std::string nom_;
+	string nom_;
 	unsigned int attaque_;
 	unsigned int defense_;
 	unsigned int pointDeVie_;
@@ -72,8 +74,8 @@ protected:
 	unsigned int experience_;
 	unsigned int experienceNecessaire_;
 	unsigned int niveau_;
-	std::vector<Pouvoir*> pouvoirs_;
-	
+	vector<Pouvoir*> pouvoirs_;
+
 };
 
 #endif

@@ -14,12 +14,14 @@ Description: Polyland represente le pays que l'on va explorer, il va contenir
 #include <vector>
 #include <iostream>
 
-class PolyLand 
+using namespace std;
+
+class PolyLand
 {
 public:
 
 	bool attraperCreature(Dresseur* dresseur, Creature* creature);
-	bool relacherCreature(Dresseur* dresseur, const std::string& nomCreature);
+	bool relacherCreature(Dresseur* dresseur, const string& nomCreature);
 
 };
 #endif

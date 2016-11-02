@@ -9,6 +9,8 @@ Description: La créature qui reçoit cette attaque perd de l'énergie due au poiso
 
 #include "AttaqueMagique.h"
 
+using namespace std;
+
 #define MIN_DUREE_POISON 2
 
 class AttaqueMagiquePoison : public AttaqueMagique
@@ -21,8 +23,8 @@ public:
     virtual void appliquerAttaque(Creature& Creature); // À MODIFIER
 
     virtual bool estFini() const;
-	
-	virtual std::string obtenirTypeAttaque() const;
+
+	virtual string getTypeAttaque() const;
 
 };
 #endif // !ETAT_EMPOISONNE_H

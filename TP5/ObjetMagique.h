@@ -12,24 +12,25 @@ Description: La classe ObjetMagique correspond aux differents objets utilisables
 #include <string>
 #include <iostream>
 
+using namespace std;
 
 class ObjetMagique
 {
 public:
 	ObjetMagique();
-	ObjetMagique(const std::string &nom, int bonus);
+	ObjetMagique(const string &nom, int bonus);
 	~ObjetMagique();
 
-	std::string obtenirNom() const;
-	int obtenirBonus() const;
+	string getNom() const;
+	int getBonus() const;
 
-	void modifierNom(const std::string& nom);
-	void modifierBonus(int bonus);
+	void setNom(const string& nom);
+	void setBonus(int bonus);
 
-	friend std::ostream& operator<<(std::ostream& os, const ObjetMagique& objet);
+	friend ostream& operator<<(ostream& os, const ObjetMagique& objet);
 
 private:
-	std::string nom_;
+	string nom_;
 	int bonus_;
 };
 

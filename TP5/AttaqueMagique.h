@@ -10,6 +10,8 @@ Description: Caractèrise l'attaque magique
 #include <iostream>
 #include "Creature.h"
 
+using namespace std;
+
 class AttaqueMagique
 {
 public:
@@ -17,18 +19,18 @@ public:
 
 	virtual ~AttaqueMagique() {} // À MODIFIER (si nécessaire...)
 
-	unsigned int obtenirDuree() const { return duree_; }
-	void modifierDuree(unsigned int duree) { duree_ = duree; }
+	unsigned int getDuree() const { return duree_; }
+	void setDuree(unsigned int duree) { duree_ = duree; }
 
-	virtual std::string obtenirTypeAttaque() const { return typeid(AttaqueMagique).name(); }
+	virtual string getTypeAttaque() const { return typeid(AttaqueMagique).name(); }
 
     virtual void appliquerAttaque(Creature& creature) = 0; //à appliquer sur la créature qui possède ce pouvoir // À MODIFIER (si nécessaire...)
 	virtual bool estFini() const { return true;	} //si vrai, informe la créature qu'elle peut retourner à l'état normal // À MODIFIER (si nécessaire...)
 
-	friend std::ostream& operator<<(std::ostream& o, const AttaqueMagique& attaqueMagique) // À MODIFIER (si nécessaire...)
-	{ 
-		return o << "Attaque magique de type " << attaqueMagique.obtenirTypeAttaque() << " avec une durée de " << attaqueMagique.duree_ << std::endl;
-	} 
+	friend ostream& operator<<(ostream& o, const AttaqueMagique& attaqueMagique) // À MODIFIER (si nécessaire...)
+	{
+		return o << "Attaque magique de type " << attaqueMagique.getTypeAttaque() << " avec une durée de " << attaqueMagique.duree_ << endl;
+	}
 
 protected:
     unsigned int duree_;

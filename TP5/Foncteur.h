@@ -16,7 +16,7 @@ public:
     ~FoncteurObtenirAttaqueCreature() {}
 
     unsigned int operator() (const Creature* creature) const {
-        return creature->obtenirAttaque();
+        return creature->getAttaque();
     }
 };
 
