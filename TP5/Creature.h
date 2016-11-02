@@ -11,7 +11,6 @@ Description: Les creatures sont des etres destines au combat
 #include <string>
 #include <vector>
 #include <typeinfo>
-#include <>
 
 #include "Pouvoir.h"
 
