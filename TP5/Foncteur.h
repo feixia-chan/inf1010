@@ -73,10 +73,7 @@ public:
 class FoncteurCreaturesDeMemeNom
 {
 public:
-    FoncteurCreaturesDeMemeNom(string nom)
-    {
-        nom_=nom;
-    }
+    FoncteurCreaturesDeMemeNom(string nom):nom_(nom){}
     ~FoncteurCreaturesDeMemeNom() {}
 
     bool operator()(const Creature* creature) const

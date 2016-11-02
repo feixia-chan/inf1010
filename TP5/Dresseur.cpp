@@ -38,8 +38,13 @@ auto Dresseur::getCreatures() const
 
 Creature* Dresseur::getUneCreature(const string& nom) const //À MODIFIFIER !!
 {
-    /*complétez moi*/
-	return;
+	auto pos=find_if(creatures_.begin();creatures.end();FoncteurCreaturesDeMemeNom(nom));
+	if(pos!=creatures_.end()){
+        return pos;
+	}
+	else{
+        return nullptr;
+	}
 }
 
 void Dresseur::setCreature(list<Creature*> creatures) //A Compléter
@@ -113,11 +118,12 @@ bool Dresseur::operator==(const Dresseur& dresseur) const //A compléter
         return true;
     else if (creatures_.size() != dresseur.creatures_.size())
         return false;
-
-    /*Complétez moi! Vérifiez l'égalité entre les créatures via
-    find_if*/
-
-	return true;
+    for(auto pos=creatures_.begin();pos!=creatures_.end();pos++){
+        auto creature=find_if(dresseur.creatures_.begin();dresseur.creatures_.end();FoncteurEgalCreature(pos));
+        if(creature==dresseur.creatures_.end())
+            return false;
+    }
+    return true;
 }
 
 bool Dresseur::operator==(const string& nom) const
@@ -134,4 +140,24 @@ ostream& operator<<(ostream& os, const Dresseur& dresseur)
 {
     return os << dresseur.nom_ << " possede " << dresseur.creatures_.size()
         << " creature(s) et appartient a l'equipe " << dresseur.equipe_ << endl;
+}
+
+//Méthodes template
+template<typename predicat>
+void Dresseur::appliquerFoncteurUnaire(predicat predicatUnaire)
+{
+    for_each(creatures_.begin();creatures_.end();predicatUnaire);
+}
+
+template<typename predicat>
+void Dresseur::supprimerElement(predicat predicatUnaire)
+{
+
+}
+
+template<typename predicat>
+Creature* Dresseur::getCreatureMax(predicat predicatBin)
+{
+    sort(creatures_.begin();creatures_.end();predicatBin);
+    return creatures_.begin(); //? Max veut dire la première ou la dernière ?
 }

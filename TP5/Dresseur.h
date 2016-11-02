@@ -10,6 +10,7 @@ Description: les dresseurs sont les etres capables d'attraper des creatures
 
 #include <string>
 #include <iostream>
+#include <list>
 
 #include "Creature.h"
 #include "ObjetMagique.h"
@@ -49,11 +50,20 @@ public:
 	bool operator==(const string& nom) const;
 	friend bool operator==(const string& nom, const Dresseur& dresseur);
 
+	//Méthodes template
+	template<typename predicat>
+	void appliquerFoncteurUnaire(predicat predicatUnaire);
+	template<typename predicat>
+	void supprimerElement(predicat predicatUnaire);
+	template<typename predicat>
+	Creature* getCreatureMax(predicat predicatBin);
+
 private:
 	string nom_;
 	string equipe_;
 	ObjetMagique objetMagique_;
 	// À COMPLÉTER !! créatures
+	list<Creature*> creatures_
 
 };
 
