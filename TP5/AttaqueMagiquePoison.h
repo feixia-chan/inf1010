@@ -25,7 +25,8 @@ public:
     virtual bool estFini() const;
 
 	virtual string getTypeAttaque() const;
-
+private:
+    FoncteurGenerateurNombresAlea foncteur_;
 };
 #endif // !ETAT_EMPOISONNE_H
 

@@ -1,17 +1,17 @@
 #include "AttaqueMagiqueConfusion.h"
 
 
-AttaqueMagiqueConfusion::AttaqueMagiqueConfusion() :AttaqueMagique(MIN_DUREE_CONFUSION) // À set
+AttaqueMagiqueConfusion::AttaqueMagiqueConfusion() :AttaqueMagique(MIN_DUREE_CONFUSION),foncteur_(FoncteurGenerateurNombresAlea(1,6)) // modifié
 {}
 
-AttaqueMagiqueConfusion::AttaqueMagiqueConfusion(unsigned int duree) :AttaqueMagique(duree) // À set
+AttaqueMagiqueConfusion::AttaqueMagiqueConfusion(unsigned int duree) :AttaqueMagique(duree),foncteur_(FoncteurGenerateurNombresAlea(1,6)) //modifié
 {}
 
 AttaqueMagiqueConfusion::~AttaqueMagiqueConfusion()
 {
 }
 
-void AttaqueMagiqueConfusion::appliquerAttaque(Creature & creature) //A set
+void AttaqueMagiqueConfusion::appliquerAttaque(Creature & creature) //A Moodifier
 {
     if (duree_ > 0 && creature.getPointDeVie() >= 5)
 	{

@@ -1,9 +1,9 @@
 #include "AttaqueMagiquePoison.h"
 
-AttaqueMagiquePoison::AttaqueMagiquePoison() : AttaqueMagique(MIN_DUREE_POISON) // À MODIFIER
+AttaqueMagiquePoison::AttaqueMagiquePoison() : AttaqueMagique(MIN_DUREE_POISON),foncteur_(FoncteurGenerateurNombresAlea(1,6)) // modifié
 {}
 
-AttaqueMagiquePoison::AttaqueMagiquePoison(unsigned int duree) : AttaqueMagique(duree) // À MODIFIER
+AttaqueMagiquePoison::AttaqueMagiquePoison(unsigned int duree) : AttaqueMagique(duree),foncteur_(FoncteurGenerateurNombresAlea(1,6)) // modifié
 {}
 
 AttaqueMagiquePoison::~AttaqueMagiquePoison()
