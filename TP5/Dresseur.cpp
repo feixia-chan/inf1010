@@ -16,38 +16,38 @@ Dresseur::~Dresseur()
 {
 }
 
-std::string Dresseur::obtenirNom() const
+std::string Dresseur::getNom() const
 {
 	return nom_;
 }
 
-void Dresseur::modifierNom(const std::string& nom)
+void Dresseur::setNom(const std::string& nom)
 {
 	nom_ = nom;
 }
 
-unsigned int Dresseur::obtenirNombreCreatures() const
+unsigned int Dresseur::getNombreCreatures() const
 {
 	return creatures_.size();
 }
 
-auto Dresseur::obtenirCreatures() const
+auto Dresseur::getCreatures() const
 {
 	return creatures_;
 }
 
-Creature* Dresseur::obtenirUneCreature(const std::string& nom) const //À MODIFIFIER !!
+Creature* Dresseur::getUneCreature(const std::string& nom) const //À MODIFIFIER !!
 {
     /*complétez moi*/
 	return;
 }
 
-void Dresseur::modifierCreature(std::list<Creature*> creatures) //A Compléter
+void Dresseur::setCreature(std::list<Creature*> creatures) //A Compléter
 {
 	creatures_ = creatures;
 }
 
-bool Dresseur::ajouterCreature(Creature* creature) 
+bool Dresseur::ajouterCreature(Creature* creature)
 {
     FoncteurEgalCreatures comparaison(creature);
     auto position_creature = find_if(creatures_.begin(), creatures_.end(), comparaison);
@@ -58,7 +58,7 @@ bool Dresseur::ajouterCreature(Creature* creature)
 	return true;
 }
 
-bool Dresseur::enleverCreature(const std::string& nom) 
+bool Dresseur::enleverCreature(const std::string& nom)
 {
     FoncteurCreaturesDeMemeNom foncteurComparaison(nom);
     auto position = find_if(creatures_.begin(), creatures_.end(), foncteurComparaison);
@@ -70,12 +70,12 @@ bool Dresseur::enleverCreature(const std::string& nom)
 	return true;
 }
 
-ObjetMagique Dresseur::obtenirObjetMagique() const
+ObjetMagique Dresseur::getObjetMagique() const
 {
 	return objetMagique_;
 }
 
-void Dresseur::modifierObjetMagique(const ObjetMagique & objetMagique)
+void Dresseur::setObjetMagique(const ObjetMagique & objetMagique)
 {
 	objetMagique_ = objetMagique;
 }
@@ -83,26 +83,26 @@ void Dresseur::modifierObjetMagique(const ObjetMagique & objetMagique)
 void Dresseur::utiliserObjetMagique(Creature* creature)
 {
 
-	if ((creature->obtenirPointDeVieTotal() - creature->obtenirPointDeVie()) >= objetMagique_.obtenirBonus()) {
-		creature->modifierPointDeVie(creature->obtenirPointDeVie() + objetMagique_.obtenirBonus());
+	if ((creature->getPointDeVieTotal() - creature->getPointDeVie()) >= objetMagique_.getBonus()) {
+		creature->setPointDeVie(creature->getPointDeVie() + objetMagique_.getBonus());
 	}
 	else {
-		creature->modifierPointDeVie(creature->obtenirPointDeVieTotal());
+		creature->setPointDeVie(creature->getPointDeVieTotal());
 	}
-	if ((creature->obtenirEnergieTotale() - creature->obtenirEnergie()) > objetMagique_.obtenirBonus()) {
-		creature->modifierEnergie(creature->obtenirEnergie() + objetMagique_.obtenirBonus());
+	if ((creature->getEnergieTotale() - creature->getEnergie()) > objetMagique_.getBonus()) {
+		creature->setEnergie(creature->getEnergie() + objetMagique_.getBonus());
 	}
 	else {
-		creature->modifierEnergie(creature->obtenirEnergieTotale());
+		creature->setEnergie(creature->getEnergieTotale());
 	}
 }
 
-std::string Dresseur::obtenirEquipe() const
+std::string Dresseur::getEquipe() const
 {
 	return equipe_;
 }
 
-void Dresseur::modifierEquipe(const std::string& equipe)
+void Dresseur::setEquipe(const std::string& equipe)
 {
 	equipe_ = equipe;
 }
@@ -132,6 +132,6 @@ bool operator==(const std::string& nom, const Dresseur& dresseur)
 
 std::ostream& operator<<(std::ostream& os, const Dresseur& dresseur)
 {
-    return os << dresseur.nom_ << " possede " << dresseur.creatures_.size() 
+    return os << dresseur.nom_ << " possede " << dresseur.creatures_.size()
         << " creature(s) et appartient a l'equipe " << dresseur.equipe_ << std::endl;
 }

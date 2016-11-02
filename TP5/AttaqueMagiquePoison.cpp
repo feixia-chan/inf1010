@@ -12,12 +12,12 @@ AttaqueMagiquePoison::~AttaqueMagiquePoison()
 
 void AttaqueMagiquePoison::appliquerAttaque(Creature & creature) //A modifier
 {
-	if (duree_ > 0 && creature.obtenirEnergie() >= 5)
+	if (duree_ > 0 && creature.getEnergie() >= 5)
 	{
-		unsigned int energie = creature.obtenirEnergie();
+		unsigned int energie = creature.getEnergie();
 		if (generateurAleatoire() == 0)
 		{
-			creature.modifierEnergie(energie - 2);
+			creature.setEnergie(energie - 2);
 		}
 		duree_--;
 	}
@@ -28,7 +28,7 @@ bool AttaqueMagiquePoison::estFini() const
     return (duree_ <= 0);
 }
 
-std::string AttaqueMagiquePoison::obtenirTypeAttaque() const
+std::string AttaqueMagiquePoison::getTypeAttaque() const
 {
 	return (typeid(*this).name());
 }
