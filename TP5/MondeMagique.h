@@ -43,7 +43,12 @@ public:
     template< typename T>
     bool supprimer (T* maitre); //supprime le maitre de la liste si égal (return false si non trouvé)
     template< typename S>
-    void supprimer (S* compagnon);  //supprime le compagnon de la liste si égal (return false si non trouvé)
+    bool supprimer (S* compagnon);  //supprime le compagnon de la liste si égal (return false si non trouvé)
+
+    template< typename PredicatUn >
+    void supprimerMaitre(PredicatUn predicat);
+    template< typename PredicatUn >
+    void supprimerCompagnon(PredicatUn predicat);
 
 protected:
     list <T*> listMaitre_;  //liste de maîtres
@@ -130,5 +135,14 @@ bool supprimer (S* Compagnon)
     }
 }
 
+    template< typename PredicatUn >
+    void supprimerMaitre(PredicatUn predicat){
+        remove_if(listMaitre_.begin(),listMaitre_.end(),!predicat);
+    }
+
+template< typename PredicatUn >
+    void supprimerCompagnon(PredicatUn predicat){
+        remove_if(listCompagnon_.begin(),listCompagnon_.end(),!predicat);
+    }
 
 #endif // MONDEMAGIQUE_H
