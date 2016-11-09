@@ -323,7 +323,7 @@ string Creature::getTypeCreature() const
 template <typename PredicatBin>
 void Creature::trierPouvoirs(PredicatBin predicat){ //pas de copie pr éviter les fuites mémoires
 
-    sort(pouvoirs_.begin(),pouvoirs_(end),FoncteurComparerPouvoirs());
+    sort(pouvoirs_.begin(),pouvoirs_(end),predicat);
     return pouvoirs_;
     }
 }
