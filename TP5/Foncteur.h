@@ -1,5 +1,5 @@
-#ifndef  FRONTEUR
-#define  FRONTEUR
+#ifndef  FONCTEUR
+#define  FONCTEUR
 
 #include "Dresseur.h"
 #include "Creature.h"
