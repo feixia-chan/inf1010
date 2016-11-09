@@ -40,7 +40,10 @@ public:
     void ajouter (T* maitre); //ajoute un maitre dans la liste
     template< typename S >
     void ajouter S* compagnon);// ajoute une créature dans la liste
-
+    template< typename T>
+    bool supprimer (T* maitre); //supprime le maitre de la liste si égal (return false si non trouvé)
+    template< typename S>
+    void supprimer (S* compagnon);  //supprime le compagnon de la liste si égal (return false si non trouvé)
 
 protected:
     list <T*> listMaitre_;  //liste de maîtres
@@ -79,14 +82,53 @@ MondeMagique<T,S>::void setListCompagnon(<list <S*> listeC)
 
 
 template< typename T>
-MondeMagique<T,S>::void ajouter (T* maitre){
+MondeMagique<T,S>::void ajouter (T* maitre)
+{
     listMaitre_.push_back(maitre);
 
 }
+
 template< typename S >
-MondeMagique<T,S>::void ajouter S* compagnon)
+MondeMagique<T,S>::void ajouter (S* compagnon)
 {
     listCompagnon_.push_back(compagnon);
 }
+
+
+template< typename T>
+bool supprimer (T* maitre)
+{
+    auto it = find(listMaitre_.begin(),listeMaitre_.end(),maitre))
+    if (it!=listeMaitre_.end())
+    {
+        listMaitre_.erase(it);
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+template< typename S>
+void supprimer (S* compagnon)
+{
+
+}
+
+template< typename S>
+bool supprimer (S* Compagnon)
+{
+    auto it = find(listCOmpagnon_.begin(),listecompagnon_.end(),compagnon))
+    if (it!=listecompagnon_.end())
+    {
+        listCompagnon_.erase(it);
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 
 #endif // MONDEMAGIQUE_H
