@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
 Fichier: main.cpp
 Auteur(s): Alexandre MAO
 Date de creation: 31 aout 2016
@@ -87,34 +86,34 @@ int main()
     vous.ajouterCreature(&touflamme);
     if (!(vous == sacha)) //Les deux dresseurs ont maintenant les mêmes créatures
         cout << "DRESSEUR operateur== : Erreur Technique!!!!" << endl;
-    vous.enleverCreature(touflamme.obtenirNom());
+    vous.enleverCreature(touflamme.getNom());
 
     FoncteurCreatureVie vieCompriseEntre(80, 150);
     vous.appliquerFoncteurUnaire(vieCompriseEntre);
-    if (vieCompriseEntre.obtenirCompteur() == 2)
+    if (vieCompriseEntre.getCompteur() == 2)
         cout << "appliquerFoncteurUnaire: OK" << endl;
     else
         cout << "appliquerFoncteurUnaire: Erreur Technique!!!!" << endl;
 
-    cout << "TEST DRESSEUR : obtenir element max" << endl;
-    cout << *(vous.obtenirCreatureMax(FoncteurComparerCreature())) << endl;
-    cout << "TEST DRESSEUR : FIN obtenir element max" << endl;
+    cout << "TEST DRESSEUR : get element max" << endl;
+    cout << *(vous.getCreatureMax(FoncteurComparerCreature())) << endl;
+    cout << "TEST DRESSEUR : FIN get element max" << endl;
 
     cout << "TEST DRESSEUR : suppression" << endl;
     //Supprime les créatures ayant une attaque supérieure a
     //attaque max
     unsigned int attaqueMax = 11;
-    FoncteurObtenirAttaqueCreature obtenirAttaque;
+    FoncteurObtenirAttaqueCreature getAttaque;
     vous.supprimerElements(
         bind(
             /*A COMPLETER générer un opérateur > pour les entiers*/,
-            //Le bind ci-dessous permet d'appeler la méthode obtenirAttaque() de la
+            //Le bind ci-dessous permet d'appeler la méthode getAttaque() de la
             //Creature* passée en argument du foncteur lors des appels de ce dernier dans supprimerElements
                 bind(
-                    obtenirAttaque,
+                    getAttaque,
                     /*A COMPLETER utiliser le premier placeholder (attention aux namespace) (reçoit un Creature*)*/
                 ),
-                /*A COMPLETER faire en sorte que le résultat de obtenirAttaque() soit comparer à attaquer max*/
+                /*A COMPLETER faire en sorte que le résultat de getAttaque() soit comparer à attaquer max*/
         )
     );
     //N.B: A l'issue de la fonction vous ne devriez plus posséder de Salimouche
@@ -160,11 +159,16 @@ int main()
 	// A COMPLETER...
 
 
-	cout << endl << "FIN DE POLYLAND ... :(" << endl;
-	cout << "Vous supprimer Sacha de polyland" << endl;
+	cout << endl << "FIN DE POLYLAND ... :(" << endl << endl;
+
+	// Supprimer Touflamme de polyland à l'aide de la méthode supprimerCompagnon et le FoncteurCreaturesDeMemeNom
+	// A COMPLETER...
+
 	polyland -= &sacha;
-	cout << "Vous supprimer Pokachu de polyland" << endl;
 	polyland -= &pokachu;
+
+	// Affichage de polyand
+	cout << polyland << endl;
 
 	polyland.vider();
 
