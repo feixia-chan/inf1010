@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <iostream>
 #include <stdlib.h>
-
 #include "Creature.h"
 
 
@@ -242,10 +241,8 @@ Creature::Creature(const Creature& creature)
 	pointDeVieTotal_(creature.pointDeVieTotal_), energie_(creature.energie_), energieTotal_(creature.energieTotal_),
     experience_(creature.experience_), experienceNecessaire_(creature.experienceNecessaire_), niveau_(creature.niveau_)
 {
-    for each (Pouvoir* pouvoir in  creature.pouvoirs_)
-    {
+    for each ( Pouvoir* pouvoir in creature.pouvoirs_ )
         pouvoirs_.push_back(new Pouvoir(*pouvoir));
-    }
 }
 
 Creature& Creature::operator=(const Creature& creature)
@@ -322,8 +319,5 @@ string Creature::getTypeCreature() const
 
 template <typename PredicatBin>
 void Creature::trierPouvoirs(PredicatBin predicat){ //pas de copie pr éviter les fuites mémoires
-
-    sort(pouvoirs_.begin(),pouvoirs_(end),predicat);
-    return pouvoirs_;
-    }
+    sort(pouvoirs_.begin(),pouvoirs_.end(),predicat);
 }

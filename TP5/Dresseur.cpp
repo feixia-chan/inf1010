@@ -31,7 +31,7 @@ unsigned int Dresseur::getNombreCreatures() const
 	return creatures_.size();
 }
 
-auto Dresseur::getCreatures() const
+list<Creature*> Dresseur::getCreatures() const
 {
 	return creatures_;
 }

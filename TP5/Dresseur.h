@@ -29,7 +29,7 @@ public:
 
 	unsigned int getNombreCreatures() const;
 
-	auto getCreatures() const;
+	list<Creature*> getCreatures() const;
 	Creature* getUneCreature(const string& nom) const; //À MODIFIFIER !!
 	void setCreature(list<Creature*>  creatures);
 
@@ -63,7 +63,8 @@ private:
 	string equipe_;
 	ObjetMagique objetMagique_;
 	// À COMPLÉTER !! créatures
-	list<Creature*> creatures_
+	list<Creature*> creatures_;
+
 
 };
 

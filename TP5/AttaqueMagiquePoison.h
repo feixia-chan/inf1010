@@ -8,6 +8,7 @@ Description: La créature qui reçoit cette attaque perd de l'énergie due au poiso
 #define ETAT_EMPOISONNE_H
 
 #include "AttaqueMagique.h"
+#include "Foncteur.h"
 
 using namespace std;
 

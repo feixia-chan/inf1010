@@ -16,7 +16,7 @@ void AttaqueMagiqueConfusion::appliquerAttaque(Creature & creature) //modifié
     if (duree_ > 0 && creature.getPointDeVie() >= 5)
 	{
         unsigned int pointDeVie = creature.getPointDeVie();
-        if (foncteur_ == 1)     //le foncteur va de 1 à 6 il peut pas être =0...
+        if (foncteur_()== 1)     //le foncteur va de 1 à 6 il peut pas être =0...
 		{
             creature.setPointDeVie(pointDeVie - 2);
         }

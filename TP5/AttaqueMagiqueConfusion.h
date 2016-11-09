@@ -10,6 +10,7 @@ Description: Cette attaque magique rend la créature qui la reçoit tellement conf
 #include <stdlib.h>
 
 #include "AttaqueMagique.h"
+#include "Foncteur.h"
 
 using namespace std;
 

@@ -105,7 +105,7 @@ private:
 class FoncteurCreatureVie
 {
 public:
-    FoncteurCreatureVie(int min, int max):vieMin_(min),vieMax_(max),c$ompteur_(0) {}
+    FoncteurCreatureVie(int min, int max):vieMin_(min),vieMax_(max),compteur_(0) {}
     ~FoncteurCreatureVie() {}
     int getCompteur()
     {
@@ -113,7 +113,7 @@ public:
     }
     void operator()(const Creature* creature)
     {
-        if(min_<=creature->getPointDeVie()&& creature->getPointDeVie()<=max_)
+        if(vieMin_<=creature->getPointDeVie()&& creature->getPointDeVie()<=vieMax_)
         {
             compteur_++;
         }
@@ -122,7 +122,7 @@ public:
 private:
     int vieMin_;
     int vieMax_;
-    int compteur_
+    int compteur_;
 
 };
 
