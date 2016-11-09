@@ -22,6 +22,8 @@ Description: Programme de test
 #include "CreatureMagique.h"
 #include "Foncteur.h"
 
+using namespace std;
+
 
 int main()
 {
@@ -124,14 +126,16 @@ int main()
     FoncteurObtenirAttaqueCreature getAttaque;
     vous.supprimerElements(
         bind(
-            /*A COMPLETER générer un opérateur > pour les entiers*/,
+            /*A COMPLETER générer un opérateur > pour les entiers*/
+            greater<int>(),
             //Le bind ci-dessous permet d'appeler la méthode getAttaque() de la
             //Creature* passée en argument du foncteur lors des appels de ce dernier dans supprimerElements
                 bind(
-                    getAttaque,
+                    getAttaque, _1
                     /*A COMPLETER utiliser le premier placeholder (attention aux namespace) (reçoit un Creature*)*/
                 ),
                 /*A COMPLETER faire en sorte que le résultat de getAttaque() soit comparer à attaquer max*/
+             attaqueMax
         )
     );
     //N.B: A l'issue de la fonction vous ne devriez plus posséder de Salimouche
@@ -142,19 +146,20 @@ int main()
 
 
     cout << "Début MAP" << endl;
-    cout << "Oyez fiers dresseurs, l'incroyable tournoi de polyland a lieu aujourd'hui!!!" << endl;
+    cout << "Soyez fiers dresseurs, l'incroyable tournoi de polyland a lieu aujourd'hui!!!" << endl;
 
     //Les règles de ce tournoi sont particulières, chaque dresseur ne peut inscrire qu'une seule créature!!!
     //Créez une map Dresseur*-->Creature* avec une clé qui compare les dresseurs* en ordre alphabétique suivant leur nom.
     //Cette map utilisera peut-être un foncteur pour faire la comparaison ...
 	// Cette map permettra de savoir quel dresseur a inscrit quelle créature!
 	// A COMPLETER...
-
+	map<Dresseur*,Creature*,FoncteurComparerDresseurs> creaturesInscrites;
 
 	//Vous désirez inscrire pokachu au tournoi
 	//Sacha désire inscrire touflamme au tournoi
 	// A COMPLETER...
-
+	creaturesInscrites[&vous]=&pokachu;
+	creaturesInscrites[&sacha]=&touflamme;
 
     cout << "Début MAP" << endl;
     cout << "Vous a inscrit la créature:" << endl;
@@ -171,16 +176,22 @@ int main()
 	//Faites bien attention à utiliser les créatures qui se trouvent dans la map, et non les créature de Polyland.
     //Vous êtes dans un tournoi après tout !!
 	//A COMPLETER...
-
+	while(creaturesInscrites[&sacha]->getPointDeVie()>0){
+        creaturesInscrites[&vous]->attaquer(creaturesInscrites[&sacha]);
+	}
+	cout<<"Pokachu a vaincu Touflamme !"<<endl;
 
 	//Sacha désire remplacer sa créature inscrite au tournoi. Remplacez Touflamme par Salimouche.
 	// A COMPLETER...
+	creaturesInscrites[&sacha]=&salimouche;
+	cout<<"Sacha a desormais inscrit Salimouche au tournoi"<<endl;
 
 
 	cout << endl << "FIN DE POLYLAND ... :(" << endl << endl;
 
 	// Supprimer Touflamme de polyland à l'aide de la méthode supprimerCompagnon et le FoncteurCreaturesDeMemeNom
 	// A COMPLETER...
+	polyland.supprimerCompagnon(FoncteurCreaturesDeMemeNom("Touflamme"));
 
 	polyland -= &sacha;
 	polyland -= &pokachu;
