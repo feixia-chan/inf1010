@@ -236,13 +236,17 @@ void Creature::setPouvoirs(vector<Pouvoir*> pouvoirs)
 	}
 }
 
+void Creature::ajoutPouvoirs(Pouvoir* pouvoir)
+{
+    pouvoirs_.push_back(new Pouvoir(*pouvoir));
+}
+
 Creature::Creature(const Creature& creature)
 	: nom_(creature.nom_), attaque_(creature.attaque_), defense_(creature.defense_), pointDeVie_(creature.pointDeVie_),
 	pointDeVieTotal_(creature.pointDeVieTotal_), energie_(creature.energie_), energieTotal_(creature.energieTotal_),
     experience_(creature.experience_), experienceNecessaire_(creature.experienceNecessaire_), niveau_(creature.niveau_)
 {
-    for each ( Pouvoir* pouvoir in creature.pouvoirs_ )
-        pouvoirs_.push_back(new Pouvoir(*pouvoir));
+    for_each(creature.pouvoirs_.begin(),creature.pouvoirs_.end(),ajoutPouvoirs);
 }
 
 Creature& Creature::operator=(const Creature& creature)
@@ -266,10 +270,7 @@ Creature& Creature::operator=(const Creature& creature)
             pouvoirs_.back() = nullptr;
             pouvoirs_.pop_back();
         }
-        for each (Pouvoir* pouvoir in  creature.pouvoirs_)
-        {
-            pouvoirs_.push_back(new Pouvoir(*pouvoir));
-        }
+        for_each(creature.pouvoirs_.begin(),creature.pouvoirs_.end(),ajoutPouvoirs);
 	}
 	return *this;
 }
@@ -291,6 +292,11 @@ bool operator==(const string& nom, const Creature& creature)
 	return (creature == nom);
 }
 
+void Creature::affichePouvoir(Pouvoir* pouvoir)
+{
+    cout<<*pouvoir<<endl;
+}
+
 ostream& operator<<(ostream& os, const Creature& creature) // TODO
 {
 	os << creature.nom_ << " a " << creature.attaque_ << " en attaque et " << creature.defense_ << " en defense, " << endl
@@ -301,10 +307,7 @@ ostream& operator<<(ostream& os, const Creature& creature) // TODO
 	os << "Pouvoirs : " << endl;
 	if (!creature.pouvoirs_.empty())
     {
-        for each (Pouvoir* pouvoir in creature.pouvoirs_)
-        {
-            cout << *pouvoir << endl;
-        }
+        for_each(creature.pouvoirs_.begin(),creature.pouvoirs_.end(),affichePouvoir);
 	}
 	else
 		os << creature.nom_ << " ne connait aucun pouvoir";

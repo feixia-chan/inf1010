@@ -11,6 +11,7 @@ Description: Les creatures sont des etres destines au combat
 #include <string>
 #include <vector>
 #include <typeinfo>
+#include <algorithm>
 
 #include "Pouvoir.h"
 
@@ -58,6 +59,7 @@ public:
 	bool operator==(const string& nom) const;
 	friend bool operator==(const string& nom, const Creature& creature);
 
+	void affichePouvoir(Pouvoir* pouvoir);
 	friend ostream& operator<<(ostream& os, const Creature& creature);
 
 	virtual string getTypeCreature() const;
@@ -78,6 +80,10 @@ protected:
 	unsigned int experienceNecessaire_;
 	unsigned int niveau_;
 	vector<Pouvoir*> pouvoirs_;
+
+private:
+    void ajoutPouvoirs(Pouvoir* pouvoir);
+
 
 };
 
