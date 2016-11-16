@@ -12,17 +12,20 @@ Description: Polyland represente le pays que l'on va explorer, il va contenir
 #include "Dresseur.h"
 #include "Creature.h"
 #include "MondeMagique.h"
+#include "Foncteur.h"
 #include <vector>
 #include <iostream>
 
+
 using namespace std;
 
-class PolyLand : public MondeMagique
+class PolyLand : public MondeMagique<Dresseur,Creature>
 {
 public:
 
 	bool attraperCreature(Dresseur* dresseur, Creature* creature);
 	bool relacherCreature(Dresseur* dresseur, const string& nomCreature);
 	friend ostream& operator<<(ostream& os, PolyLand poly);
+
 };
 #endif

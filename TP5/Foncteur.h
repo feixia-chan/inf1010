@@ -89,7 +89,7 @@ private:
 class FoncteurEgalCreature
 {
 public:
-    FoncteurEgalCreature() {}
+    FoncteurEgalCreature(Creature* creature) {}
     ~FoncteurEgalCreature() {}
 
     bool operator()(const Creature* creature) const

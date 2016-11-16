@@ -24,16 +24,16 @@ bool PolyLand::relacherCreature(Dresseur* dresseur, const string& nomCreature)
 //operator <<
 ostream& operator<<(ostream& os, PolyLand poly)
 {
-    sort(listMaitre_.begin();listMaitre_.end();FoncteurComparerDresseurs());    //on trie les dresseurs
-    sort(listCompagnon_.begin();listCompagnon_.end();FoncteurComparerCreatures()); //on trie les créatures
+    sort(poly.listMaitre_.begin(),poly.listMaitre_.end(),FoncteurComparerDresseurs());    //on trie les dresseurs
+    sort(poly.listCompagnon_.begin(),poly.listCompagnon_.end(),FoncteurComparerCreatures()); //on trie les créatures
 
     os<<"Liste des dresseurs de Polyland : "<<endl;
-    for(auto it=listMaitre_.begin();it!=listMaitre_.end();it++){
-        os<<it<<endl;
+    for(auto it=poly.listMaitre_.begin();it!=poly.listMaitre_.end();it++){
+        os<<*it<<endl;
     }
     os<<"Liste des créatures de Polyland : "<<endl;
-    for(auto it=listCompagnon_.begin();it!=listCompagnon.end();it++){
-        os<<it<<endl;
+    for(auto it=poly.listCompagnon_.begin();it!=poly.listCompagnon_.end();it++){
+        os<<*it<<endl;
     }
     return os;
 }

@@ -38,9 +38,9 @@ list<Creature*> Dresseur::getCreatures() const
 
 Creature* Dresseur::getUneCreature(const string& nom) const //À MODIFIFIER !!
 {
-	auto pos=find_if(creatures_.begin();creatures.end();FoncteurCreaturesDeMemeNom(nom));
+	auto pos=find_if(creatures_.begin(),creatures_.end(), FoncteurCreaturesDeMemeNom(nom));
 	if(pos!=creatures_.end()){
-        return pos;
+        return *pos;
 	}
 	else{
         return nullptr;
@@ -54,7 +54,7 @@ void Dresseur::setCreature(list<Creature*> creatures) //A Compléter
 
 bool Dresseur::ajouterCreature(Creature* creature)
 {
-    FoncteurEgalCreatures comparaison(creature);
+    FoncteurEgalCreature comparaison(creature);
     auto position_creature = find_if(creatures_.begin(), creatures_.end(), comparaison);
     if (position_creature != creatures_.end())
         return false;
@@ -119,7 +119,7 @@ bool Dresseur::operator==(const Dresseur& dresseur) const //A compléter
     else if (creatures_.size() != dresseur.creatures_.size())
         return false;
     for(auto pos=creatures_.begin();pos!=creatures_.end();pos++){
-        auto creature=find_if(dresseur.creatures_.begin();dresseur.creatures_.end();FoncteurEgalCreature(pos));
+        auto creature=find_if(dresseur.creatures_.begin(),dresseur.creatures_.end(),FoncteurEgalCreature(*pos));
         if(creature==dresseur.creatures_.end())
             return false;
     }

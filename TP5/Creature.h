@@ -59,7 +59,6 @@ public:
 	bool operator==(const string& nom) const;
 	friend bool operator==(const string& nom, const Creature& creature);
 
-	void affichePouvoir(Pouvoir* pouvoir);
 	friend ostream& operator<<(ostream& os, const Creature& creature);
 
 	virtual string getTypeCreature() const;
@@ -80,10 +79,6 @@ protected:
 	unsigned int experienceNecessaire_;
 	unsigned int niveau_;
 	vector<Pouvoir*> pouvoirs_;
-
-private:
-    void ajoutPouvoirs(Pouvoir* pouvoir);
-
 
 };
 

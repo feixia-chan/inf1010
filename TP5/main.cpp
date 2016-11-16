@@ -60,10 +60,10 @@ int main()
 	// Faites apprendre le pouvoir bouleDeFeu par Salimouche, les pouvoirs tonerre et eclair par pokachu ainsi que le pouvoir
 	// tonerre par touflamme.
 	// A COMPLETER...
-	salimouche.apprendrePouvoir(bouleDeFeu);
-	pokachu.apprendrePouvoir(eclair);
-	pokachu.apprendrePouvoir(tonerre);
-	touflamme.apprendrePouvoir(tonerre);
+	salimouche.apprendrePouvoir(&bouleDeFeu);
+	pokachu.apprendrePouvoir(&eclair);
+	pokachu.apprendrePouvoir(&tonerre);
+	touflamme.apprendrePouvoir(&tonerre);
 
 	PolyLand polyland;
 
@@ -177,7 +177,7 @@ int main()
     //Vous êtes dans un tournoi après tout !!
 	//A COMPLETER...
 	while(creaturesInscrites[&sacha]->getPointDeVie()>0){
-        creaturesInscrites[&vous]->attaquer(creaturesInscrites[&sacha]);
+        creaturesInscrites[&vous]->attaquer(*creaturesInscrites[&vous]->getPouvoirs()[0],*creaturesInscrites[&sacha]);
 	}
 	cout<<"Pokachu a vaincu Touflamme !"<<endl;
 

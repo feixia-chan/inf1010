@@ -14,7 +14,7 @@ void AttaqueMagiquePoison::appliquerAttaque(Creature & creature) //A modifier
 {
 	if (duree_ > 0 && creature.getEnergie() >= 5)
 	{
-		unsigned int energie = creature.getEnergie();
+		unsigned int energie = creature.getEnergie(); 
 		if (foncteur_()== 1) //une chance sur 6
 		{
 			creature.setEnergie(energie - 2);
