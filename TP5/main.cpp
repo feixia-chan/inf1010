@@ -17,6 +17,7 @@ Description: Programme de test
 #include "AttaqueMagiquePoison.h"
 #include "ObjetMagique.h"
 #include "Dresseur.h"
+#include "MondeMagique.h"
 #include "PolyLand.h"
 #include "Pouvoir.h"
 #include "CreatureMagique.h"
@@ -87,7 +88,7 @@ int main()
     cout << "pouvoir de la creature avant trie" << endl;
     cout << pokachu << endl;
 
-    pokachu.trierPouvoir(FoncteurComparerPouvoir());
+    pokachu.trierPouvoirs(FoncteurComparerPouvoirs());
     cout << "pouvoir de la creature apres trie" << endl;
     cout << pokachu << endl;
 
@@ -116,7 +117,7 @@ int main()
         cout << "appliquerFoncteurUnaire: Erreur Technique!!!!" << endl;
 
     cout << "TEST DRESSEUR : get element max" << endl;
-    cout << *(vous.getCreatureMax(FoncteurComparerCreature())) << endl;
+    cout << *(vous.getCreatureMax(FoncteurComparerCreatures())) << endl;
     cout << "TEST DRESSEUR : FIN get element max" << endl;
 
     cout << "TEST DRESSEUR : suppression" << endl;

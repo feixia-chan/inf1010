@@ -54,7 +54,7 @@ public:
 	template<typename predicat>
 	void appliquerFoncteurUnaire(predicat predicatUnaire);
 	template<typename predicat>
-	void supprimerElement(predicat predicatUnaire);
+	void supprimerElements(predicat predicatUnaire);
 	template<typename predicat>
 	Creature* getCreatureMax(predicat predicatBin);
 

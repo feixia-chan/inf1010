@@ -150,9 +150,10 @@ void Dresseur::appliquerFoncteurUnaire(predicat predicatUnaire)
 }
 
 template<typename predicat>
-void Dresseur::supprimerElement(predicat predicatUnaire)
+void Dresseur::supprimerElements(predicat predicatUnaire)
 {
-
+	auto it = remove_if(creatures_.begin(), creatures_.end(), !predicat);
+	creatures_.erase(it, creatures_.end());
 }
 
 template<typename predicat>
