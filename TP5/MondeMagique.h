@@ -57,7 +57,7 @@ public:
 
     list<T*> operator+=(T* maitre);    //ajoue un maitre via meth ajouter
     list<S*> operator+=(S* compagnon);
-  
+
     list<T*> operator-=(T* maitre);     //supprime un maitre via meth supprimer
     list<S*> operator-=(S* compagnon);
 
@@ -78,7 +78,7 @@ list <T*> MondeMagique<T,S>::getListMaitre() const
 
 template< typename T, typename S >
 list <S*> MondeMagique<T, S>::getListCompagnon()const
-{ 
+{
 	return listCompagnon_;
 }
 
@@ -90,7 +90,7 @@ void MondeMagique<T,S>::setListMaitre(list <T*> listeM)
 template< typename T,typename S >
 void MondeMagique<T,S>::setListCompagnon(list <S*> listeC)
 {
-    listCompagon_=listeC;
+    listCompagnon_=listeC;
 }
 
 
@@ -111,8 +111,8 @@ void MondeMagique<T,S>::ajouter(S* compagnon)
 template< typename T, typename S>
 bool MondeMagique<T,S>::supprimer(T* maitre)
 {
-    auto it = find(listMaitre_.begin(),listeMaitre_.end(),maitre)
-    if(it!=listeMaitre_.end()){
+    auto it = find(listMaitre_.begin(),listMaitre_.end(),maitre);
+    if(it!=listMaitre_.end()){
         listMaitre_.erase(it);
         return true;
     }
@@ -124,10 +124,10 @@ bool MondeMagique<T,S>::supprimer(T* maitre)
 
 
 template<typename T, typename S>
-bool MondeMagique<T,S>::supprimer(S* Compagnon)
+bool MondeMagique<T,S>::supprimer(S* compagnon)
 {
-    auto it = find(listCompagnon_.begin(),listeCompagnon_.end(),compagnon)
-    if (it!=listeCompagnon_.end())
+    auto it = find(listCompagnon_.begin(),listCompagnon_.end(),compagnon);
+    if (it!=listCompagnon_.end())
     {
         listCompagnon_.erase(it);
         return true;
@@ -138,36 +138,36 @@ bool MondeMagique<T,S>::supprimer(S* Compagnon)
     }
 }
 
-    template<typename T, typename S,typename PredicatUn>
-    void MondeMagique<T,S>::supprimerMaitre(PredicatUn predicat)
+template<typename T, typename S> template<typename PredicatUn>
+void MondeMagique<T,S>::supprimerMaitre(PredicatUn predicat)
 	{
 
        auto it= remove_if(listMaitre_.begin(),listMaitre_.end(),!predicat);
        listMaitre_.erase(it, listMaitre_.end());
 	}
 
-template<typename T, typename S, typename PredicatUn>
-   void MondeMagique<T,S>::supprimerCompagnon(PredicatUn predicat){
-        auto it = remove_if(listCompagnon_.begin(),listCompagnon_.end(),!predicat);
-        listCompagnon_.erase(it, listCompagnon_.end())
+template<typename T, typename S> template<typename PredicatUn>
+void MondeMagique<T,S>::supprimerCompagnon(PredicatUn predicat){
+        auto it = remove_if(listCompagnon_.begin(),listCompagnon_.end(),predicat);
+        listCompagnon_.erase(it, listCompagnon_.end());
     }
 
    template<typename T, typename S>
 void MondeMagique<T,S>::vider()
 {
-    listMaitre_.erase(listMaitre.begin(),listMaitre.end());
+    listMaitre_.erase(listMaitre_.begin(),listMaitre_.end());
     listCompagnon_.erase(listCompagnon_.begin(),listCompagnon_.end());
 }
 
 //opérateurs
 template<typename T, typename S>
-    list <T*> MondeMagique<T,S>::operator+=(T* maitre)
+    list<T*> MondeMagique<T,S>::operator+=(T* maitre)
     {
         ajouter(maitre);
         return listMaitre_;
     }
 	template<typename T, typename S>
-    list <S*> MondeMagique<T,S>::operator+=(S* compagnon)
+    list<S*> MondeMagique<T,S>::operator+=(S* compagnon)
     {
        ajouter(compagnon) ;
        return listCompagnon_;
@@ -180,7 +180,7 @@ template<typename T, typename S>
         return listMaitre_;
     }
 	template<typename T, typename S>
-    list<T*> MondeMagique<T,S>::operator-=(S* compagnon)
+    list<S*> MondeMagique<T,S>::operator-=(S* compagnon)
 {
     supprimer(compagnon);
     return listCompagnon_;

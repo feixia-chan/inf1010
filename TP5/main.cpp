@@ -71,12 +71,12 @@ int main()
 	// Ajouter les dresseurs vous et sacha ainsi que les créatures pokachu, salimouche,
 	// pokachoum et touflamme à polyland avec l'opérateur +=
 	// A COMPLETER...
-	polyland+=vous;
-	polyland+=sacha;
-	polyland+=pokachu;
-	polyland+=salimouche;
-	polyland+=pokachoum;
-	polyland+=touflamme;
+	polyland+=&vous;
+	polyland+=&sacha;
+	polyland+=&pokachu;
+	polyland+=&salimouche;
+	polyland+=&pokachoum;
+	polyland+=&touflamme;
 
 	// En vous promenant dans Polyland, vous attrappez un pokachu et Sacha attrappe un salimouche et un touflamme
 	// A COMPLETER...
@@ -132,7 +132,7 @@ int main()
             //Le bind ci-dessous permet d'appeler la méthode getAttaque() de la
             //Creature* passée en argument du foncteur lors des appels de ce dernier dans supprimerElements
                 bind(
-                    getAttaque, _1
+                    getAttaque, placeholders::_1
                     /*A COMPLETER utiliser le premier placeholder (attention aux namespace) (reçoit un Creature*)*/
                 ),
                 /*A COMPLETER faire en sorte que le résultat de getAttaque() soit comparer à attaquer max*/

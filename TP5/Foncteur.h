@@ -27,7 +27,6 @@ public:
 //Foncteur de comparaison des attaques de creatures
 class FoncteurComparerCreatures
 {
-
 public:
     FoncteurComparerCreatures() {}
     ~FoncteurComparerCreatures() {}
@@ -45,13 +44,10 @@ public:
     FoncteurComparerDresseurs() {}
     ~FoncteurComparerDresseurs() {}
     //return true si nom1 < nom2 (alphabétiquement)
-    bool operator()(const string& nom1, const string& nom2)
+    bool operator()(const Dresseur* d1, const Dresseur* d2)
     {
-        return (nom1<nom2); //operator< déjà surchargé pour string
-
+        return(d1->getNom()<d2->getNom()); //operator< déjà surchargé pour string
     }
-
-
 };
 
 //foncteur de comparaison du nombre de dégats des pouvoirs

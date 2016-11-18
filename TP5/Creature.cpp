@@ -241,8 +241,8 @@ Creature::Creature(const Creature& creature)
 	pointDeVieTotal_(creature.pointDeVieTotal_), energie_(creature.energie_), energieTotal_(creature.energieTotal_),
     experience_(creature.experience_), experienceNecessaire_(creature.experienceNecessaire_), niveau_(creature.niveau_)
 {
-    for each(Pouvoir* pouvoir in creature.pouvoirs_)
-        pouvoirs_.push_back(new Pouvoir(*pouvoir));
+/*    for each(Pouvoir* pouvoir in creature.pouvoirs_)
+        pouvoirs_.push_back(new Pouvoir(*pouvoir));*/
 }
 
 Creature& Creature::operator=(const Creature& creature)
@@ -266,10 +266,10 @@ Creature& Creature::operator=(const Creature& creature)
             pouvoirs_.back() = nullptr;
             pouvoirs_.pop_back();
         }
-        for each (Pouvoir* pouvoir in  creature.pouvoirs_)
+       /* for each (Pouvoir* pouvoir in  creature.pouvoirs_)
         {
             pouvoirs_.push_back(new Pouvoir(*pouvoir));
-        }
+        }*/
 	}
 	return *this;
 }
@@ -301,10 +301,10 @@ ostream& operator<<(ostream& os, const Creature& creature) // TODO
 	os << "Pouvoirs : " << endl;
 	if (!creature.pouvoirs_.empty())
     {
-        for each (Pouvoir* pouvoir in creature.pouvoirs_)
+      /* for each (Pouvoir* pouvoir in creature.pouvoirs_)
         {
             cout << *pouvoir << endl;
-        }
+        }*/
 	}
 	else
 		os << creature.nom_ << " ne connait aucun pouvoir";
