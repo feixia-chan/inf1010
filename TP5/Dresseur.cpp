@@ -5,8 +5,8 @@ Date de creation: 31 aout 2016
 Date de modification: 6 septembre 2016 par Maude Carrier
 */
 
-#include "Foncteur.h"
 #include "Dresseur.h"
+#include "Foncteur.h"
 
 
 Dresseur::Dresseur() :nom_(""), equipe_("") {};
@@ -160,6 +160,6 @@ void Dresseur::supprimerElements(predicat predicatUnaire)
 template<typename predicat>
 Creature* Dresseur::getCreatureMax(predicat predicatBin)
 {
-    sort(creatures_.begin(),creatures_.end(),predicatBin);
+    creatures_.sort(predicatBin);
     return creatures_.begin(); //? Max veut dire la première ou la dernière ?
 }
