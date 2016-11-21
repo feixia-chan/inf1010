@@ -11,6 +11,7 @@
 
 using namespace std;
 
+
 //Foncteur permettant d'obtenir l'attaque de la créature passée en argument
 class FoncteurObtenirAttaqueCreature
 {

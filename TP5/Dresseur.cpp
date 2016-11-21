@@ -5,6 +5,7 @@ Date de creation: 31 aout 2016
 Date de modification: 6 septembre 2016 par Maude Carrier
 */
 
+#include "Foncteur.h"
 #include "Dresseur.h"
 
 
