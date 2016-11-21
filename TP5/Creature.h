@@ -82,4 +82,9 @@ protected:
 
 };
 
+template<typename PredicatBin>
+void Creature::trierPouvoirs(PredicatBin predicat){ //pas de copie pr éviter les fuites mémoires
+    sort(pouvoirs_.begin(),pouvoirs_.end(),predicat);
+}
+
 #endif

@@ -10,6 +10,7 @@ Description: Les creatures magiques peuvent bénificier d'une attaque magique
 
 #include "AttaqueMagiqueConfusion.h"
 #include "AttaqueMagiquePoison.h"
+#include "Creature.h"
 
 using namespace std;
 

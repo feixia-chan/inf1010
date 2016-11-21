@@ -62,8 +62,8 @@ int main()
 	// tonerre par touflamme.
 	// A COMPLETER...
 	salimouche.apprendrePouvoir(&bouleDeFeu);
-	pokachu.apprendrePouvoir(&eclair);
 	pokachu.apprendrePouvoir(&tonerre);
+	pokachu.apprendrePouvoir(&eclair);
 	touflamme.apprendrePouvoir(&tonerre);
 
 	PolyLand polyland;
@@ -82,14 +82,14 @@ int main()
 	// A COMPLETER...
 	polyland.attraperCreature(&vous,&pokachu);
 	polyland.attraperCreature(&sacha,&salimouche);
-	polyland.attraperCreature(&sacha,&touflamme);
+//	polyland.attraperCreature(&sacha,&touflamme);
 
     cout << "TEST AFFICHAGE" << endl;
-    cout << "pouvoir de la creature avant trie" << endl;
+    cout << "pouvoir de la creature avant tri" << endl;
     cout << pokachu << endl;
 
     pokachu.trierPouvoirs(FoncteurComparerPouvoirs());
-    cout << "pouvoir de la creature apres trie" << endl;
+    cout << "pouvoir de la creature apres tri" << endl;
     cout << pokachu << endl;
 
 	cout << "Affichage de Polyland" << endl;
@@ -99,10 +99,10 @@ int main()
 
     cout << "TEST DRESSEUR" << endl;
 
-    if (vous == sacha) //Les deux dresseurs n'ont pas les mêmes créatures
-        cout << "DRESSEUR operateur== : Erreur Technique!!!!" << endl;
-
-    sacha.ajouterCreature(&pokachu);
+   // if (vous == sacha) //Les deux dresseurs n'ont pas les mêmes créatures
+   //     cout << "DRESSEUR operateur== : Erreur Technique!!!!" << endl;
+cout<<sacha<<endl;
+  /*  sacha.ajouterCreature(&pokachu);
     vous.ajouterCreature(&salimouche);
     vous.ajouterCreature(&touflamme);
     if (!(vous == sacha)) //Les deux dresseurs ont maintenant les mêmes créatures
@@ -128,15 +128,15 @@ int main()
     vous.supprimerElements(
         bind(
             /*A COMPLETER générer un opérateur > pour les entiers*/
-            greater<int>(),
+     /*       greater<int>(),
             //Le bind ci-dessous permet d'appeler la méthode getAttaque() de la
             //Creature* passée en argument du foncteur lors des appels de ce dernier dans supprimerElements
                 bind(
                     getAttaque, placeholders::_1
                     /*A COMPLETER utiliser le premier placeholder (attention aux namespace) (reçoit un Creature*)*/
-                ),
+         //       ),
                 /*A COMPLETER faire en sorte que le résultat de getAttaque() soit comparer à attaquer max*/
-             attaqueMax
+   /*          attaqueMax
         )
     );
     //N.B: A l'issue de la fonction vous ne devriez plus posséder de Salimouche
@@ -200,7 +200,7 @@ int main()
 	// Affichage de polyand
 	cout << polyland << endl;
 
-	polyland.vider();
+	polyland.vider();*/
 
 	system("pause");
 	return 0;

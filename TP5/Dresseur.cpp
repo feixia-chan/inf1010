@@ -142,24 +142,3 @@ ostream& operator<<(ostream& os, const Dresseur& dresseur)
     return os << dresseur.nom_ << " possede " << dresseur.creatures_.size()
         << " creature(s) et appartient a l'equipe " << dresseur.equipe_ << endl;
 }
-
-//Méthodes template
-template<typename predicat>
-void Dresseur::appliquerFoncteurUnaire(predicat predicatUnaire)
-{
-    for_each(creatures_.begin(),creatures_.end(),predicatUnaire);
-}
-
-template<typename predicat>
-void Dresseur::supprimerElements(predicat predicatUnaire)
-{
-	auto it = remove_if(creatures_.begin(), creatures_.end(), !predicatUnaire);
-	creatures_.erase(it, creatures_.end());
-}
-
-template<typename predicat>
-Creature* Dresseur::getCreatureMax(predicat predicatBin)
-{
-    creatures_.sort(predicatBin);
-    return creatures_.begin(); //? Max veut dire la première ou la dernière ?
-}

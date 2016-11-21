@@ -67,4 +67,25 @@ private:
 
 };
 
+//Méthodes template
+template<typename predicat>
+void Dresseur::appliquerFoncteurUnaire(predicat predicatUnaire)
+{
+    for_each(creatures_.begin(),creatures_.end(),predicatUnaire);
+}
+
+template<typename predicat>
+void Dresseur::supprimerElements(predicat predicatUnaire)
+{
+	auto it = remove_if(creatures_.begin(), creatures_.end(), predicatUnaire);
+	creatures_.erase(it, creatures_.end());
+}
+
+template<typename predicat>
+Creature* Dresseur::getCreatureMax(predicat predicatBin)
+{
+    creatures_.sort(predicatBin);
+    return *creatures_.begin(); //? Max veut dire la première ou la dernière ?
+}
+
 #endif

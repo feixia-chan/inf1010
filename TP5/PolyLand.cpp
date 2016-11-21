@@ -29,11 +29,11 @@ ostream& operator<<(ostream& os, PolyLand poly)
 
     os<<"Liste des dresseurs de Polyland : "<<endl;
     for(auto it=poly.listMaitre_.begin();it!=poly.listMaitre_.end();it++){
-        os<<*it<<endl;
+        os<<**it<<endl;
     }
     os<<"Liste des créatures de Polyland : "<<endl;
     for(auto it=poly.listCompagnon_.begin();it!=poly.listCompagnon_.end();it++){
-        os<<*it<<endl;
+        os<<**it<<endl;
     }
     return os;
 }

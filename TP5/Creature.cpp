@@ -305,6 +305,9 @@ ostream& operator<<(ostream& os, const Creature& creature) // TODO
         {
             cout << *pouvoir << endl;
         }*/
+        for(auto it=creature.pouvoirs_.begin();it!=creature.pouvoirs_.end();it++){
+            cout<<**it<<endl;
+        }
 	}
 	else
 		os << creature.nom_ << " ne connait aucun pouvoir";
@@ -317,7 +320,4 @@ string Creature::getTypeCreature() const
 	return (typeid(*this).name());
 }
 
-template<typename PredicatBin>
-void Creature::trierPouvoirs(PredicatBin predicat){ //pas de copie pr éviter les fuites mémoires
-    sort(pouvoirs_.begin(),pouvoirs_.end(),predicat);
-}
+
