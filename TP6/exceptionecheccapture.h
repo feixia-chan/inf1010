@@ -1,5 +1,8 @@
 #ifndef EXCEPTIONECHECCAPTURE_H
 #define EXCEPTIONECHECCAPTURE_H
+
+#include <exception>
+
 using namespace std;
 class ExceptionEchecCapture : public runtime_error
 {

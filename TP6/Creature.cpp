@@ -6,6 +6,8 @@
 
 #include "Creature.h"
 #include "Foncteur.h"
+#include "exceptionattaqueechouee.h"
+#include "exceptioncreaturemorte.h"
 
 #define EXPERIENCE_NECESSAIRE_DEFAUT 100
 
@@ -124,8 +126,16 @@ void Creature::attaquer(const Pouvoir & pouvoir, Creature & creature)
 				energie_ -= pouvoir.obtenirEnergieNecessaire();
 			}
         }
+        else
+        {
+            throw ExceptionCreatureMorte("La creature est deja morte");
+        }
 
 	}
+    else
+    {
+        throw ExceptionAttaqueEchouee("La creature n'a plus d'energie");
+    }
 
 }
 

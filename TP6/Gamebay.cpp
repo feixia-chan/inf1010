@@ -205,6 +205,25 @@ void Gamebay::setConnections(){
 
 void Gamebay::afficherCreaturesDresseur(){
     //!!!!!! A COMPLETER !!!!!!
+    {
+        menu_->listeCreaturesDresseur_->clear();
+        if(!menu_->listeCreaturesDresseur_->isVisible()){
+            menu_->listeCreaturesDresseur_->show();
+            std::vector<Creature*> creatures = polyland_->obtenirHero().obtenirCreatures();
+            if(creatures.size() >0){
+                for (auto it = creatures.begin(); it != creatures.end(); it++) {
+                    QString s(QString::fromStdString((*it)->obtenirNom() + "\t\t V:" + std::to_string((*it)->obtenirPointDeVie())
+                    + "/" +  std::to_string((*it)->obtenirPointDeVieTotal()) + "\t E:" + std::to_string((*it)->obtenirEnergie())
+                    + "/" +  std::to_string((*it)->obtenirEnergieTotale())));
+                    //QString s(QString::fromStdString((*it)->obtenirNom()));
+                    //QListWidgetItem* item = new QListWidgetItem(s, listeCreaturesDresseur_);
+                    //item->setData(Qt::UserRole, QVariant::fromValue<Creature*>(*it));
+                }
+            }
+        }else{
+            menu_->listeCreaturesDresseur_->hide();
+        }
+    }
     menu_->afficherListeCreaturesDresseur(polyland_->obtenirHero());
 }
 
@@ -268,6 +287,7 @@ void Gamebay::changerCreature(QListWidgetItem* item){
     }else{
         //!!!!!! A COMPLETER !!!!!!
         //Sinon la creature est deja vaincue;
+        emit creatureVaincue();
     }
 }
 
@@ -328,44 +348,28 @@ void Gamebay::attaquerCreatureAdverse(){
      //!!!!!! A COMPLETER !!!!!!
      QObject* button = QObject::sender();
      //On va faire l'attaque en fonction du bouton clique
-    // try{
-             if(button == choixAttaque_->attaque1_){
-            creatureHero_->attaquer(*(creatureHero_->obtenirPouvoirs()[0]), *creatureAdverse_);
-         }else if(button == choixAttaque_->attaque2_){
-            creatureHero_->attaquer(*(creatureHero_->obtenirPouvoirs()[1]), *creatureAdverse_);
-         }else if(button == choixAttaque_->attaque3_){
-            creatureHero_->attaquer(*(creatureHero_->obtenirPouvoirs()[2]), *creatureAdverse_);
-         }else{
-            creatureHero_->attaquer(*(creatureHero_->obtenirPouvoirs()[3]), *creatureAdverse_);
-         }
-  /*   }catch(ExceptionAttaqueEchouee& e){
-         QMessageBox error;
-         error.critical(0,"Attaque Echouée","L'attaque a échouée");
+     if(button == choixAttaque_->attaque1_){
+        creatureHero_->attaquer(*(creatureHero_->obtenirPouvoirs()[0]), *creatureAdverse_);
+     }else if(button == choixAttaque_->attaque2_){
+        creatureHero_->attaquer(*(creatureHero_->obtenirPouvoirs()[1]), *creatureAdverse_);
+     }else if(button == choixAttaque_->attaque3_){
+        creatureHero_->attaquer(*(creatureHero_->obtenirPouvoirs()[2]), *creatureAdverse_);
+     }else{
+        creatureHero_->attaquer(*(creatureHero_->obtenirPouvoirs()[3]), *creatureAdverse_);
      }
-     catch(ExceptionCreatureMorte& e){
-         if(creatureAdverse_->obtenirPointDeVie()>=0){
-             if(e.obtenirValeurCompteur()<=3){
-                 QMessageBox error;
-                 error.critical(0,"Attaque Echouée","Arrêtez, le combat est terminé...");
-             }
-             if(e.obtenirValeurCompteur()>=3 &&e.obtenirValeurCompteur()<5){
-                 QMessageBox error;
-                 error.critical(0,"Attaque Echouée","Hey ca fait plus de trois fois que vous essayez... La créature est déja morte");
-             }
-             else{
-                 QMessageBox error;
-                 error.critical(0,"Attaque Echouée","Vous êtes vraiment sadique, arrêtez de vous acharner sur cette pauvre créature clamsée!");
-             }
-         }}*/
-          //On met a jour les informations des creatures
+     //On met a jour les informations des creatures
      informationsAdversaire_->modifierAffichageInformationCreature(creatureAdverse_);
+
+     if(creatureAdverse_->obtenirPointDeVie()<=0){
+         emit creatureAdverseVaincue();
+     }
+
      informationsDresseur_->modifierAffichageInformationCreature(creatureHero_);
      //Nous vous demandons d'attraper deux types d'exception ici, a vous de voir lesquels
      //Pour l'exception que vous trouverez pertinente, vous devez afficher :
      //-Un certain message lorsque cette exception a ete lance strictement moins de 3 fois
      //-Un autre message lorsque cette exception a ete lance strictement moins de 5 fois
      //-Un dernier message lorsque cette exception a ete lance plus de 5 fois
-
 }
 
 void Gamebay::gestionDuMenu(){
@@ -384,7 +388,13 @@ void Gamebay::gestionDuMenu(){
 void Gamebay::capturerCreatureAdverse(){
     //!!!!!! A COMPLETER !!!!!!
     QMessageBox msg;
-    polyland_->attraperCreature(&polyland_->obtenirHero(), creatureAdverse_);
+    try {
+        polyland_->attraperCreature(&polyland_->obtenirHero(), creatureAdverse_);
+    }
+    catch(ExceptionEchecCapture& e){
+        msg.critical(0,"Capture impossible",e.what());
+        return;
+    }
 }
 
 

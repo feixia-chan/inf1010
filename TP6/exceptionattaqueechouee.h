@@ -1,5 +1,8 @@
 #ifndef EXCEPTIONATTAQUEECHOUEE_H
 #define EXCEPTIONATTAQUEECHOUEE_H
+
+#include <exception>
+
 using namespace std;
 class ExceptionAttaqueEchouee : public runtime_error
 {

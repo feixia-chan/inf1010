@@ -1,6 +1,8 @@
 #ifndef EXCEPTIONCREATUREMORTE_H
 #define EXCEPTIONCREATUREMORTE_H
 
+#include <exception>
+
 using namespace std;
 class ExceptionCreatureMorte : public runtime_error
 {
