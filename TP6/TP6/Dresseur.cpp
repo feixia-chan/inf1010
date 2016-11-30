@@ -7,6 +7,7 @@ Date de modification: 6 septembre 2016 par Maude Carrier
 
 #include "Dresseur.h"
 #include "Foncteur.h"
+#include "exceptionecheccapture.h"
 
 Dresseur::Dresseur() :nom_(""), equipe_("") {};
 
@@ -60,7 +61,7 @@ void Dresseur::ajouterCreature(Creature* creature)
     FoncteurEgalCreatures comparaison(creature);
     auto position_creature = find_if(creatures_.begin(), creatures_.end(), comparaison);
     if (position_creature != creatures_.end()){
-
+        throw ExceptionEchecCapture("Vous possedez deja cette creature");
     }
 	else{
 		creatures_.push_back(new Creature(*creature));

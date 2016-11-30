@@ -1,4 +1,7 @@
 #include "Gamebay.h"
+#include "exceptioncreaturemorte.h"
+#include "exceptionattaqueechouee.h"
+#include "exceptionecheccapture.h"
 #include <iostream>
 
 Gamebay::Gamebay(PolyLand* polyland, QWidget *parent) :
@@ -268,6 +271,7 @@ void Gamebay::changerCreature(QListWidgetItem* item){
     }else{
         //!!!!!! A COMPLETER !!!!!!
         //Sinon la creature est deja vaincue;
+        emit creatureVaincue();
     }
 }
 
@@ -343,23 +347,27 @@ void Gamebay::attaquerCreatureAdverse(){
          error.critical(0,"Attaque Echouée","L'attaque a échouée");
      }
      catch(ExceptionCreatureMorte& e){
-         if(creatureAdverse_->obtenirPointDeVie()>=0){
              if(e.obtenirValeurCompteur()<=3){
                  QMessageBox error;
-                 error.critical(0,"Attaque Echouée","Arrêtez, le combat est terminé...");
+                 error.critical(0,"Creature morte","Arrêtez, le combat est terminé...");
              }
-             if(e.obtenirValeurCompteur()>=3 &&e.obtenirValeurCompteur()<5){
+             if(e.obtenirValeurCompteur()>3 &&e.obtenirValeurCompteur()<=5){
                  QMessageBox error;
-                 error.critical(0,"Attaque Echouée","Hey ca fait plus de trois fois que vous essayez... La créature est déja morte");
+                 error.critical(0,"Creature morte","Hey ca fait plus de trois fois que vous essayez... La créature est déja morte");
              }
-             else{
+              if(e.obtenirValeurCompteur()>5){
                  QMessageBox error;
-                 error.critical(0,"Attaque Echouée","Vous êtes vraiment sadique, arrêtez de vous acharner sur cette pauvre créature clamsée!");
+                 error.critical(0,"Creature morte","Vous êtes vraiment sadique, arrêtez de vous acharner sur cette pauvre créature clamsée!");
              }
-         }}
+
+     }
           //On met a jour les informations des creatures
      informationsAdversaire_->modifierAffichageInformationCreature(creatureAdverse_);
      informationsDresseur_->modifierAffichageInformationCreature(creatureHero_);
+     if(creatureAdverse_->obtenirPointDeVie()<=0){
+         emit creatureAdverseVaincue();
+         menu_->boutonCapturer_->show();
+     }
      //Nous vous demandons d'attraper deux types d'exception ici, a vous de voir lesquels
      //Pour l'exception que vous trouverez pertinente, vous devez afficher :
      //-Un certain message lorsque cette exception a ete lance strictement moins de 3 fois
@@ -383,8 +391,15 @@ void Gamebay::gestionDuMenu(){
 
 void Gamebay::capturerCreatureAdverse(){
     //!!!!!! A COMPLETER !!!!!!
+
     QMessageBox msg;
-    polyland_->attraperCreature(&polyland_->obtenirHero(), creatureAdverse_);
+    try {
+            polyland_->attraperCreature(&polyland_->obtenirHero(), creatureAdverse_);
+        }
+        catch(ExceptionEchecCapture& e){
+            msg.critical(0,"Capture impossible",e.what());
+            return;
+        }
 }
 
 
